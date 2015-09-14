@@ -1,0 +1,29 @@
+.jumbotron {
+
+	background-color: $af_grey;
+	color: #fff;
+	padding: 20px 40px;
+
+
+
+
+
+	h1 {
+		color: #fff;
+		text-align: center;
+	}
+	label {
+		color: #fff;
+	}
+
+	.search {
+		padding: 40px 0px;
+
+		button {
+			background: $af-blue;
+		}
+		.grid-content {
+			padding: 0;
+		}
+	}
+}

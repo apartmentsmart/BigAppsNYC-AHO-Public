@@ -1,0 +1,11 @@
+.menu-bar {
+	background: $af_blue;
+
+	.title {
+		a{color: #fff;}
+
+/*		&:hover {
+			background: lighten( $af_blue, 20%);
+		}*/
+	}
+}
