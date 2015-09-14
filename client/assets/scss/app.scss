@@ -1,2 +1,20 @@
+/****************************
+		App Variables
+*****************************/
+@import "partials/variables";
+
+/****************************
+	Foundation For Apps
+*****************************/
 @import "settings";
 @import "foundation";
+
+/****************************
+		HO Custom Styles
+*****************************/
+@import "partials/navigation";
+@import "partials/jumbotron";
+
+.af-blue {
+	background-color: $af-blue;
+}

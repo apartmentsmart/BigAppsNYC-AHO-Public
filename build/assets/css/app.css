@@ -1,3 +1,9 @@
+/****************************
+		App Variables
+*****************************/
+/****************************
+	Foundation For Apps
+*****************************/
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
@@ -6398,3 +6404,34 @@ blockquote p {
 
 .float-none {
   float: none; }
+
+/****************************
+		HO Custom Styles
+*****************************/
+.menu-bar {
+  background: #0093d8; }
+  .menu-bar .title {
+    /*		&:hover {
+			background: lighten( $af_blue, 20%);
+		}*/ }
+    .menu-bar .title a {
+      color: #fff; }
+
+.jumbotron {
+  background-color: #444;
+  color: #fff;
+  padding: 20px 40px; }
+  .jumbotron h1 {
+    color: #fff;
+    text-align: center; }
+  .jumbotron label {
+    color: #fff; }
+  .jumbotron .search {
+    padding: 40px 0px; }
+    .jumbotron .search button {
+      background: #0093d8; }
+    .jumbotron .search .grid-content {
+      padding: 0; }
+
+.af-blue {
+  background-color: #0093d8; }
