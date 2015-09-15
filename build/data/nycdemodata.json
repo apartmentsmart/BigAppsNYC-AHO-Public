@@ -1,7 +1,7 @@
 [
 	{
 		"hud_id" : "NYA0000006",
-		"name" : "1865 SECOND AVE ASSOC",
+		"name" : "1865 Second Ave Assoc",
 		"address" : "1865 2ND AVE",
 		"city" : "NEW YORK",
 		"state" : "NY",
@@ -25,7 +25,7 @@
 	},
 	{
 		"hud_id" : "NYA0000007",
-		"name" : "196 ROCKAWAY PKWY",
+		"name" : "196 Rockaway Pkwy",
 		"address" : "196 ROCKAWAY PKWY",
 		"city" : "BROOKLYN",
 		"state" : "NY",
@@ -49,7 +49,7 @@
 	},
 	{
 		"hud_id" : "NYA0000011",
-		"name" : "2051 GRAND CONCOURSE",
+		"name" : "2051 Grand Concourse",
 		"address" : "2051 GRAND CONCOURSE",
 		"city" : "BRONX",
 		"state" : "NY",
@@ -73,7 +73,7 @@
 	},
 	{
 		"hud_id" : "NYA0000029",
-		"name" : "91 WOODRUFF AVE",
+		"name" : "91 Woodruff Ave",
 		"address" : "91 WOODRUFF AVE",
 		"city" : "BROOKLYN",
 		"state" : "NY",
@@ -97,7 +97,7 @@
 	},
 	{
 		"hud_id" : "NYA0000039",
-		"name" : "BALLARD DEVELOPMENT",
+		"name" : "Ballard Development",
 		"address" : "300 W 116TH ST",
 		"city" : "NEW YORK",
 		"state" : "NY",
@@ -121,7 +121,7 @@
 	},
 	{
 		"hud_id" : "NYA0000046",
-		"name" : "BERRY STREET",
+		"name" : "Berry Street",
 		"address" : "101 S 8TH ST",
 		"city" : "BROOKLYN",
 		"state" : "NY",
@@ -145,7 +145,7 @@
 	},
 	{
 		"hud_id" : "NYA0000049",
-		"name" : "BUILD-CROTONA ASSOC",
+		"name" : "Build-crotona Assoc",
 		"address" : "824 E 181ST ST",
 		"city" : "BRONX",
 		"state" : "NY",
@@ -169,7 +169,7 @@
 	},
 	{
 		"hud_id" : "NYA0000051",
-		"name" : "C-H DEVELOPMENT GROUP ASSOC",
+		"name" : "C-h Development Group Assoc",
 		"address" : "1728 AMSTERDAM AVE",
 		"city" : "NEW YORK",
 		"state" : "NY",
@@ -193,7 +193,7 @@
 	},
 	{
 		"hud_id" : "NYA0000060",
-		"name" : "615 W 173RD ST",
+		"name" : "615 W 173rd St",
 		"address" : "615 W 173RD ST",
 		"city" : "NEW YORK",
 		"state" : "NY",
@@ -217,7 +217,7 @@
 	},
 	{
 		"hud_id" : "NYA0000068",
-		"name" : "ELDRIDGE STREET",
+		"name" : "Eldridge Street",
 		"address" : "176 ELDRIDGE ST",
 		"city" : "NEW YORK",
 		"state" : "NY",
@@ -241,7 +241,7 @@
 	},
 	{
 		"hud_id" : "NYA0000081",
-		"name" : "GATES AVENUE ASSOC, PHASE II",
+		"name" : "Gates Avenue Assoc, Phase Ii",
 		"address" : "650 GATES AVE",
 		"city" : "BROOKLYN",
 		"state" : "NY",
@@ -265,7 +265,7 @@
 	},
 	{
 		"hud_id" : "NYA0000084",
-		"name" : "GOLDEN GATES",
+		"name" : "Golden Gates",
 		"address" : "1091 GATES AVE",
 		"city" : "BROOKLYN",
 		"state" : "NY",
@@ -289,7 +289,7 @@
 	},
 	{
 		"hud_id" : "NYA0000088",
-		"name" : "HEIGHTS INVESTMENT GROUP",
+		"name" : "Heights Investment Group",
 		"address" : "518 W 204TH ST",
 		"city" : "NEW YORK",
 		"state" : "NY",
@@ -313,7 +313,7 @@
 	},
 	{
 		"hud_id" : "NYA0000089",
-		"name" : "HEWITT HOUSE HSG PARTNERSHIP INC",
+		"name" : "Hewitt House Hsg Partnership Inc",
 		"address" : "1470 SAINT JOHNS PL",
 		"city" : "BROOKLYN",
 		"state" : "NY",
@@ -337,7 +337,7 @@
 	},
 	{
 		"hud_id" : "NYA0000096",
-		"name" : "IRVING STOCKHOLM ASSOC INC",
+		"name" : "Irving Stockholm Assoc Inc",
 		"address" : "22 IRVING AVE",
 		"city" : "BROOKLYN",
 		"state" : "NY",
@@ -361,7 +361,7 @@
 	},
 	{
 		"hud_id" : "NYA0000098",
-		"name" : "KOWAL HOUSE",
+		"name" : "Kowal House",
 		"address" : "149 MANHATTAN AVE",
 		"city" : "NEW YORK",
 		"state" : "NY",
@@ -385,7 +385,7 @@
 	},
 	{
 		"hud_id" : "NYA0000106",
-		"name" : "LIHC PROJECT",
+		"name" : "Lihc Project",
 		"address" : "80 ANDROS AVE",
 		"city" : "STATEN ISLAND",
 		"state" : "NY",
@@ -409,7 +409,7 @@
 	},
 	{
 		"hud_id" : "NYA0000109",
-		"name" : "LOISAIDA FAMILY HOUSE",
+		"name" : "Loisaida Family House",
 		"address" : "250 E 4TH ST",
 		"city" : "NEW YORK",
 		"state" : "NY",
@@ -433,7 +433,7 @@
 	},
 	{
 		"hud_id" : "NYA0000116",
-		"name" : "MAPES COURT ASSOC",
+		"name" : "Mapes Court Assoc",
 		"address" : "2158 MAPES AVE",
 		"city" : "BRONX",
 		"state" : "NY",
@@ -457,7 +457,7 @@
 	},
 	{
 		"hud_id" : "NYA0000120",
-		"name" : "1197 GRAND CONCOURSE",
+		"name" : "1197 Grand Concourse",
 		"address" : "1197 GRAND CONCOURSE",
 		"city" : "BRONX",
 		"state" : "NY",
@@ -481,7 +481,7 @@
 	},
 	{
 		"hud_id" : "NYA0000126",
-		"name" : "MORNINGSIDE DEVELOPMENT GROUP",
+		"name" : "Morningside Development Group",
 		"address" : "163 MORNINGSIDE AVE",
 		"city" : "NEW YORK",
 		"state" : "NY",
@@ -505,7 +505,7 @@
 	},
 	{
 		"hud_id" : "NYA0000129",
-		"name" : "BRONX ANDREWS ASSOC",
+		"name" : "Bronx Andrews Assoc",
 		"address" : "2341 ANDREWS AVE",
 		"city" : "BRONX",
 		"state" : "NY",
@@ -529,7 +529,7 @@
 	},
 	{
 		"hud_id" : "NYA0000130",
-		"name" : "1220 GRAND CONCOURSE",
+		"name" : "1220 Grand Concourse",
 		"address" : "1220 GRAND CONCOURSE",
 		"city" : "BRONX",
 		"state" : "NY",
@@ -553,7 +553,7 @@
 	},
 	{
 		"hud_id" : "NYA0000131",
-		"name" : "95 THAYER ST",
+		"name" : "95 Thayer St",
 		"address" : "95 THAYER ST",
 		"city" : "NEW YORK",
 		"state" : "NY",
@@ -577,7 +577,7 @@
 	},
 	{
 		"hud_id" : "NYA0000140",
-		"name" : "1290 GRAND CONCOURSE",
+		"name" : "1290 Grand Concourse",
 		"address" : "1290 GRAND CONCOURSE",
 		"city" : "BRONX",
 		"state" : "NY",
@@ -601,7 +601,7 @@
 	},
 	{
 		"hud_id" : "NYA0000141",
-		"name" : "REVIVE 103 NORTH ASSOC INC",
+		"name" : "Revive 103 North Assoc Inc",
 		"address" : "159 E 103RD ST",
 		"city" : "NEW YORK",
 		"state" : "NY",
@@ -625,7 +625,7 @@
 	},
 	{
 		"hud_id" : "NYA0000145",
-		"name" : "1330 WILLOUGHBY AVE",
+		"name" : "1330 Willoughby Ave",
 		"address" : "1330 WILLOUGHBY AVE",
 		"city" : "BROOKLYN",
 		"state" : "NY",
@@ -649,7 +649,7 @@
 	},
 	{
 		"hud_id" : "NYA0000147",
-		"name" : "SOUTH EIGHTH STREET PARTNERSHIP",
+		"name" : "South Eighth Street Partnership",
 		"address" : "176 S 8TH ST",
 		"city" : "BROOKLYN",
 		"state" : "NY",
@@ -673,7 +673,7 @@
 	},
 	{
 		"hud_id" : "NYA0000152",
-		"name" : "ST MARKS EPISCOPAL HDFC",
+		"name" : "St Marks Episcopal Hdfc",
 		"address" : "1777 BEDFORD AVE",
 		"city" : "BROOKLYN",
 		"state" : "NY",
@@ -697,7 +697,7 @@
 	},
 	{
 		"hud_id" : "NYA0000153",
-		"name" : "ST EDMUNDS COURT",
+		"name" : "St Edmunds Court",
 		"address" : "1892 MORRIS AVE",
 		"city" : "BRONX",
 		"state" : "NY",
@@ -721,7 +721,7 @@
 	},
 	{
 		"hud_id" : "NYA0000154",
-		"name" : "ST JOHNS PLACE",
+		"name" : "St Johns Place",
 		"address" : "1216 SAINT JOHNS PL",
 		"city" : "BROOKLYN",
 		"state" : "NY",
@@ -745,7 +745,7 @@
 	},
 	{
 		"hud_id" : "NYA0000159",
-		"name" : "U-P REHABILITATION ASSOC",
+		"name" : "U-p Rehabilitation Assoc",
 		"address" : "1574 UNION ST",
 		"city" : "BROOKLYN",
 		"state" : "NY",
@@ -769,7 +769,7 @@
 	},
 	{
 		"hud_id" : "NYA0000160",
-		"name" : "1666 UNION ST",
+		"name" : "1666 Union St",
 		"address" : "1666 UNION ST",
 		"city" : "BROOKLYN",
 		"state" : "NY",
@@ -793,7 +793,7 @@
 	},
 	{
 		"hud_id" : "NYA0000161",
-		"name" : "U-P REHABILITATION ASSOC",
+		"name" : "U-p Rehabilitation Assoc",
 		"address" : "1726 UNION ST",
 		"city" : "BROOKLYN",
 		"state" : "NY",
@@ -817,7 +817,7 @@
 	},
 	{
 		"hud_id" : "NYA0000162",
-		"name" : "UNITY HOUSE",
+		"name" : "Unity House",
 		"address" : "77 AVENUE C",
 		"city" : "NEW YORK",
 		"state" : "NY",
@@ -841,7 +841,7 @@
 	},
 	{
 		"hud_id" : "NYA0000165",
-		"name" : "1681 PRESIDENT ST",
+		"name" : "1681 President St",
 		"address" : "1681 PRESIDENT ST",
 		"city" : "BROOKLYN",
 		"state" : "NY",
@@ -865,7 +865,7 @@
 	},
 	{
 		"hud_id" : "NYA0000169",
-		"name" : "W 116TH ST",
+		"name" : "W 116th St",
 		"address" : "307 W 116TH ST",
 		"city" : "NEW YORK",
 		"state" : "NY",
@@ -889,7 +889,7 @@
 	},
 	{
 		"hud_id" : "NYA0000173",
-		"name" : "WEST 107 STREET",
+		"name" : "West 107 Street",
 		"address" : "171 W 107TH ST",
 		"city" : "NEW YORK",
 		"state" : "NY",
@@ -913,7 +913,7 @@
 	},
 	{
 		"hud_id" : "NYA0000174",
-		"name" : "WEST HARLEM COMMUNITY ORGANIZATION INC",
+		"name" : "West Harlem Community Organization Inc",
 		"address" : "202 SAINT NICHOLAS AVE",
 		"city" : "NEW YORK",
 		"state" : "NY",
@@ -937,7 +937,7 @@
 	},
 	{
 		"hud_id" : "NYA0000185",
-		"name" : "1850 2ND AVE",
+		"name" : "1850 2nd Ave",
 		"address" : "1850 2ND AVE",
 		"city" : "NEW YORK",
 		"state" : "NY",
@@ -961,7 +961,7 @@
 	},
 	{
 		"hud_id" : "NYA0000205",
-		"name" : "SENATE RESIDENCE",
+		"name" : "Senate Residence",
 		"address" : "206 W 92ND ST",
 		"city" : "NEW YORK",
 		"state" : "NY",
@@ -985,7 +985,7 @@
 	},
 	{
 		"hud_id" : "NYA0000210",
-		"name" : "235 E 14TH ST",
+		"name" : "235 E 14th St",
 		"address" : "235 E 14TH ST",
 		"city" : "NEW YORK",
 		"state" : "NY",
@@ -1009,7 +1009,7 @@
 	},
 	{
 		"hud_id" : "NYA0000215",
-		"name" : "255 LINDEN ST",
+		"name" : "255 Linden St",
 		"address" : "255 LINDEN ST",
 		"city" : "BROOKLYN",
 		"state" : "NY",
@@ -1033,7 +1033,7 @@
 	},
 	{
 		"hud_id" : "NYA0000230",
-		"name" : "ALLERTON ASSOC",
+		"name" : "Allerton Assoc",
 		"address" : "2700 BRONX PARK E",
 		"city" : "BRONX",
 		"state" : "NY",
@@ -1057,7 +1057,7 @@
 	},
 	{
 		"hud_id" : "NYA0000320",
-		"name" : "AMBASSADOR COURT ASSOC",
+		"name" : "Ambassador Court Assoc",
 		"address" : "565 CROWN ST",
 		"city" : "BROOKLYN",
 		"state" : "NY",
@@ -1081,7 +1081,7 @@
 	},
 	{
 		"hud_id" : "NYA0000405",
-		"name" : "1111 GERARD AVE",
+		"name" : "1111 Gerard Ave",
 		"address" : "1111 GERARD AVE",
 		"city" : "BRONX",
 		"state" : "NY",
@@ -1105,7 +1105,7 @@
 	},
 	{
 		"hud_id" : "NYA0000675",
-		"name" : "1965 VYSE AVE",
+		"name" : "1965 Vyse Ave",
 		"address" : "1965 VYSE AVE",
 		"city" : "BRONX",
 		"state" : "NY",
@@ -1129,7 +1129,7 @@
 	},
 	{
 		"hud_id" : "NYA0000955",
-		"name" : "820 WASHINGTON AVE",
+		"name" : "820 Washington Ave",
 		"address" : "820 WASHINGTON AVE",
 		"city" : "BROOKLYN",
 		"state" : "NY",
@@ -1153,7 +1153,7 @@
 	},
 	{
 		"hud_id" : "NYA1988020",
-		"name" : "MARWYTE REALTY ASSOC",
+		"name" : "Marwyte Realty Assoc",
 		"address" : "9 MARCY PL",
 		"city" : "BRONX",
 		"state" : "NY",
@@ -1177,7 +1177,7 @@
 	},
 	{
 		"hud_id" : "NYA1989032",
-		"name" : "W 104TH ST",
+		"name" : "W 104th St",
 		"address" : "123 W 104TH ST",
 		"city" : "NEW YORK",
 		"state" : "NY",

@@ -4,7 +4,6 @@
   var app = angular.module('application', [
     'ui.router',
     'ngAnimate',
-    'ngRoute',
     //foundation
     'foundation',
     'foundation.dynamicRouting',
@@ -70,7 +69,7 @@ app.controller('searchController', ['$scope', 'filterState', function($scope, fi
 
 }]);
 
-app.controller('resultsController', ['$scope','$http','$filter','$routeParams','filterState', '$state', function($scope, $http, $filter, $routeParams, filterState, $state) {
+app.controller('resultsController', ['$scope','$http','$filter','filterState', '$state', function($scope, $http, $filter, filterState, $state) {
 
              //Init Listings Object
        $scope.listings = [];
@@ -91,6 +90,8 @@ app.controller('resultsController', ['$scope','$http','$filter','$routeParams','
             $scope.filteredResults = filterSearch();
           else
             $scope.filteredResults = "No Filter";
+
+          console.log($scope.filteredResults);
 
          }).error(function (data, status, headers, config) {
            //on Error log error status
