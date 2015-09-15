@@ -1,4 +1,7 @@
-
+---
+name: home
+url: /
+---
 <div class="grid-container">
     <div class="grid-block">
         	<div class="grid-block jumbotron">
@@ -12,12 +15,12 @@
 						<div class="small-12 grid-content" >
 							<label class="hide">Select a Borough</label>
 							<select name="borough" id="borough" ng-model="search.borough">
-								<option value="allBoroughs">All Boroughs</option>
-								<option value="manhattan">Manhattan</option>
-								<option value="theBronx">The Bronx</option>
-								<option value="brooklyn">Brooklyn</option>
-								<option value="queens">Queens</option>
-								<option value="statenIsland">Staten Island</option>
+								<option value="All">All Boroughs</option>
+								<option value="Manhattan">Manhattan</option>
+								<option value="Bronx">The Bronx</option>
+								<option value="Brooklyn">Brooklyn</option>
+								<option value="Queens">Queens</option>
+								<option value="StatenIsland">Staten Island</option>
 							</select>
 						</div>
 
@@ -54,9 +57,7 @@
 							<input type="text" placeholder="Age" id="age" ng-model="search.age" />
 						</div>
 
-						<a class="expand button af-blue" href="#">Find Housing</a>
-
-						Search Profile: {{search}}
+						<a class="expand button af-blue" ui-sref="results({borough:search.borough})">Find Housing</a>
 
         		</div>
 
