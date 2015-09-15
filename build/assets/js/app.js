@@ -84,6 +84,8 @@ app.controller('resultsController', ['$scope','$http','$filter','filterState', '
        //Call local demo JSON
        $http.get("/data/nycdemodata.json").success(function (data, status, headers, config) {
           
+        console.log(data);
+
           //On Success set listings object equal to json return
           $scope.listings = data;
           if($scope.search)          

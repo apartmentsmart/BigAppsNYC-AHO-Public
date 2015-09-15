@@ -21,7 +21,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "2"
 	},
 	{
 		"hud_id" : "NYA0000007",
@@ -45,7 +46,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-3"
 	},
 	{
 		"hud_id" : "NYA0000011",
@@ -69,7 +71,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-3"
 	},
 	{
 		"hud_id" : "NYA0000029",
@@ -93,7 +96,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-3"
 	},
 	{
 		"hud_id" : "NYA0000039",
@@ -117,7 +121,8 @@
 		"disabled" : "0",
 		"homeless" : "1",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : 0
 	},
 	{
 		"hud_id" : "NYA0000046",
@@ -141,7 +146,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "1",
-		"other_specified" : "UNSPECIFIED"
+		"other_specified" : "UNSPECIFIED",
+		"room_range" : 0
 	},
 	{
 		"hud_id" : "NYA0000049",
@@ -165,7 +171,8 @@
 		"disabled" : "0",
 		"homeless" : "1",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : 0
 	},
 	{
 		"hud_id" : "NYA0000051",
@@ -189,7 +196,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-3"
 	},
 	{
 		"hud_id" : "NYA0000060",
@@ -213,7 +221,8 @@
 		"disabled" : "1",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : 0
 	},
 	{
 		"hud_id" : "NYA0000068",
@@ -237,7 +246,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : 0
 	},
 	{
 		"hud_id" : "NYA0000081",
@@ -261,7 +271,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-3"
 	},
 	{
 		"hud_id" : "NYA0000084",
@@ -285,7 +296,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : 0
 	},
 	{
 		"hud_id" : "NYA0000088",
@@ -309,7 +321,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-2"
 	},
 	{
 		"hud_id" : "NYA0000089",
@@ -333,7 +346,8 @@
 		"disabled" : "0",
 		"homeless" : "1",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-3"
 	},
 	{
 		"hud_id" : "NYA0000096",
@@ -357,7 +371,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : 0
 	},
 	{
 		"hud_id" : "NYA0000098",
@@ -381,7 +396,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "1",
-		"other_specified" : "UNSPECIFIED"
+		"other_specified" : "UNSPECIFIED",
+		"room_range" : 0
 	},
 	{
 		"hud_id" : "NYA0000106",
@@ -405,7 +421,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : 0
 	},
 	{
 		"hud_id" : "NYA0000109",
@@ -429,7 +446,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-3"
 	},
 	{
 		"hud_id" : "NYA0000116",
@@ -453,7 +471,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-3"
 	},
 	{
 		"hud_id" : "NYA0000120",
@@ -477,7 +496,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-3"
 	},
 	{
 		"hud_id" : "NYA0000126",
@@ -501,7 +521,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-2"
 	},
 	{
 		"hud_id" : "NYA0000129",
@@ -525,7 +546,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "3-4"
 	},
 	{
 		"hud_id" : "NYA0000130",
@@ -549,7 +571,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-2"
 	},
 	{
 		"hud_id" : "NYA0000131",
@@ -573,7 +596,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-2"
 	},
 	{
 		"hud_id" : "NYA0000140",
@@ -597,7 +621,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : 0
 	},
 	{
 		"hud_id" : "NYA0000141",
@@ -621,7 +646,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-2"
 	},
 	{
 		"hud_id" : "NYA0000145",
@@ -645,7 +671,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : 0
 	},
 	{
 		"hud_id" : "NYA0000147",
@@ -669,7 +696,8 @@
 		"disabled" : "0",
 		"homeless" : "1",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : 0
 	},
 	{
 		"hud_id" : "NYA0000152",
@@ -693,7 +721,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-3"
 	},
 	{
 		"hud_id" : "NYA0000153",
@@ -717,7 +746,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : 0
 	},
 	{
 		"hud_id" : "NYA0000154",
@@ -741,7 +771,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "2-3"
 	},
 	{
 		"hud_id" : "NYA0000159",
@@ -765,7 +796,8 @@
 		"disabled" : "1",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-2"
 	},
 	{
 		"hud_id" : "NYA0000160",
@@ -789,7 +821,8 @@
 		"disabled" : "1",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "2-3"
 	},
 	{
 		"hud_id" : "NYA0000161",
@@ -813,7 +846,8 @@
 		"disabled" : "1",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-2"
 	},
 	{
 		"hud_id" : "NYA0000162",
@@ -837,7 +871,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-2"
 	},
 	{
 		"hud_id" : "NYA0000165",
@@ -861,7 +896,8 @@
 		"disabled" : "1",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-2"
 	},
 	{
 		"hud_id" : "NYA0000169",
@@ -885,7 +921,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : 0
 	},
 	{
 		"hud_id" : "NYA0000173",
@@ -909,7 +946,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "2-3"
 	},
 	{
 		"hud_id" : "NYA0000174",
@@ -933,7 +971,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-2"
 	},
 	{
 		"hud_id" : "NYA0000185",
@@ -957,7 +996,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : 0
 	},
 	{
 		"hud_id" : "NYA0000205",
@@ -981,7 +1021,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : 0
 	},
 	{
 		"hud_id" : "NYA0000210",
@@ -1005,7 +1046,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-2"
 	},
 	{
 		"hud_id" : "NYA0000215",
@@ -1029,7 +1071,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-3"
 	},
 	{
 		"hud_id" : "NYA0000230",
@@ -1053,7 +1096,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-3"
 	},
 	{
 		"hud_id" : "NYA0000320",
@@ -1077,7 +1121,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-3"
 	},
 	{
 		"hud_id" : "NYA0000405",
@@ -1101,7 +1146,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : 0
 	},
 	{
 		"hud_id" : "NYA0000675",
@@ -1125,7 +1171,8 @@
 		"disabled" : "0",
 		"homeless" : "1",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : 0
 	},
 	{
 		"hud_id" : "NYA0000955",
@@ -1149,7 +1196,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : "1-3"
 	},
 	{
 		"hud_id" : "NYA1988020",
@@ -1173,7 +1221,8 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : 0
 	},
 	{
 		"hud_id" : "NYA1989032",
@@ -1197,6 +1246,7 @@
 		"disabled" : "0",
 		"homeless" : "0",
 		"other" : "0",
-		"other_specified" : ""
+		"other_specified" : "",
+		"room_range" : 0
 	}
 ]
