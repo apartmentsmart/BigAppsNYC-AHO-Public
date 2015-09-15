@@ -1,6 +1,10 @@
 /****************************
 		App Variables
 *****************************/
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,700,900,400italic);
+/*********************
+		Colors
+**********************/
 /****************************
 	Foundation For Apps
 *****************************/
@@ -6410,12 +6414,22 @@ blockquote p {
 *****************************/
 .menu-bar {
   background: #0093d8; }
+  .menu-bar li {
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 1rem; }
   .menu-bar .title {
     /*		&:hover {
 			background: lighten( $af_blue, 20%);
 		}*/ }
     .menu-bar .title a {
       color: #fff; }
+  .menu-bar .right {
+    text-align: right; }
 
 .jumbotron {
   background-color: #444;
@@ -6423,15 +6437,25 @@ blockquote p {
   padding: 20px 40px; }
   .jumbotron h1 {
     color: #fff;
+    font-weight: 300;
     text-align: center; }
   .jumbotron label {
     color: #fff; }
   .jumbotron .search {
     padding: 40px 0px; }
-    .jumbotron .search button {
-      background: #0093d8; }
+    .jumbotron .search .button {
+      background: #0093d8;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 1.5em 1em; }
     .jumbotron .search .grid-content {
       padding: 0; }
+    .jumbotron .search select, .jumbotron .search input {
+      height: 4rem;
+      line-height: 1.2rem; }
+
+body, h1, h2, h3, h4, h5, h6, p {
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 .af-blue {
   background-color: #0093d8; }

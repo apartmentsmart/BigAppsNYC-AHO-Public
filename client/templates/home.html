@@ -11,23 +11,23 @@ url: /
         			<h1>Find affordable housing in New York City</h1>
         		</div>
 
-        		<div class="grid-block search">
+        		<div class="grid-block search" ng-controller="searchController">
         				
 						<div class="small-12 grid-content">
 							<label class="hide">Select a Borough</label>
-							<select name="" id="">
-								<option value="">All Boroughs</option>
-								<option value="">Manhattan</option>
-								<option value="">The Bronx</option>
-								<option value="">Brooklyn</option>
-								<option value="">Queens</option>
-								<option value="">Staten Island</option>
+							<select name="borough" id="borough" ng-model="search.borough">
+								<option value="allBoroughs">All Boroughs</option>
+								<option value="manhattan">Manhattan</option>
+								<option value="theBronx">The Bronx</option>
+								<option value="brooklyn">Brooklyn</option>
+								<option value="queens">Queens</option>
+								<option value="statenIsland">Staten Island</option>
 							</select>
 						</div>
 
 						<div class="small-6 grid-content">
 							<label class="hide">Size Of Household</label>
-							<select name="" id="">
+							<select name="sizeOfHousehold" id="sizeOfHousehold" ng-model="sizeOfHousehold">
 								<option value="">1 Person</option>
 								<option value="" selected="selected">2 People</option>
 								<option value="">3 People</option>
@@ -41,12 +41,12 @@ url: /
 
 						<div class="small-6 grid-content">
 							<label class="hide">Monthly Income</label>
-							<input type="text" placeholder="Monthly Income" />
+							<input type="text" id="income" placeholder="Monthly Income" ng-model="income" />
 						</div>
 
 						<div class="small-6 grid-content">
 							<label class="hide">Disability Status</label>
-							<select name="" id="">
+							<select name="disabilityStatus" id="disabilityStatus" ng-model="disabilityStatus">
 								<option value="">Head of Houshold Disabled</option>
 								<option value="">Dependant Disabled</option>
 								<option value="" selected="selected">No Disablity</option>
@@ -55,18 +55,17 @@ url: /
 
 						<div class="small-6 grid-content">
 							<label class="hide">Age</label>
-							<input type="text" placeholder="Age" />
+							<input type="text" placeholder="Age" id="age" ng-model="age" />
 						</div>
 
 						<a class="expand button af-blue" href="#">Find Housing</a>
-
-
-
 
         		</div>
 
 
         	</div> <!--End Jumbotron -->
+
+        	Selected Borough <span ng-bind="search.borough()"></span>
       </div>
 </div>
 

@@ -4,12 +4,9 @@
 	color: #fff;
 	padding: 20px 40px;
 
-
-
-
-
 	h1 {
 		color: #fff;
+		font-weight: 300;
 		text-align: center;
 	}
 	label {
@@ -19,11 +16,19 @@
 	.search {
 		padding: 40px 0px;
 
-		button {
+		.button {
 			background: $af-blue;
+			font-size: 1rem;
+			font-weight: 700;
+			padding: 1.5em 1em;
 		}
 		.grid-content {
 			padding: 0;
+		}
+
+		select, input {
+			height: 4rem;
+			line-height: 1.2rem;
 		}
 	}
 }

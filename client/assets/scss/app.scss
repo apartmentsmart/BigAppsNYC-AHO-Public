@@ -15,6 +15,11 @@
 @import "partials/navigation";
 @import "partials/jumbotron";
 
+body, h1, h2, h3, h4, h5, h6, p {
+	font-family: $sans-serif;
+}
+
 .af-blue {
 	background-color: $af-blue;
 }
+

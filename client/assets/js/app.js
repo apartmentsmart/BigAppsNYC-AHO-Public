@@ -32,3 +32,12 @@
   }
 
 })();
+
+
+
+//Search Controller
+//Test
+angular.module('searchExample', [])
+.controller('searchController', ['$scope', function($scope) {
+  var search.borough = 'brooklyn';
+}]);
