@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('application', [
+  var app = angular.module('application', [
     'ui.router',
     'ngAnimate',
 
@@ -31,13 +31,16 @@
     FastClick.attach(document.body);
   }
 
-})();
-
 
 
 //Search Controller
 //Test
-angular.module('searchExample', [])
-.controller('searchController', ['$scope', function($scope) {
-  var search.borough = 'brooklyn';
+app.controller('searchController', ['$scope', function($scope) {
+  
+  $scope.search = { borough:"brooklyn", sizeOfHousehold:2, disabilityStatus:"None"};
+
 }]);
+
+})();
+
+
