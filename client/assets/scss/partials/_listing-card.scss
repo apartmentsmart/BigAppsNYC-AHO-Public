@@ -47,6 +47,10 @@
 		padding-top: 5px;
 	}
 
+	.card-desciption {
+		padding-bottom: 10px;
+	}
+
 	.star-rating {
 		padding-top: 15px;
 	}
@@ -54,8 +58,13 @@
 	.distance-indicator {
 		@extend .small-3;
 
-		span span {
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
+		
+		i {
 			color: $af-blue;
+			padding-left: 4px;
 		}
 	}
 
@@ -70,8 +79,17 @@
 
 .listing-icon {
 	@extend .small-2;
+
+	font-size: 1.4rem;
 }
 
 .listing-info {
 	@extend .small-10;
+
+	&:after {
+		content:'';
+    	display:block;
+    	clear: both;
+    	padding: 15px 0;
+	}
 }
