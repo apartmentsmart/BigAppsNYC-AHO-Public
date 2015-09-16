@@ -6485,12 +6485,45 @@ body, h1, h2, h3, h4, h5, h6, p {
   .listingCard .card-subtitle {
     color: #aaa;
     padding-top: 5px; }
+  .listingCard .card-desciption {
+    padding: 10px 0; }
   .listingCard .star-rating {
     padding-top: 15px; }
-  .listingCard .distance-indicator span span {
-    color: #0093d8; }
+  .listingCard .distance-indicator {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+    .listingCard .distance-indicator i {
+      color: #0093d8;
+      padding-left: 4px; }
 
 .fa.fa-street-view {
   font: normal normal normal 24px/1 FontAwesome;
   padding-bottom: 6px;
   text-align: center; }
+
+.listing-icon {
+  font-size: 1.4rem; }
+  .listing-icon i {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding-left: 10px; }
+
+.listing-info:after {
+  content: '';
+  display: block;
+  clear: both;
+  padding: 15px 0; }

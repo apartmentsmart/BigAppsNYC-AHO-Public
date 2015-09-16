@@ -65,13 +65,13 @@
 								</div>
 						</div> <!-- End card-titlebar -->
 						<div class="grid-content distance-indicator">
-								<span class="float-right">
+								<div class="float-right">
 									<center>
 										<i class="fa fa-street-view"></i>
 										<br>
 										<span>0.4 mi</span>
 									</center>
-								</span>	<!-- End float-right-->				
+								</div>	<!-- End float-right-->				
 						</div><!-- End distance indicator -->
 					</div>
 				</div>
@@ -80,13 +80,11 @@
 
 				<div class="grid-block">
 					<p class="card-description grid-content">
-						{{listing.name}} is located in {{listing.borough}} and serves low to moderate income
-						{{listing.elderly == 1 ? 'seniors' : 'families'}}
-						through the Low Income Housing Tax Credit program.
+						Serves low to moderate income {{listing.elderly == 1 ? 'seniors' : 'families'}} through the Low Income Housing Tax Credit program.
 					</p>
 					<div class="grid-content listing-icon"><i class="fa fa-map-marker"></i></div><div class="grid-content listing-info">{{listing.address}}</div>
 					<div class="grid-content listing-icon"><i class="fa fa-bed"></i></div><div class="grid-content listing-info">{{listing.room_range}} br.</div>
-					<div class="grid-content listing-icon"><i class="fa fa-money"></i></div><div class="grid-content listing-info">{{listing.room_range}} br.</div>
+					<div class="grid-content listing-icon"><i class="fa fa-money"></i></div><div class="grid-content listing-info">$800 - $1000</div>
 				</div>
 			</div>
 
