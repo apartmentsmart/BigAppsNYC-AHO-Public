@@ -1,0 +1,77 @@
+.listingCard {
+	@extend .card;
+
+
+	box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
+	margin: 15px 0;
+
+
+	.no-image-listing.card-divider {
+		/*background: $af-green;*/
+		/*color: #fff;*/
+	}
+
+	.card-actions.card-divider {
+		background: #fff;
+		border-top: 1px solid #eee;
+
+		i {
+			color: $af_blue;
+			padding: 0 20px;
+		}
+
+	}
+
+	.card-actions {
+		.grid-content {
+			@extend .small-4;
+		}
+	}
+
+	.card-title {
+		display: flex;
+		align-items: center;
+	}
+
+	.card-titlebar {
+		@extend .small-9;
+		padding: 19px 0;
+
+		.star-rating {
+			clear: both;
+		}
+	}
+
+	.card-subtitle {
+		color: #aaa;
+		padding-top: 5px;
+	}
+
+	.star-rating {
+		padding-top: 15px;
+	}
+
+	.distance-indicator {
+		@extend .small-3;
+
+		span span {
+			color: $af-blue;
+		}
+	}
+
+}
+
+.fa.fa-street-view {
+    font: normal normal normal 24px/1 FontAwesome;
+    padding-bottom: 6px;
+    text-align: center;
+}
+
+
+.listing-icon {
+	@extend .small-2;
+}
+
+.listing-info {
+	@extend .small-10;
+}

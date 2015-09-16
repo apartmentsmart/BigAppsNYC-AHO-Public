@@ -2667,7 +2667,7 @@ meter {
         -ms-flex: 0 0 100%;
             flex: 0 0 100%; }
 
-.small-2 {
+.small-2, .listing-icon {
   -webkit-flex: 0 0 16.66667%;
       -ms-flex: 0 0 16.66667%;
           flex: 0 0 16.66667%;
@@ -2693,7 +2693,7 @@ meter {
         -ms-flex: 0 0 50%;
             flex: 0 0 50%; }
 
-.small-3 {
+.small-3, .listingCard .distance-indicator {
   -webkit-flex: 0 0 25%;
       -ms-flex: 0 0 25%;
           flex: 0 0 25%;
@@ -2719,7 +2719,7 @@ meter {
         -ms-flex: 0 0 33.33333%;
             flex: 0 0 33.33333%; }
 
-.small-4 {
+.small-4, .listingCard .card-actions .grid-content {
   -webkit-flex: 0 0 33.33333%;
       -ms-flex: 0 0 33.33333%;
           flex: 0 0 33.33333%;
@@ -2849,7 +2849,7 @@ meter {
         -ms-flex: 0 0 12.5%;
             flex: 0 0 12.5%; }
 
-.small-9 {
+.small-9, .listingCard .card-titlebar {
   -webkit-flex: 0 0 75%;
       -ms-flex: 0 0 75%;
           flex: 0 0 75%;
@@ -2875,7 +2875,7 @@ meter {
         -ms-flex: 0 0 11.11111%;
             flex: 0 0 11.11111%; }
 
-.small-10 {
+.small-10, .listing-info {
   -webkit-flex: 0 0 83.33333%;
       -ms-flex: 0 0 83.33333%;
           flex: 0 0 83.33333%;
@@ -6412,6 +6412,9 @@ blockquote p {
 /****************************
 		HO Custom Styles
 *****************************/
+body, h1, h2, h3, h4, h5, h6, p {
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
 .menu-bar {
   background: #0093d8; }
   .menu-bar li {
@@ -6453,23 +6456,9 @@ blockquote p {
     .jumbotron .search select, .jumbotron .search input {
       height: 4rem;
       line-height: 1.2rem; }
+  .jumbotron .search-welcome {
+    font-size: 1.5rem; }
 
-body, h1, h2, h3, h4, h5, h6, p {
-  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif; }
-
-.fa.fa-street-view {
-  font: normal normal normal 24px/1 FontAwesome;
-  padding-bottom: 6px;
-  text-align: center; }
-
-.af-blue {
-  background-color: #0093d8; }
-
-/*.resultsList {
-	.grid-block {
-		margin-bottom: 0;
-	}
-}*/
 .listingCard {
   box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
   margin: 15px 0; }
@@ -6491,5 +6480,17 @@ body, h1, h2, h3, h4, h5, h6, p {
             align-items: center; }
   .listingCard .card-titlebar {
     padding: 19px 0; }
-  .listingCard .distance-from-user {
+    .listingCard .card-titlebar .star-rating {
+      clear: both; }
+  .listingCard .card-subtitle {
+    color: #aaa;
+    padding-top: 5px; }
+  .listingCard .star-rating {
+    padding-top: 15px; }
+  .listingCard .distance-indicator span span {
     color: #0093d8; }
+
+.fa.fa-street-view {
+  font: normal normal normal 24px/1 FontAwesome;
+  padding-bottom: 6px;
+  text-align: center; }

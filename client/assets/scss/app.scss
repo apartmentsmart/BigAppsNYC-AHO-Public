@@ -12,65 +12,11 @@
 /****************************
 		HO Custom Styles
 *****************************/
+@import "partials/defaults";
 @import "partials/navigation";
-@import "partials/jumbotron";
-
-body, h1, h2, h3, h4, h5, h6, p {
-	font-family: $sans-serif;
-}
-
-.fa.fa-street-view {
-    font: normal normal normal 24px/1 FontAwesome;
-    padding-bottom: 6px;
-    text-align: center;
-}
-
-.af-blue {
-	background-color: $af-blue;
-}
+@import "partials/search";
+@import "partials/listing-card";
 
 
-/*.resultsList {
-	.grid-block {
-		margin-bottom: 0;
-	}
-}*/
 
 
-.listingCard {
-	@extend .card;
-
-
-	box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
-	margin: 15px 0;
-
-
-	.no-image-listing.card-divider {
-		/*background: $af-green;*/
-		/*color: #fff;*/
-	}
-
-	.card-actions.card-divider {
-		background: #fff;
-		border-top: 1px solid #eee;
-
-		i {
-			color: $af_blue;
-			padding: 0 20px;
-		}
-	}
-
-	.card-title {
-		display: flex;
-		align-items: center;
-	}
-
-	.card-titlebar {
-		padding: 19px 0;
-	}
-
-	.distance-from-user {
-		color: $af-blue;
-	}
-
-}

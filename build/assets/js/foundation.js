@@ -39442,6 +39442,101 @@ angular.module('markdown', [])
 
 })();
 
+(function() {
+  'use strict';
+
+  angular.module('foundation.interchange', ['foundation.core', 'foundation.mediaquery'])
+    .directive('zfInterchange', zfInterchange)
+  ;
+
+  zfInterchange.$inject = [ '$compile', '$http', '$templateCache', 'FoundationApi', 'FoundationMQ'];
+
+  function zfInterchange($compile, $http, $templateCache, foundationApi, foundationMQ) {
+
+    var directive = {
+      restrict: 'EA',
+      transclude: 'element',
+      scope: {
+        position: '@'
+      },
+      replace: true,
+      template: '<div></div>',
+      link: link
+    };
+
+    return directive;
+
+    function link(scope, element, attrs, ctrl, transclude) {
+      var childScope, current, scenarios, innerTemplates;
+
+      var globalQueries = foundationMQ.getMediaQueries();
+
+      //setup
+      foundationApi.subscribe('resize', function(msg) {
+        transclude(function(clone, newScope) {
+          if(!scenarios || !innerTemplates) {
+            collectInformation(clone);
+          }
+
+          var ruleMatches = foundationMQ.match(scenarios);
+          var scenario = ruleMatches.length === 0 ? null : scenarios[ruleMatches[0].ind];
+
+          //this could use some love
+          if(scenario && checkScenario(scenario)) {
+            var compiled;
+
+            if(childScope) {
+              childScope.$destroy();
+              childScope = null;
+            }
+
+            if(typeof scenario.templ !== 'undefined') {
+              childScope = newScope;
+
+              //temp container
+              var tmp = document.createElement('div');
+              tmp.appendChild(innerTemplates[scenario.templ][0]);
+
+              element.html(tmp.innerHTML);
+              $compile(element.contents())(childScope);
+              current = scenario;
+            } else {
+              var loader = templateLoader(scenario.src);
+              loader.success(function(html) {
+                childScope = newScope;
+                element.html(html);
+              }).then(function(){
+                $compile(element.contents())(childScope);
+                current = scenario;
+              });
+            }
+          }
+        });
+
+      });
+
+      //init
+      foundationApi.publish('resize', 'initial resize');
+
+      function templateLoader(templateUrl) {
+        return $http.get(templateUrl, {cache: $templateCache});
+      }
+
+      function collectInformation(el) {
+        var data = foundationMQ.collectScenariosFromElement(el);
+
+        scenarios = data.scenarios;
+        innerTemplates = data.templates;
+      }
+
+      function checkScenario(scenario) {
+        return !current || current !== scenario;
+      }
+    }
+  }
+
+})();
+
 (function () {
   'use strict';
 
@@ -39623,101 +39718,6 @@ angular.module('markdown', [])
             }
           });
         }
-      }
-    }
-  }
-
-})();
-
-(function() {
-  'use strict';
-
-  angular.module('foundation.interchange', ['foundation.core', 'foundation.mediaquery'])
-    .directive('zfInterchange', zfInterchange)
-  ;
-
-  zfInterchange.$inject = [ '$compile', '$http', '$templateCache', 'FoundationApi', 'FoundationMQ'];
-
-  function zfInterchange($compile, $http, $templateCache, foundationApi, foundationMQ) {
-
-    var directive = {
-      restrict: 'EA',
-      transclude: 'element',
-      scope: {
-        position: '@'
-      },
-      replace: true,
-      template: '<div></div>',
-      link: link
-    };
-
-    return directive;
-
-    function link(scope, element, attrs, ctrl, transclude) {
-      var childScope, current, scenarios, innerTemplates;
-
-      var globalQueries = foundationMQ.getMediaQueries();
-
-      //setup
-      foundationApi.subscribe('resize', function(msg) {
-        transclude(function(clone, newScope) {
-          if(!scenarios || !innerTemplates) {
-            collectInformation(clone);
-          }
-
-          var ruleMatches = foundationMQ.match(scenarios);
-          var scenario = ruleMatches.length === 0 ? null : scenarios[ruleMatches[0].ind];
-
-          //this could use some love
-          if(scenario && checkScenario(scenario)) {
-            var compiled;
-
-            if(childScope) {
-              childScope.$destroy();
-              childScope = null;
-            }
-
-            if(typeof scenario.templ !== 'undefined') {
-              childScope = newScope;
-
-              //temp container
-              var tmp = document.createElement('div');
-              tmp.appendChild(innerTemplates[scenario.templ][0]);
-
-              element.html(tmp.innerHTML);
-              $compile(element.contents())(childScope);
-              current = scenario;
-            } else {
-              var loader = templateLoader(scenario.src);
-              loader.success(function(html) {
-                childScope = newScope;
-                element.html(html);
-              }).then(function(){
-                $compile(element.contents())(childScope);
-                current = scenario;
-              });
-            }
-          }
-        });
-
-      });
-
-      //init
-      foundationApi.publish('resize', 'initial resize');
-
-      function templateLoader(templateUrl) {
-        return $http.get(templateUrl, {cache: $templateCache});
-      }
-
-      function collectInformation(el) {
-        var data = foundationMQ.collectScenariosFromElement(el);
-
-        scenarios = data.scenarios;
-        innerTemplates = data.templates;
-      }
-
-      function checkScenario(scenario) {
-        return !current || current !== scenario;
       }
     }
   }
@@ -40685,167 +40685,6 @@ angular.module('markdown', [])
 (function() {
   'use strict';
 
-  angular.module('foundation.popup', ['foundation.core'])
-    .directive('zfPopup', zfPopup)
-    .directive('zfPopupToggle', zfPopupToggle)
-    .service('FoundationPopup', FoundationPopup)
-  ;
-
-  FoundationPopup.$inject = ['FoundationApi'];
-
-  function FoundationPopup(foundationApi) {
-    var service    = {};
-
-    service.activate = activate;
-    service.deactivate = deactivate;
-
-    return service;
-
-    //target should be element ID
-    function activate(target) {
-      foundationApi.publish(target, 'show');
-    }
-
-    //target should be element ID
-    function deactivate(target) {
-      foundationApi.publish(target, 'hide');
-    }
-
-    function toggle(target, popupTarget) {
-      foundationApi.publish(target, ['toggle', popupTarget]);
-    }
-  }
-
-  zfPopup.$inject = ['FoundationApi'];
-
-  function zfPopup(foundationApi) {
-    var directive = {
-      restrict: 'EA',
-      transclude: true,
-      replace: true,
-      templateUrl: 'components/popup/popup.html',
-      scope: {
-        pinTo: '@?',
-        pinAt: '@?',
-        target: '@?'
-      },
-      compile: compile
-    };
-
-    return directive;
-
-    function compile() {
-      return {
-        pre: preLink,
-        post: postLink
-      };
-
-      function preLink(scope, iElement, iAttrs) {
-        iAttrs.$set('zf-closable', 'popup');
-      }
-
-      function postLink(scope, element, attrs) {
-        scope.active = false;
-        scope.target = scope.target || false;
-
-        var attachment = scope.pinTo || 'top center';
-        var targetAttachment = scope.pinAt || 'bottom center';
-        var tetherInit = false;
-        var tether     = {};
-
-        //setup
-        foundationApi.subscribe(attrs.id, function(msg) {
-          if(msg[0] === 'show' || msg[0] === 'open') {
-            scope.show(msg[1]);
-          } else if (msg[0] === 'close' || msg[0] === 'hide') {
-            scope.hide();
-          } else if (msg[0] === 'toggle') {
-            scope.toggle(msg[1]);
-          }
-
-          scope.$apply();
-
-          return;
-        });
-
-
-        scope.hide = function() {
-          scope.active = false;
-          tetherElement();
-          tether.disable();
-          return;
-        };
-
-        scope.show = function(newTarget) {
-          scope.active = true;
-          tetherElement(newTarget);
-          tether.enable();
-
-          return;
-        };
-
-        scope.toggle = function(newTarget) {
-          scope.active = !scope.active;
-          tetherElement(newTarget);
-
-          if(scope.active) {
-            tether.enable();
-          } else  {
-            tether.disable();
-          }
-
-          return;
-        };
-
-        function tetherElement(target) {
-          if(tetherInit) {
-            return;
-          }
-
-          scope.target = scope.target ? document.getElementById(scope.target) : document.getElementById(target);
-
-          tether = new Tether({
-            element: element[0],
-            target: scope.target,
-            attachment: attachment,
-            targetAttachment: targetAttachment,
-            enable: false
-          });
-
-          tetherInit = true;
-        }
-
-      }
-    }
-  }
-
-  zfPopupToggle.$inject = ['FoundationApi'];
-
-  function zfPopupToggle(foundationApi) {
-    var directive = {
-      restrict: 'A',
-      link: link
-    };
-
-    return directive;
-
-    function link(scope, element, attrs) {
-      var target = attrs.zfPopupToggle;
-      var id = attrs.id || foundationApi.generateUuid();
-      attrs.$set('id', id);
-
-      element.on('click', function(e) {
-        foundationApi.publish(target, ['toggle', id]);
-        e.preventDefault();
-      });
-    }
-  }
-
-})();
-
-(function() {
-  'use strict';
-
   angular.module('foundation.tabs', ['foundation.core'])
     .controller('ZfTabsController', ZfTabsController)
     .directive('zfTabs', zfTabs)
@@ -41150,6 +40989,167 @@ angular.module('markdown', [])
 
         });
       }
+    }
+  }
+
+})();
+
+(function() {
+  'use strict';
+
+  angular.module('foundation.popup', ['foundation.core'])
+    .directive('zfPopup', zfPopup)
+    .directive('zfPopupToggle', zfPopupToggle)
+    .service('FoundationPopup', FoundationPopup)
+  ;
+
+  FoundationPopup.$inject = ['FoundationApi'];
+
+  function FoundationPopup(foundationApi) {
+    var service    = {};
+
+    service.activate = activate;
+    service.deactivate = deactivate;
+
+    return service;
+
+    //target should be element ID
+    function activate(target) {
+      foundationApi.publish(target, 'show');
+    }
+
+    //target should be element ID
+    function deactivate(target) {
+      foundationApi.publish(target, 'hide');
+    }
+
+    function toggle(target, popupTarget) {
+      foundationApi.publish(target, ['toggle', popupTarget]);
+    }
+  }
+
+  zfPopup.$inject = ['FoundationApi'];
+
+  function zfPopup(foundationApi) {
+    var directive = {
+      restrict: 'EA',
+      transclude: true,
+      replace: true,
+      templateUrl: 'components/popup/popup.html',
+      scope: {
+        pinTo: '@?',
+        pinAt: '@?',
+        target: '@?'
+      },
+      compile: compile
+    };
+
+    return directive;
+
+    function compile() {
+      return {
+        pre: preLink,
+        post: postLink
+      };
+
+      function preLink(scope, iElement, iAttrs) {
+        iAttrs.$set('zf-closable', 'popup');
+      }
+
+      function postLink(scope, element, attrs) {
+        scope.active = false;
+        scope.target = scope.target || false;
+
+        var attachment = scope.pinTo || 'top center';
+        var targetAttachment = scope.pinAt || 'bottom center';
+        var tetherInit = false;
+        var tether     = {};
+
+        //setup
+        foundationApi.subscribe(attrs.id, function(msg) {
+          if(msg[0] === 'show' || msg[0] === 'open') {
+            scope.show(msg[1]);
+          } else if (msg[0] === 'close' || msg[0] === 'hide') {
+            scope.hide();
+          } else if (msg[0] === 'toggle') {
+            scope.toggle(msg[1]);
+          }
+
+          scope.$apply();
+
+          return;
+        });
+
+
+        scope.hide = function() {
+          scope.active = false;
+          tetherElement();
+          tether.disable();
+          return;
+        };
+
+        scope.show = function(newTarget) {
+          scope.active = true;
+          tetherElement(newTarget);
+          tether.enable();
+
+          return;
+        };
+
+        scope.toggle = function(newTarget) {
+          scope.active = !scope.active;
+          tetherElement(newTarget);
+
+          if(scope.active) {
+            tether.enable();
+          } else  {
+            tether.disable();
+          }
+
+          return;
+        };
+
+        function tetherElement(target) {
+          if(tetherInit) {
+            return;
+          }
+
+          scope.target = scope.target ? document.getElementById(scope.target) : document.getElementById(target);
+
+          tether = new Tether({
+            element: element[0],
+            target: scope.target,
+            attachment: attachment,
+            targetAttachment: targetAttachment,
+            enable: false
+          });
+
+          tetherInit = true;
+        }
+
+      }
+    }
+  }
+
+  zfPopupToggle.$inject = ['FoundationApi'];
+
+  function zfPopupToggle(foundationApi) {
+    var directive = {
+      restrict: 'A',
+      link: link
+    };
+
+    return directive;
+
+    function link(scope, element, attrs) {
+      var target = attrs.zfPopupToggle;
+      var id = attrs.id || foundationApi.generateUuid();
+      attrs.$set('id', id);
+
+      element.on('click', function(e) {
+        foundationApi.publish(target, ['toggle', id]);
+        e.preventDefault();
+      });
     }
   }
 
