@@ -6,6 +6,7 @@ url: /results/:borough
 .listingCard .grid-content{ overflow-y: visible !important;}
 </style>
 <div class="grid-container resultsList">
+
     <div class="grid-content" ng-controller="resultsController">
 
     <!-- Listing with Image Temporarily removed
@@ -87,7 +88,15 @@ url: /results/:borough
 						Serves low to moderate income {{listing.elderly == 1 ? 'seniors' : 'families'}} through the Low Income Housing Tax Credit program.
 					</p>
 					<div class="grid-content listing-icon"><i class="fa fa-map-marker"></i></div><div class="grid-content listing-info">{{listing.address}}</div>
-					<div class="grid-content listing-icon"><i class="fa fa-bed"></i></div><div class="grid-content listing-info">{{listing.room_range}} br.</div>
+					<div class="grid-content listing-icon"><i class="fa fa-bed"></i></div><div class="grid-content listing-info">
+
+					<!-- Change the number 0 to Studio Apartment -->
+					<span ng-switch="listing.room_range">
+					  <span ng-switch-when="0">Studio Apartment</span>
+					  <span ng-switch-default>{{listing.room_range}} br.</span>
+					</span>
+					
+					</div>
 					<div class="grid-content listing-icon"><i class="fa fa-money"></i></div><div class="grid-content listing-info">$800 - $1000</div>
 				</div>
 			</div>
@@ -95,17 +104,29 @@ url: /results/:borough
 			<div class="card-actions card-divider">
 				<div class="grid-block">
 					<div class="grid-content">
-						<i class="fa fa-pencil"></i>
+						<a class="button"><i class="fa fa-pencil"></i></a>
+					</div>
+					<div class="grid-content" zf-hard-toggle="share-sheet">
+						<a class="button" zf-hard-toggle="share-sheet"><i class="fa fa-share" zf-hard-toggle="share-sheet"></i></a>
 					</div>
 					<div class="grid-content">
-						<i class="fa fa-share"></i>
-					</div>
-					<div class="grid-content">
-						<i class="fa fa-heart-o"></i>
+						<a class="button"><i class="fa fa-heart-o"></i></a>
 					</div>
 				</div>
 			</div>
+
 		</div>
+
+		<zf-action-sheet id="share-sheet">
+			<zf-as-content position="bottom" class="share-sheet">
+				<p>Tap to share</p>
+				<ul>
+					<li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li>
+					<li><a href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
+					<li><a href="#"><i class="fa fa-paper-plane-o"></i> Mail</a></li>
+				</ul>
+			</zf-as-content>
+		</zf-action-sheet>
         
     </div>
 </div>

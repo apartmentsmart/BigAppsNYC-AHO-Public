@@ -6467,10 +6467,18 @@ body, h1, h2, h3, h4, h5, h6, p {
     /*color: #fff;*/ }
   .listingCard .card-actions.card-divider {
     background: #fff;
-    border-top: 1px solid #eee; }
+    border-top: 1px solid #eee;
+    padding: 0 16px; }
+    .listingCard .card-actions.card-divider .button {
+      padding: 20px 0; }
     .listingCard .card-actions.card-divider i {
       color: #0093d8;
       padding: 0 20px; }
+  .listingCard .card-actions .grid-content .button {
+    background: transparent;
+    margin: 0;
+    padding: 0.85em 0;
+    width: 100%; }
   .listingCard .card-title {
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -6527,3 +6535,15 @@ body, h1, h2, h3, h4, h5, h6, p {
   display: block;
   clear: both;
   padding: 15px 0; }
+
+.share-sheet {
+  background: #0093d8;
+  color: #fff; }
+  .share-sheet ul li a {
+    border: none;
+    color: #fff;
+    padding: 1.3em; }
+  .share-sheet p {
+    margin-bottom: 2em; }
+  .share-sheet i {
+    padding-right: 15px; }
