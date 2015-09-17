@@ -1,10 +1,11 @@
-.menu-bar {
+.menu-group {
 	background: $af_blue;
 
 	li {
 		align-items: center;
 		justify-content: center;
 		padding: 1rem;
+		background: $af-blue;
 	}
 
 	.title {

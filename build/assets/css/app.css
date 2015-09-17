@@ -6415,23 +6415,24 @@ blockquote p {
 body, h1, h2, h3, h4, h5, h6, p {
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
-.menu-bar {
+.menu-group {
   background: #0093d8; }
-  .menu-bar li {
+  .menu-group li {
     -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center;
     -webkit-justify-content: center;
         -ms-flex-pack: center;
             justify-content: center;
-    padding: 1rem; }
-  .menu-bar .title {
+    padding: 1rem;
+    background: #0093d8; }
+  .menu-group .title {
     /*		&:hover {
 			background: lighten( $af_blue, 20%);
 		}*/ }
-    .menu-bar .title a {
+    .menu-group .title a {
       color: #fff; }
-  .menu-bar .right {
+  .menu-group .right {
     text-align: right; }
 
 .jumbotron {
