@@ -1,6 +1,6 @@
 ---
 name: results
-url: /results/:borough
+url: /results/:borough/
 ---
 <style>
 .listingCard .grid-content{ overflow-y: visible !important;}
@@ -59,7 +59,7 @@ url: /results/:borough
 				<div class="grid-content">
 					<div class="grid-block">
 						<div class="grid-content card-titlebar">
-								{{listing.name}}
+								<a ui-sref="listing({borough:listing.borough, id:listing.hud_id})">{{listing.name}}</a>
 								<div class="card-subtitle">{{listing.borough}}</div>
 								<div class="star-rating">
 									<i class="fa fa-star"></i>
