@@ -109,4 +109,31 @@ app.controller('resultsController', ['$scope','$http','$filter','filterState', '
 
 }]);
 
+app.controller('listingController', ['$scope', '$http', '$filter', 'filterState', '$state', function($scope, $http, $filter, filterState, $state){
+
+
+           //Call local demo JSON
+     $http.get("/data/nycdemodata.json").success(function (data, status, headers, config) {
+        
+      console.log(data);
+
+        //On Success set listings object equal to json return
+        $scope.listings = data;
+        
+        $scope.thisListing = $filter('filter')($scope.listings, {hud_id: $state.params.id});
+
+
+        console.log($scope.thisListing);
+
+       }).error(function (data, status, headers, config) {
+         //on Error log error status
+         console.log(status)
+         $scope.listings = "error";
+     });
+
+
+
+
+}]);
+
 })(); 
