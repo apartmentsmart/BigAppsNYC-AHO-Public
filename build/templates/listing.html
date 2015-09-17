@@ -3,66 +3,6 @@
 </style>
 <div class="grid-container resultsList">
 
-<<<<<<< HEAD
-    <div class="grid-content" ng-controller="listingController">
-	    <div class="listingCard" ng-repeat="listing in thisListing">
-			<div class="card-divider no-image-listing">
-				<div class="grid-content">
-					<div class="grid-block">
-						<div class="grid-content card-titlebar">
-								{{listing.name}}
-								<div class="card-subtitle">{{listing.borough}}</div>
-								<div class="star-rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-						</div> <!-- End card-titlebar -->
-						<div class="grid-content distance-indicator">
-								<div class="float-right">
-									<center>
-										<i class="fa fa-street-view"></i>
-										<br>
-										<span>0.4 mi</span>
-									</center>
-								</div>	<!-- End float-right-->				
-						</div><!-- End distance indicator -->
-					</div>
-				</div>
-			</div> <!-- End card-divider -->
-			<div class="card-section">
-
-				<div class="grid-block">
-					<p class="card-description grid-content">
-						Serves low to moderate income {{listing.elderly == 1 ? 'seniors' : 'families'}} through the Low Income Housing Tax Credit program.
-					</p>
-					<div class="grid-content listing-icon"><i class="fa fa-map-marker"></i></div><div class="grid-content listing-info">{{listing.address}}</div>
-					<div class="grid-content listing-icon"><i class="fa fa-bed"></i></div><div class="grid-content listing-info">
-
-					<!-- Change the number 0 to Studio Apartment -->
-					<span ng-switch="listing.room_range">
-					  <span ng-switch-when="0">Studio Apartment</span>
-					  <span ng-switch-default>{{listing.room_range}} br.</span>
-					</span>
-					
-					</div>
-					<div class="grid-content listing-icon"><i class="fa fa-money"></i></div><div class="grid-content listing-info">$800 - $1000</div>
-				</div>
-			</div>
-
-			<div class="card-actions card-divider">
-				<div class="grid-block">
-					<div class="grid-content">
-						<a class="button"><i class="fa fa-pencil"></i></a>
-					</div>
-					<div class="grid-content" zf-hard-toggle="share-sheet">
-						<a class="button" zf-hard-toggle="share-sheet"><i class="fa fa-share" zf-hard-toggle="share-sheet"></i></a>
-					</div>
-					<div class="grid-content">
-						<a class="button"><i class="fa fa-heart-o"></i></a>
-=======
     <div ng-controller="listingController">
 	    <div ng-repeat="listing in thisListing">
 	    	<div class="grid-block hero-section">
@@ -113,30 +53,12 @@
 				<div class="map-container listing-section">
 					<div class="google-maps grid-block">
 					    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7098.94326104394!2d78.0430654485247!3d27.172909818538997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1385710909804" width="600" height="450" frameborder="0" style="border:0"></iframe>
->>>>>>> addSingleView
 					</div>
 				</div>
 			</div>
 
-<<<<<<< HEAD
-		</div>
-
-		<zf-action-sheet id="share-sheet">
-			<zf-as-content position="bottom" class="share-sheet">
-				<p>Tap to share</p>
-				<ul>
-					<li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li>
-					<li><a href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
-					<li><a href="#"><i class="fa fa-paper-plane-o"></i> Mail</a></li>
-				</ul>
-			</zf-as-content>
-		</zf-action-sheet>
-        
-    </div>
-=======
 		</div> <!-- End ng-repeat -->
     </div> <!-- End listingController -->
->>>>>>> addSingleView
 </div>
 
 
