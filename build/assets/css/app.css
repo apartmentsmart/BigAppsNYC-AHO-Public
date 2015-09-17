@@ -1,4 +1,7 @@
 /****************************
+	Bourbon Mixin Library
+*****************************/
+/****************************
 		App Variables
 *****************************/
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,700,900,400italic);
@@ -6548,3 +6551,34 @@ body, h1, h2, h3, h4, h5, h6, p {
     margin-bottom: 2em; }
   .share-sheet i {
     padding-right: 15px; }
+
+.hero-section {
+  background-color: #444;
+  background-size: cover !important; }
+  .hero-section .hero-content {
+    padding: 60px 5%; }
+  .hero-section .listing-name {
+    color: #fff;
+    font-size: 1.3em; }
+  .hero-section .listing-borough {
+    color: #bbb;
+    padding-top: 10px; }
+  .hero-section .star-rating {
+    padding-top: 10px; }
+
+.listing-section {
+  padding: 10px 0; }
+
+.map-container {
+  padding: 50px 0 0 0; }
+  .map-container .google-maps {
+    position: relative;
+    padding-bottom: 75%;
+    height: 0;
+    overflow: hidden; }
+  .map-container .google-maps iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important; }

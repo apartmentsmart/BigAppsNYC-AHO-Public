@@ -1,0 +1,47 @@
+.hero-section {
+	background-color: $af-grey;
+	background-size: cover !important;
+
+	.hero-content {
+		padding: 60px 5%;
+	}
+
+	.listing-name {
+		color: #fff;
+		font-size: 1.3em;
+	}
+
+	.listing-borough {
+		color: #bbb;
+		padding-top: 10px;
+	}
+
+	.star-rating {
+		padding-top: 10px;
+	}
+
+}
+
+.listing-section {
+	padding: 10px 0;
+}
+
+.map-container {
+	padding: 50px 0 0 0;
+
+    .google-maps {
+        position: relative;
+        padding-bottom: 75%; // This is the aspect ratio
+        height: 0;
+        overflow: hidden;
+    }
+    .google-maps iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+}
+
