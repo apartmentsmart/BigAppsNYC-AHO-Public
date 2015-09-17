@@ -1,4 +1,9 @@
 /****************************
+	Bourbon Mixin Library
+*****************************/
+@import "bourbon/bourbon";
+
+/****************************
 		App Variables
 *****************************/
 @import "partials/variables";
@@ -9,6 +14,8 @@
 @import "settings";
 @import "foundation";
 
+
+
 /****************************
 		HO Custom Styles
 *****************************/
@@ -16,7 +23,6 @@
 @import "partials/navigation";
 @import "partials/search";
 @import "partials/listing-card";
-
-
+@import "partials/listing";
 
 

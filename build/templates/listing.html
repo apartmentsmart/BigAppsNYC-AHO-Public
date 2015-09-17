@@ -3,6 +3,7 @@
 </style>
 <div class="grid-container resultsList">
 
+<<<<<<< HEAD
     <div class="grid-content" ng-controller="listingController">
 	    <div class="listingCard" ng-repeat="listing in thisListing">
 			<div class="card-divider no-image-listing">
@@ -61,10 +62,63 @@
 					</div>
 					<div class="grid-content">
 						<a class="button"><i class="fa fa-heart-o"></i></a>
+=======
+    <div ng-controller="listingController">
+	    <div ng-repeat="listing in thisListing">
+	    	<div class="grid-block hero-section">
+<!-- 	    	<div class="grid-block hero-section" style="background: url('../assets/img/room.jpg')"> -->
+				<div class="hero-content">
+					<div class="listing-name">{{listing.name}}</div>
+					<div class="listing-borough">{{listing.borough}}</div>
+					<div class="star-rating">
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+					</div>
+				</div>
+			</div> <!-- End grid-block hero-section -->
+			<div class="listing-content">
+				<div class="bedrooms listing-section">
+					<i class="fa fa-bed"></i> {{listing.room_range}} br.
+				</div>
+				<div class="address listing-section">
+					<i class="fa fa-map-marker"></i> {{listing.address}}
+				</div>
+				<div class="nieghborhood listing-section">
+					Neighborhood <br> {{listing.neighborhood}}
+				</div>
+				<div class="contact-info listing-section">
+					<i class="fa fa-user"></i> Phone Number
+				</div>
+				<div class="directions listing-section">
+					<i class="fa fa-location-arrow"></i> Get Directions
+				</div>
+				<div class="website listing-section">
+					<i class="fa fa-globe"></i> Website
+				</div>
+				<div class="accessibility listing-section">
+					<i class="fa fa-wheelchair"></i> Accessibility
+				</div>
+				<div class="schools listing-section">
+					<i class="fa fa-graduation-cap"></i> 3 Schools
+				</div>
+				<div class="shopping listing-section">
+					<i class="fa fa-shopping-cart"></i> Shopping
+				</div>
+				<div class="description listing-section">
+					Serves low to moderate income {{listing.elderly == 1 ? 'seniors' : 'families'}} through the Low Income Housing Tax Credit program.
+				</div>
+				<div class="map-container listing-section">
+					<div class="google-maps grid-block">
+					    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7098.94326104394!2d78.0430654485247!3d27.172909818538997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1385710909804" width="600" height="450" frameborder="0" style="border:0"></iframe>
+>>>>>>> addSingleView
 					</div>
 				</div>
 			</div>
 
+<<<<<<< HEAD
 		</div>
 
 		<zf-action-sheet id="share-sheet">
@@ -79,6 +133,10 @@
 		</zf-action-sheet>
         
     </div>
+=======
+		</div> <!-- End ng-repeat -->
+    </div> <!-- End listingController -->
+>>>>>>> addSingleView
 </div>
 
 
