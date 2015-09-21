@@ -7,7 +7,8 @@
     //foundation
     'foundation',
     'foundation.dynamicRouting',
-    'foundation.dynamicRouting.animations'
+    'foundation.dynamicRouting.animations',
+    'ngMap'
   ])
     .config(config)
     .run(run)
@@ -75,7 +76,7 @@ app.factory('globalFilter', function() {
 
 });
 
-app.factory('dataHandler', ['$http', '$filter', function($http, $filter){
+app.factory('dataHandler', ['$http', '$filter', 'globalFilter', function($http, $filter, globalFilter){
 
       /*
         --Fetches, and optionally Filters, JSON object.
@@ -84,14 +85,46 @@ app.factory('dataHandler', ['$http', '$filter', function($http, $filter){
         --@scopeFilter is an optional object of key-value pairs. If passed only data that matches the conditions will be returned to the controller.
       */
       function fetch(scope, scopeAtt, scopeFilter){
+        
+              console.log(scopeFilter);
+
+
+        if(scopeFilter.type == 'search'){
+          var endpoint = "http://api.affordablehousingonline.com/nyc/search";
+            
+            if(scopeFilter.borough)
+              endpoint = endpoint+"/"+scopeFilter.borough+"/";
+        }
+        else{ 
+          
+          var endpoint = "http://api.affordablehousingonline.com/nyc/listing"
+
+            if(scopeFilter.hud_id)
+                endpoint = endpoint+"/"+scopeFilter.hud_id+"/";
+        
+        }
+
+
+      console.log(endpoint);
+      if(endpoint){
+      $http({
+        url: endpoint, 
+        method: "GET",
+        params: scopeFilter
+      }).success(function (data) {  
+          
+          scope[scopeAtt] = data; 
+
+        });
+    }
+    }
+
+        /*
        $http.get("/data/nycdemodata.json")
        .success(function (data) {  
           
           scope[scopeAtt]= data; 
-          
-          if(scopeFilter){ 
-               scope[scopeAtt] = filter( scope[scopeAtt], scopeFilter);
-          }
+
 
         })
         
@@ -106,29 +139,31 @@ app.factory('dataHandler', ['$http', '$filter', function($http, $filter){
        --Filters JSON object if called by Fetch.
        --@data a JSON object
        --@filter is an object of key-value pairs. Data that matches the conditions will be returned to the controller.
-      */
+   
       function filter(data, filter){
        return $filter('filter')(data, filter);
       }
-
+  */
 
       return{
-        fetch: fetch,
-        filter: filter
+        fetch: fetch
       }
+       
 
 }]);
+
+
 
 //Handles Searching Actions
 app.controller('searchController', ['$scope', 'globalFilter', function($scope, globalFilter) {
 
   //set $scope.search default variable if $scope.search is not set
   (!$scope.search)
-    $scope.search = { borough:"All", sizeOfHousehold:1, disabilityStatus:"None"};
+    $scope.search = { borough:"All", hhsize:1, disabilityStatus:"None"};
 
 
   //watch $scope.search attributes for change
-  $scope.$watchGroup(['search.borough', 'search.sizeOfHousehold'], function(newValues, oldValues, scope){
+  $scope.$watchGroup(['search.borough', 'search.hhsize'], function(newValues, oldValues, scope){
     
 
     /**
@@ -154,7 +189,7 @@ app.controller('resultsController', ['$scope','globalFilter', 'dataHandler', '$s
   if(!$scope.thisSearch.borough)
     $scope.thisSearch = $state.params;
 
-
+  $scope.thisSearch.type = 'search';
 
 
    //Handle search param mutation
@@ -171,14 +206,20 @@ app.controller('resultsController', ['$scope','globalFilter', 'dataHandler', '$s
 //Handles Listing Actions
 app.controller('listingController', ['$scope','globalFilter', 'dataHandler', '$state', function($scope, globalFilter, dataHandler, $state) {
 
+
   //Init thisListing Object
   $scope.thisListing={};
 
   //Set Search Object based on $state.params
   $scope.search = {hud_id: $state.params.id};
 
+  $scope.search.type='listing';
+
   //get data that matches the $scope.search object and assign it to $scope.thisListing;
   dataHandler.fetch($scope, "thisListing", $scope.search);
+
+
+
 
 }]);
 

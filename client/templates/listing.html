@@ -4,6 +4,10 @@ url: /listing/:borough/:id
 ---
 <style>
 .listingCard .grid-content{ overflow-y: visible !important;}
+.feature-data{
+
+	text-align: center;
+}
 </style>
 <div class="grid-container resultsList">
 
@@ -35,11 +39,11 @@ url: /listing/:borough/:id
 					</div>
 					<div class="grid-content schools listing-section">
 							<i class="fa fa-money"></i>
-							3 Schools
+							${{listing.rent_range}}/month*
 					</div>
 					<div class="grid-content rent listing-section">
 						<i class="fa fa-graduation-cap"></i> 
-						{{listing.room_range}} br.
+						 3 Top Rated Schools Nearby
 					</div>
 					<div class="grid-content rating listing-section">
 						<i class="fa fa-star-half-o"></i>
@@ -76,7 +80,9 @@ url: /listing/:borough/:id
 				</div>
 				<div class="map-container listing-section">
 					<div class="google-maps grid-block">
-					    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7098.94326104394!2d78.0430654485247!3d27.172909818538997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1385710909804" width="600" height="450" frameborder="0" style="border:0"></iframe>
+						<map center="{{listing.latitude}}, {{listing.longitude}}" zoom="15" style="width:100%;">
+							   <marker position="{{listing.latitude}}, {{listing.longitude}}" ></marker> 
+						</map>
 					</div>
 				</div>
 			</div>

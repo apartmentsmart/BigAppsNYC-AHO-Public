@@ -45,6 +45,7 @@ var paths = {
   ],
   // These files are for your app's JavaScript
   appJS: [
+    'bower_components/ngmap/build/scripts/ng-map.js',
     'client/assets/js/app.js'
   ]
 }

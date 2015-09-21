@@ -93,7 +93,9 @@
 					</span>
 					
 					</div>
-					<div class="grid-content listing-icon"><i class="fa fa-money"></i></div><div class="grid-content listing-info">$800 - $1000</div>
+
+					<div ng-show="listing.rent_range" class="grid-content listing-icon"><i class="fa fa-money"></i></div><div ng-show="listing.rent_range" class="grid-content listing-info">${{listing.rent_range}}</div>
+				
 				</div>
 			</div>
 
