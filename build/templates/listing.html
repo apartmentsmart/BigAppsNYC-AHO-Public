@@ -9,7 +9,7 @@
 <!-- 	    	<div class="grid-block hero-section" style="background: url('../assets/img/room.jpg')"> -->
 				<div class="hero-content">
 					<div class="listing-name">{{listing.name}}</div>
-					<div class="listing-borough">{{listing.borough}}</div>
+					<div class="listing-borough">{{listing.borough}} - {{listing.neighborhood}}</div>
 					<div class="star-rating">
 						<i class="fa fa-star"></i>
 						<i class="fa fa-star"></i>
@@ -20,35 +20,55 @@
 				</div>
 			</div> <!-- End grid-block hero-section -->
 			<div class="listing-content">
-				<div class="bedrooms listing-section">
-					<i class="fa fa-bed"></i> {{listing.room_range}} br.
+				<div class="description listing-section">
+					Serves low to moderate income {{listing.elderly == 1 ? 'seniors' : 'families'}} through the Low Income Housing Tax Credit program.
 				</div>
-				<div class="address listing-section">
-					<i class="fa fa-map-marker"></i> {{listing.address}}
+
+				<div class="grid-block feature-data">
+					<div class="grid-content bedrooms listing-section">
+						<i class="fa fa-bed"></i>
+						{{listing.room_range}} br.
+					</div>
+					<div class="grid-content schools listing-section">
+							<i class="fa fa-money"></i>
+							3 Schools
+					</div>
+					<div class="grid-content rent listing-section">
+						<i class="fa fa-graduation-cap"></i> 
+						{{listing.room_range}} br.
+					</div>
+					<div class="grid-content rating listing-section">
+						<i class="fa fa-star-half-o"></i>
+						4.1
+					</div>
 				</div>
-				<div class="nieghborhood listing-section">
-					Neighborhood <br> {{listing.neighborhood}}
-				</div>
+
+				<div class="clearfix"></div>
+
 				<div class="contact-info listing-section">
-					<i class="fa fa-user"></i> Phone Number
+					<i class="fa fa-phone"></i> Phone Number
 				</div>
-				<div class="directions listing-section">
-					<i class="fa fa-location-arrow"></i> Get Directions
-				</div>
+
 				<div class="website listing-section">
 					<i class="fa fa-globe"></i> Website
 				</div>
 				<div class="accessibility listing-section">
 					<i class="fa fa-wheelchair"></i> Accessibility
 				</div>
-				<div class="schools listing-section">
-					<i class="fa fa-graduation-cap"></i> 3 Schools
-				</div>
+
 				<div class="shopping listing-section">
 					<i class="fa fa-shopping-cart"></i> Shopping
 				</div>
-				<div class="description listing-section">
-					Serves low to moderate income {{listing.elderly == 1 ? 'seniors' : 'families'}} through the Low Income Housing Tax Credit program.
+
+				<div class="address listing-section grid-block">
+					<div class="grid-content">
+						<i class="fa fa-map-marker"></i>{{listing.address}}
+					</div>
+					<div class="grid-content cta">
+						<div class="button hollow">
+							<i class="fa fa-location-arrow"></i> &nbsp;Get Directions
+						</div>
+					</div>
 				</div>
 				<div class="map-container listing-section">
 					<div class="google-maps grid-block">

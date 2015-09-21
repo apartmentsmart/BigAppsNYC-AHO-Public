@@ -2774,7 +2774,7 @@ meter {
         -ms-flex: 0 0 20%;
             flex: 0 0 20%; }
 
-.small-6 {
+.small-6, .feature-data .listing-section {
   -webkit-flex: 0 0 50%;
       -ms-flex: 0 0 50%;
           flex: 0 0 50%;
@@ -6418,6 +6418,9 @@ blockquote p {
 body, h1, h2, h3, h4, h5, h6, p {
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
+.menu-bar {
+  background-color: transparent; }
+
 .menu-group {
   background: #0093d8; }
   .menu-group li {
@@ -6554,7 +6557,8 @@ body, h1, h2, h3, h4, h5, h6, p {
 
 .hero-section {
   background-color: #444;
-  background-size: cover !important; }
+  background-size: cover !important;
+  margin-bottom: 20px; }
   .hero-section .hero-content {
     padding: 60px 5%; }
   .hero-section .listing-name {
@@ -6567,10 +6571,14 @@ body, h1, h2, h3, h4, h5, h6, p {
     padding-top: 10px; }
 
 .listing-section {
-  padding: 10px 0; }
+  padding: 17px 0; }
+  .listing-section .cta {
+    -webkit-justify-content: flex-end;
+        -ms-flex-pack: end;
+            justify-content: flex-end; }
 
 .map-container {
-  padding: 50px 0 0 0; }
+  padding: 25px 0 0 0; }
   .map-container .google-maps {
     position: relative;
     padding-bottom: 75%;
@@ -6582,3 +6590,78 @@ body, h1, h2, h3, h4, h5, h6, p {
     left: 0;
     width: 100% !important;
     height: 100% !important; }
+
+.address .button {
+  margin: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.address.listing-section div {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.feature-data {
+  color: #fff;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around; }
+  .feature-data i {
+    font-size: 5rem; }
+  .feature-data .bedrooms {
+    background-color: #0093d8; }
+  .feature-data .schools {
+    background-color: #38b449; }
+  .feature-data .rent {
+    background-color: #ff7f00; }
+  .feature-data .rating {
+    background-color: #dddddd;
+    color: #444; }
+  .feature-data .listing-section {
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 180px;
+    -webkit-justify-content: space-around;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+
+/*****************************************
+	For Later Integration Into Styles
+******************************************/
+.chat-bubble {
+  width: 120px;
+  height: 120px;
+  background: red;
+  position: relative;
+  border-radius: 10px; }
+
+.chat-bubble:before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 80px;
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-right: 26px solid red;
+  border-bottom: 5px solid transparent; }

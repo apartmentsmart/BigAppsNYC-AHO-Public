@@ -26,3 +26,29 @@
 @import "partials/listing";
 
 
+
+
+
+/*****************************************
+	For Later Integration Into Styles
+******************************************/
+.chat-bubble {
+   width: 120px;
+   height: 120px;
+   background: red;
+   position: relative;
+   -moz-border-radius:    10px;
+   -webkit-border-radius: 10px;
+   border-radius:         10px;
+}
+.chat-bubble:before {
+   content:"";
+   position: absolute;
+   right: 100%;
+   top: 80px;
+   width: 0;
+   height: 0;
+   border-top: 15px solid transparent;
+   border-right: 26px solid red;
+   border-bottom: 5px solid transparent;
+}

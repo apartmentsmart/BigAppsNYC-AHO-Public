@@ -1,6 +1,7 @@
 .hero-section {
 	background-color: $af-grey;
 	background-size: cover !important;
+	margin-bottom: 20px;
 
 	.hero-content {
 		padding: 60px 5%;
@@ -23,11 +24,15 @@
 }
 
 .listing-section {
-	padding: 10px 0;
+	padding: 17px 0;
+
+	.cta {
+		justify-content: flex-end;
+	}
 }
 
 .map-container {
-	padding: 50px 0 0 0;
+	padding: 25px 0 0 0;
 
     .google-maps {
         position: relative;
@@ -44,4 +49,73 @@
     }
 
 }
+
+.address .button {
+	margin: 0;
+	display: flex;
+	align-items: center;
+}
+
+.address.listing-section div {
+	display: flex;
+	align-items: center;
+}
+
+
+.feature-data {
+	color: #fff;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+
+	i {
+		font-size: 5rem;
+	}
+
+	.bedrooms {
+		background-color: $af-blue;
+
+		i {
+
+		}
+	}
+
+	.schools {
+		background-color: $af-green;
+		
+		i {
+			
+		}
+	}
+
+	.rent {
+		background-color: $af-orange;
+		
+		i {
+			
+		}
+	}
+
+	.rating {
+		background-color: #dddddd;
+		color: #444;
+		
+		i {
+			
+		}
+	}
+
+	.listing-section {
+		@extend .small-6;
+		align-items: center;
+		display: flex;
+		height: 180px;
+		justify-content: space-around;
+		flex-direction: column;
+
+
+	}
+
+}
+
 
