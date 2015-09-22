@@ -1,20 +1,15 @@
-.jumbotron {
+.search-box {
 
 	background-color: $af_grey;
 	color: #fff;
 	padding: 20px 40px;
 
-	h1 {
-		color: #fff;
-		font-weight: 300;
-		text-align: center;
-	}
 	label {
 		color: #fff;
 	}
 
 	.search {
-		padding: 40px 0px;
+		padding: 20px 0px 40px 0;
 
 		.button {
 			background: $af-blue;
@@ -33,7 +28,13 @@
 	}
 
 	.search-welcome {
-		font-size: 1.5rem;
+		h1 {
+			color: #fff;
+			font-size: 1.5rem;
+			font-weight: 300;
+			text-align: center;
+		}
 	}
+
 }
 

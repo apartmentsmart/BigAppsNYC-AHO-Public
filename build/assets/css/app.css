@@ -6415,63 +6415,39 @@ blockquote p {
 /****************************
 		HO Custom Styles
 *****************************/
+/* Site Wide Styles */
 body, h1, h2, h3, h4, h5, h6, p {
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
-.menu-bar {
-  background-color: transparent; }
-
-.menu-group {
-  background: #0093d8; }
-  .menu-group li {
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-justify-content: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    padding: 1rem;
-    background: #0093d8; }
-  .menu-group .title {
-    /*		&:hover {
-			background: lighten( $af_blue, 20%);
-		}*/ }
-    .menu-group .title a {
-      color: #fff; }
-  .menu-group .right {
-    text-align: right; }
-
-.jumbotron {
+/* Search Styles */
+.search-box {
   background-color: #444;
   color: #fff;
   padding: 20px 40px; }
-  .jumbotron h1 {
-    color: #fff;
-    font-weight: 300;
-    text-align: center; }
-  .jumbotron label {
+  .search-box label {
     color: #fff; }
-  .jumbotron .search {
-    padding: 40px 0px; }
-    .jumbotron .search .button {
+  .search-box .search {
+    padding: 20px 0px 40px 0; }
+    .search-box .search .button {
       background: #0093d8;
       font-size: 1rem;
       font-weight: 700;
       padding: 1.5em 1em; }
-    .jumbotron .search .grid-content {
+    .search-box .search .grid-content {
       padding: 0; }
-    .jumbotron .search select, .jumbotron .search input {
+    .search-box .search select, .search-box .search input {
       height: 4rem;
       line-height: 1.2rem; }
-  .jumbotron .search-welcome {
-    font-size: 1.5rem; }
+  .search-box .search-welcome h1 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-align: center; }
 
+/* Results View Listing Card */
 .listingCard {
   box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
   margin: 15px 0; }
-  .listingCard .no-image-listing.card-divider {
-    /*background: $af-green;*/
-    /*color: #fff;*/ }
   .listingCard .card-actions.card-divider {
     background: #fff;
     border-top: 1px solid #eee;
@@ -6517,11 +6493,21 @@ body, h1, h2, h3, h4, h5, h6, p {
     .listingCard .distance-indicator i {
       color: #0093d8;
       padding-left: 4px; }
-
-.fa.fa-street-view {
-  font: normal normal normal 24px/1 FontAwesome;
-  padding-bottom: 6px;
-  text-align: center; }
+    .listingCard .distance-indicator .fa.fa-street-view {
+      font: normal normal normal 24px/1 FontAwesome;
+      padding-bottom: 6px;
+      text-align: center; }
+  .listingCard .share-sheet {
+    background: #0093d8;
+    color: #fff; }
+    .listingCard .share-sheet ul li a {
+      border: none;
+      color: #fff;
+      padding: 1.3em; }
+    .listingCard .share-sheet p {
+      margin-bottom: 2em; }
+    .listingCard .share-sheet i {
+      padding-right: 15px; }
 
 .listing-icon {
   font-size: 1.4rem; }
@@ -6543,18 +6529,7 @@ body, h1, h2, h3, h4, h5, h6, p {
   clear: both;
   padding: 15px 0; }
 
-.share-sheet {
-  background: #0093d8;
-  color: #fff; }
-  .share-sheet ul li a {
-    border: none;
-    color: #fff;
-    padding: 1.3em; }
-  .share-sheet p {
-    margin-bottom: 2em; }
-  .share-sheet i {
-    padding-right: 15px; }
-
+/* Single Listing */
 .hero-section {
   background-color: #444;
   background-size: cover !important;
@@ -6644,24 +6619,3 @@ body, h1, h2, h3, h4, h5, h6, p {
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
             flex-direction: column; }
-
-/*****************************************
-	For Later Integration Into Styles
-******************************************/
-.chat-bubble {
-  width: 120px;
-  height: 120px;
-  background: red;
-  position: relative;
-  border-radius: 10px; }
-
-.chat-bubble:before {
-  content: "";
-  position: absolute;
-  right: 100%;
-  top: 80px;
-  width: 0;
-  height: 0;
-  border-top: 15px solid transparent;
-  border-right: 26px solid red;
-  border-bottom: 5px solid transparent; }

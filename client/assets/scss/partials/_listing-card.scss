@@ -1,15 +1,10 @@
 .listingCard {
 	@extend .card;
 
-
 	box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
 	margin: 15px 0;
 
 
-	.no-image-listing.card-divider {
-		/*background: $af-green;*/
-		/*color: #fff;*/
-	}
 
 	.card-actions.card-divider {
 		background: #fff;
@@ -78,15 +73,38 @@
 			color: $af-blue;
 			padding-left: 4px;
 		}
+
+		.fa.fa-street-view {
+		    font: normal normal normal 24px/1 FontAwesome;
+		    padding-bottom: 6px;
+		    text-align: center;
+		}
+
+	}
+
+
+	.share-sheet {
+		background: $af-blue;
+		color: #fff;
+
+		ul li a {
+			border: none;
+			color: #fff;
+			padding: 1.3em;
+		}
+
+		p {
+			margin-bottom: 2em;
+		}
+
+		i {
+			padding-right: 15px;
+		}
 	}
 
 }
 
-.fa.fa-street-view {
-    font: normal normal normal 24px/1 FontAwesome;
-    padding-bottom: 6px;
-    text-align: center;
-}
+
 
 
 .listing-icon {
@@ -113,21 +131,8 @@
 	}
 }
 
-.share-sheet {
-	background: $af-blue;
-	color: #fff;
 
-	ul li a {
-		border: none;
-		color: #fff;
-		padding: 1.3em;
-	}
 
-	p {
-		margin-bottom: 2em;
-	}
+.no-image-listing.card-divider {
 
-	i {
-		padding-right: 15px;
-	}
 }

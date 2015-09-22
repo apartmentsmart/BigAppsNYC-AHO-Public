@@ -14,41 +14,15 @@
 @import "settings";
 @import "foundation";
 
-
-
 /****************************
 		HO Custom Styles
 *****************************/
-@import "partials/defaults";
-@import "partials/navigation";
-@import "partials/search";
-@import "partials/listing-card";
-@import "partials/listing";
 
-
-
-
-
-/*****************************************
-	For Later Integration Into Styles
-******************************************/
-.chat-bubble {
-   width: 120px;
-   height: 120px;
-   background: red;
-   position: relative;
-   -moz-border-radius:    10px;
-   -webkit-border-radius: 10px;
-   border-radius:         10px;
-}
-.chat-bubble:before {
-   content:"";
-   position: absolute;
-   right: 100%;
-   top: 80px;
-   width: 0;
-   height: 0;
-   border-top: 15px solid transparent;
-   border-right: 26px solid red;
-   border-bottom: 5px solid transparent;
-}
+/* Site Wide Styles */
+   @import "partials/defaults";
+/* Search Styles */
+   @import "partials/search";
+/* Results View Listing Card */
+   @import "partials/listing-card";
+/* Single Listing */
+   @import "partials/listing";
