@@ -2670,7 +2670,7 @@ meter {
         -ms-flex: 0 0 100%;
             flex: 0 0 100%; }
 
-.small-2, .listing-icon {
+.small-2, .listingCard .listing-icon {
   -webkit-flex: 0 0 16.66667%;
       -ms-flex: 0 0 16.66667%;
           flex: 0 0 16.66667%;
@@ -2878,7 +2878,7 @@ meter {
         -ms-flex: 0 0 11.11111%;
             flex: 0 0 11.11111%; }
 
-.small-10, .listing-info {
+.small-10, .listingCard .listing-info {
   -webkit-flex: 0 0 83.33333%;
       -ms-flex: 0 0 83.33333%;
           flex: 0 0 83.33333%;
@@ -6420,6 +6420,9 @@ body, h1, h2, h3, h4, h5, h6, p {
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 /* Search Styles */
+/******************************************
+			Search Box Styles
+*******************************************/
 .search-box {
   background-color: #444;
   color: #fff;
@@ -6460,31 +6463,13 @@ body, h1, h2, h3, h4, h5, h6, p {
   /******************************************
 		Share Sheet / Actions / Card Footer
 	*******************************************/ }
+  .listingCard .card-subtitle {
+    color: #aaa;
+    padding-top: 5px; }
   .listingCard .card-titlebar {
     padding: 19px 0; }
     .listingCard .card-titlebar .star-rating {
       clear: both; }
-  .listingCard .card-subtitle {
-    color: #aaa;
-    padding-top: 5px; }
-  .listingCard .card-actions .grid-content .button {
-    background: transparent;
-    margin: 0;
-    padding: 0.85em 0;
-    width: 100%; }
-  .listingCard .card-actions.card-divider {
-    background: #fff;
-    border-top: 1px solid #eee;
-    padding: 0 16px; }
-    .listingCard .card-actions.card-divider .button {
-      padding: 20px 0; }
-    .listingCard .card-actions.card-divider i {
-      color: #0093d8;
-      padding: 0 20px; }
-  .listingCard .card-desciption {
-    padding: 10px 0; }
-  .listingCard .star-rating {
-    padding-top: 15px; }
   .listingCard .distance-indicator {
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -6502,6 +6487,42 @@ body, h1, h2, h3, h4, h5, h6, p {
       font: normal normal normal 24px/1 FontAwesome;
       padding-bottom: 6px;
       text-align: center; }
+  .listingCard .star-rating {
+    padding-top: 15px; }
+  .listingCard .card-desciption {
+    padding: 10px 0; }
+  .listingCard .listing-icon {
+    font-size: 1.4rem; }
+    .listingCard .listing-icon i {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      padding-left: 10px; }
+  .listingCard .listing-info:after {
+    content: '';
+    display: block;
+    clear: both;
+    padding: 15px 0; }
+  .listingCard .card-actions .grid-content .button {
+    background: transparent;
+    margin: 0;
+    padding: 0.85em 0;
+    width: 100%; }
+  .listingCard .card-actions.card-divider {
+    background: #fff;
+    border-top: 1px solid #eee;
+    padding: 0 16px; }
+    .listingCard .card-actions.card-divider .button {
+      padding: 20px 0; }
+    .listingCard .card-actions.card-divider i {
+      color: #0093d8;
+      padding: 0 20px; }
   .listingCard .share-sheet {
     background: #0093d8;
     color: #fff; }
@@ -6514,27 +6535,10 @@ body, h1, h2, h3, h4, h5, h6, p {
     .listingCard .share-sheet i {
       padding-right: 15px; }
 
-.listing-icon {
-  font-size: 1.4rem; }
-  .listing-icon i {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-justify-content: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    padding-left: 10px; }
-
-.listing-info:after {
-  content: '';
-  display: block;
-  clear: both;
-  padding: 15px 0; }
-
 /* Single Listing */
+/******************************************
+	Hero Section - Title / Borough / Rating
+*******************************************/
 .hero-section {
   background-color: #444;
   background-size: cover !important;
@@ -6550,44 +6554,9 @@ body, h1, h2, h3, h4, h5, h6, p {
   .hero-section .star-rating {
     padding-top: 10px; }
 
-.listing-section {
-  padding: 17px 0; }
-  .listing-section .cta {
-    -webkit-justify-content: flex-end;
-        -ms-flex-pack: end;
-            justify-content: flex-end; }
-
-.map-container {
-  padding: 25px 0 0 0; }
-  .map-container .google-maps {
-    position: relative;
-    padding-bottom: 75%;
-    height: 0;
-    overflow: hidden; }
-  .map-container .google-maps iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100% !important;
-    height: 100% !important; }
-
-.address .button {
-  margin: 0;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center; }
-
-.address.listing-section div {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center; }
-
+/******************************************
+			Feature Data
+*******************************************/
 .feature-data {
   color: #fff;
   display: -webkit-flex;
@@ -6624,3 +6593,47 @@ body, h1, h2, h3, h4, h5, h6, p {
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
             flex-direction: column; }
+
+/******************************************
+			Listing Section
+*******************************************/
+.listing-section {
+  padding: 17px 0; }
+  .listing-section .cta {
+    -webkit-justify-content: flex-end;
+        -ms-flex-pack: end;
+            justify-content: flex-end; }
+
+.address .button {
+  margin: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.address.listing-section div {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+/******************************************
+			Map Container
+*******************************************/
+.map-container {
+  padding: 25px 0 0 0; }
+  .map-container .google-maps {
+    position: relative;
+    padding-bottom: 75%;
+    height: 0;
+    overflow: hidden; }
+  .map-container .google-maps iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important; }

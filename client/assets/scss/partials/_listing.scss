@@ -1,3 +1,7 @@
+/******************************************
+	Hero Section - Title / Borough / Rating
+*******************************************/
+
 .hero-section {
 	background-color: $af-grey;
 	background-size: cover !important;
@@ -23,44 +27,9 @@
 
 }
 
-.listing-section {
-	padding: 17px 0;
-
-	.cta {
-		justify-content: flex-end;
-	}
-}
-
-.map-container {
-	padding: 25px 0 0 0;
-
-    .google-maps {
-        position: relative;
-        padding-bottom: 75%; // This is the aspect ratio
-        height: 0;
-        overflow: hidden;
-    }
-    .google-maps iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100% !important;
-        height: 100% !important;
-    }
-
-}
-
-.address .button {
-	margin: 0;
-	display: flex;
-	align-items: center;
-}
-
-.address.listing-section div {
-	display: flex;
-	align-items: center;
-}
-
+/******************************************
+			Feature Data
+*******************************************/
 
 .feature-data {
 	color: #fff;
@@ -117,5 +86,54 @@
 	}
 
 }
+
+/******************************************
+			Listing Section
+*******************************************/
+
+.listing-section {
+	padding: 17px 0;
+
+	.cta {
+		justify-content: flex-end;
+	}
+}
+
+.address .button {
+	margin: 0;
+	display: flex;
+	align-items: center;
+}
+
+.address.listing-section div {
+	display: flex;
+	align-items: center;
+}
+
+/******************************************
+			Map Container
+*******************************************/
+
+.map-container {
+	padding: 25px 0 0 0;
+
+    .google-maps {
+        position: relative;
+        padding-bottom: 75%; // This is the aspect ratio
+        height: 0;
+        overflow: hidden;
+    }
+    .google-maps iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+}
+
+
+
 
 

@@ -10,6 +10,11 @@
 	/******************************************
 					Card Header
 	*******************************************/
+		.card-subtitle {
+			color: #aaa;
+			padding-top: 5px;
+		}
+
 		.card-titlebar {
 			@extend .small-9;
 			padding: 19px 0;
@@ -19,15 +24,62 @@
 			}
 		}
 
-		.card-subtitle {
-			color: #aaa;
-			padding-top: 5px;
+		.distance-indicator {
+			@extend .small-3;
+
+			  display: flex;
+			  align-items: center;
+			  justify-content: center;
+			
+			i {
+				color: $af-blue;
+				padding-left: 4px;
+			}
+
+			.fa.fa-street-view {
+			    font: normal normal normal 24px/1 FontAwesome;
+			    padding-bottom: 6px;
+			    text-align: center;
+			}
+
 		}
+
+		.star-rating {
+			padding-top: 15px;
+		}
+
+
 
 	/******************************************
 					Card Body
 	*******************************************/
-	
+	.card-desciption {
+		padding: 10px 0;
+	}
+
+	.listing-icon {
+		@extend .small-2;
+
+		font-size: 1.4rem;
+
+		i {
+			  display: flex;
+			  align-items: center;
+			  justify-content: center;
+			  padding-left: 10px;
+		}
+	}
+
+	.listing-info {
+		@extend .small-10;
+
+		&:after {
+			content:'';
+	    	display:block;
+	    	clear: both;
+	    	padding: 15px 0;
+		}
+	}
 
 	/******************************************
 		Share Sheet / Actions / Card Footer
@@ -61,37 +113,6 @@
 
 	}
 
-
-
-	.card-desciption {
-		padding: 10px 0;
-	}
-
-	.star-rating {
-		padding-top: 15px;
-	}
-
-	.distance-indicator {
-		@extend .small-3;
-
-		  display: flex;
-		  align-items: center;
-		  justify-content: center;
-		
-		i {
-			color: $af-blue;
-			padding-left: 4px;
-		}
-
-		.fa.fa-street-view {
-		    font: normal normal normal 24px/1 FontAwesome;
-		    padding-bottom: 6px;
-		    text-align: center;
-		}
-
-	}
-
-
 	.share-sheet {
 		background: $af-blue;
 		color: #fff;
@@ -110,38 +131,5 @@
 			padding-right: 15px;
 		}
 	}
-
-}
-
-
-
-
-.listing-icon {
-	@extend .small-2;
-
-	font-size: 1.4rem;
-
-	i {
-		  display: flex;
-		  align-items: center;
-		  justify-content: center;
-		  padding-left: 10px;
-	}
-}
-
-.listing-info {
-	@extend .small-10;
-
-	&:after {
-		content:'';
-    	display:block;
-    	clear: both;
-    	padding: 15px 0;
-	}
-}
-
-
-
-.no-image-listing.card-divider {
 
 }
