@@ -5,10 +5,9 @@
 .hero-section {
 	background-color: $af-grey;
 	background-size: cover !important;
-	margin-bottom: 20px;
 
 	.hero-content {
-		padding: 60px 5%;
+		padding: 100px 5%;
 	}
 
 	.listing-name {
@@ -74,15 +73,14 @@
 		}
 	}
 
-	.listing-section {
+	.feature-section {
 		@extend .small-6;
 		align-items: center;
 		display: flex;
 		height: 180px;
 		justify-content: space-around;
 		flex-direction: column;
-
-
+		padding: 20px;
 	}
 
 }
@@ -91,12 +89,59 @@
 			Listing Section
 *******************************************/
 
-.listing-section {
-	padding: 17px 0;
+.non-feature-data {
+	margin-top: 20px;
+}
 
-	.cta {
-		justify-content: flex-end;
+.listing-section {
+	@extend .small-11;
+	@extend .grid-container;
+
+	padding: 20px 0;
+
+	.listing-body {
+
 	}
+
+	.listing-heading{
+		border-bottom: 1px solid #bbb;
+		font-size: 2em;
+		font-weight: 200;
+		padding-left: 10px;
+		padding-bottom: 10px;
+		margin-bottom: 15px;
+
+		i {
+			padding-right: 10px;
+		}
+	}
+
+}
+
+.monthly-rent i {
+	color: $af-green;
+}
+
+.reviews {
+
+	.absolute-center {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	p {
+		margin-top: 10px;
+	}
+} 
+
+.cta {
+	justify-content: flex-end;
+}
+
+.map-container.listing-section {
+	@extend .small-12;
+	padding: 0;
+	margin: 0;
 }
 
 .address .button {
@@ -105,9 +150,24 @@
 	align-items: center;
 }
 
-.address.listing-section div {
+.address.listing-section {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
+}
+
+.reviews .review-meta {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.reviews .subtitle {
+	font-weight: 700;
+}
+
+.reviews .time {
+	font-weight: 300;
 }
 
 /******************************************

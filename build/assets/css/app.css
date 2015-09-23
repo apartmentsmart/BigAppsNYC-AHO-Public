@@ -2366,13 +2366,13 @@ meter {
     .grid-content .grid-block .grid-content {
       overflow: visible; }
 
-.grid-container {
+.grid-container, .listing-section {
   max-width: 56.25rem;
   margin: 0 auto; }
-  .grid-container.contain-left {
+  .grid-container.contain-left, .contain-left.listing-section {
     max-width: 56.25rem;
     margin: 0 auto 0 0; }
-  .grid-container.contain-right {
+  .grid-container.contain-right, .contain-right.listing-section {
     max-width: 56.25rem;
     margin: 0 0 0 auto; }
 
@@ -2774,7 +2774,7 @@ meter {
         -ms-flex: 0 0 20%;
             flex: 0 0 20%; }
 
-.small-6, .feature-data .listing-section {
+.small-6, .feature-data .feature-section {
   -webkit-flex: 0 0 50%;
       -ms-flex: 0 0 50%;
           flex: 0 0 50%;
@@ -2904,7 +2904,7 @@ meter {
         -ms-flex: 0 0 10%;
             flex: 0 0 10%; }
 
-.small-11 {
+.small-11, .listing-section {
   -webkit-flex: 0 0 91.66667%;
       -ms-flex: 0 0 91.66667%;
           flex: 0 0 91.66667%;
@@ -2930,7 +2930,7 @@ meter {
         -ms-flex: 0 0 9.09091%;
             flex: 0 0 9.09091%; }
 
-.small-12 {
+.small-12, .map-container.listing-section {
   -webkit-flex: 0 0 100%;
       -ms-flex: 0 0 100%;
           flex: 0 0 100%;
@@ -6419,6 +6419,16 @@ blockquote p {
 body, h1, h2, h3, h4, h5, h6, p {
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
+.title-bar {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+  .title-bar .center {
+    max-width: 200px; }
+
 /* Search Styles */
 /******************************************
 			Search Box Styles
@@ -6541,10 +6551,9 @@ body, h1, h2, h3, h4, h5, h6, p {
 *******************************************/
 .hero-section {
   background-color: #444;
-  background-size: cover !important;
-  margin-bottom: 20px; }
+  background-size: cover !important; }
   .hero-section .hero-content {
-    padding: 60px 5%; }
+    padding: 100px 5%; }
   .hero-section .listing-name {
     color: #fff;
     font-size: 1.3em; }
@@ -6579,7 +6588,7 @@ body, h1, h2, h3, h4, h5, h6, p {
   .feature-data .rating {
     background-color: #dddddd;
     color: #444; }
-  .feature-data .listing-section {
+  .feature-data .feature-section {
     -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center;
@@ -6592,17 +6601,52 @@ body, h1, h2, h3, h4, h5, h6, p {
             justify-content: space-around;
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
-            flex-direction: column; }
+            flex-direction: column;
+    padding: 20px; }
 
 /******************************************
 			Listing Section
 *******************************************/
+.non-feature-data {
+  margin-top: 20px; }
+
 .listing-section {
-  padding: 17px 0; }
-  .listing-section .cta {
-    -webkit-justify-content: flex-end;
-        -ms-flex-pack: end;
-            justify-content: flex-end; }
+  padding: 20px 0; }
+  .listing-section .listing-heading {
+    border-bottom: 1px solid #bbb;
+    font-size: 2em;
+    font-weight: 200;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 15px; }
+    .listing-section .listing-heading i {
+      padding-right: 10px; }
+
+.monthly-rent i {
+  color: #38b449; }
+
+.reviews .absolute-center {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+.reviews p {
+  margin-top: 10px; }
+
+.cta {
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end; }
+
+.map-container.listing-section {
+  padding: 0;
+  margin: 0; }
 
 .address .button {
   margin: 0;
@@ -6613,13 +6657,33 @@ body, h1, h2, h3, h4, h5, h6, p {
       -ms-flex-align: center;
           align-items: center; }
 
-.address.listing-section div {
+.address.listing-section {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
       -ms-flex-align: center;
-          align-items: center; }
+          align-items: center;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+.reviews .review-meta {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+.reviews .subtitle {
+  font-weight: 700; }
+
+.reviews .time {
+  font-weight: 300; }
 
 /******************************************
 			Map Container

@@ -2,16 +2,16 @@
 name: home
 url: /
 ---
-<div class="grid-container">
-        	<div class="search-box grid-block">
-        		
-        		<div class="search-welcome grid-content">
-        			<h1>Find affordable housing in New York City</h1>
-        		</div>
+    <div class="search-box grid-block">
+    		
+    		<div class="search-welcome grid-content">
+    			<h1>Find affordable housing in New York City</h1>
+    		</div>
 
-        		<div class="search grid-block" ng-controller="searchController">
-        				
-						<div class="grid-content small-12" >
+    		<div class="grid-container">
+	    		<div class="search grid-block" ng-controller="searchController">
+	    				
+						<div class="grid-content small-12 large-2" >
 							<label class="hide">Select a Borough</label>
 							<select name="borough" id="borough" ng-model="search.borough">
 								<option value="All">All Boroughs</option>
@@ -23,7 +23,7 @@ url: /
 							</select>
 						</div>
 
-						<div class="grid-content small-6">
+						<div class="grid-content small-6 large-2">
 							<label class="hide">Size Of Household</label>
 							<select name="hhsize" id="hhsize" ng-model="search.hhsize">
 								<option value="1">1 Person</option>
@@ -37,12 +37,12 @@ url: /
 							</select>
 						</div>
 
-						<div class="grid-content small-6">
+						<div class="grid-content small-6 large-2">
 							<label class="hide">Monthly Income</label>
 							<input type="text" id="income" placeholder="Monthly Income" ng-model="search.income" />
 						</div>
 
-						<div class="grid-content small-6">
+						<div class="grid-content small-6 large-2">
 							<label class="hide">Disability Status</label>
 							<select name="disabilityStatus" id="disabilityStatus" ng-model="search.disabilityStatus">
 								<option value="HoH">Head of Houshold Disabled</option>
@@ -51,18 +51,23 @@ url: /
 							</select>
 						</div>
 
-						<div class="grid-content small-6">
+						<div class="grid-content small-6 large-2">
 							<label class="hide">Age</label>
 							<input type="text" placeholder="Age" id="age" ng-model="search.age" />
 						</div>
 
-						<a class="expand button" ui-sref="results({borough:search.borough})">Find Housing</a>
-
-        		</div>
+						<a class="expand button hide-for-large" ui-sref="results({borough:search.borough})">Search &nbsp; <i class="fa fa-arrow-right"></i></a>
 
 
-        	</div> <!--End Search Box -->
 
-</div>
+						<div class="show-for-large large-2">
+							<a class="expand button" ui-sref="results({borough:search.borough})">Search &nbsp; <i class="fa fa-arrow-right"></i></a>
+						</div>
+
+	    		</div>
+    		</div>
+
+
+    	</div> <!--End Search Box -->
 
 

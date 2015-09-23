@@ -1,6 +1,8 @@
 ---
 name: listing
 url: /listing/:borough/:id
+animationIn: slideInLeft
+animationOut: slideOutRight
 ---
 <style>
 .listingCard .grid-content{ overflow-y: visible !important;}
@@ -28,67 +30,165 @@ url: /listing/:borough/:id
 				</div>
 			</div> <!-- End grid-block hero-section -->
 			<div class="listing-content">
-				<div class="description listing-section">
-					Serves low to moderate income {{listing.elderly == 1 ? 'seniors' : 'families'}} through the Low Income Housing Tax Credit program.
-				</div>
-
 				<div class="grid-block feature-data">
-					<div class="grid-content bedrooms listing-section">
+					<div class="grid-content bedrooms feature-section">
 						<i class="fa fa-bed"></i>
 						{{listing.room_range}} br.
 					</div>
-					<div class="grid-content schools listing-section">
+					<div class="grid-content schools feature-section">
 							<i class="fa fa-money"></i>
 							${{listing.rent_range}}/month*
 					</div>
-					<div class="grid-content rent listing-section">
+					<div class="grid-content rent feature-section">
 						<i class="fa fa-graduation-cap"></i> 
 						 3 Top Rated Schools Nearby
 					</div>
-					<div class="grid-content rating listing-section">
+					<div class="grid-content rating feature-section">
 						<i class="fa fa-star-half-o"></i>
-						4.1
+						{{listing.avgRating}}
+						<br>
+						Rating
 					</div>
 				</div>
 
 				<div class="clearfix"></div>
 
-				<div class="contact-info listing-section">
-					<i class="fa fa-phone"></i> Phone Number
-				</div>
+				<div class="non-feature-data">
 
-				<div class="website listing-section">
-					<i class="fa fa-globe"></i> Website
-				</div>
-				<div class="accessibility listing-section">
-					<i class="fa fa-wheelchair"></i> Accessibility
-				</div>
-
-				<div class="shopping listing-section">
-					<i class="fa fa-shopping-cart"></i> Shopping
-				</div>
-
-				<div class="address listing-section grid-block">
-					<div class="grid-content">
-						<i class="fa fa-map-marker"></i>{{listing.address}}
-					</div>
-					<div class="grid-content cta">
-						<div class="button hollow">
-							<i class="fa fa-location-arrow"></i> &nbsp;Get Directions
+					<div class="description listing-section">
+						<div class="listing-heading">
+							Description
+						</div>
+						<div class="listing-body">
+							<p>
+								Serves low to moderate income {{listing.elderly == 1 ? 'seniors' : 'families'}} through the Low Income Housing Tax Credit program.
+							</p>
 						</div>
 					</div>
-				</div>
-				<div class="map-container listing-section">
-					<div class="google-maps grid-block">
-						<map center="{{listing.latitude}}, {{listing.longitude}}" zoom="15" style="width:100%;">
-							   <marker position="{{listing.latitude}}, {{listing.longitude}}" ></marker> 
-						</map>
-					</div>
-				</div>
-			</div>
 
-		</div> <!-- End ng-repeat -->
-    </div> <!-- End listingController -->
-</div>
+					<div class="monthly-rent listing-section">
+						<div class="listing-heading">
+							<i class="fa fa-money"></i> Monthly Rent
+						</div>
+						<div class="listing-body">
+							<p>
+								Your monthly rent is established based on a number of different criteria. To be eligible for this property lorem ipsum dolor amet.
+							</p>
+						</div>
+					</div>
+
+					<div class="bedrooms listing-section">
+						<div class="listing-heading">
+							<i class="fa fa-bed"></i> Bedrooms
+						</div>
+						<div class="listing-body">
+							<p>
+								There are one, two, and three bedroom apartments available at this address. The number of bedrooms you need are often dependant on the size of your household.
+							</p>
+						</div>
+					</div>
+
+					<div class="schools listing-section">
+						<div class="listing-heading">
+							<i class="fa fa-graduation-cap"></i> Schools
+						</div>
+						<div class="listing-body">
+							<p>
+								There are {{listing.schoolCount}} public schools near {{listing.name}} with an average GreatSchools rating of {{listing.avgGreatSchoolsRating}} out of 5.
+							</p>
+							<table>
+								<tr>
+									<th>Name</th>
+									<th>Grade</th>
+									<th>Rating</th>
+								</tr>
+								<tr ng-repeat="school in listing.schools">
+									<td>{{school.name}}</td>
+									<td>{{school.gradeRange}}</td>
+									<td>{{school.gsRating}}/5</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+
+					<div class="reviews listing-section">
+						<div class="listing-heading">
+							<i class="fa fa-star-half-o"></i> Reviews
+						</div>
+						<div class="listing-body">
+							<div class="review-meta grid-content">
+								<div class="subtitle">
+									Sally S.
+									<span class="time">- 4 Months Ago</span>
+								</div>
+								<div class="star-rating">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+							</div>
+
+							<p>
+								There are one, two, and three bedroom apartments available at this address. The number of bedrooms you need are often dependant on the size of your household.
+							</p>
+
+							<div class="absolute-center grid-block">
+								<a class="button hollow read-more">Read More Reviews</a>
+							</div>
+							
+
+						</div>
+					</div>
+
+					<div class="violations listing-section">
+						<div class="listing-heading">
+							<i class="fa fa-chain-broken"></i> Code Violations
+						</div>
+						<div class="listing-body">
+							<p>
+								This listing does not currently have any violations pending. This listing also has historically been in good standing with city code.
+							</p>
+						</div>
+					</div>
+
+					<div class="contact-info listing-section">
+						<i class="fa fa-phone"></i> Phone Number
+					</div>
+
+					<div class="website listing-section">
+						<i class="fa fa-globe"></i> Website
+					</div>
+					<div class="accessibility listing-section">
+						<i class="fa fa-wheelchair"></i> Accessibility
+					</div>
+
+					<div class="shopping listing-section">
+						<i class="fa fa-shopping-cart"></i> Shopping
+					</div>
+
+					<div class="address listing-section grid-content">
+							<div>
+								<i class="fa fa-map-marker"></i>{{listing.address}}
+							</div>
+							<div class="cta">
+								<a class="button hollow">
+									<i class="fa fa-location-arrow"></i> &nbsp;Get Directions
+								</a>
+							</div>
+					</div>
+					<div class="map-container listing-section">
+						<div class="google-maps grid-block">
+							<map center="{{listing.latitude}}, {{listing.longitude}}" zoom="15" style="width:100%;">
+								   <marker position="{{listing.latitude}}, {{listing.longitude}}" ></marker> 
+							</map>
+						</div>
+					</div>
+				</div> <!-- End non feature data -->
+
+		</div> <!-- End listing-content -->
+    </div> <!-- End ng-repeat -->
+</div> <!-- End listingController -->
 
 
