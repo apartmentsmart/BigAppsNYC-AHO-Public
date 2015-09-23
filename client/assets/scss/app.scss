@@ -7,6 +7,7 @@
 		App Variables
 *****************************/
 @import "partials/variables";
+@import "partials/normalize";
 
 /****************************
 	Foundation For Apps
@@ -26,3 +27,5 @@
    @import "partials/listing-card";
 /* Single Listing */
    @import "partials/listing";
+
+   @import "partials/navigation";

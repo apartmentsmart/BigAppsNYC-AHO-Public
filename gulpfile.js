@@ -46,6 +46,10 @@ var paths = {
   // These files are for your app's JavaScript
   appJS: [
     'bower_components/ngmap/build/scripts/ng-map.js',
+    'client/assets/js/animated-nav/modernizr.js',
+    'client/assets/js/animated-nav/jquery-2.1.1.js',
+    'client/assets/js/animated-nav/velocity.min.js',
+    'client/assets/js/animated-nav/main.js',
     'client/assets/js/app.js'
   ]
 }
