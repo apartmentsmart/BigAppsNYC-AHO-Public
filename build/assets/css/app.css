@@ -6445,9 +6445,33 @@ body, h1, h2, h3, h4, h5, h6, p {
     text-align: center; }
 
 /* Results View Listing Card */
+/******************************************
+			Generic Card Styles
+*******************************************/
 .listingCard {
   box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
-  margin: 15px 0; }
+  margin: 15px 0;
+  /******************************************
+					Card Header
+	*******************************************/
+  /******************************************
+					Card Body
+	*******************************************/
+  /******************************************
+		Share Sheet / Actions / Card Footer
+	*******************************************/ }
+  .listingCard .card-titlebar {
+    padding: 19px 0; }
+    .listingCard .card-titlebar .star-rating {
+      clear: both; }
+  .listingCard .card-subtitle {
+    color: #aaa;
+    padding-top: 5px; }
+  .listingCard .card-actions .grid-content .button {
+    background: transparent;
+    margin: 0;
+    padding: 0.85em 0;
+    width: 100%; }
   .listingCard .card-actions.card-divider {
     background: #fff;
     border-top: 1px solid #eee;
@@ -6457,25 +6481,6 @@ body, h1, h2, h3, h4, h5, h6, p {
     .listingCard .card-actions.card-divider i {
       color: #0093d8;
       padding: 0 20px; }
-  .listingCard .card-actions .grid-content .button {
-    background: transparent;
-    margin: 0;
-    padding: 0.85em 0;
-    width: 100%; }
-  .listingCard .card-title {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center; }
-  .listingCard .card-titlebar {
-    padding: 19px 0; }
-    .listingCard .card-titlebar .star-rating {
-      clear: both; }
-  .listingCard .card-subtitle {
-    color: #aaa;
-    padding-top: 5px; }
   .listingCard .card-desciption {
     padding: 10px 0; }
   .listingCard .star-rating {

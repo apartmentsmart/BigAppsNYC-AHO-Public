@@ -8,10 +8,12 @@ url: /results/:borough/
 <div class="grid-container resultsList">
 	<div class="grid-content" ng-controller="resultsController">
 	    <div class="listingCard" ng-repeat="listing in listings">
-			<div class="card-divider no-image-listing">
+
+	    	<!-- Begin Card Markup -->
+			<div class="card-divider card-header no-image-listing">
 				<div class="grid-content">
 					<div class="grid-block">
-						<div class="grid-content card-titlebar">
+						<div class="card-titlebar grid-content">
 								<a ui-sref="listing({borough:listing.borough, id:listing.hud_id})">{{listing.name}}</a>
 								<div class="card-subtitle">{{listing.borough}}</div>
 								<div class="star-rating">
@@ -22,7 +24,7 @@ url: /results/:borough/
 									<i class="fa fa-star"></i>
 								</div>
 						</div> <!-- End card-titlebar -->
-						<div class="grid-content distance-indicator">
+						<div class="distance-indicator grid-content">
 								<div class="float-right">
 									<center>
 										<i class="fa fa-street-view"></i>
@@ -33,30 +35,35 @@ url: /results/:borough/
 						</div><!-- End distance indicator -->
 					</div>
 				</div>
-			</div> <!-- End card-divider -->
-			<div class="card-section">
+			</div> <!-- End card-divider / Card Header -->
+
+			<div class="card-section card-body">
 
 				<div class="grid-block">
+
 					<p class="card-description grid-content">
 						Serves low to moderate income {{listing.elderly == 1 ? 'seniors' : 'families'}} through the Low Income Housing Tax Credit program.
 					</p>
-					<div class="grid-content listing-icon"><i class="fa fa-map-marker"></i></div><div class="grid-content listing-info">{{listing.address}}</div>
-					<div class="grid-content listing-icon"><i class="fa fa-bed"></i></div><div class="grid-content listing-info">
 
-					<!-- Change the number 0 to Studio Apartment -->
-					<span ng-switch="listing.room_range">
-					  <span ng-switch-when="0">Studio Apartment</span>
-					  <span ng-switch-default>{{listing.room_range}} br.</span>
-					</span>
-					
+					<div class="listing-icon grid-content"><i class="fa fa-map-marker"></i></div>
+					<div class="listing-info grid-content">{{listing.address}}</div>
+					<div class="listing-icon grid-content"><i class="fa fa-bed"></i></div>
+
+					<div class="listing-info grid-content">
+						<!-- Change the number 0 to Studio Apartment -->
+						<span ng-switch="listing.room_range">
+						  <span ng-switch-when="0">Studio Apartment</span>
+						  <span ng-switch-default>{{listing.room_range}} br.</span>
+						</span>	
 					</div>
 
-					<div ng-show="listing.rent_range" class="grid-content listing-icon"><i class="fa fa-money"></i></div><div ng-show="listing.rent_range" class="grid-content listing-info">${{listing.rent_range}}</div>
+					<div ng-show="listing.rent_range" class="listing-icon grid-content"><i class="fa fa-money"></i></div><div ng-show="listing.rent_range" class="listing-info grid-content">${{listing.rent_range}}</div>
 				
 				</div>
-			</div>
+				
+			</div> <!-- End card-section / Card Body -->
 
-			<div class="card-actions card-divider">
+			<div class="card-actions card-footer card-divider">
 				<div class="grid-block">
 					<div class="grid-content">
 						<a class="button"><i class="fa fa-pencil"></i></a>
@@ -69,9 +76,11 @@ url: /results/:borough/
 					</div>
 				</div>
 			</div>
+			<!-- End Card Markup -->
 
 		</div>
 
+		<!-- Share Sheet "Modal" -->
 		<zf-action-sheet id="share-sheet">
 			<zf-as-content position="bottom" class="share-sheet">
 				<p>Tap to share</p>

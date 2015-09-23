@@ -1,10 +1,49 @@
+/******************************************
+			Generic Card Styles
+*******************************************/
 .listingCard {
 	@extend .card;
 
 	box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
 	margin: 15px 0;
 
+	/******************************************
+					Card Header
+	*******************************************/
+		.card-titlebar {
+			@extend .small-9;
+			padding: 19px 0;
 
+			.star-rating {
+				clear: both;
+			}
+		}
+
+		.card-subtitle {
+			color: #aaa;
+			padding-top: 5px;
+		}
+
+	/******************************************
+					Card Body
+	*******************************************/
+	
+
+	/******************************************
+		Share Sheet / Actions / Card Footer
+	*******************************************/
+	.card-actions {
+		.grid-content {
+			@extend .small-4;
+
+			.button {
+				background: transparent;
+				margin: 0;
+				padding: 0.85em 0;
+				width: 100%;
+			}
+		}
+	}
 
 	.card-actions.card-divider {
 		background: #fff;
@@ -22,37 +61,7 @@
 
 	}
 
-	.card-actions {
-		.grid-content {
-			@extend .small-4;
 
-			.button {
-				background: transparent;
-				margin: 0;
-				padding: 0.85em 0;
-				width: 100%;
-			}
-		}
-	}
-
-	.card-title {
-		display: flex;
-		align-items: center;
-	}
-
-	.card-titlebar {
-		@extend .small-9;
-		padding: 19px 0;
-
-		.star-rating {
-			clear: both;
-		}
-	}
-
-	.card-subtitle {
-		color: #aaa;
-		padding-top: 5px;
-	}
 
 	.card-desciption {
 		padding: 10px 0;
