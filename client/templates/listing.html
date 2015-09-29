@@ -22,7 +22,7 @@ animationOut: slideOutRight
 					<div class="listing-borough">{{listing.borough}} - {{listing.neighborhood}}</div>
 						<div class="star-rating">
 							<i class="fa" ng-class="{'fa-star-o': listing.avgRating < .5,  'fa-star-half-o': listing.avgRating >= .5 && listing.avgRating < 1,  'fa-star' : listing.avgRating >= 1 }"></i>
-							<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 1.5, 'fa-star-half-o': listing.avgRating >= 1.5 && listing.avgrating < 2,  'fa-star' : listing.avgRating >= 2 }"></i>
+							<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 1.5, 'fa-star-half-o': listing.avgRating >= 1.5 && listing.avgRating < 2,  'fa-star' : listing.avgRating >= 2 }"></i>
 							<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 2.5, 'fa-star-half-o': listing.avgRating >= 2.5 && listing.avgRating < 3,  'fa-star' : listing.avgRating >= 3 }"></i>
 							<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 3.5, 'fa-star-half-o': listing.avgRating >= 3.5 && listing.avgRating < 4,  'fa-star' : listing.avgRating >= 4 }"></i>
 							<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 4.5, 'fa-star-half-o': listing.avgRating >= 4.5 && listing.avgRating < 5,  'fa-star' : listing.avgRating >= 5 }"></i>
@@ -32,19 +32,19 @@ animationOut: slideOutRight
 			</div> <!-- End grid-block hero-section -->
 			<div class="listing-content">
 				<div class="grid-block feature-data">
-					<div class="grid-content bedrooms feature-section">
+					<div ng-click="scrollTo('bedrooms')" class="grid-content bedrooms feature-section">
 						<i class="fa fa-bed"></i>
 						{{listing.room_range}} br.
 					</div>
-					<div class="grid-content schools feature-section">
+					<div ng-click="scrollTo('rent')" class="grid-content schools feature-section">
 							<i class="fa fa-money"></i>
 							${{listing.rent_range}}/month*
 					</div>
-					<div class="grid-content rent feature-section">
+					<div ng-click="scrollTo('schools')" class="grid-content rent feature-section">
 						<i class="fa fa-graduation-cap"></i> 
 						 3 Top Rated Schools Nearby
 					</div>
-					<div class="grid-content rating feature-section">
+					<div ng-click="scrollTo('reviews')" class="grid-content rating feature-section">
 						<i class="fa fa-star-half-o"></i>
 						{{listing.avgRating}} / 5
 						<br>
@@ -57,9 +57,6 @@ animationOut: slideOutRight
 				<div class="non-feature-data">
 
 					<div id="description" class="description listing-section">
-						<div class="listing-heading">
-							Description
-						</div>
 						<div class="listing-body">
 							<p>
 								Serves low to moderate income {{listing.elderly == 1 ? 'seniors' : 'families'}} through the Low Income Housing Tax Credit program.
@@ -95,18 +92,23 @@ animationOut: slideOutRight
 						</div>
 						<div class="listing-body">
 							<p>
-								There are {{listing.schoolCount}} public schools near {{listing.name}} with an average GreatSchools rating of {{listing.avgGreatSchoolsRating}} out of 5.
+								There are {{listing.schoolCount}} public schools near {{listing.name}} with an average GreatSchools rating of {{listing.avgGreatSchoolsRating}} out of 10.
 							</p>
-							<table>
-								<tr>
+							<table class="school-table">
+								<tr class="school-table-heading">
 									<th>Name</th>
 									<th>Grade</th>
 									<th>Rating</th>
 								</tr>
-								<tr ng-repeat="school in listing.schools">
+								<tr ng-repeat="school in listing.schools" class="school-table-body">
 									<td>{{school.name}}</td>
 									<td>{{school.gradeRange}}</td>
-									<td>{{school.gsRating}}/5</td>
+									<td>{{school.gsRating}}</td>
+								</tr>
+								<tr class="school-table-heading">
+									<th>Name</th>
+									<th>Grade</th>
+									<th>Rating</th>
 								</tr>
 							</table>
 						</div>
@@ -118,11 +120,11 @@ animationOut: slideOutRight
 						</div>
 						<div ng-repeat="review in listing.reviews" class="listing-body">
 							<div class="review-meta grid-content">
-								<div class="subtitle">
+								<div class="subtitle grid-block">
 									{{review.by}}
 									<span class="time">- 4 Months Ago</span>
 								</div>
-								<div class="star-rating">
+								<div class="star-rating grid-block">
 									<i class="fa" ng-class="{'fa-star-o': review.rating < .5,  'fa-star-half-o': review.rating >= .5 && review.rating < 1,  'fa-star' : review.rating >= 1 }"></i>
 									<i class="fa" ng-class="{'fa-star-o': review.rating < 1.5, 'fa-star-half-o': review.rating >= 1.5 && review.rating < 2,  'fa-star' : review.rating >= 2 }"></i>
 									<i class="fa" ng-class="{'fa-star-o': review.rating < 2.5, 'fa-star-half-o': review.rating >= 2.5 && review.rating < 3,  'fa-star' : review.rating >= 3 }"></i>
@@ -138,6 +140,7 @@ animationOut: slideOutRight
 							<div class="absolute-center grid-block">
 								<a class="button hollow read-more">Read More Reviews</a>
 							</div>
+					</div>
 
 
 
@@ -167,16 +170,17 @@ animationOut: slideOutRight
 						<i class="fa fa-shopping-cart"></i> Shopping
 					</div>
 
-					<div id="address" class="address listing-section">
-							<div class="listing-address">
+					<div id="address" class="address listing-section grid-content">
+							<div class="listing-address grid-block">
 								<i class="fa fa-map-marker"></i>{{listing.address}}
 							</div>
-							<div class="cta">
+							<div class="cta grid-block">
 								<a class="button hollow">
 									<i class="fa fa-location-arrow"></i> &nbsp;Get Directions
 								</a>
 							</div>
 					</div>
+
 					<div class="map-container listing-section">
 						<div class="google-maps grid-block">
 							<map center="{{listing.latitude}}, {{listing.longitude}}" zoom="18" style="width:100%;">
@@ -184,10 +188,13 @@ animationOut: slideOutRight
 							</map>
 						</div>
 					</div>
+
 				</div> <!-- End non feature data -->
 
 		</div> <!-- End listing-content -->
     </div> <!-- End ng-repeat -->
 </div> <!-- End listingController -->
+ 
+
 
 

@@ -13621,7 +13621,7 @@ app.controller('resultsController', ['$scope','globalFilter', 'dataHandler', '$s
 }]);
 
 //Handles Listing Actions
-app.controller('listingController', ['$scope','globalFilter', 'dataHandler', '$state', function($scope, globalFilter, dataHandler, $state) {
+app.controller('listingController', ['$scope','globalFilter', 'dataHandler', '$state', '$location', '$anchorScroll', function($scope, globalFilter, dataHandler, $state, $location, $anchorScroll) {
 
 
   //Init thisListing Object
@@ -13634,6 +13634,11 @@ app.controller('listingController', ['$scope','globalFilter', 'dataHandler', '$s
 
   //get data that matches the $scope.search object and assign it to $scope.thisListing;
   dataHandler.fetch($scope, "thisListing", $scope.search);
+
+  $scope.scrollTo = function(id) {
+      $location.hash(id);
+      $anchorScroll();
+   }
 
 
 
