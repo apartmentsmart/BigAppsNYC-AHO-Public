@@ -22,6 +22,15 @@
 
 	.star-rating {
 		padding-top: 10px;
+		.fa-star-half-o {
+			color: gold;
+		}
+		.fa-star {
+			color: gold;
+		}
+		.rating-text {
+			color: gold;
+		}
 	}
 
 }
@@ -135,6 +144,8 @@
 } 
 
 .cta {
+	@extend .small-8;
+	display: flex;
 	justify-content: flex-end;
 }
 
@@ -154,6 +165,11 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+}
+
+.address.listing-address {
+	@extend .small-4;
+	display:flex;
 }
 
 .reviews .review-meta {
