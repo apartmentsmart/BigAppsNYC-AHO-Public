@@ -3284,7 +3284,7 @@ meter {
         -ms-flex: 0 0 9.09091%;
             flex: 0 0 9.09091%; }
 
-.small-12, .map-container.listing-section {
+.small-12, .map-container.listing-section, .dash-item {
   -webkit-flex: 0 0 100%;
       -ms-flex: 0 0 100%;
           flex: 0 0 100%;
@@ -3671,7 +3671,7 @@ meter {
               flex: 0 0 33.33333%; } }
 
 @media only screen and (min-width: 75em) {
-  .large-4 {
+  .large-4, .dash-item {
     -webkit-flex: 0 0 33.33333%;
         -ms-flex: 0 0 33.33333%;
             flex: 0 0 33.33333%;
@@ -6834,6 +6834,242 @@ table tr td {
   display: table-cell;
   line-height: 1.125rem; }
 
+/* -------------------------------- 
+
+Primary style
+
+-------------------------------- */
+*, *::after, *::before {
+  box-sizing: border-box; }
+
+*::after, *::before {
+  content: ''; }
+
+.cd-logo, .cd-nav-trigger {
+  position: fixed;
+  display: inline-block; }
+
+.cd-nav-trigger {
+  bottom: 18px;
+  right: 5%;
+  height: 44px;
+  width: 44px;
+  z-index: 5;
+  /* image replacement */
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap; }
+
+.cd-nav-trigger .cd-icon {
+  /* icon created in CSS */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  display: inline-block;
+  width: 18px;
+  height: 3px;
+  background-color: #ffffff;
+  z-index: 10; }
+
+.cd-nav-trigger .cd-icon::before, .cd-nav-trigger .cd-icon:after {
+  /* upper and lower lines of the menu icon */
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  /* Force Hardware Acceleration in WebKit */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* apply transition to transform property */
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s; }
+
+.cd-nav-trigger .cd-icon::before {
+  -webkit-transform: translateY(-6px) rotate(0deg);
+  transform: translateY(-6px) rotate(0deg); }
+
+.cd-nav-trigger .cd-icon::after {
+  -webkit-transform: translateY(6px) rotate(0deg);
+  transform: translateY(6px) rotate(0deg); }
+
+.cd-nav-trigger::before, .cd-nav-trigger::after {
+  /* 2 rounded colored backgrounds for the menu icon */
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  /* Force Hardware Acceleration in WebKit */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition-property: -webkit-transform;
+  transition-property: transform; }
+
+.cd-nav-trigger::before {
+  background-color: #091d23;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  transition-duration: 0.1s;
+  transition-delay: 0s; }
+
+.cd-nav-trigger::after {
+  background-color: #38b449;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  transition-duration: 0s;
+  transition-delay: 0s; }
+
+.cd-nav-trigger.close-nav::before {
+  /* user clicks on the .cd-nav-trigger element - 1st rounded background disappears */
+  -webkit-transform: scale(0);
+  transform: scale(0); }
+
+.cd-nav-trigger.close-nav::after {
+  /* user clicks on the .cd-nav-trigger element - 2nd rounded background appears */
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  transition-duration: 0.3s;
+  transition-delay: 0.4s; }
+
+.cd-nav-trigger.close-nav .cd-icon {
+  /* user clicks on the .cd-nav-trigger element - transform the icon */
+  background-color: rgba(255, 255, 255, 0.7); }
+
+.cd-nav-trigger.close-nav .cd-icon::before, .cd-nav-trigger.close-nav .cd-icon::after {
+  background-color: white; }
+
+.cd-nav-trigger.close-nav .cd-icon::before {
+  -webkit-transform: translateY(0) rotate(45deg);
+  transform: translateY(0) rotate(45deg); }
+
+.cd-nav-trigger.close-nav .cd-icon::after {
+  -webkit-transform: translateY(0) rotate(-45deg);
+  transform: translateY(0) rotate(-45deg); }
+
+.cd-primary-nav {
+  /* by default it's hidden */
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  padding: 80px 5%;
+  z-index: 3;
+  /*background-color: rgba(27,148,210, 0.3);*/
+  overflow: auto;
+  list-style-type: none;
+  /* this fixes the buggy scrolling on webkit browsers - mobile devices only - when overflow property is applied */
+  -webkit-overflow-scrolling: touch;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s; }
+
+.cd-primary-nav {
+  margin-left: 0; }
+
+.cd-primary-nav li {
+  margin: 1.6em 0;
+  text-align: center;
+  text-transform: capitalize; }
+
+.cd-primary-nav a {
+  color: #fff;
+  font-size: 20px;
+  font-size: 1.25rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: color 0.2s; }
+
+.no-touch .cd-primary-nav a:hover {
+  color: #ffffff; }
+
+.cd-primary-nav.fade-in {
+  /* navigation visible at the end of the circle animation */
+  visibility: visible;
+  opacity: 1; }
+
+@media only screen and (min-width: 768px) {
+  .cd-primary-nav li {
+    margin: 2em 0; }
+  .cd-primary-nav a {
+    font-size: 28px;
+    font-size: 1.75rem; } }
+
+@media only screen and (min-width: 1170px) {
+  .cd-primary-nav li {
+    margin: 2.6em 0; }
+  .cd-primary-nav a {
+    font-size: 32px;
+    font-size: 2rem; } }
+
+.cd-overlay-nav, .cd-overlay-content {
+  /* containers of the 2 main rounded backgrounds - these containers are used to position the rounded bgs behind the menu icon */
+  position: fixed;
+  bottom: 18px;
+  right: 5%;
+  height: 4px;
+  width: 4px;
+  -webkit-transform: translateX(-20px) translateY(20px);
+  transform: translateX(-20px) translateY(20px); }
+
+.cd-overlay-nav span, .cd-overlay-content span {
+  display: inline-block;
+  position: absolute;
+  border-radius: 50%;
+  /* Force Hardware Acceleration in WebKit */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-transform: scale(0);
+  transform: scale(0); }
+
+.cd-overlay-nav.is-hidden, .cd-overlay-content.is-hidden {
+  /* background fades out at the end of the animation */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s 0s, visibility 0s 0.3s; }
+
+.cd-overlay-nav {
+  /* main rounded colored bg 1 */
+  z-index: 2; }
+
+.cd-overlay-nav span {
+  background-color: rgba(27, 148, 210, 0.9); }
+
+.cd-overlay-content {
+  /* main rounded colored bg 2 */
+  z-index: 4; }
+
+.cd-overlay-content span {
+  background-color: #ff7f00; }
+
+@media only screen and (min-width: 768px) {
+  .cd-content .cd-intro {
+    height: 250px;
+    padding-top: 6em; }
+  .cd-content h1 {
+    font-size: 28px;
+    font-size: 1.75rem; }
+  .cd-content p {
+    font-size: 18px;
+    font-size: 1.125rem;
+    line-height: 1.8; } }
+
 /* Search Styles */
 /******************************************
 			Search Box Styles
@@ -7141,238 +7377,79 @@ table tr td {
 .map-sheet {
   height: 100%; }
 
-/* -------------------------------- 
+/* Login & Signup */
+.login .welcome {
+  padding: 20px 0; }
 
-Primary style
+.login h1 {
+  font-size: 1.5rem; }
 
--------------------------------- */
-*, *::after, *::before {
-  box-sizing: border-box; }
+.login-form {
+  padding: 0 3%; }
+  @media (min-width: 600px) {
+    .login-form {
+      padding: 0 15%; } }
+  .login-form .button {
+    background-color: #38b449;
+    font-size: 1.8rem; }
+    .login-form .button:hover {
+      background-color: #fff;
+      border-color: #38b449;
+      border-style: solid;
+      border-width: 2px;
+      color: #38b449; }
+  .login-form input {
+    margin-bottom: 20px; }
+  .login-form input[type="text"] {
+    border-color: #0093d8;
+    border-width: 2px !important;
+    color: #0093d8;
+    font-size: 1.8rem;
+    font-weight: 900;
+    line-height: 1.8rem;
+    padding: 30px 0;
+    text-align: center; }
+    .login-form input[type="text"]:focus,
+    .login-form input[type="text"]:hover {
+      border-color: #0093d8;
+      border-width: 2px !important;
+      color: #0093d8;
+      padding: 30px 0; }
 
-*::after, *::before {
-  content: ''; }
+/*************************
+		Temp Holder
+**************************/
+.dashboard {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
 
-.cd-logo, .cd-nav-trigger {
-  position: fixed;
-  display: inline-block; }
+.dash-item {
+  padding: 20px;
+  /*	justify-content: space-around;
+	align-items: flex-start;*/ }
 
-.cd-nav-trigger {
-  bottom: 18px;
-  right: 5%;
-  height: 44px;
-  width: 44px;
-  z-index: 5;
-  /* image replacement */
-  overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap; }
+.dash-item-favorite {
+  background-color: #ed2a7b;
+  color: #fff; }
 
-.cd-nav-trigger .cd-icon {
-  /* icon created in CSS */
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  bottom: auto;
-  right: auto;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-  display: inline-block;
-  width: 18px;
-  height: 3px;
-  background-color: #ffffff;
-  z-index: 10; }
+/*.dash-favorite {
+	background-color: darken( $pink, 18% );
+	.accordion-title {
+		background-color: $pink;
+	}
+}*/
+.expander-hidden:before {
+  content: "\25BA"; }
 
-.cd-nav-trigger .cd-icon::before, .cd-nav-trigger .cd-icon:after {
-  /* upper and lower lines of the menu icon */
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #ffffff;
-  /* Force Hardware Acceleration in WebKit */
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  /* apply transition to transform property */
-  transition: -webkit-transform 0.3s;
-  transition: transform 0.3s; }
-
-.cd-nav-trigger .cd-icon::before {
-  -webkit-transform: translateY(-6px) rotate(0deg);
-  transform: translateY(-6px) rotate(0deg); }
-
-.cd-nav-trigger .cd-icon::after {
-  -webkit-transform: translateY(6px) rotate(0deg);
-  transform: translateY(6px) rotate(0deg); }
-
-.cd-nav-trigger::before, .cd-nav-trigger::after {
-  /* 2 rounded colored backgrounds for the menu icon */
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 50%;
-  height: 100%;
-  width: 100%;
-  /* Force Hardware Acceleration in WebKit */
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  transition-property: -webkit-transform;
-  transition-property: transform; }
-
-.cd-nav-trigger::before {
-  background-color: #091d23;
-  -webkit-transform: scale(1);
-  transform: scale(1);
-  transition-duration: 0.1s;
-  transition-delay: 0s; }
-
-.cd-nav-trigger::after {
-  background-color: #38b449;
-  -webkit-transform: scale(0);
-  transform: scale(0);
-  transition-duration: 0s;
-  transition-delay: 0s; }
-
-.cd-nav-trigger.close-nav::before {
-  /* user clicks on the .cd-nav-trigger element - 1st rounded background disappears */
-  -webkit-transform: scale(0);
-  transform: scale(0); }
-
-.cd-nav-trigger.close-nav::after {
-  /* user clicks on the .cd-nav-trigger element - 2nd rounded background appears */
-  -webkit-transform: scale(1);
-  transform: scale(1);
-  transition-duration: 0.3s;
-  transition-delay: 0.4s; }
-
-.cd-nav-trigger.close-nav .cd-icon {
-  /* user clicks on the .cd-nav-trigger element - transform the icon */
-  background-color: rgba(255, 255, 255, 0.7); }
-
-.cd-nav-trigger.close-nav .cd-icon::before, .cd-nav-trigger.close-nav .cd-icon::after {
-  background-color: white; }
-
-.cd-nav-trigger.close-nav .cd-icon::before {
-  -webkit-transform: translateY(0) rotate(45deg);
-  transform: translateY(0) rotate(45deg); }
-
-.cd-nav-trigger.close-nav .cd-icon::after {
-  -webkit-transform: translateY(0) rotate(-45deg);
-  transform: translateY(0) rotate(-45deg); }
-
-.cd-primary-nav {
-  /* by default it's hidden */
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  padding: 80px 5%;
-  z-index: 3;
-  /*background-color: rgba(27,148,210, 0.3);*/
-  overflow: auto;
-  list-style-type: none;
-  /* this fixes the buggy scrolling on webkit browsers - mobile devices only - when overflow property is applied */
-  -webkit-overflow-scrolling: touch;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 0.3s; }
-
-.cd-primary-nav {
-  margin-left: 0; }
-
-.cd-primary-nav li {
-  margin: 1.6em 0;
-  text-align: center;
-  text-transform: capitalize; }
-
-.cd-primary-nav a {
-  color: #fff;
-  font-size: 20px;
-  font-size: 1.25rem;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transition: color 0.2s; }
-
-.no-touch .cd-primary-nav a:hover {
-  color: #ffffff; }
-
-.cd-primary-nav.fade-in {
-  /* navigation visible at the end of the circle animation */
-  visibility: visible;
-  opacity: 1; }
-
-@media only screen and (min-width: 768px) {
-  .cd-primary-nav li {
-    margin: 2em 0; }
-  .cd-primary-nav a {
-    font-size: 28px;
-    font-size: 1.75rem; } }
-
-@media only screen and (min-width: 1170px) {
-  .cd-primary-nav li {
-    margin: 2.6em 0; }
-  .cd-primary-nav a {
-    font-size: 32px;
-    font-size: 2rem; } }
-
-.cd-overlay-nav, .cd-overlay-content {
-  /* containers of the 2 main rounded backgrounds - these containers are used to position the rounded bgs behind the menu icon */
-  position: fixed;
-  bottom: 18px;
-  right: 5%;
-  height: 4px;
-  width: 4px;
-  -webkit-transform: translateX(-20px) translateY(20px);
-  transform: translateX(-20px) translateY(20px); }
-
-.cd-overlay-nav span, .cd-overlay-content span {
-  display: inline-block;
-  position: absolute;
-  border-radius: 50%;
-  /* Force Hardware Acceleration in WebKit */
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  will-change: transform;
-  -webkit-transform-origin: 50% 50%;
-  transform-origin: 50% 50%;
-  -webkit-transform: scale(0);
-  transform: scale(0); }
-
-.cd-overlay-nav.is-hidden, .cd-overlay-content.is-hidden {
-  /* background fades out at the end of the animation */
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s 0s, visibility 0s 0.3s; }
-
-.cd-overlay-nav {
-  /* main rounded colored bg 1 */
-  z-index: 2; }
-
-.cd-overlay-nav span {
-  background-color: rgba(27, 148, 210, 0.9); }
-
-.cd-overlay-content {
-  /* main rounded colored bg 2 */
-  z-index: 4; }
-
-.cd-overlay-content span {
-  background-color: #ff7f00; }
-
-@media only screen and (min-width: 768px) {
-  .cd-content .cd-intro {
-    height: 250px;
-    padding-top: 6em; }
-  .cd-content h1 {
-    font-size: 28px;
-    font-size: 1.75rem; }
-  .cd-content p {
-    font-size: 18px;
-    font-size: 1.125rem;
-    line-height: 1.8; } }
+.expander-hidden + .expander-content {
+  display: none; }

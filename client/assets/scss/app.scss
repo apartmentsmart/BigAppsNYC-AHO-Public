@@ -21,11 +21,70 @@
 
 /* Site Wide Styles */
    @import "partials/defaults";
+   @import "partials/navigation";
+   @import "partials/forms";
+
 /* Search Styles */
    @import "partials/search";
+
 /* Results View Listing Card */
    @import "partials/listing-card";
+
 /* Single Listing */
    @import "partials/listing";
 
-   @import "partials/navigation";
+/* Login & Signup */
+	@import "partials/login";
+
+
+
+
+/*************************
+		Temp Holder
+**************************/
+.dashboard {
+	display:flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.dash-item {
+	@extend .small-12;
+	@extend .large-4;
+
+	padding: 20px;
+
+/*	justify-content: space-around;
+	align-items: flex-start;*/
+
+}
+
+
+.dash-item-favorite {
+	background-color: $pink;
+	color: #fff;
+}
+
+
+/*.dash-favorite {
+	background-color: darken( $pink, 18% );
+	.accordion-title {
+		background-color: $pink;
+	}
+}*/
+
+
+
+  .expander-hidden {
+    &:before {
+      content: "\25BA";
+    }
+  }
+
+  .expander-hidden + .expander-content {
+    display: none;
+  }
+
+
+
