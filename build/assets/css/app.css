@@ -7434,22 +7434,24 @@ Primary style
           justify-content: center; }
 
 .dash-item {
-  padding: 20px;
-  /*	justify-content: space-around;
-	align-items: flex-start;*/ }
-
-.dash-item-favorite {
-  background-color: #ed2a7b;
+  padding: 5px 10px;
   color: #fff; }
+  .dash-item .dash-item-title {
+    font-size: 1.6rem;
+    font-weight: 300; }
+  .dash-item .dash-item-body {
+    font-weight: 400;
+    padding-top: 20px; }
 
-/*.dash-favorite {
-	background-color: darken( $pink, 18% );
-	.accordion-title {
-		background-color: $pink;
-	}
-}*/
-.expander-hidden:before {
-  content: "\25BA"; }
+.dash-item-container {
+  background-color: #444;
+  padding: 30px 10px; }
 
-.expander-hidden + .expander-content {
-  display: none; }
+.dash-item-favorite .dash-item-container {
+  background-color: #ed2a7b; }
+
+.dash-item-new .dash-item-container {
+  background-color: #38b449; }
+
+.dash-item-update .dash-item-container {
+  background-color: #0093d8; }
