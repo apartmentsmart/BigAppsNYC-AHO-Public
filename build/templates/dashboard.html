@@ -1,3 +1,14 @@
+
+<style>
+.notification-context{
+	font-size: .6em;
+	text-align: right;
+	font-style: italic;
+	margin-top: 10px;
+}
+
+</style>
+
 <div class="grid-content">
 <div class="dashboard grid-container">
 
@@ -8,13 +19,32 @@
 	<div class="dash-item" ng-repeat="notification in notifications" ng-click="notification.expand = !notification.expand">
 		<div class="dash-item-container">
 			<div class="dash-item-title grid-content">
-				<div class="grid-block small-10">{{notification.title}}</div>
+				<div class="grid-block small-10">{{notification.title}} {{notification.listing.name}}</div>
 				<div class="grid-block small-offset-1 small-1">
 					<i class="fa" ng-class="{'fa-angle-right': !notification.expand, 'fa-angle-down' : notification.expand}"></i>
 				</div>
 			</div>
 			<div class="dash-item-body grid-content" ng-show="notification.expand">
-				{{notification.message}}
+				<span ng-show='notification.message'>{{notification.message}}</span>
+				<div ng-show='{{notification.listing}}'>
+					<div>
+						<span ng-show='notification.listing.address'>{{notification.listing.address}}</span>
+					</div>
+					<div>
+						<span ng-show='notification.listing.neighborhood'>{{notification.listing.neighborhood}},</span>
+						<span ng-show='notification.listing.borough'>{{notification.listing.borough}}</span>
+					</div>
+					<div>
+						<span ng-show='notification.listing.room_range'>{{notification.listing.room_range}} bedrooms at up to </span>
+						<span ng-show='notification.listing.rent_range'>${{notification.listing.rent_range}}/mo.</span>
+					</div>
+
+					<div>
+						<button class='button' ui-sref="{{notification.action1}}" ng-show='notification.action1'>View Lisiting</button>
+					</div>
+
+				</div>
+				<div ng-show='notification.notification_type_id != 1' class='notification-context'>{{notification.context}}</div>
 			</div>
 		</div>
 	</div>

@@ -19758,6 +19758,8 @@ app.factory('dataHandler', ['$http', '$filter', 'globalFilter', function($http, 
           
           scope[scopeAtt] = data; 
 
+          console.log(data);
+
         });
     }
     }
