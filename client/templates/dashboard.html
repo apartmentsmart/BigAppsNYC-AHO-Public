@@ -7,34 +7,24 @@ animationOut: slideOutLeft
 <div class="grid-content">
 <div class="dashboard grid-container">
 
-	<div class="dash-item" ng-click="dashItemToggle1 = !dashItemToggle1">
+
+
+	   <div ng-controller="dashController">
+
+	<div class="dash-item" ng-repeat="notification in notifications" ng-click="notification.expand = !notification.expand">
 		<div class="dash-item-container">
 			<div class="dash-item-title grid-content">
-				<div class="grid-block small-10">Some Really Big Title Can Go Here</div>
+				<div class="grid-block small-10">{{notification.title}}</div>
 				<div class="grid-block small-offset-1 small-1">
-					<i class="fa fa-angle-right" ng-hide="dashItemToggle1"></i>
-					<i class="fa fa-angle-down" ng-show="dashItemToggle1"></i>
+					<i class="fa" ng-class="{'fa-angle-right': !notification.expand, 'fa-angle-down' : notification.expand}"></i>
 				</div>
 			</div>
-			<div class="dash-item-body grid-content" ng-show="dashItemToggle1">
-				Body
+			<div class="dash-item-body grid-content" ng-show="notification.expand">
+				{{notification.message}}
 			</div>
 		</div>
 	</div>
 
-	<div class="dash-item" ng-click="dashItemToggle2 = !dashItemToggle2">
-		<div class="dash-item-container">
-			<div class="dash-item-title grid-content">
-				<div class="grid-block small-10">Small Title</div>
-				<div class="grid-block small-offset-1 small-1">
-					<i class="fa fa-angle-right" ng-hide="dashItemToggle2"></i>
-					<i class="fa fa-angle-down" ng-show="dashItemToggle2"></i>
-				</div>
-			</div>
-			<div class="dash-item-body grid-content" ng-show="dashItemToggle2">
-				Body
-			</div>
-		</div>
 	</div>
 
 </div>

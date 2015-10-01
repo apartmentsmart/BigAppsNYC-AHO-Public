@@ -86,7 +86,6 @@ app.factory('dataHandler', ['$http', '$filter', 'globalFilter', function($http, 
       */
       function fetch(scope, scopeAtt, scopeFilter){
         
-              console.log(scopeFilter);
 
 
         if(scopeFilter.type == 'search'){
@@ -94,6 +93,13 @@ app.factory('dataHandler', ['$http', '$filter', 'globalFilter', function($http, 
             
             if(scopeFilter.borough)
               endpoint = endpoint+"/"+scopeFilter.borough+"/";
+        }
+        if(scopeFilter.type == 'notifications' && scopeFilter.user){
+          var endpoint = "http://api.affordablehousingonline.com/nyc/notification/by-user";
+            
+            if(scopeFilter.user)
+              endpoint = endpoint+"/"+scopeFilter.user+"/";
+
         }
         else{ 
           
@@ -105,7 +111,7 @@ app.factory('dataHandler', ['$http', '$filter', 'globalFilter', function($http, 
         }
 
 
-      console.log(endpoint);
+
       if(endpoint){
       $http({
         url: endpoint, 
@@ -118,32 +124,6 @@ app.factory('dataHandler', ['$http', '$filter', 'globalFilter', function($http, 
         });
     }
     }
-
-        /*
-       $http.get("/data/nycdemodata.json")
-       .success(function (data) {  
-          
-          scope[scopeAtt]= data; 
-
-
-        })
-        
-        .error(function (error) { 
-
-             scope[scopeAtt] = error; });;
-        
-        }
-
-
-      /*
-       --Filters JSON object if called by Fetch.
-       --@data a JSON object
-       --@filter is an object of key-value pairs. Data that matches the conditions will be returned to the controller.
-   
-      function filter(data, filter){
-       return $filter('filter')(data, filter);
-      }
-  */
 
       return{
         fetch: fetch
@@ -204,7 +184,7 @@ app.controller('resultsController', ['$scope','globalFilter', 'dataHandler', '$s
 }]);
 
 //Handles Listing Actions
-app.controller('listingController', ['$scope','globalFilter', 'dataHandler', '$state', '$location', '$anchorScroll', function($scope, globalFilter, dataHandler, $state, $location, $anchorScroll) {
+app.controller('listingController', ['$scope','globalFilter', 'dataHandler', '$state', '$location', '$anchorScroll', '$timeout','$filter', function($scope, globalFilter, dataHandler, $state, $location, $anchorScroll, $timeout, $filter) {
 
 
   //Init thisListing Object
@@ -218,13 +198,113 @@ app.controller('listingController', ['$scope','globalFilter', 'dataHandler', '$s
   //get data that matches the $scope.search object and assign it to $scope.thisListing;
   dataHandler.fetch($scope, "thisListing", $scope.search);
 
+  //Set School Sort
+  $scope.schoolSortType= 'distance';
+  $scope.schoolSortReverse = false;
+
+  //Set Map View
+  $scope.mapView = 0;
+  $scope.showSchools = 0;
+
+  //Scroll To Function
   $scope.scrollTo = function(id) {
       $location.hash(id);
       $anchorScroll();
-   }
+  }
+
+  //Get Map Object and Set Toggle Schools to False on init.
+  $scope.$on('mapInitialized', function(evt, evtMap) {
+            $scope.map = evtMap;
+            $scope.toggleSchools(false);
+  });
+
+  //Turn on or off the school marker layer
+  $scope.toggleSchools = function(sv){
+
+  $scope.showSchools = sv;
+
+    if(sv === true){
+
+        angular.forEach($scope.map.markers, function(m,k){
+
+            if(k != 'listingMarker')
+                m.setMap($scope.map);
+        
+        });
+
+    }
+    
+    else{
+        
+        angular.forEach($scope.map.markers, function(m, k){
+        
+            if(k != 'listingMarker')
+                m.setMap(null);
+
+        })
 
 
 
+    }
+  }
+
+  //Toggle on or off full screen map
+  $scope.toggleFullMap = function(mv){
+        
+      $scope.mapView = mv;
+
+      var center = $scope.map.getCenter();
+      
+      $scope.map.setZoom(16);
+      
+      google.maps.event.addListener( $scope.map, "idle", function(){
+
+              google.maps.event.trigger( $scope.map, 'resize');
+      });
+
+       $scope.map.setCenter(center); 
+  };
+
+  //show school info window
+  $scope.showSchool = function(evt) {
+      
+      if($scope.infoWindow)
+          $scope.infoWindow.close();
+    
+
+      $scope.school = $filter('filter')($scope.thisListing[0].schools, {'gsId':this.id});
+
+      var marker = this;
+      var map = $scope.map;
+
+
+      $scope.infoWindow = new google.maps.InfoWindow({
+        content: $scope.school[0].name
+      });
+
+      $scope.infoWindow.open(map, marker); 
+  };
+
+}]);
+
+
+//Handles Search Result Actions
+app.controller('dashController', ['$scope', 'dataHandler', '$state', function($scope, dataHandler, $state) {
+
+  //Init Notifications Object
+  $scope.notifications = {};
+  $scope.thisSearch = {};
+
+
+  $scope.thisSearch.type = 'notifications';
+  $scope.thisSearch.user = 1;
+
+  //Get data that matches the $scope.search object and assign it to $scope.notifications
+  dataHandler.fetch($scope, "notifications", $scope.thisSearch);
+
+  //Method to Dismiss
+
+  //Method to Archive
 
 }]);
 
