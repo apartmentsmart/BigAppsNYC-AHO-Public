@@ -4,11 +4,34 @@
 
 	text-align: center;
 }
+
+.mapToggles{
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 999;
+	height: 7%;
+	background: #FFF;
+	display: flex;
+}
+
+.largeMap{
+   position: fixed;
+        top: 7%;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        zIndex: 999;
+        height: 93% !important;
+
+}
 </style>
 <div class="grid-container resultsList">
 
     <div ng-controller="listingController">
 	    <div ng-repeat="listing in thisListing">
+
 	    	<div class="grid-block hero-section">
 <!-- 	    	<div class="grid-block hero-section" style="background: url('../assets/img/room.jpg')"> -->
 				<div class="hero-content">
@@ -36,7 +59,7 @@
 					</div>
 					<div ng-click="scrollTo('schools')" class="grid-content rent feature-section">
 						<i class="fa fa-graduation-cap"></i> 
-						 3 Top Rated Schools Nearby
+						 {{listing.schoolCount}} Schools Nearby
 					</div>
 					<div ng-click="scrollTo('reviews')" class="grid-content rating feature-section">
 						<i class="fa fa-star-half-o"></i>
@@ -87,23 +110,36 @@
 						<div class="listing-body">
 							<p>
 								There are {{listing.schoolCount}} public schools near {{listing.name}} with an average GreatSchools rating of {{listing.avgGreatSchoolsRating}} out of 10.
+
 							</p>
 							<table class="school-table">
-								<tr class="school-table-heading">
-									<th>Name</th>
-									<th>Grade</th>
-									<th>Rating</th>
-								</tr>
-								<tr ng-repeat="school in listing.schools" class="school-table-body">
-									<td>{{school.name}}</td>
-									<td>{{school.gradeRange}}</td>
-									<td>{{school.gsRating}}</td>
-								</tr>
-								<tr class="school-table-heading">
-									<th>Name</th>
-									<th>Grade</th>
-									<th>Rating</th>
-								</tr>
+								<thead>
+									<tr class="school-table-heading">
+										<th><a ng-click="schoolSortType = 'name';       schoolSortReverse = !schoolSortReverse">Name</a></th>
+										<th><a ng-click="schoolSortType = 'gradeRange'; schoolSortReverse = !schoolSortReverse">Grade</a></th>
+										<th><a ng-click="schoolSortType = 'gsRating';   schoolSortReverse = !schoolSortReverse"><i class="fa fa-star"></i></a></th>
+										<th><a ng-click="schoolSortType = 'distance';   schoolSortReverse = !schoolSortReverse"><i class="fa fa-location-arrow"></i></a></th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="school in listing.schools | orderBy:schoolSortType:schoolSortReverse" class="school-table-body">
+										<td><a href='{{school.overviewLink}}' target="_blank">{{school.name}}</a></td>
+										<td>{{school.gradeRange}}</td>
+										<td>{{school.gsRating}}</td>
+										<td>{{school.distance}}m</td>
+									</tr>
+								</tbody>
+								<!--
+								<thead>
+									<tr class="school-table-heading">
+										<th>Name</th>
+										<th>Grade</th>
+										<th><i class="fa fa-star"></i></th>
+										<th><i class="fa fa-location-arrow"></i></th>
+									</tr>
+								</thead>
+							-->
 							</table>
 						</div>
 					</div>
@@ -175,12 +211,41 @@
 							</div>
 					</div>
 
-					<a zf-open="menu" class="button">Open Off-canvas</a>
+
+					<button class='button' ng-click='toggleFullMap(1)'>Full Screen Map</button>
 
 					<div class="map-container listing-section">
 						<div class="google-maps grid-block">
-							<map center="{{listing.latitude}}, {{listing.longitude}}" zoom="18" style="width:100%;">
-								   <marker position="{{listing.latitude}}, {{listing.longitude}}" ></marker> 
+
+							<div class='mapToggles' ng-show="mapView == 1">
+								
+								<div class='mapToggle'>
+									<button ng-click="toggleFullMap(0)" class='button'>Back</button>
+								</div>								
+								<div class='mapToggle'>
+									<button class='button' ng-click='toggleSchools(!showSchools);'>Schools</button>
+								</div>
+								<!--								
+								<div class='mapToggle'>
+									<button class='button'>Lifestyle</button>
+								</div>
+								-->
+							</div>
+
+							<map id='mainMap' ng-class="{'largeMap': mapView == 1}" center="{{listing.latitude}}, {{listing.longitude}}" zoom="18" style="width:100%;">
+								
+								<!-- Listing Marker -->   
+								<marker id="listingMarker" position="{{listing.latitude}}, {{listing.longitude}}" on-click="showInfoWindow(event, 'listingMarkeriw')"></marker> 
+									
+								 <!-- School Markers -->
+								<marker 
+								   	icon="//google-maps-icons.googlecode.com/files/university.png" 
+							   		ng-repeat="school in listing.schools" 
+						   			position="{{school.lat}}, {{school.lon}}"  
+						   			id='{{school.gsId}}' 
+						   			on-click='showSchool(event, $index)'
+								></marker>
+
 							</map>
 						</div>
 					</div>
@@ -188,6 +253,7 @@
 				</div> <!-- End non feature data -->
 
 		</div> <!-- End listing-content -->
+
     </div> <!-- End ng-repeat -->
 </div> <!-- End listingController -->
  
