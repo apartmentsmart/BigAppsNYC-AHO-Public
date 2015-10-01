@@ -50,6 +50,7 @@ var paths = {
     'client/assets/js/animated-nav/jquery-2.1.1.js',
     'client/assets/js/animated-nav/velocity.min.js',
     'client/assets/js/animated-nav/main.js',
+    'client/assets/js/materialize/materialize.js',
     'client/assets/js/app.js'
   ]
 }
