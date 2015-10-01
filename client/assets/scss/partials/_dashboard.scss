@@ -1,0 +1,48 @@
+.dashboard {
+	display:flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.dash-item {
+	@extend .small-12;
+	@extend .large-4;
+
+	padding: 5px 10px;
+	color: #fff;
+
+	.dash-item-title {
+		font-size: 1.6rem;
+		font-weight: 300;
+	}
+
+	.dash-item-body {
+		font-weight: 400;
+		padding-top: 20px;
+	}
+
+}
+
+.dash-item-title {
+	display: flex;
+	justify-content: space-between;
+}
+
+
+.dash-item-container {
+	background-color: $af-grey;
+	padding: 30px 10px;
+}
+
+.dash-item-favorite .dash-item-container {
+	background-color: $pink;
+}
+
+.dash-item-new .dash-item-container {
+	background-color: $af-green;
+}
+
+.dash-item-update .dash-item-container {
+	background-color: $af-blue;
+}

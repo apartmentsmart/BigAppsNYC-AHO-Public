@@ -1,0 +1,53 @@
+.login {
+	.welcome {
+		padding: 20px 0;
+	}
+	h1 {
+		font-size: 1.5rem;
+	}
+}
+
+.login-form {
+	padding: 0 3%;
+
+	@media (min-width: 600px) {
+		padding: 0 15%;
+	} 
+
+	.button {
+		background-color: $af-green;
+		font-size: 1.8rem;
+
+		&:hover {
+			background-color: #fff;
+			border-color: $af-green;
+			border-style: solid;
+			border-width: 2px;
+			color: $af-green;
+		}
+	}
+
+	input {
+		margin-bottom: 20px;
+	}
+
+	input[type="text"] {
+		border-color: $af-blue;
+		border-width: 2px !important;
+		color: $af-blue;
+		font-size: 1.8rem;
+		font-weight: 900;
+		line-height: 1.8rem;
+		padding: 30px 0;
+		text-align: center;
+
+		&:focus,
+		&:hover {
+			border-color: $af-blue;
+			border-width: 2px !important;
+			color: $af-blue;
+			padding: 30px 0;
+		}
+
+	}
+}
