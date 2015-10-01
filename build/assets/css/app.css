@@ -7416,9 +7416,7 @@ Primary style
       color: #0093d8;
       padding: 30px 0; }
 
-/*************************
-		Temp Holder
-**************************/
+/* Dashboard */
 .dashboard {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -7443,6 +7441,14 @@ Primary style
     font-weight: 400;
     padding-top: 20px; }
 
+.dash-item-title {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
 .dash-item-container {
   background-color: #444;
   padding: 30px 10px; }
@@ -7455,3 +7461,7 @@ Primary style
 
 .dash-item-update .dash-item-container {
   background-color: #0093d8; }
+
+/*************************
+		Dev Styles
+**************************/
