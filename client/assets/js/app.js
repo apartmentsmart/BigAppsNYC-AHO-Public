@@ -85,7 +85,6 @@ app.factory('dataHandler', ['$http', '$filter', 'globalFilter', function($http, 
         --@scopeFilter is an optional object of key-value pairs. If passed only data that matches the conditions will be returned to the controller.
       */
       function fetch(scope, scopeAtt, scopeFilter){
-        
 
 
         if(scopeFilter.type == 'search'){
@@ -94,7 +93,7 @@ app.factory('dataHandler', ['$http', '$filter', 'globalFilter', function($http, 
             if(scopeFilter.borough)
               endpoint = endpoint+"/"+scopeFilter.borough+"/";
         }
-        if(scopeFilter.type == 'notifications' && scopeFilter.user){
+        else if(scopeFilter.type == 'notifications' && scopeFilter.user){
           var endpoint = "http://api.affordablehousingonline.com/nyc/notification/by-user";
             
             if(scopeFilter.user)
@@ -172,6 +171,7 @@ app.controller('resultsController', ['$scope','globalFilter', 'dataHandler', '$s
     $scope.thisSearch = $state.params;
 
   $scope.thisSearch.type = 'search';
+
 
 
    //Handle search param mutation
