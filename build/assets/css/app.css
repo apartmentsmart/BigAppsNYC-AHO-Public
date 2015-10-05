@@ -1,3 +1,7 @@
+/***************************
+		NOTES
+****************************/
+/* Disbaled .grid-frame overflow in _grid.scss */
 /****************************
 	Bourbon Mixin Library
 *****************************/
@@ -2630,7 +2634,7 @@ meter {
           flex: 0 0 auto; }
 
 .noscroll.grid-block, .noscroll.grid-content, .noscroll.small-grid-block, .noscroll.small-grid-content, .noscroll.medium-grid-block, .noscroll.medium-grid-content, .noscroll.large-grid-block, .noscroll.large-grid-content {
-  overflow: hidden; }
+  /*overflow: hidden;*/ }
 
 .grid-frame {
   display: -webkit-flex;
@@ -2638,7 +2642,7 @@ meter {
   display: flex;
   height: 100vh;
   position: relative;
-  overflow: hidden;
+  /*overflow: hidden;*/
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   -webkit-flex: 1 1 auto;
@@ -2666,7 +2670,7 @@ meter {
   display: flex;
   height: 100vh;
   position: relative;
-  overflow: hidden;
+  /*overflow: hidden;*/
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   -webkit-flex: 1 1 auto;
@@ -2736,7 +2740,7 @@ meter {
   display: flex;
   height: 100vh;
   position: relative;
-  overflow: hidden;
+  /*overflow: hidden;*/
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   -webkit-flex: 1 1 auto;
@@ -2805,7 +2809,7 @@ meter {
     display: flex;
     height: 100vh;
     position: relative;
-    overflow: hidden;
+    /*overflow: hidden;*/
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
     -webkit-flex: 1 1 auto;
@@ -2875,7 +2879,7 @@ meter {
     display: flex;
     height: 100vh;
     position: relative;
-    overflow: hidden;
+    /*overflow: hidden;*/
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
     -webkit-flex: 1 1 auto;
@@ -7088,7 +7092,7 @@ Primary style
       font-weight: 700;
       padding: 1.5em 1em; }
     .search-box .search .grid-content {
-      padding: 0; }
+      padding: 0 10px; }
     .search-box .search select, .search-box .search input {
       height: 4rem;
       line-height: 1.2rem; }
@@ -7377,6 +7381,17 @@ Primary style
 .map-sheet {
   height: 100%; }
 
+.suggest-edit {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  float: right;
+  font-size: 0.7rem;
+  padding-top: 10px; }
+
 /* Login & Signup */
 .login {
   background: url("../img/building.jpeg");
@@ -7428,6 +7443,8 @@ Primary style
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center; }
+  .dashboard .fa {
+    font-size: 0.8rem; }
 
 .dash-item {
   padding: 5px 10px;
@@ -7438,6 +7455,8 @@ Primary style
   .dash-item .dash-item-body {
     font-weight: 400;
     padding-top: 20px; }
+  .dash-item .grid-content {
+    overflow: initial; }
 
 .dash-item-title {
   display: -webkit-flex;
@@ -7445,7 +7464,10 @@ Primary style
   display: flex;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
-          justify-content: space-between; }
+          justify-content: space-between;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start; }
 
 .dash-item-container {
   background-color: #444;
@@ -7459,6 +7481,27 @@ Primary style
 
 .dash-item-update .dash-item-container {
   background-color: #0093d8; }
+
+.notification-title {
+  /*flex-grow: 3;*/
+  font-size: 1.2rem; }
+
+.notification-actions {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+.followed-notification {
+  background-color: #d21262; }
+
+.matched-notification {
+  background-color: #0090d3; }
+
+.featured-notification {
+  background-color: #32a141; }
 
 /********************************
 		Material Design

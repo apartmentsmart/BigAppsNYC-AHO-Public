@@ -19668,6 +19668,26 @@ Picker.extend( 'pickadate', DatePicker )
     FastClick.attach(document.body);
   }
 
+//---------------------------------
+//    Back Button Function
+//---------------------------------
+
+// app.run(function ($rootScope, $location) {
+
+//     var history = [];
+
+//     $rootScope.$on('$routeChangeSuccess', function() {
+//         history.push($location.$$path);
+//     });
+
+//     $rootScope.back = function () {
+//         var prevUrl = history.length > 1 ? history.splice(-2)[0] : "/";
+//         $location.path(prevUrl);
+//     };
+
+// });
+
+
 /**
   -- Sets, Gets, and Mutates cross-controller search filter data.
 **/

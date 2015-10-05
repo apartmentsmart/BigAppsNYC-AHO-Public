@@ -17,30 +17,38 @@
 	   <div ng-controller="dashController">
 
 	<div class="dash-item" ng-repeat="notification in notifications" ng-click="notification.expand = !notification.expand">
-		<div class="dash-item-container">
-			<div class="dash-item-title grid-content">
-				<div class="grid-block small-10">{{notification.title}} {{notification.listing.name}}</div>
-				<div class="grid-block small-offset-1 small-1">
-					<i class="fa" ng-class="{'fa-angle-right': !notification.expand, 'fa-angle-down' : notification.expand}"></i>
+		<div class="dash-item-container {{notification.color_class}}">
+			<div class="dash-item-title grid-block">
+				<div class="grid-content small-1">
+					<i class="fa {{notification.icon_class}}"></i>
+				</div>
+				<div class="grid-content small-9 notification-title">
+					<div>
+						{{notification.title}}
+						{{notification.listing.name}}
+					</div>
+				</div>
+				<div class="grid-content small-1">
+					<i class="fa" ng-class="{'fa-angle-right': !notification.expand, '' : notification.expand}"></i>
 				</div>
 			</div>
 			<div class="dash-item-body grid-content" ng-show="notification.expand">
-				<span ng-show='notification.message'>{{notification.message}}</span>
+				<p ng-show='notification.message'>{{notification.message}}</p>
 				<div ng-show='{{notification.listing}}'>
-					<div>
-						<span ng-show='notification.listing.address'>{{notification.listing.address}}</span>
+					<div class="notification-section">
+						<p>{{notification.listing.address}}</p>
 					</div>
-					<div>
-						<span ng-show='notification.listing.neighborhood'>{{notification.listing.neighborhood}},</span>
-						<span ng-show='notification.listing.borough'>{{notification.listing.borough}}</span>
+					<div class="notification-section">
+						<p>{{notification.listing.neighborhood}}, {{notification.listing.borough}}</p>
+
 					</div>
-					<div>
-						<span ng-show='notification.listing.room_range'>{{notification.listing.room_range}} bedrooms at up to </span>
-						<span ng-show='notification.listing.rent_range'>${{notification.listing.rent_range}}/mo.</span>
+					<div class="notification-section">
+						<p>{{notification.listing.room_range}} bedrooms at up to ${{notification.listing.rent_range}}/mo.</p>
 					</div>
 
-					<div>
-						<button class='button' ui-sref="{{notification.action1}}" ng-show='notification.action1'>View Lisiting</button>
+					<div class="notification-actions">
+						<button class='button dark hollow' ui-sref="{{notification.action1}}" ng-show='notification.action1'>View Lisiting</button>
+						<button class='button dark' ui-sref="{{notification.action1}}" ng-show='notification.action1'>View Lisiting</button>
 					</div>
 
 				</div>

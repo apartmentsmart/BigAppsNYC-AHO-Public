@@ -220,7 +220,7 @@ $block-grid-max-size: 6 !default;
   display: flex;
   height: 100vh;
   position: relative;
-  overflow: hidden;
+  /*overflow: hidden;*/
   backface-visibility: hidden;
 
   @include grid-size($size);
@@ -311,7 +311,7 @@ $block-grid-max-size: 6 !default;
   &.shrink { @include grid-size(shrink); }
 
   // Prevent an element from scrolling
-  &.noscroll { overflow: hidden; }
+  &.noscroll { /*overflow: hidden;*/ }
 }
 
 @include exports(grid) {

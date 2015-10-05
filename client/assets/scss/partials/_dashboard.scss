@@ -3,6 +3,10 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
+
+	.fa {
+		font-size: 0.8rem;
+	}
 }
 
 .dash-item {
@@ -22,11 +26,16 @@
 		padding-top: 20px;
 	}
 
+	.grid-content {
+		overflow: initial;
+	}
+
 }
 
 .dash-item-title {
 	display: flex;
 	justify-content: space-between;
+	align-items: flex-start;
 }
 
 
@@ -45,4 +54,29 @@
 
 .dash-item-update .dash-item-container {
 	background-color: $af-blue;
+}
+
+.notification-title {
+	/*flex-grow: 3;*/
+	font-size: 1.2rem;
+}
+.notification-section {
+
+}
+
+.notification-actions {
+	display: flex;
+	justify-content: space-between;
+}
+
+.followed-notification {
+	background-color: darken($pink,10%);
+}
+
+.matched-notification {
+	background-color: darken($af-blue,1%);
+}
+
+.featured-notification {
+	background-color: darken($af-green,5%);
 }
