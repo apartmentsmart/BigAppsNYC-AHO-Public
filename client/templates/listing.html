@@ -220,21 +220,29 @@ animationOut: slideOutRight
 				<div class="small-12 medium-6 grid-content">
 					<label>What do you know about this property?</label>
 					<br>
-					<input id="checkbox1" type="checkbox"><label for="checkbox1">Bedrooms</label>
+					<input id="checkbox1" type="checkbox" ng-model="checkedBedrooms"><label for="checkbox1">Bedrooms</label>
 					<br><br>
-					<input id="checkbox2" type="checkbox"><label for="checkbox2">Rent</label>
+					<input id="checkbox2" type="checkbox" ng-model="checkedRent"><label for="checkbox2">Rent</label>
 					<br><br>
-					<input id="checkbox3" type="checkbox"><label for="checkbox3">Code Violations</label>
+					<input id="checkbox3" type="checkbox" ng-model="checkedViolations"><label for="checkbox3">Code Violations</label>
 				</div>
 
 				<br>
 
 				<label>
-				<input type="text" placeholder="Bedroom Infomation">
+					<input type="text" placeholder="Bedroom Infomation" ng-show="checkedBedrooms">
 				</label>
 
-				</div>
+				<label>
+					<input type="text" placeholder="Rent Infomation" ng-show="checkedRent">
+				</label>
+
+				<label>
+					<input type="text" placeholder="Violations Infomation" ng-show="checkedViolations">
+				</label>
+
 			</form>
+			</div>
 		</div>
 	</div>
 </div>
