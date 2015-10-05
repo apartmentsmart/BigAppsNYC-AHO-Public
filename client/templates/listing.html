@@ -67,7 +67,7 @@ animationOut: slideOutRight
 					<div id="rent" class="monthly-rent listing-section">
 						<div class="listing-heading">
 							<i class="fa fa-money"></i> Monthly Rent
-							<div class="suggest-edit">Suggest Edit</div>
+							<div class="suggest-edit" zf-open="suggest-edit">Suggest Edit</div>
 						</div>
 						<div class="listing-body">
 							<p>
@@ -79,12 +79,24 @@ animationOut: slideOutRight
 					<div id="bedrooms" class="bedrooms listing-section">
 						<div class="listing-heading">
 							<i class="fa fa-bed"></i> Bedrooms
-							<div class="suggest-edit">Suggest Edit</div>
+							<div class="suggest-edit" zf-open="suggest-edit">Suggest Edit</div>
 						</div>
 						<div class="listing-body">
 							<p>
 								There are one, two, and three bedroom apartments available at this address. The number of bedrooms you need are often dependant on the size of your household.
 							</p>
+							<table class="bedroom-table">
+								<tr class="bedroom-table-heading">
+									<td># of Units</td>
+									<td>Bedrooms</td>
+									<td>Max Rent</td>
+								</tr>
+								<tr ng-repeat="unit in listing.units" class="bedroom-table-body">
+									<td><span class="badge">{{unit.count}}</span></td>
+									<td>{{unit.name}}</td>
+									<td>${{unit.max_rent}}</td>
+								</tr>
+							</table>
 						</div>
 					</div>
 
@@ -149,7 +161,7 @@ animationOut: slideOutRight
 					<div id="violations" class="violations listing-section">
 						<div class="listing-heading">
 							<i class="fa fa-chain-broken"></i> Code Violations
-							<div class="suggest-edit">Suggest Edit</div>
+							<div class="suggest-edit" zf-open="suggest-edit">Suggest Edit</div>
 						</div>
 						<div class="listing-body">
 							<p>
@@ -197,6 +209,35 @@ animationOut: slideOutRight
 		</div> <!-- End listing-content -->
     </div> <!-- End ng-repeat -->
 </div> <!-- End listingController -->
+
+<div zf-modal="" id="suggest-edit" class="collapse">
+	<div class="grid-block vertical">
+		<div class="primary title-bar">
+			<span zf-close="" class="right"><a>Done</a></span>
+		</div>
+		<div class="grid-content padding" style="padding-top: 1rem;">
+			<form>
+				<div class="small-12 medium-6 grid-content">
+					<label>What do you know about this property?</label>
+					<br>
+					<input id="checkbox1" type="checkbox"><label for="checkbox1">Bedrooms</label>
+					<br><br>
+					<input id="checkbox2" type="checkbox"><label for="checkbox2">Rent</label>
+					<br><br>
+					<input id="checkbox3" type="checkbox"><label for="checkbox3">Code Violations</label>
+				</div>
+
+				<br>
+
+				<label>
+				<input type="text" placeholder="Bedroom Infomation">
+				</label>
+
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
  
 
 

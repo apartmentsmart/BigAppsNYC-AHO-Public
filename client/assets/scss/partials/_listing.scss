@@ -276,5 +276,22 @@
 }
 
 
+.bedroom-table {
+	border: 0 !important;
+	width: 100%;
+
+	tr {
+	    background: transparent !important;
+	}
+
+	.bedroom-table-heading {
+		border-bottom: 1px solid $af-grey;
+	}
+
+	.bedroom-table-body {
+
+	}
+}
+
 
 

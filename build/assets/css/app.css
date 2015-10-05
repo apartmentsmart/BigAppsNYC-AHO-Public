@@ -7392,6 +7392,14 @@ Primary style
   font-size: 0.7rem;
   padding-top: 10px; }
 
+.bedroom-table {
+  border: 0 !important;
+  width: 100%; }
+  .bedroom-table tr {
+    background: transparent !important; }
+  .bedroom-table .bedroom-table-heading {
+    border-bottom: 1px solid #444; }
+
 /* Login & Signup */
 .login {
   background: url("../img/building.jpeg");
