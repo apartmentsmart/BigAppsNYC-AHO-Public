@@ -22,7 +22,7 @@ animationOut: slideOutLeft
 
 	   <div ng-controller="dashController">
 
-	<div class="dash-item" ng-repeat="notification in notifications" ng-click="notification.expand = !notification.expand">
+	<div class="dash-item" ng-repeat="notification in notifications" ng-hide="notification.dismissed==1 || notification.archived==1"  ng-click="notification.expand = !notification.expand">
 		<div class="dash-item-container {{notification.color_class}}">
 			<div class="dash-item-title grid-block">
 				<div class="grid-content small-1">
@@ -52,12 +52,19 @@ animationOut: slideOutLeft
 						<p>{{notification.listing.room_range}} bedrooms at up to ${{notification.listing.rent_range}}/mo.</p>
 					</div>
 
-					<div class="notification-actions">
-						<button class='button dark hollow' ui-sref="{{notification.action1}}" ng-show='notification.action1'>View Lisiting</button>
-						<button class='button dark' ui-sref="{{notification.action1}}" ng-show='notification.action1'>View Lisiting</button>
-					</div>
 
 				</div>
+
+
+					<div class="notification-actions">
+
+
+					<!-- see documentation in app.js ~line 340-->
+					<action-button controller-params='{{notification.action2}}' class='hollow' controller-function="handleNotification" action-text="{{notification.action2_text}}">{{notification.action2_text}}</action-button>
+
+					<action-button ng-show="notification.action1" uiAction='{{notification.action1}}' action-text="{{notification.action1_text}}">{{notification.action1_text}}</action-button>
+
+					</div>
 				<div ng-show='notification.notification_type_id != 1' class='notification-context'>{{notification.context}}</div>
 			</div>
 		</div>
