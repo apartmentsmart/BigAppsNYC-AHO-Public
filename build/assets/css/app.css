@@ -3013,7 +3013,7 @@ meter {
       -ms-flex-order: 1;
           order: 1; }
 
-.small-offset-1 {
+.small-offset-1, .notification-section {
   margin-left: 8.33333%; }
 
 .small-up-1 {
@@ -3262,7 +3262,7 @@ meter {
         -ms-flex: 0 0 10%;
             flex: 0 0 10%; }
 
-.small-11, .listing-section {
+.small-11, .listing-section, .notification-section {
   -webkit-flex: 0 0 91.66667%;
       -ms-flex: 0 0 91.66667%;
           flex: 0 0 91.66667%;
@@ -7452,7 +7452,7 @@ Primary style
       -ms-flex-pack: center;
           justify-content: center; }
   .dashboard .fa {
-    font-size: 0.8rem; }
+    font-size: 1.7rem; }
 
 .dash-item {
   padding: 5px 10px;
@@ -7462,7 +7462,8 @@ Primary style
     font-weight: 300; }
   .dash-item .dash-item-body {
     font-weight: 400;
-    padding-top: 20px; }
+    padding-top: 40px;
+    padding-bottom: 20px; }
   .dash-item .grid-content {
     overflow: initial; }
 
@@ -7476,6 +7477,17 @@ Primary style
   -webkit-align-items: flex-start;
       -ms-flex-align: start;
           align-items: flex-start; }
+  .dash-item-title .grid-content {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch; }
+  .dash-item-title .fa-angle-right {
+    -webkit-align-self: flex-start;
+        -ms-flex-item-align: start;
+            align-self: flex-start; }
 
 .dash-item-container {
   background-color: #444;
@@ -7492,15 +7504,19 @@ Primary style
 
 .notification-title {
   /*flex-grow: 3;*/
-  font-size: 1.2rem; }
+  font-size: 1rem; }
 
 .notification-actions {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between; }
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+.site-notification .button.hollow.dark {
+  border: 1px solid #0093d8;
+  color: #0093d8; }
 
 .followed-notification {
   background-color: #d21262; }
@@ -7510,6 +7526,9 @@ Primary style
 
 .featured-notification {
   background-color: #32a141; }
+
+.arrow-expand {
+  padding-right: 30px; }
 
 /********************************
 		Material Design
