@@ -7,6 +7,10 @@
 	box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
 	margin: 15px 0;
 
+	.grid-content{
+		overflow-y: visible !important;
+	}
+
 	/******************************************
 					Card Header
 	*******************************************/

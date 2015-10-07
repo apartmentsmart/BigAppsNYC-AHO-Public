@@ -1,4 +1,17 @@
 /******************************************
+		Generic Listing Styles
+*******************************************/
+
+
+.suggest-edit{
+	display: flex;
+	align-items: center;
+	float: right;
+	font-size: 0.7rem;
+	padding-top: 10px;
+}
+
+/******************************************
 	Hero Section - Title / Borough / Rating
 *******************************************/
 
@@ -44,6 +57,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
+	text-align: center;
 
 	i {
 		font-size: 5rem;
@@ -123,6 +137,15 @@
 		i {
 			padding-right: 10px;
 		}
+
+		/*iphone 6*/
+		@media (max-width: 375px) {
+			font-size: 1.8rem;
+		}
+		/* iphone 4,5 */
+		@media (max-width: 320px) {
+			font-size: 1.4rem;
+		}
 	}
 
 }
@@ -132,6 +155,23 @@
 }
 
 
+
+.bedroom-table {
+	border: 0 !important;
+	width: 100%;
+
+	tr {
+	    background: transparent !important;
+	}
+
+	.bedroom-table-heading {
+		border-bottom: 1px solid $af-grey;
+	}
+
+	.bedroom-table-body {
+
+	}
+}
 
 .cta {
 	@extend .small-8;
@@ -223,7 +263,7 @@
 }
 
 /******************************************
-			Map Container
+				Map
 *******************************************/
 
 .map-container {
@@ -246,52 +286,48 @@
 }
 
 
-
-
-
-
-
 .map-sheet {
 	height: 100%;
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-.suggest-edit{
+.mapToggles {
+	position: fixed;
+	top: 2%;
+	right: 2%;
+	z-index: 999;
 	display: flex;
-	align-items: center;
-	float: right;
-	font-size: 0.7rem;
-	padding-top: 10px;
+}
+
+.largeMap {
+   position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        zIndex: 999;
+        height: 100% !important;
+}
+
+.toggle-full-map {
+	position: absolute;
+	top: 3%;
+	right: 0;
+	z-index: 1;
 }
 
 
-.bedroom-table {
-	border: 0 !important;
-	width: 100%;
 
-	tr {
-	    background: transparent !important;
-	}
 
-	.bedroom-table-heading {
-		border-bottom: 1px solid $af-grey;
-	}
 
-	.bedroom-table-body {
 
-	}
-}
+
+
+
+
+
+
 
 
 

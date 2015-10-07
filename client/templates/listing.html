@@ -5,33 +5,7 @@ animationIn: slideInLeft
 animationOut: slideOutRight
 ---
 <style>
-.listingCard .grid-content{ overflow-y: visible !important;}
-.feature-data{
 
-	text-align: center;
-}
-
-.mapToggles{
-	position: fixed;
-	top: 0;
-	right: 0;
-	left: 0;
-	z-index: 999;
-	height: 7%;
-	background: #FFF;
-	display: flex;
-}
-
-.largeMap{
-   position: fixed;
-        top: 7%;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        zIndex: 999;
-        height: 93% !important;
-
-}
 </style>
 <div class="grid-container resultsList">
 
@@ -233,24 +207,19 @@ animationOut: slideOutRight
 					</div>
 
 
-					<button class='button' ng-click='toggleFullMap(1)'>Full Screen Map</button>
-
 					<div class="map-container listing-section">
+
 						<div class="google-maps grid-block">
 
+							<div class='button secondary toggle-full-map' ng-click='toggleFullMap(1)' ng-hide="mapView == 1" ><i class="fa fa-arrows-alt fa-2x"></i></div>
+
 							<div class='mapToggles' ng-show="mapView == 1">
-								
-								<div class='mapToggle'>
-									<button ng-click="toggleFullMap(0)" class='button'>Back</button>
-								</div>								
-								<div class='mapToggle'>
-									<button class='button' ng-click='toggleSchools(!showSchools);'>Schools</button>
-								</div>
-								<!--								
-								<div class='mapToggle'>
-									<button class='button'>Lifestyle</button>
-								</div>
-								-->
+
+								<ul class="button-group secondary small">
+									<li><a ng-click='toggleSchools(!showSchools);'>Show Schools</a></li>
+									<li><a ng-click="toggleFullMap(0)">Back to Listing</a></li>
+								</ul>
+									
 							</div>
 
 							<map id='mainMap' ng-class="{'largeMap': mapView == 1}" center="{{listing.latitude}}, {{listing.longitude}}" zoom="18" style="width:100%;">
