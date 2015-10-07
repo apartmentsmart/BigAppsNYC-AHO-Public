@@ -14,7 +14,7 @@
 
 
 
-	   <div ng-controller="dashController">
+	<div ng-controller="dashController">
 
 	<div class="dash-item" ng-repeat="notification in notifications" ng-hide="notification.dismissed==1 || notification.archived==1"  ng-click="notification.expand = !notification.expand">
 		<div class="dash-item-container {{notification.color_class}}">
@@ -22,14 +22,11 @@
 				<div class="grid-content small-1">
 					<i class="fa {{notification.icon_class}}"></i>
 				</div>
-				<div class="grid-content small-9 notification-title">
+				<div class="grid-content small-10 notification-title">
 					<div>
 						{{notification.title}}
 						{{notification.listing.name}}
 					</div>
-				</div>
-				<div class="grid-content small-1 arrow-expand">
-					<i class="fa" ng-class="{'fa-angle-right': !notification.expand, '' : notification.expand}"></i>
 				</div>
 			</div>
 			<div class="dash-item-body grid-content" ng-show="notification.expand">
