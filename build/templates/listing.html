@@ -168,9 +168,14 @@
 							<div class="suggest-edit" zf-open="suggest-edit">Suggest Edit</div>
 						</div>
 						<div class="listing-body">
-							<p>
-								This listing does not currently have any violations pending. This listing also has historically been in good standing with city code.
-							</p>
+							
+							<div ng-repeat='violation in listing.violations'>
+								<h3><i class='fa  fa-exclamation-triangle'></i> Violation On {{violation.NOVIssuedDate}}</h3>
+								<h5>Status: {{violation.CurrentStatus}}</h5>
+								<h5>Correct By: {{violation.OriginalCorrectByDate}}</h5>
+								<p>{{violation.NOVDescription}}</p>
+							</div>
+
 						</div>
 					</div>
 
