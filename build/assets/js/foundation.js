@@ -39270,6 +39270,178 @@ angular.module('markdown', [])
 
 })();
 
+(function() {
+  'use strict';
+
+  angular.module('foundation.common', ['foundation.core'])
+    .directive('zfClose', zfClose)
+    .directive('zfOpen', zfOpen)
+    .directive('zfToggle', zfToggle)
+    .directive('zfEscClose', zfEscClose)
+    .directive('zfSwipeClose', zfSwipeClose)
+    .directive('zfHardToggle', zfHardToggle)
+  ;
+
+  zfClose.$inject = ['FoundationApi'];
+
+  function zfClose(foundationApi) {
+    var directive = {
+      restrict: 'A',
+      link: link
+    };
+
+    return directive;
+
+    function link(scope, element, attrs) {
+      var targetId = '';
+      if (attrs.zfClose) {
+        targetId = attrs.zfClose;
+      } else {
+        var parentElement= false;
+        var tempElement = element.parent();
+        //find parent modal
+        while(parentElement === false) {
+          if(tempElement[0].nodeName == 'BODY') {
+            parentElement = '';
+          }
+
+          if(typeof tempElement.attr('zf-closable') !== 'undefined' && tempElement.attr('zf-closable') !== false) {
+            parentElement = tempElement;
+          }
+
+          tempElement = tempElement.parent();
+        }
+        targetId = parentElement.attr('id');
+      }
+
+      element.on('click', function(e) {
+        foundationApi.publish(targetId, 'close');
+        e.preventDefault();
+      });
+    }
+  }
+
+  zfOpen.$inject = ['FoundationApi'];
+
+  function zfOpen(foundationApi) {
+    var directive = {
+      restrict: 'A',
+      link: link
+    };
+
+    return directive;
+
+    function link(scope, element, attrs) {
+      element.on('click', function(e) {
+        foundationApi.publish(attrs.zfOpen, 'open');
+        e.preventDefault();
+      });
+    }
+  }
+
+  zfToggle.$inject = ['FoundationApi'];
+
+  function zfToggle(foundationApi) {
+    var directive = {
+      restrict: 'A',
+      link: link
+    }
+
+    return directive;
+
+    function link(scope, element, attrs) {
+      element.on('click', function(e) {
+        foundationApi.publish(attrs.zfToggle, 'toggle');
+        e.preventDefault();
+      });
+    }
+  }
+
+  zfEscClose.$inject = ['FoundationApi'];
+
+  function zfEscClose(foundationApi) {
+    var directive = {
+      restrict: 'A',
+      link: link
+    };
+
+    return directive;
+
+    function link(scope, element, attrs) {
+      element.on('keyup', function(e) {
+        if (e.keyCode === 27) {
+          foundationApi.closeActiveElements();
+        }
+        e.preventDefault();
+      });
+    }
+  }
+
+  zfSwipeClose.$inject = ['FoundationApi'];
+
+  function zfSwipeClose(foundationApi) {
+    var directive = {
+      restrict: 'A',
+      link: link
+    };
+    return directive;
+
+    function link($scope, element, attrs) {
+      var swipeDirection;
+      var hammerElem;
+      if (Hammer) {
+        hammerElem = new Hammer(element[0]);
+        // set the options for swipe (to make them a bit more forgiving in detection)
+        hammerElem.get('swipe').set({
+          direction: Hammer.DIRECTION_ALL,
+          threshold: 5, // this is how far the swipe has to travel
+          velocity: 0.5 // and this is how fast the swipe must travel
+        });
+      }
+      // detect what direction the directive is pointing
+      switch (attrs.zfSwipeClose) {
+        case 'right':
+          swipeDirection = 'swiperight';
+          break;
+        case 'left':
+          swipeDirection = 'swipeleft';
+          break;
+        case 'up':
+          swipeDirection = 'swipeup';
+          break;
+        case 'down':
+          swipeDirection = 'swipedown';
+          break;
+        default:
+          swipeDirection = 'swipe';
+      }
+      hammerElem.on(swipeDirection, function() {
+        foundationApi.publish(attrs.id, 'close');
+      });
+    }
+  }
+
+  zfHardToggle.$inject = ['FoundationApi'];
+
+  function zfHardToggle(foundationApi) {
+    var directive = {
+      restrict: 'A',
+      link: link
+    };
+
+    return directive;
+
+    function link(scope, element, attrs) {
+      element.on('click', function(e) {
+        foundationApi.closeActiveElements({exclude: attrs.zfHardToggle});
+        foundationApi.publish(attrs.zfHardToggle, 'toggle');
+        e.preventDefault();
+      });
+    }
+  }
+
+})();
+
 (function () {
   'use strict';
 
@@ -39451,273 +39623,6 @@ angular.module('markdown', [])
             }
           });
         }
-      }
-    }
-  }
-
-})();
-
-(function() {
-  'use strict';
-
-  angular.module('foundation.common', ['foundation.core'])
-    .directive('zfClose', zfClose)
-    .directive('zfOpen', zfOpen)
-    .directive('zfToggle', zfToggle)
-    .directive('zfEscClose', zfEscClose)
-    .directive('zfSwipeClose', zfSwipeClose)
-    .directive('zfHardToggle', zfHardToggle)
-  ;
-
-  zfClose.$inject = ['FoundationApi'];
-
-  function zfClose(foundationApi) {
-    var directive = {
-      restrict: 'A',
-      link: link
-    };
-
-    return directive;
-
-    function link(scope, element, attrs) {
-      var targetId = '';
-      if (attrs.zfClose) {
-        targetId = attrs.zfClose;
-      } else {
-        var parentElement= false;
-        var tempElement = element.parent();
-        //find parent modal
-        while(parentElement === false) {
-          if(tempElement[0].nodeName == 'BODY') {
-            parentElement = '';
-          }
-
-          if(typeof tempElement.attr('zf-closable') !== 'undefined' && tempElement.attr('zf-closable') !== false) {
-            parentElement = tempElement;
-          }
-
-          tempElement = tempElement.parent();
-        }
-        targetId = parentElement.attr('id');
-      }
-
-      element.on('click', function(e) {
-        foundationApi.publish(targetId, 'close');
-        e.preventDefault();
-      });
-    }
-  }
-
-  zfOpen.$inject = ['FoundationApi'];
-
-  function zfOpen(foundationApi) {
-    var directive = {
-      restrict: 'A',
-      link: link
-    };
-
-    return directive;
-
-    function link(scope, element, attrs) {
-      element.on('click', function(e) {
-        foundationApi.publish(attrs.zfOpen, 'open');
-        e.preventDefault();
-      });
-    }
-  }
-
-  zfToggle.$inject = ['FoundationApi'];
-
-  function zfToggle(foundationApi) {
-    var directive = {
-      restrict: 'A',
-      link: link
-    }
-
-    return directive;
-
-    function link(scope, element, attrs) {
-      element.on('click', function(e) {
-        foundationApi.publish(attrs.zfToggle, 'toggle');
-        e.preventDefault();
-      });
-    }
-  }
-
-  zfEscClose.$inject = ['FoundationApi'];
-
-  function zfEscClose(foundationApi) {
-    var directive = {
-      restrict: 'A',
-      link: link
-    };
-
-    return directive;
-
-    function link(scope, element, attrs) {
-      element.on('keyup', function(e) {
-        if (e.keyCode === 27) {
-          foundationApi.closeActiveElements();
-        }
-        e.preventDefault();
-      });
-    }
-  }
-
-  zfSwipeClose.$inject = ['FoundationApi'];
-
-  function zfSwipeClose(foundationApi) {
-    var directive = {
-      restrict: 'A',
-      link: link
-    };
-    return directive;
-
-    function link($scope, element, attrs) {
-      var swipeDirection;
-      var hammerElem;
-      if (Hammer) {
-        hammerElem = new Hammer(element[0]);
-        // set the options for swipe (to make them a bit more forgiving in detection)
-        hammerElem.get('swipe').set({
-          direction: Hammer.DIRECTION_ALL,
-          threshold: 5, // this is how far the swipe has to travel
-          velocity: 0.5 // and this is how fast the swipe must travel
-        });
-      }
-      // detect what direction the directive is pointing
-      switch (attrs.zfSwipeClose) {
-        case 'right':
-          swipeDirection = 'swiperight';
-          break;
-        case 'left':
-          swipeDirection = 'swipeleft';
-          break;
-        case 'up':
-          swipeDirection = 'swipeup';
-          break;
-        case 'down':
-          swipeDirection = 'swipedown';
-          break;
-        default:
-          swipeDirection = 'swipe';
-      }
-      hammerElem.on(swipeDirection, function() {
-        foundationApi.publish(attrs.id, 'close');
-      });
-    }
-  }
-
-  zfHardToggle.$inject = ['FoundationApi'];
-
-  function zfHardToggle(foundationApi) {
-    var directive = {
-      restrict: 'A',
-      link: link
-    };
-
-    return directive;
-
-    function link(scope, element, attrs) {
-      element.on('click', function(e) {
-        foundationApi.closeActiveElements({exclude: attrs.zfHardToggle});
-        foundationApi.publish(attrs.zfHardToggle, 'toggle');
-        e.preventDefault();
-      });
-    }
-  }
-
-})();
-
-(function() {
-  'use strict';
-
-  angular.module('foundation.interchange', ['foundation.core', 'foundation.mediaquery'])
-    .directive('zfInterchange', zfInterchange)
-  ;
-
-  zfInterchange.$inject = [ '$compile', '$http', '$templateCache', 'FoundationApi', 'FoundationMQ'];
-
-  function zfInterchange($compile, $http, $templateCache, foundationApi, foundationMQ) {
-
-    var directive = {
-      restrict: 'EA',
-      transclude: 'element',
-      scope: {
-        position: '@'
-      },
-      replace: true,
-      template: '<div></div>',
-      link: link
-    };
-
-    return directive;
-
-    function link(scope, element, attrs, ctrl, transclude) {
-      var childScope, current, scenarios, innerTemplates;
-
-      var globalQueries = foundationMQ.getMediaQueries();
-
-      //setup
-      foundationApi.subscribe('resize', function(msg) {
-        transclude(function(clone, newScope) {
-          if(!scenarios || !innerTemplates) {
-            collectInformation(clone);
-          }
-
-          var ruleMatches = foundationMQ.match(scenarios);
-          var scenario = ruleMatches.length === 0 ? null : scenarios[ruleMatches[0].ind];
-
-          //this could use some love
-          if(scenario && checkScenario(scenario)) {
-            var compiled;
-
-            if(childScope) {
-              childScope.$destroy();
-              childScope = null;
-            }
-
-            if(typeof scenario.templ !== 'undefined') {
-              childScope = newScope;
-
-              //temp container
-              var tmp = document.createElement('div');
-              tmp.appendChild(innerTemplates[scenario.templ][0]);
-
-              element.html(tmp.innerHTML);
-              $compile(element.contents())(childScope);
-              current = scenario;
-            } else {
-              var loader = templateLoader(scenario.src);
-              loader.success(function(html) {
-                childScope = newScope;
-                element.html(html);
-              }).then(function(){
-                $compile(element.contents())(childScope);
-                current = scenario;
-              });
-            }
-          }
-        });
-
-      });
-
-      //init
-      foundationApi.publish('resize', 'initial resize');
-
-      function templateLoader(templateUrl) {
-        return $http.get(templateUrl, {cache: $templateCache});
-      }
-
-      function collectInformation(el) {
-        var data = foundationMQ.collectScenariosFromElement(el);
-
-        scenarios = data.scenarios;
-        innerTemplates = data.templates;
-      }
-
-      function checkScenario(scenario) {
-        return !current || current !== scenario;
       }
     }
   }
@@ -40012,6 +39917,101 @@ angular.module('markdown', [])
 
     }
 
+  }
+
+})();
+
+(function() {
+  'use strict';
+
+  angular.module('foundation.interchange', ['foundation.core', 'foundation.mediaquery'])
+    .directive('zfInterchange', zfInterchange)
+  ;
+
+  zfInterchange.$inject = [ '$compile', '$http', '$templateCache', 'FoundationApi', 'FoundationMQ'];
+
+  function zfInterchange($compile, $http, $templateCache, foundationApi, foundationMQ) {
+
+    var directive = {
+      restrict: 'EA',
+      transclude: 'element',
+      scope: {
+        position: '@'
+      },
+      replace: true,
+      template: '<div></div>',
+      link: link
+    };
+
+    return directive;
+
+    function link(scope, element, attrs, ctrl, transclude) {
+      var childScope, current, scenarios, innerTemplates;
+
+      var globalQueries = foundationMQ.getMediaQueries();
+
+      //setup
+      foundationApi.subscribe('resize', function(msg) {
+        transclude(function(clone, newScope) {
+          if(!scenarios || !innerTemplates) {
+            collectInformation(clone);
+          }
+
+          var ruleMatches = foundationMQ.match(scenarios);
+          var scenario = ruleMatches.length === 0 ? null : scenarios[ruleMatches[0].ind];
+
+          //this could use some love
+          if(scenario && checkScenario(scenario)) {
+            var compiled;
+
+            if(childScope) {
+              childScope.$destroy();
+              childScope = null;
+            }
+
+            if(typeof scenario.templ !== 'undefined') {
+              childScope = newScope;
+
+              //temp container
+              var tmp = document.createElement('div');
+              tmp.appendChild(innerTemplates[scenario.templ][0]);
+
+              element.html(tmp.innerHTML);
+              $compile(element.contents())(childScope);
+              current = scenario;
+            } else {
+              var loader = templateLoader(scenario.src);
+              loader.success(function(html) {
+                childScope = newScope;
+                element.html(html);
+              }).then(function(){
+                $compile(element.contents())(childScope);
+                current = scenario;
+              });
+            }
+          }
+        });
+
+      });
+
+      //init
+      foundationApi.publish('resize', 'initial resize');
+
+      function templateLoader(templateUrl) {
+        return $http.get(templateUrl, {cache: $templateCache});
+      }
+
+      function collectInformation(el) {
+        var data = foundationMQ.collectScenariosFromElement(el);
+
+        scenarios = data.scenarios;
+        innerTemplates = data.templates;
+      }
+
+      function checkScenario(scenario) {
+        return !current || current !== scenario;
+      }
+    }
   }
 
 })();
@@ -40540,6 +40540,151 @@ angular.module('markdown', [])
 (function() {
   'use strict';
 
+  angular.module('foundation.panel', ['foundation.core'])
+    .directive('zfPanel', zfPanel)
+    .service('FoundationPanel', FoundationPanel)
+  ;
+
+  FoundationPanel.$inject = ['FoundationApi'];
+
+  function FoundationPanel(foundationApi) {
+    var service    = {};
+
+    service.activate = activate;
+    service.deactivate = deactivate;
+
+    return service;
+
+    //target should be element ID
+    function activate(target) {
+      foundationApi.publish(target, 'show');
+    }
+
+    //target should be element ID
+    function deactivate(target) {
+      foundationApi.publish(target, 'hide');
+    }
+  }
+
+  zfPanel.$inject = ['FoundationApi', '$window'];
+
+  function zfPanel(foundationApi, $window) {
+    var directive = {
+      restrict: 'EA',
+      templateUrl: 'components/panel/panel.html',
+      transclude: true,
+      scope: {
+        position: '@?'
+      },
+      replace: true,
+      compile: compile
+    };
+
+    return directive;
+
+    function compile(tElement, tAttrs, transclude) {
+      var type = 'panel';
+
+      return {
+        pre: preLink,
+        post: postLink
+      };
+
+      function preLink(scope, iElement, iAttrs, controller) {
+        iAttrs.$set('zf-closable', type);
+        scope.position = scope.position || 'left';
+        scope.positionClass = 'panel-' + scope.position;
+      }
+
+      function postLink(scope, element, attrs) {
+        scope.active = false;
+        var animationIn, animationOut;
+        var globalQueries = foundationApi.getSettings().mediaQueries;
+
+        //urgh, there must be a better way
+        if(scope.position === 'left') {
+          animationIn  = attrs.animationIn || 'slideInRight';
+          animationOut = attrs.animationOut || 'slideOutLeft';
+        } else if (scope.position === 'right') {
+          animationIn  = attrs.animationIn || 'slideInLeft';
+          animationOut = attrs.animationOut || 'slideOutRight';
+        } else if (scope.position === 'top') {
+          animationIn  = attrs.animationIn || 'slideInDown';
+          animationOut = attrs.animationOut || 'slideOutUp';
+        } else if (scope.position === 'bottom') {
+          animationIn  = attrs.animationIn || 'slideInUp';
+          animationOut = attrs.animationOut || 'slideOutBottom';
+        }
+
+
+        //setup
+        foundationApi.subscribe(attrs.id, function(msg) {
+          var panelPosition = $window.getComputedStyle(element[0]).getPropertyValue("position");
+
+          // patch to prevent panel animation on larger screen devices
+          if (panelPosition !== 'absolute') {
+            return;
+          }
+
+          if(msg == 'show' || msg == 'open') {
+            scope.show();
+          } else if (msg == 'close' || msg == 'hide') {
+            scope.hide();
+          } else if (msg == 'toggle') {
+            scope.toggle();
+          }
+          
+          if (!scope.$root.$$phase) {
+            scope.$apply();
+          }
+
+          return;
+        });
+
+        scope.hide = function() {
+          if(scope.active){
+            scope.active = false;
+            foundationApi.animate(element, scope.active, animationIn, animationOut);
+          }
+
+          return;
+        };
+
+        scope.show = function() {
+          if(!scope.active){
+            scope.active = true;
+            foundationApi.animate(element, scope.active, animationIn, animationOut);
+          }
+
+          return;
+        };
+
+        scope.toggle = function() {
+          scope.active = !scope.active;
+          foundationApi.animate(element, scope.active, animationIn, animationOut);
+          
+          return;
+        };
+
+        element.on('click', function(e) {
+          //check sizing
+          var srcEl = e.srcElement;
+
+          if(!matchMedia(globalQueries.medium).matches && srcEl.href && srcEl.href.length > 0) {
+            //hide element if it can't match at least medium
+            scope.hide();
+            foundationApi.animate(element, scope.active, animationIn, animationOut);
+          }
+        });
+      }
+    }
+  }
+
+})();
+
+(function() {
+  'use strict';
+
   angular.module('foundation.popup', ['foundation.core'])
     .directive('zfPopup', zfPopup)
     .directive('zfPopupToggle', zfPopupToggle)
@@ -41003,151 +41148,6 @@ angular.module('markdown', [])
             el.addClass('is-active');
           }
 
-        });
-      }
-    }
-  }
-
-})();
-
-(function() {
-  'use strict';
-
-  angular.module('foundation.panel', ['foundation.core'])
-    .directive('zfPanel', zfPanel)
-    .service('FoundationPanel', FoundationPanel)
-  ;
-
-  FoundationPanel.$inject = ['FoundationApi'];
-
-  function FoundationPanel(foundationApi) {
-    var service    = {};
-
-    service.activate = activate;
-    service.deactivate = deactivate;
-
-    return service;
-
-    //target should be element ID
-    function activate(target) {
-      foundationApi.publish(target, 'show');
-    }
-
-    //target should be element ID
-    function deactivate(target) {
-      foundationApi.publish(target, 'hide');
-    }
-  }
-
-  zfPanel.$inject = ['FoundationApi', '$window'];
-
-  function zfPanel(foundationApi, $window) {
-    var directive = {
-      restrict: 'EA',
-      templateUrl: 'components/panel/panel.html',
-      transclude: true,
-      scope: {
-        position: '@?'
-      },
-      replace: true,
-      compile: compile
-    };
-
-    return directive;
-
-    function compile(tElement, tAttrs, transclude) {
-      var type = 'panel';
-
-      return {
-        pre: preLink,
-        post: postLink
-      };
-
-      function preLink(scope, iElement, iAttrs, controller) {
-        iAttrs.$set('zf-closable', type);
-        scope.position = scope.position || 'left';
-        scope.positionClass = 'panel-' + scope.position;
-      }
-
-      function postLink(scope, element, attrs) {
-        scope.active = false;
-        var animationIn, animationOut;
-        var globalQueries = foundationApi.getSettings().mediaQueries;
-
-        //urgh, there must be a better way
-        if(scope.position === 'left') {
-          animationIn  = attrs.animationIn || 'slideInRight';
-          animationOut = attrs.animationOut || 'slideOutLeft';
-        } else if (scope.position === 'right') {
-          animationIn  = attrs.animationIn || 'slideInLeft';
-          animationOut = attrs.animationOut || 'slideOutRight';
-        } else if (scope.position === 'top') {
-          animationIn  = attrs.animationIn || 'slideInDown';
-          animationOut = attrs.animationOut || 'slideOutUp';
-        } else if (scope.position === 'bottom') {
-          animationIn  = attrs.animationIn || 'slideInUp';
-          animationOut = attrs.animationOut || 'slideOutBottom';
-        }
-
-
-        //setup
-        foundationApi.subscribe(attrs.id, function(msg) {
-          var panelPosition = $window.getComputedStyle(element[0]).getPropertyValue("position");
-
-          // patch to prevent panel animation on larger screen devices
-          if (panelPosition !== 'absolute') {
-            return;
-          }
-
-          if(msg == 'show' || msg == 'open') {
-            scope.show();
-          } else if (msg == 'close' || msg == 'hide') {
-            scope.hide();
-          } else if (msg == 'toggle') {
-            scope.toggle();
-          }
-          
-          if (!scope.$root.$$phase) {
-            scope.$apply();
-          }
-
-          return;
-        });
-
-        scope.hide = function() {
-          if(scope.active){
-            scope.active = false;
-            foundationApi.animate(element, scope.active, animationIn, animationOut);
-          }
-
-          return;
-        };
-
-        scope.show = function() {
-          if(!scope.active){
-            scope.active = true;
-            foundationApi.animate(element, scope.active, animationIn, animationOut);
-          }
-
-          return;
-        };
-
-        scope.toggle = function() {
-          scope.active = !scope.active;
-          foundationApi.animate(element, scope.active, animationIn, animationOut);
-          
-          return;
-        };
-
-        element.on('click', function(e) {
-          //check sizing
-          var srcEl = e.srcElement;
-
-          if(!matchMedia(globalQueries.medium).matches && srcEl.href && srcEl.href.length > 0) {
-            //hide element if it can't match at least medium
-            scope.hide();
-            foundationApi.animate(element, scope.active, animationIn, animationOut);
-          }
         });
       }
     }

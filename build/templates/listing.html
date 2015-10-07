@@ -1,31 +1,5 @@
 <style>
-.listingCard .grid-content{ overflow-y: visible !important;}
-.feature-data{
 
-	text-align: center;
-}
-
-.mapToggles{
-	position: fixed;
-	top: 0;
-	right: 0;
-	left: 0;
-	z-index: 999;
-	height: 7%;
-	background: #FFF;
-	display: flex;
-}
-
-.largeMap{
-   position: fixed;
-        top: 7%;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        zIndex: 999;
-        height: 93% !important;
-
-}
 </style>
 <div class="grid-container resultsList">
 
@@ -227,24 +201,19 @@
 					</div>
 
 
-					<button class='button' ng-click='toggleFullMap(1)'>Full Screen Map</button>
-
 					<div class="map-container listing-section">
+
 						<div class="google-maps grid-block">
 
+							<div class='button secondary toggle-full-map' ng-click='toggleFullMap(1)' ng-hide="mapView == 1" ><i class="fa fa-arrows-alt fa-2x"></i></div>
+
 							<div class='mapToggles' ng-show="mapView == 1">
-								
-								<div class='mapToggle'>
-									<button ng-click="toggleFullMap(0)" class='button'>Back</button>
-								</div>								
-								<div class='mapToggle'>
-									<button class='button' ng-click='toggleSchools(!showSchools);'>Schools</button>
-								</div>
-								<!--								
-								<div class='mapToggle'>
-									<button class='button'>Lifestyle</button>
-								</div>
-								-->
+
+								<ul class="button-group secondary small">
+									<li><a ng-click='toggleSchools(!showSchools);'>Show Schools</a></li>
+									<li><a ng-click="toggleFullMap(0)">Back to Listing</a></li>
+								</ul>
+									
 							</div>
 
 							<map id='mainMap' ng-class="{'largeMap': mapView == 1}" center="{{listing.latitude}}, {{listing.longitude}}" zoom="18" style="width:100%;">
@@ -281,27 +250,59 @@
 		<div class="grid-content padding" style="padding-top: 1rem;">
 			<form>
 				<div class="small-12 medium-6 grid-content">
+					
 					<label>What do you know about this property?</label>
-					<br>
-					<input id="checkbox1" type="checkbox" ng-model="checkedBedrooms"><label for="checkbox1">Bedrooms</label>
+					<input id="checkboxName" type="checkbox" ng-model="checkedName"><label for="checkboxName">Name</label>
 					<br><br>
-					<input id="checkbox2" type="checkbox" ng-model="checkedRent"><label for="checkbox2">Rent</label>
+					<input id="checkboxAddress" type="checkbox" ng-model="checkedAddress"><label for="checkboxAddress">Address</label>
 					<br><br>
-					<input id="checkbox3" type="checkbox" ng-model="checkedViolations"><label for="checkbox3">Code Violations</label>
+					<input id="checkboxPhone" type="checkbox" ng-model="checkedPhone"><label for="checkboxPhone">Phone</label>
+					<br><br>
+					<input id="checkboxEmail" type="checkbox" ng-model="checkedEmail"><label for="checkboxEmail">Email</label>
+					<br><br>
+					<input id="checkboxBedrooms" type="checkbox" ng-model="checkedBedrooms"><label for="checkboxBedrooms">Bedrooms</label>
+					<br><br>
+					<input id="checkboxWebsite" type="checkbox" ng-model="checkedWebsite"><label for="checkboxWebsite">Website</label>
+					<br><br>
+					<input id="checkboxViolations" type="checkbox" ng-model="checkedViolations"><label for="checkboxViolations">Code Violations</label>
+					<br><br>
+					<input id="checkboxPhoto" type="checkbox" ng-model="checkedPhoto"><label for="checkboxPhoto">Photo</label>
+					<br><br>
+					
 				</div>
 
 				<br>
 
 				<label>
-					<input type="text" placeholder="Bedroom Infomation" ng-show="checkedBedrooms">
+					<input type="text" placeholder="Name" ng-show="checkedName">
 				</label>
 
 				<label>
-					<input type="text" placeholder="Rent Infomation" ng-show="checkedRent">
+					<input type="text" placeholder="Address" ng-show="checkedAddress">
 				</label>
 
 				<label>
-					<input type="text" placeholder="Violations Infomation" ng-show="checkedViolations">
+					<input type="text" placeholder="Phone Number" ng-show="checkedPhone">
+				</label>
+
+				<label>
+					<input type="text" placeholder="Email Address" ng-show="checkedEmail">
+				</label>
+
+				<label>
+					<input type="text" placeholder="Bedrooms" ng-show="checkedBedrooms">
+				</label>
+
+				<label>
+					<input type="text" placeholder="Website Infomation" ng-show="checkedWebsite">
+				</label>
+
+				<label>
+					<input type="text" placeholder="Violation Infomation" ng-show="checkedViolations">
+				</label>
+
+				<label>
+					<input type="text" placeholder="Photo" ng-show="checkedPhoto">
 				</label>
 
 			</form>

@@ -7118,6 +7118,8 @@ Primary style
   /******************************************
 		Share Sheet / Actions / Card Footer
 	*******************************************/ }
+  .listingCard .grid-content {
+    overflow-y: visible !important; }
   .listingCard .card-subtitle {
     color: #aaa;
     padding-top: 5px; }
@@ -7192,6 +7194,20 @@ Primary style
 
 /* Single Listing */
 /******************************************
+		Generic Listing Styles
+*******************************************/
+.suggest-edit {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  float: right;
+  font-size: 0.7rem;
+  padding-top: 10px; }
+
+/******************************************
 	Hero Section - Title / Borough / Rating
 *******************************************/
 .hero-section {
@@ -7227,7 +7243,8 @@ Primary style
           flex-wrap: wrap;
   -webkit-justify-content: space-around;
       -ms-flex-pack: distribute;
-          justify-content: space-around; }
+          justify-content: space-around;
+  text-align: center; }
   .feature-data i {
     font-size: 5rem; }
   .feature-data .bedrooms {
@@ -7269,12 +7286,28 @@ Primary style
     font-weight: 200;
     padding-left: 10px;
     padding-bottom: 10px;
-    margin-bottom: 15px; }
+    margin-bottom: 15px;
+    /*iphone 6*/
+    /* iphone 4,5 */ }
     .listing-section .listing-heading i {
       padding-right: 10px; }
+    @media (max-width: 375px) {
+      .listing-section .listing-heading {
+        font-size: 1.8rem; } }
+    @media (max-width: 320px) {
+      .listing-section .listing-heading {
+        font-size: 1.4rem; } }
 
 .monthly-rent i {
   color: #38b449; }
+
+.bedroom-table {
+  border: 0 !important;
+  width: 100%; }
+  .bedroom-table tr {
+    background: transparent !important; }
+  .bedroom-table .bedroom-table-heading {
+    border-bottom: 1px solid #444; }
 
 .cta {
   display: -webkit-flex;
@@ -7362,7 +7395,7 @@ Primary style
     color: #fff; }
 
 /******************************************
-			Map Container
+				Map
 *******************************************/
 .map-container {
   padding: 25px 0 0 0; }
@@ -7381,24 +7414,29 @@ Primary style
 .map-sheet {
   height: 100%; }
 
-.suggest-edit {
+.mapToggles {
+  position: fixed;
+  top: 2%;
+  right: 2%;
+  z-index: 999;
   display: -webkit-flex;
   display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  float: right;
-  font-size: 0.7rem;
-  padding-top: 10px; }
+  display: flex; }
 
-.bedroom-table {
-  border: 0 !important;
-  width: 100%; }
-  .bedroom-table tr {
-    background: transparent !important; }
-  .bedroom-table .bedroom-table-heading {
-    border-bottom: 1px solid #444; }
+.largeMap {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  zIndex: 999;
+  height: 100% !important; }
+
+.toggle-full-map {
+  position: absolute;
+  top: 3%;
+  right: 0;
+  z-index: 1; }
 
 /* Login & Signup */
 .login {
