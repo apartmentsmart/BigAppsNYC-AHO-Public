@@ -28,6 +28,12 @@
 		select, input {
 			height: 4rem;
 			line-height: 1.2rem;
+
+			/*iphone 6*/
+			@media (max-width: 374px) {
+				font-size: 0.7rem;
+			}
+
 		}
 	}
 
@@ -39,6 +45,10 @@
 			font-weight: 300;
 			text-align: center;
 		}
+	}
+
+	option {
+		color: #000;
 	}
 
 }

@@ -255,25 +255,43 @@ animationOut: slideOutRight
 		</div>
 		<div class="grid-content padding" style="padding-top: 1rem;">
 			<form>
-				<div class="small-12 medium-6 grid-content">
+				<div class="small-12 medium-6 grid-content suggestions">
 					
 					<label>What do you know about this property?</label>
-					<input id="checkboxName" type="checkbox" ng-model="checkedName"><label for="checkboxName">Name</label>
-					<br><br>
-					<input id="checkboxAddress" type="checkbox" ng-model="checkedAddress"><label for="checkboxAddress">Address</label>
-					<br><br>
-					<input id="checkboxPhone" type="checkbox" ng-model="checkedPhone"><label for="checkboxPhone">Phone</label>
-					<br><br>
-					<input id="checkboxEmail" type="checkbox" ng-model="checkedEmail"><label for="checkboxEmail">Email</label>
-					<br><br>
-					<input id="checkboxBedrooms" type="checkbox" ng-model="checkedBedrooms"><label for="checkboxBedrooms">Bedrooms</label>
-					<br><br>
-					<input id="checkboxWebsite" type="checkbox" ng-model="checkedWebsite"><label for="checkboxWebsite">Website</label>
-					<br><br>
-					<input id="checkboxViolations" type="checkbox" ng-model="checkedViolations"><label for="checkboxViolations">Code Violations</label>
-					<br><br>
-					<input id="checkboxPhoto" type="checkbox" ng-model="checkedPhoto"><label for="checkboxPhoto">Photo</label>
-					<br><br>
+
+						<div class="grid-block">
+
+							<div class="grid-content suggestion-input">
+								<input id="checkboxName" type="checkbox" ng-model="checkedName" class="small-5"><label for="checkboxName">Name</label>
+							</div>
+
+							<div class="grid-content suggestion-input">
+								<input id="checkboxAddress" type="checkbox" ng-model="checkedAddress" class="small-5"><label for="checkboxAddress">Address</label>
+							</div>
+							
+							<div class="grid-content suggestion-input">
+								<input id="checkboxPhone" type="checkbox" ng-model="checkedPhone" class="small-5"><label for="checkboxPhone">Phone</label>
+							</div>
+							
+							<div class="grid-content suggestion-input">
+								<input id="checkboxEmail" type="checkbox" ng-model="checkedEmail" class="small-5"><label for="checkboxEmail">Email</label>
+							</div>
+							
+							<div class="grid-content suggestion-input">
+								<input id="checkboxBedrooms" type="checkbox" ng-model="checkedBedrooms" class="small-5"><label for="checkboxBedrooms">Bedrooms</label>
+							</div>
+							
+							<div class="grid-content suggestion-input">
+								<input id="checkboxWebsite" type="checkbox" ng-model="checkedWebsite" class="small-5"><label for="checkboxWebsite">Website</label>
+							</div>
+							
+							<div class="grid-content suggestion-input">
+								<input id="checkboxPhoto" type="checkbox" ng-model="checkedPhoto" class="small-5"><label for="checkboxPhoto">Photo</label>
+							</div>
+							
+						</div>
+
+
 					
 				</div>
 
@@ -295,6 +313,7 @@ animationOut: slideOutRight
 					<input type="text" placeholder="Email Address" ng-show="checkedEmail">
 				</label>
 
+			
 				<label>
 					<input type="text" placeholder="Bedrooms" ng-show="checkedBedrooms">
 				</label>
@@ -310,6 +329,8 @@ animationOut: slideOutRight
 				<label>
 					<input type="text" placeholder="Photo" ng-show="checkedPhoto">
 				</label>
+
+
 
 			</form>
 			</div>
