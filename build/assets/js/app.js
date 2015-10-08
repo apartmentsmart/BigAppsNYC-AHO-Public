@@ -19942,6 +19942,14 @@ app.controller('listingController', ['$scope','globalFilter', 'dataHandler', '$s
       $scope.infoWindow.open(map, marker); 
   };
 
+$scope.newReview = {'user':1};
+
+  $scope.submitReview = function(){
+
+    console.log($scope.newReview);
+
+  }
+
 }]);
 
 
