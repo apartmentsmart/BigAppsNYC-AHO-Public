@@ -87,12 +87,12 @@ animationOut: slideOutRight
 								<tr class="bedroom-table-heading">
 									<td># of Units</td>
 									<td>Bedrooms</td>
-									<td>Max Rent</td>
+									<td>Est. Rent</td>
 								</tr>
 								<tr ng-repeat="unit in listing.units" class="bedroom-table-body">
 									<td><span class="badge">{{unit.count}}</span></td>
 									<td>{{unit.name}}</td>
-									<td>${{unit.max_rent}}</td>
+									<td><span ng-show="unit.min_rent">${{unit.min_rent}}-</span>${{unit.max_rent}}</td>
 								</tr>
 							</table>
 						</div>
@@ -171,15 +171,14 @@ animationOut: slideOutRight
 					<div id="violations" class="violations listing-section">
 						<div class="listing-heading">
 							<i class="fa fa-chain-broken"></i> Code Violations
-							<div class="suggest-edit" zf-open="suggest-edit">Suggest Edit</div>
 						</div>
 						<div class="listing-body">
 							
 							<div ng-repeat='violation in listing.violations'>
 								<h3><i class='fa  fa-exclamation-triangle'></i> Violation On {{violation.NOVIssuedDate}}</h3>
-								<h5>Status: {{violation.CurrentStatus}}</h5>
+								<h5>Status: {{violation.status}}</h5>
 								<h5>Correct By: {{violation.OriginalCorrectByDate}}</h5>
-								<p>{{violation.NOVDescription}}</p>
+								<p>{{violation.description}}.</p>
 							</div>
 
 						</div>
@@ -194,10 +193,6 @@ animationOut: slideOutRight
 					</div>
 					<div id="accessibility" class="accessibility listing-section">
 						<i class="fa fa-wheelchair"></i> Accessibility
-					</div>
-
-					<div id="shoppping" class="shopping listing-section">
-						<i class="fa fa-shopping-cart"></i> Shopping
 					</div>
 
 					<div id="address" class="address listing-section grid-content">
@@ -249,8 +244,8 @@ animationOut: slideOutRight
 
 		</div> <!-- End listing-content -->
 
-    </div> <!-- End ng-repeat -->
-</div> <!-- End listingController -->
+
+
 
 
 <div zf-modal="" id="suggest-edit" class="collapse">
@@ -259,9 +254,9 @@ animationOut: slideOutRight
 			<span zf-close="" class="right"><a>Done</a></span>
 		</div>
 		<div class="grid-content padding" style="padding-top: 1rem;">
-			<form>
+			<form>					<!--
 				<div class="small-12 medium-6 grid-content suggestions">
-					
+
 					<label>What do you know about this property?</label>
 
 						<div class="grid-block">
@@ -295,11 +290,11 @@ animationOut: slideOutRight
 							</div>
 							
 						</div>
-
+			
 
 					
 				</div>
-
+		-->
 				<br>
 
 				<label>
@@ -319,9 +314,14 @@ animationOut: slideOutRight
 				</label>
 
 			
-				<label>
-					<input type="text" placeholder="Bedrooms" ng-show="checkedBedrooms">
-				</label>
+		
+								<div class=" grid-block" ng-repeat="unit in listing.units">
+									<div class="grid-content small-2">{{unit.brs}}br</div>
+									<div class="grid-content small-5"><input class="grid-content small-12" placeholder='Min Rent' ng-model='unit.min_rent' name="{{unit.brs}}br_min_rent"/></div>
+									<div class="grid-content small-5"><input class="grid-content small-12" placeholder='Max Rent' ng-model="unit.max_rent" name="{{unit.brs}}br_max_rent"/></div>
+
+								</div>
+			
 
 				<label>
 					<input type="text" placeholder="Website Infomation" ng-show="checkedWebsite">
@@ -341,6 +341,14 @@ animationOut: slideOutRight
 			</div>
 		</div>
 	</div>
+
+	<!-- Review Modal -->
+
+
+	    </div> <!-- End ng-repeat -->
+	
+	</div> <!-- End listingController -->
+
 </div>
 
 
