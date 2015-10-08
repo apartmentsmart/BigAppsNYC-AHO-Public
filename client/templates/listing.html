@@ -142,6 +142,7 @@ animationOut: slideOutRight
 					<div id="reviews" class="reviews listing-section">
 						<div class="listing-heading">
 							<i class="fa fa-star-half-o"></i> Reviews
+							<div class="add-review" zf-open="add-review">Add Review</div>
 						</div>
 						<div ng-repeat="review in listing.reviews" class="listing-body">
 							<div class="review-meta grid-content">
@@ -343,6 +344,97 @@ animationOut: slideOutRight
 	</div>
 
 	<!-- Review Modal -->
+	<div zf-modal="" id="add-review" class="collapse">
+		<div class="grid-block vertical">
+			<div class="primary title-bar">
+				<span zf-close="" class="right"><a>Done</a></span>
+			</div>
+			<div class="grid-content" style="padding-top: 1rem;">
+				<form>
+				    <div class="grid-block">
+				        <div class="review-title review-section small-12 grid-content">
+				            <label>Title of Review
+				                <input type="text" placeholder="Title">
+				            </label>
+				        </div>
+						<div class="lived-yes-no review-section small-12 grid-block">
+							<label>Do you or have you at any time lived at the location being reviewed?</label>
+								<div class="grid-block">
+									<a href="#" class="button primary expand" ng-click="livedHere=true">Yes</a>
+								</div>
+								<div class="grid-block">
+									<a href="#" class="button primary hollow expand" ng-click="livedHere=false">No</a>
+								</div>
+						</div>
+						<div class="lived-dates review-section grid-block small-12" ng-show="livedHere">
+							<div class="grid-block small-6">
+								<input placeholder='From Date'/>
+							</div>
+							<div class="grid-block small-6">
+								<input placeholder='To Date'/>
+							</div>
+						</div>
+						<div class="number-ratings review-section grid-block small-12" ng-show="livedHere">
+							<div class="grid-block small-6 columns">
+								<label class="small-11">Physical Quality
+									<select>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+								</label>
+							</div>
+							<div class="grid-block small-6 columns">
+								<label class="small-11">Customer Service
+									<select>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+								</label>
+							</div>
+							<div class="grid-block small-6 columns">
+								<label class="small-11">Location
+									<select>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+								</label>
+							</div>
+							<div class="grid-block small-6 columns">
+								<label class="small-11">Crime/Saftey
+									<select>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+								</label>
+							</div>
+						</div>
+						<div class="review-text review-section small-12 grid-content">
+							<label>Your Review
+						        <textarea placeholder="Review"></textarea>
+						    </label>
+      					</div>
+      					<div class="review-anonymize review-section small-12 grid-content">
+      						<input id="anonymize" type="checkbox"><label for="anonymize">Make Review Anonnymous</label>
+      					</div>
+				    </div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
 
 
 	    </div> <!-- End ng-repeat -->

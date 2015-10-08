@@ -243,6 +243,21 @@
 
 }
 
+.add-review {
+	@extend .suggest-edit;
+}
+
+.review-section {
+	padding: 20px 0;
+}
+
+.lived-yes-no {
+	.grid-block {
+		margin-left: 1%;
+		margin-right: 1%;
+	}
+}
+
 
 .school-table {
 	th {
