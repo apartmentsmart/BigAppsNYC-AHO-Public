@@ -130,7 +130,6 @@ app.factory('dataHandler', ['$http', '$filter', 'globalFilter', function($http, 
         }
 
 
-
       if(endpoint){
       $http({
         url: endpoint, 
@@ -144,8 +143,26 @@ app.factory('dataHandler', ['$http', '$filter', 'globalFilter', function($http, 
     }
     }
 
+    /*
+      --Creates a new record.
+      --@scope is the current scope of the controller which needs to be passed in order to assign the return of $http call.
+      --@scopeAtt is the attribute to assign the returned $http data to in the scope of the controller.
+      --@data is a key value pair set of data to post
+    */
+    function create(scope, scopeAtt, data){
+
+        $http.post("http://api.affordablehousingonline.com/nyc/push/?type="+scopeAtt, data).success(function(data, status) {
+            console.log(data);
+            console.log(status);
+            scope[scopeAtt] = data;
+            
+        })
+
+    }
+
       return{
-        fetch: fetch
+        fetch: fetch,
+        create: create
       }
        
 
@@ -204,7 +221,7 @@ app.controller('resultsController', ['$scope','globalFilter', 'dataHandler', '$s
 }]);
 
 //Handles Listing Actions
-app.controller('listingController', ['$scope','globalFilter', 'dataHandler', '$state', '$location', '$anchorScroll', '$timeout','$filter', function($scope, globalFilter, dataHandler, $state, $location, $anchorScroll, $timeout, $filter) {
+app.controller('listingController', ['$scope','globalFilter', 'dataHandler', '$state', '$location', '$anchorScroll', '$filter', function($scope, globalFilter, dataHandler, $state, $location, $anchorScroll, $filter) {
 
 
   //Init thisListing Object
@@ -305,12 +322,18 @@ app.controller('listingController', ['$scope','globalFilter', 'dataHandler', '$s
       $scope.infoWindow.open(map, marker); 
   };
 
-$scope.newReview = {'user':1};
-
+  $scope.newReview = {'user_id':1, 'listing_id':$state.params.id};
   $scope.submitReview = function(){
 
-    console.log($scope.newReview);
 
+    dataHandler.create($scope.thisListing[0], 'reviews', $scope.newReview);
+
+  }
+
+  $scope.convertDate = function (stringDate){
+    var dateOut = new Date(stringDate);
+    dateOut.setDate(dateOut.getDate() + 1);
+    return dateOut;
   }
 
 }]);
