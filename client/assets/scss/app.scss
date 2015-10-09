@@ -9,11 +9,13 @@
 *****************************/
 @import "bourbon/bourbon";
 
+
 /****************************
 		App Variables
 *****************************/
 @import "partials/variables";
 @import "partials/normalize";
+
 
 /****************************
 	Foundation For Apps
@@ -21,30 +23,32 @@
 @import "settings";
 @import "foundation";
 
+
 /****************************
 		HO Custom Styles
 *****************************/
 
-/* Site Wide Styles */
-   @import "partials/defaults";
-   @import "partials/navigation";
-   @import "partials/forms";
+	/* Site Wide Styles */
+	   @import "partials/defaults";
+	   @import "partials/navigation";
+	   @import "partials/forms";
 
-/* Search Styles */
-   @import "partials/search";
+	/* Search Styles */
+	   @import "partials/search";
 
-/* Results View Listing Card */
-   @import "partials/listing-card";
+	/* Results View Listing Card */
+	   @import "partials/listing-card";
 
-/* Single Listing */
-   @import "partials/listing";
+	/* Single Listing */
+	   @import "partials/listing";
 
-/* Login & Signup */
-	@import "partials/login";
-	@import "partials/user-profile";
+	/* Login & Signup */
+		@import "partials/login";
+		@import "partials/user-profile";
 
-/* Dashboard */
-	@import "partials/dashboard";
+	/* Dashboard */
+		@import "partials/dashboard";
+
 
 /********************************
 		Material Design
@@ -52,22 +56,3 @@
 	@import "partials/materialize";
 
 
-
-/*************************
-		Dev Styles
-**************************/
-/*@import "partials/materialize";*/
-
-
-
-.modal {
-	overflow: scroll;
-}
-
-
-.suggestions .grid-block {
-}
-
-.suggestion-input {
-	width: 50%;
-}

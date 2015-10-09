@@ -6838,241 +6838,8 @@ table tr td {
   display: table-cell;
   line-height: 1.125rem; }
 
-/* -------------------------------- 
-
-Primary style
-
--------------------------------- */
-*, *::after, *::before {
-  box-sizing: border-box; }
-
-*::after, *::before {
-  content: ''; }
-
-.cd-logo, .cd-nav-trigger {
-  position: fixed;
-  display: inline-block; }
-
-.cd-nav-trigger {
-  bottom: 18px;
-  right: 5%;
-  height: 44px;
-  width: 44px;
-  z-index: 5;
-  /* image replacement */
-  overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap; }
-
-.cd-nav-trigger .cd-icon {
-  /* icon created in CSS */
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  bottom: auto;
-  right: auto;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-  display: inline-block;
-  width: 18px;
-  height: 3px;
-  background-color: #ffffff;
-  z-index: 10; }
-
-.cd-nav-trigger .cd-icon::before, .cd-nav-trigger .cd-icon:after {
-  /* upper and lower lines of the menu icon */
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #ffffff;
-  /* Force Hardware Acceleration in WebKit */
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  /* apply transition to transform property */
-  transition: -webkit-transform 0.3s;
-  transition: transform 0.3s; }
-
-.cd-nav-trigger .cd-icon::before {
-  -webkit-transform: translateY(-6px) rotate(0deg);
-  transform: translateY(-6px) rotate(0deg); }
-
-.cd-nav-trigger .cd-icon::after {
-  -webkit-transform: translateY(6px) rotate(0deg);
-  transform: translateY(6px) rotate(0deg); }
-
-.cd-nav-trigger::before, .cd-nav-trigger::after {
-  /* 2 rounded colored backgrounds for the menu icon */
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 50%;
-  height: 100%;
-  width: 100%;
-  /* Force Hardware Acceleration in WebKit */
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  transition-property: -webkit-transform;
-  transition-property: transform; }
-
-.cd-nav-trigger::before {
-  background-color: #091d23;
-  -webkit-transform: scale(1);
-  transform: scale(1);
-  transition-duration: 0.1s;
-  transition-delay: 0s; }
-
-.cd-nav-trigger::after {
-  background-color: #38b449;
-  -webkit-transform: scale(0);
-  transform: scale(0);
-  transition-duration: 0s;
-  transition-delay: 0s; }
-
-.cd-nav-trigger.close-nav::before {
-  /* user clicks on the .cd-nav-trigger element - 1st rounded background disappears */
-  -webkit-transform: scale(0);
-  transform: scale(0); }
-
-.cd-nav-trigger.close-nav::after {
-  /* user clicks on the .cd-nav-trigger element - 2nd rounded background appears */
-  -webkit-transform: scale(1);
-  transform: scale(1);
-  transition-duration: 0.3s;
-  transition-delay: 0.4s; }
-
-.cd-nav-trigger.close-nav .cd-icon {
-  /* user clicks on the .cd-nav-trigger element - transform the icon */
-  background-color: rgba(255, 255, 255, 0.7); }
-
-.cd-nav-trigger.close-nav .cd-icon::before, .cd-nav-trigger.close-nav .cd-icon::after {
-  background-color: white; }
-
-.cd-nav-trigger.close-nav .cd-icon::before {
-  -webkit-transform: translateY(0) rotate(45deg);
-  transform: translateY(0) rotate(45deg); }
-
-.cd-nav-trigger.close-nav .cd-icon::after {
-  -webkit-transform: translateY(0) rotate(-45deg);
-  transform: translateY(0) rotate(-45deg); }
-
-.cd-primary-nav {
-  /* by default it's hidden */
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  padding: 80px 5%;
-  z-index: 3;
-  /*background-color: rgba(27,148,210, 0.3);*/
-  overflow: auto;
-  list-style-type: none;
-  /* this fixes the buggy scrolling on webkit browsers - mobile devices only - when overflow property is applied */
-  -webkit-overflow-scrolling: touch;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 0.3s; }
-
-.cd-primary-nav {
-  margin-left: 0; }
-
-.cd-primary-nav li {
-  margin: 1.6em 0;
-  text-align: center;
-  text-transform: capitalize; }
-
-.cd-primary-nav a {
-  color: #fff;
-  font-size: 20px;
-  font-size: 1.25rem;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transition: color 0.2s; }
-
-.no-touch .cd-primary-nav a:hover {
-  color: #ffffff; }
-
-.cd-primary-nav.fade-in {
-  /* navigation visible at the end of the circle animation */
-  visibility: visible;
-  opacity: 1; }
-
-@media only screen and (min-width: 768px) {
-  .cd-primary-nav li {
-    margin: 2em 0; }
-  .cd-primary-nav a {
-    font-size: 28px;
-    font-size: 1.75rem; } }
-
-@media only screen and (min-width: 1170px) {
-  .cd-primary-nav li {
-    margin: 2.6em 0; }
-  .cd-primary-nav a {
-    font-size: 32px;
-    font-size: 2rem; } }
-
-.cd-overlay-nav, .cd-overlay-content {
-  /* containers of the 2 main rounded backgrounds - these containers are used to position the rounded bgs behind the menu icon */
-  position: fixed;
-  bottom: 18px;
-  right: 5%;
-  height: 4px;
-  width: 4px;
-  -webkit-transform: translateX(-20px) translateY(20px);
-  transform: translateX(-20px) translateY(20px); }
-
-.cd-overlay-nav span, .cd-overlay-content span {
-  display: inline-block;
-  position: absolute;
-  border-radius: 50%;
-  /* Force Hardware Acceleration in WebKit */
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  will-change: transform;
-  -webkit-transform-origin: 50% 50%;
-  transform-origin: 50% 50%;
-  -webkit-transform: scale(0);
-  transform: scale(0); }
-
-.cd-overlay-nav.is-hidden, .cd-overlay-content.is-hidden {
-  /* background fades out at the end of the animation */
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s 0s, visibility 0s 0.3s; }
-
-.cd-overlay-nav {
-  /* main rounded colored bg 1 */
-  z-index: 2; }
-
-.cd-overlay-nav span {
-  background-color: rgba(27, 148, 210, 0.9); }
-
-.cd-overlay-content {
-  /* main rounded colored bg 2 */
-  z-index: 4; }
-
-.cd-overlay-content span {
-  background-color: #ff7f00; }
-
-@media only screen and (min-width: 768px) {
-  .cd-content .cd-intro {
-    height: 250px;
-    padding-top: 6em; }
-  .cd-content h1 {
-    font-size: 28px;
-    font-size: 1.75rem; }
-  .cd-content p {
-    font-size: 18px;
-    font-size: 1.125rem;
-    line-height: 1.8; } }
+.modal {
+  overflow: scroll; }
 
 /* Search Styles */
 /******************************************
@@ -7304,17 +7071,7 @@ Primary style
       .listing-section .listing-heading {
         font-size: 1.4rem; } }
 
-.monthly-rent i {
-  color: #38b449; }
-
-.bedroom-table {
-  border: 0 !important;
-  width: 100%; }
-  .bedroom-table tr {
-    background: transparent !important; }
-  .bedroom-table .bedroom-table-heading {
-    border-bottom: 1px solid #444; }
-
+/* Listing Section Utility Classes */
 .cta {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -7323,38 +7080,32 @@ Primary style
       -ms-flex-pack: end;
           justify-content: flex-end; }
 
-.map-container.listing-section {
-  padding: 0;
-  margin: 0; }
+.suggestion-input {
+  width: 50%; }
 
-.address .button {
-  margin: 0;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center; }
+/* Monthly Rent */
+.monthly-rent i {
+  color: #38b449; }
 
-.address.listing-section {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between; }
+/* Bedroom */
+.bedroom-table {
+  border: 0 !important;
+  width: 100%; }
+  .bedroom-table tr {
+    background: transparent !important; }
+  .bedroom-table .bedroom-table-heading {
+    border-bottom: 1px solid #444; }
 
-.address.listing-address {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex; }
+/* Schools Info */
+.school-table th {
+  text-align: left; }
 
-.address .grid-block {
-  margin: 0; }
+.school-table .school-table-heading {
+  background-color: #0093d8; }
+  .school-table .school-table-heading th {
+    color: #fff; }
 
+/* Reviews */
 .reviews .absolute-center {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -7399,17 +7150,49 @@ Primary style
   margin-left: 1%;
   margin-right: 1%; }
 
-.school-table th {
-  text-align: left; }
+/******************************************
+			Address
+*******************************************/
+.address .button {
+  margin: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
 
-.school-table .school-table-heading {
-  background-color: #0093d8; }
-  .school-table .school-table-heading th {
-    color: #fff; }
+.address.listing-section {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+.address.listing-address {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+
+.address .grid-block {
+  margin: 0; }
 
 /******************************************
 				Map
 *******************************************/
+/* General Map Styles */
+.map-container.listing-section {
+  padding: 0;
+  margin: 0; }
+
+.map-sheet {
+  height: 100%; }
+
+/* Map Small */
 .map-container {
   padding: 25px 0 0 0; }
   .map-container .google-maps {
@@ -7424,18 +7207,7 @@ Primary style
     width: 100% !important;
     height: 100% !important; }
 
-.map-sheet {
-  height: 100%; }
-
-.mapToggles {
-  position: fixed;
-  top: 2%;
-  right: 2%;
-  z-index: 999;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex; }
-
+/* Map Expanded */
 .largeMap {
   position: fixed;
   top: 0;
@@ -7450,6 +7222,15 @@ Primary style
   top: 3%;
   right: 0;
   z-index: 1; }
+
+.mapToggles {
+  position: fixed;
+  top: 2%;
+  right: 2%;
+  z-index: 999;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
 
 /* Login & Signup */
 .login {
@@ -7492,6 +7273,9 @@ Primary style
   /*margin: 0 2px;*/ }
 
 /* Dashboard */
+/****************************
+	Dashboard General Styles
+*****************************/
 .dashboard {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -7508,6 +7292,15 @@ Primary style
   .dashboard .fa {
     font-size: 1.7rem; }
 
+.notification-actions {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+/* Dash Item */
 .dash-item {
   padding: 5px 10px;
   color: #fff; }
@@ -7521,6 +7314,21 @@ Primary style
   .dash-item .grid-content {
     overflow: initial; }
 
+/* Dash Item Container */
+.dash-item-container {
+  background-color: #444;
+  padding: 30px 10px; }
+
+.dash-item-favorite .dash-item-container {
+  background-color: #ed2a7b; }
+
+.dash-item-new .dash-item-container {
+  background-color: #38b449; }
+
+.dash-item-update .dash-item-container {
+  background-color: #0093d8; }
+
+/* Dash Item Title */
 .dash-item-title {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -7543,31 +7351,14 @@ Primary style
         -ms-flex-item-align: start;
             align-self: flex-start; }
 
-.dash-item-container {
-  background-color: #444;
-  padding: 30px 10px; }
-
-.dash-item-favorite .dash-item-container {
-  background-color: #ed2a7b; }
-
-.dash-item-new .dash-item-container {
-  background-color: #38b449; }
-
-.dash-item-update .dash-item-container {
-  background-color: #0093d8; }
-
 .notification-title {
   /*flex-grow: 3;*/
   font-size: 1rem; }
 
-.notification-actions {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center; }
+.arrow-expand {
+  padding-right: 30px; }
 
+/* Site Notification Colors */
 .site-notification .button.hollow.dark {
   border: 1px solid #0093d8;
   color: #0093d8; }
@@ -7580,9 +7371,6 @@ Primary style
 
 .featured-notification {
   background-color: #32a141; }
-
-.arrow-expand {
-  padding-right: 30px; }
 
 /********************************
 		Material Design
@@ -7692,13 +7480,3 @@ label {
 .form-control:focus ~ .float-label, .form-control:valid ~ .float-label {
   top: -18px;
   font-size: 12px; }
-
-/*************************
-		Dev Styles
-**************************/
-/*@import "partials/materialize";*/
-.modal {
-  overflow: scroll; }
-
-.suggestion-input {
-  width: 50%; }
