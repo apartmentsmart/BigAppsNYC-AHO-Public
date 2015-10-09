@@ -214,14 +214,42 @@
 		}
 
 		.subtitle {
-			@extend .small-6;
+			font-size: 1.2rem;
 			font-weight: 700;
 		}
 
 		.time {
+			font-size: 1rem;
 			font-weight: 300;
 		}
 
+		.intro-text {
+			text-align: center;
+			align-self: center;
+			font-weight: 700;
+			color: #888;
+		}
+
+		.lived-here {
+			border: 1px solid #ddd;
+			display: flex;
+			flex-direction: column;
+			padding:10px 15px;
+			margin: 10px 0;
+			@include border-top-radius(5px);
+			@include border-right-radius(5px);
+			@include border-bottom-radius(5px);
+			@include border-left-radius(5px);
+		}
+
+	}
+
+	.single-review {
+		padding: 10px 15px;
+		margin-bottom: 10px;
+	}
+	.single-review:nth-child(even) {
+		background-color: #ececec;
 	}
 
 	.add-review {

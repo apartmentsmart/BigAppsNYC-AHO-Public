@@ -3132,7 +3132,7 @@ meter {
         -ms-flex: 0 0 20%;
             flex: 0 0 20%; }
 
-.small-6, .feature-data .feature-section, .reviews .subtitle {
+.small-6, .feature-data .feature-section {
   -webkit-flex: 0 0 50%;
       -ms-flex: 0 0 50%;
           flex: 0 0 50%;
@@ -6867,6 +6867,8 @@ table tr td {
       @media (max-width: 374px) {
         .search-box .search select, .search-box .search input {
           font-size: 0.7rem; } }
+    .search-box .search input {
+      color: #fff !important; }
   .search-box .search-welcome h1 {
     color: #fff;
     font-size: 1.5rem;
@@ -7138,10 +7140,46 @@ table tr td {
           justify-content: flex-end; }
 
 .reviews .subtitle {
+  font-size: 1.2rem;
   font-weight: 700; }
 
 .reviews .time {
+  font-size: 1rem;
   font-weight: 300; }
+
+.reviews .intro-text {
+  text-align: center;
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+  font-weight: 700;
+  color: #888; }
+
+.reviews .lived-here {
+  border: 1px solid #ddd;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 10px 15px;
+  margin: 10px 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px; }
+
+.single-review {
+  padding: 10px 15px;
+  margin-bottom: 10px; }
+
+.single-review:nth-child(even) {
+  background-color: #ececec; }
 
 .review-section {
   padding: 20px 0; }
@@ -7399,7 +7437,7 @@ textarea {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #0093d8;
-  color: #fff; }
+  color: #000; }
   input[type="text"]:hover,
   input[type="text"]:focus,
   input[type="password"]:hover,
@@ -7431,7 +7469,7 @@ textarea {
   textarea:hover, textarea:focus {
     background-color: transparent;
     border: none;
-    color: #fff; }
+    color: #000; }
   input[type="text"]:hover,
   input[type="password"]:hover,
   input[type="date"]:hover,

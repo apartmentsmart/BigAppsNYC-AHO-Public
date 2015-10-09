@@ -4,12 +4,7 @@ url: /listing/:borough/:id
 animationIn: slideInLeft
 animationOut: slideOutRight
 ---
-<style>
-input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea, select, option{
-color: #000 !important;
 
-}
-</style>
 <div class="grid-container resultsList">
 
     <div ng-controller="listingController">
@@ -122,22 +117,12 @@ color: #000 !important;
 								</thead>
 								<tbody>
 									<tr ng-repeat="school in listing.schools | orderBy:schoolSortType:schoolSortReverse" class="school-table-body">
-										<td><a href='{{school.overviewLink}}' target="_blank">{{school.name}}</a></td>
+										<td><a href="{{school.overviewLink}}" target="_blank">{{school.name}}</a></td>
 										<td>{{school.gradeRange}}</td>
 										<td>{{school.gsRating}}</td>
 										<td>{{school.distance}}m</td>
 									</tr>
 								</tbody>
-								<!--
-								<thead>
-									<tr class="school-table-heading">
-										<th>Name</th>
-										<th>Grade</th>
-										<th><i class="fa fa-star"></i></th>
-										<th><i class="fa fa-location-arrow"></i></th>
-									</tr>
-								</thead>
-							-->
 							</table>
 						</div>
 					</div>
@@ -147,16 +132,27 @@ color: #000 !important;
 							<i class="fa fa-star-half-o"></i> Reviews
 							<div class="add-review" zf-open="add-review">Add Review</div>
 						</div>
-						<div ng-repeat="review in listing.reviews track by $index" class="listing-body">
+						<div ng-repeat="review in listing.reviews track by $index" class="single-review">
+							
 							<div class="review-meta grid-content">
-								<div class="subtitle grid-block">
+								<div class="subtitle grid-block small-11">
 									{{review.title}}
-									<span class="time">reviewed on {{convertDate(review.reviewed_on) | date:'MM/dd/yyyy'}} </span>
+									<div class="time">reviewed on {{convertDate(review.reviewed_on) | date:'MM/dd/yyyy'}} </div>
+								</div>
+							</div>
+
+							<div ng-show="review.lived_here && review.from" class="grid-block lived-here">
+								<div class="intro-text grid-block">Lived here between</div> 
+								<div class="grid-block">
+									<div class="grid-block">
+										{{convertDate(review.from) | date:'MM/dd/yyyy'}} 
+									</div>
+									
+									<div clas="grid-block" ng-show="review.until">
+										&nbsp;{{convertDate(review.until) | date:'MM/dd/yyyy'}}
+									</div>
 								</div>
 
-							</div>
-							<div ng-show="review.lived_here && review.from" class="subtitile grid-block">
-								Resident from {{convertDate(review.from) | date:'MM/dd/yyyy'}} <span ng-show="review.until"> until {{convertDate(review.until) | date:'MM/dd/yyyy'}} </span>
 							</div>
 
 							<div ng-show="review.lived_here == 1">
@@ -204,9 +200,6 @@ color: #000 !important;
 								{{review.review}}
 							</p>
 						
-
-
-
 						</div>
 							<div class="absolute-center grid-block">
 								<a class="button hollow read-more">Read More Reviews</a>
@@ -220,8 +213,8 @@ color: #000 !important;
 						</div>
 						<div class="listing-body">
 							
-							<div ng-repeat='violation in listing.violations'>
-								<h3><i class='fa  fa-exclamation-triangle'></i> Violation On {{violation.NOVIssuedDate}}</h3>
+							<div ng-repeat="violation in listing.violations">
+								<h3><i class="fa  fa-exclamation-triangle"></i> Violation On {{violation.NOVIssuedDate}}</h3>
 								<h5>Status: {{violation.status}}</h5>
 								<h5>Correct By: {{violation.OriginalCorrectByDate}}</h5>
 								<p>{{violation.description}}.</p>
@@ -257,18 +250,18 @@ color: #000 !important;
 
 						<div class="google-maps grid-block">
 
-							<div class='button secondary toggle-full-map' ng-click='toggleFullMap(1)' ng-hide="mapView == 1" ><i class="fa fa-arrows-alt fa-2x"></i></div>
+							<div class="button secondary toggle-full-map" ng-click="toggleFullMap(1)" ng-hide="mapView == 1" ><i class="fa fa-arrows-alt fa-2x"></i></div>
 
-							<div class='mapToggles' ng-show="mapView == 1">
+							<div class="mapToggles" ng-show="mapView == 1">
 
 								<ul class="button-group secondary small">
-									<li><a ng-click='toggleSchools(!showSchools);'>Show Schools</a></li>
+									<li><a ng-click="toggleSchools(!showSchools);">Show Schools</a></li>
 									<li><a ng-click="toggleFullMap(0)">Back to Listing</a></li>
 								</ul>
 									
 							</div>
 
-							<map id='mainMap' ng-class="{'largeMap': mapView == 1}" center="{{listing.latitude}}, {{listing.longitude}}" zoom="18" style="width:100%;">
+							<map id="mainMap" ng-class="{"largeMap": mapView == 1}" center="{{listing.latitude}}, {{listing.longitude}}" zoom="18" style="width:100%;">
 								
 								<!-- Listing Marker -->   
 								<marker id="listingMarker" position="{{listing.latitude}}, {{listing.longitude}}" on-click="showInfoWindow(event, 'listingMarkeriw')"></marker> 
@@ -300,47 +293,7 @@ color: #000 !important;
 			<span zf-close="" class="right"><a>Done</a></span>
 		</div>
 		<div class="grid-content padding" style="padding-top: 1rem;">
-			<form>					<!--
-				<div class="small-12 medium-6 grid-content suggestions">
-
-					<label>What do you know about this property?</label>
-
-						<div class="grid-block">
-
-							<div class="grid-content suggestion-input">
-								<input id="checkboxName" type="checkbox" ng-model="checkedName" class="small-5"><label for="checkboxName">Name</label>
-							</div>
-
-							<div class="grid-content suggestion-input">
-								<input id="checkboxAddress" type="checkbox" ng-model="checkedAddress" class="small-5"><label for="checkboxAddress">Address</label>
-							</div>
-							
-							<div class="grid-content suggestion-input">
-								<input id="checkboxPhone" type="checkbox" ng-model="checkedPhone" class="small-5"><label for="checkboxPhone">Phone</label>
-							</div>
-							
-							<div class="grid-content suggestion-input">
-								<input id="checkboxEmail" type="checkbox" ng-model="checkedEmail" class="small-5"><label for="checkboxEmail">Email</label>
-							</div>
-							
-							<div class="grid-content suggestion-input">
-								<input id="checkboxBedrooms" type="checkbox" ng-model="checkedBedrooms" class="small-5"><label for="checkboxBedrooms">Bedrooms</label>
-							</div>
-							
-							<div class="grid-content suggestion-input">
-								<input id="checkboxWebsite" type="checkbox" ng-model="checkedWebsite" class="small-5"><label for="checkboxWebsite">Website</label>
-							</div>
-							
-							<div class="grid-content suggestion-input">
-								<input id="checkboxPhoto" type="checkbox" ng-model="checkedPhoto" class="small-5"><label for="checkboxPhoto">Photo</label>
-							</div>
-							
-						</div>
-			
-
-					
-				</div>
-		-->
+			<form>
 				<br>
 
 				<label>
@@ -363,8 +316,8 @@ color: #000 !important;
 		
 								<div class=" grid-block" ng-repeat="unit in listing.units">
 									<div class="grid-content small-2">{{unit.brs}}br</div>
-									<div class="grid-content small-5"><input class="grid-content small-12" placeholder='Min Rent' ng-model='unit.min_rent' name="{{unit.brs}}br_min_rent"/></div>
-									<div class="grid-content small-5"><input class="grid-content small-12" placeholder='Max Rent' ng-model="unit.max_rent" name="{{unit.brs}}br_max_rent"/></div>
+									<div class="grid-content small-5"><input class="grid-content small-12" placeholder="Min Rent" ng-model="unit.min_rent" name="{{unit.brs}}br_min_rent"/></div>
+									<div class="grid-content small-5"><input class="grid-content small-12" placeholder="Max Rent" ng-model="unit.max_rent" name="{{unit.brs}}br_max_rent"/></div>
 
 								</div>
 			
@@ -399,33 +352,33 @@ color: #000 !important;
 				    <div class="grid-block">
 				        <div class="review-title review-section small-12 grid-content">
 				            <label>Title of Review
-				                <input type="text" ng-model='newReview.title' placeholder="Title">
+				                <input type="text" ng-model="newReview.title" placeholder="Title">
 				            </label>
 				        </div>
 						<div class="lived-yes-no review-section small-12 grid-block">
 							<label>Do you or have you at any time lived at the location being reviewed?</label>
 								<div class="grid-block">
-									<a href="#" class="button primary expand" ng-click="newReview.lived_here=1">Yes</a>
+									<button class="button primary expand" ng-click="newReview.lived_here=1">Yes</button>
 								</div>
 								<div class="grid-block">
-									<a href="#" class="button primary hollow expand" ng-click="newReview.lived_here=0">No</a>
+									<button class="button primary hollow expand" ng-click="newReview.lived_here=0">No</button>
 								</div>
 						</div>
 						<div class="lived-dates review-section grid-block small-12" ng-show="newReview.lived_here">
 							I've lived at this property
-							<label class='grid-block small-12'>From</label>
+							<label class="grid-block small-12">From</label>
 							<div class="grid-block small-12">
-								<input type='date' ng-model='newReview.from' placeholder='From Date'/>
+								<input type="date" ng-model="newReview.from" placeholder="From Date"/>
 							</div>
-							<label class='grid-block small-12'>Until <br/><small> (leave blank if you are a current resident)</small></label>
+							<label class="grid-block small-12">Until <br/><small> (leave blank if you are a current resident)</small></label>
 							<div class="grid-block small-12">
-								<input type='date' ng-model='newReview.until' placeholder='To Date'/>
+								<input type="date" ng-model="newReview.until" placeholder="To Date"/>
 							</div>
 						</div>
 						<div class="number-ratings review-section grid-block small-12" ng-show="newReview.lived_here">
 							<div class="grid-block small-12 columns">
 								<label class="small-11">Building Quality
-									<select ng-model='newReview.physical_score'>
+									<select ng-model="newReview.physical_score">
 										<option value="1">1 (worst quality)</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
@@ -476,8 +429,8 @@ color: #000 !important;
       					<div class="review-anonymize review-section small-12 grid-content">
       						<input id="anonymize" ng-model="newReview.anonymous" type="checkbox"><label for="anonymize">Make Review Anonymous</label>
       					</div>
-      					<div class='review-section small-12 grid-content'>
-      						<input type='submit' class='button' />
+      					<div class="review-section small-12 grid-content">
+      						<input type="submit" class="button" />
       					</div>
 
 				    </div>
