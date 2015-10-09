@@ -23,6 +23,13 @@
 	@extend .small-offset-1;
 }
 
+.notification-context{
+	font-size: .6em;
+	text-align: right;
+	font-style: italic;
+	margin-top: 10px;
+}
+
 /* Dash Item */
 	.dash-item {
 		@extend .small-12;

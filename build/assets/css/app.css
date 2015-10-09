@@ -7300,6 +7300,12 @@ table tr td {
       -ms-flex-pack: center;
           justify-content: center; }
 
+.notification-context {
+  font-size: .6em;
+  text-align: right;
+  font-style: italic;
+  margin-top: 10px; }
+
 /* Dash Item */
 .dash-item {
   padding: 5px 10px;
