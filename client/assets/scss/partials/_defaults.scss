@@ -60,3 +60,21 @@ table {
   overflow: scroll;
 }
 
+.menu-close-button {
+  z-index: 10;
+}
+
+.menu-container {
+  .grid-block{
+    height: 30vh;
+  }
+
+  .menu-item {
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #111;
+  }
+}
+
+
+

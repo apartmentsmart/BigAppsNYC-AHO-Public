@@ -14,6 +14,17 @@
   </head>
   <body>
 
+  <zf-offcanvas id="menu" class="dark" position="right">
+    <a zf-close="menu" class="close-button menu-close-button">×</a>
+
+    <div class="vertical grid-block menu-container">
+      <div ui-sref="dashboard" class="grid-block menu-item" zf-close="menu">Dashboard</div>
+      <div ui-sref="profile" class="grid-block menu-item" zf-close="menu">User Account</div>
+      <div class="grid-block menu-item" zf-close="menu">Logout</div>
+    </div>
+
+  </zf-offcanvas>
+
   <div class="title-bar grid-block">
     <div class="center grid-block">
       <a ui-sref="home"><img src="../assets/img/icon.png"></a>
@@ -22,9 +33,11 @@
       <a ng-click='back()'><i class="fa fa-arrow-left"></i></a>
     </span>
     <span class="right grid-block">
-      <a><i class="fa fa-search"></i></a>
+      <a zf-open="menu"><i class="fa fa-bars"></i></a>
     </span>
   </div>
+
+
 
       
   <div ui-view class="grid-frame">
