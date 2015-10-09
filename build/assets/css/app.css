@@ -7488,6 +7488,9 @@ Primary style
     .login-form {
       padding: 0 15%; } }
 
+.form-container .grid-block {
+  /*margin: 0 2px;*/ }
+
 /* Dashboard */
 .dashboard {
   display: -webkit-flex;
