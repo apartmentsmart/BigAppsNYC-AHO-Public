@@ -3288,7 +3288,7 @@ meter {
         -ms-flex: 0 0 9.09091%;
             flex: 0 0 9.09091%; }
 
-.small-12, .listingCard, .map-container.listing-section, .dash-item {
+.small-12, .listingCard, .map-container.listing-section {
   -webkit-flex: 0 0 100%;
       -ms-flex: 0 0 100%;
           flex: 0 0 100%;
@@ -3348,7 +3348,7 @@ meter {
     -webkit-order: 2;
         -ms-flex-order: 2;
             order: 2; }
-  .medium-offset-2 {
+  .medium-offset-2, .listing-section {
     margin-left: 16.66667%; }
   .medium-up-2 {
     -webkit-flex-flow: row wrap;
@@ -3363,7 +3363,7 @@ meter {
               flex: 0 0 50%; } }
 
 @media only screen and (min-width: 40em) {
-  .medium-3 {
+  .medium-3, .feature-data .feature-section {
     -webkit-flex: 0 0 25%;
         -ms-flex: 0 0 25%;
             flex: 0 0 25%;
@@ -3483,7 +3483,7 @@ meter {
               flex: 0 0 14.28571%; } }
 
 @media only screen and (min-width: 40em) {
-  .medium-8 {
+  .medium-8, .listing-section {
     -webkit-flex: 0 0 66.66667%;
         -ms-flex: 0 0 66.66667%;
             flex: 0 0 66.66667%;
@@ -3660,7 +3660,7 @@ meter {
     -webkit-order: 3;
         -ms-flex-order: 3;
             order: 3; }
-  .large-offset-3 {
+  .large-offset-3, .listing-section {
     margin-left: 25%; }
   .large-up-3 {
     -webkit-flex-flow: row wrap;
@@ -3675,7 +3675,7 @@ meter {
               flex: 0 0 33.33333%; } }
 
 @media only screen and (min-width: 75em) {
-  .large-4, .listingCard, .dash-item {
+  .large-4, .listingCard {
     -webkit-flex: 0 0 33.33333%;
         -ms-flex: 0 0 33.33333%;
             flex: 0 0 33.33333%;
@@ -3723,7 +3723,7 @@ meter {
               flex: 0 0 20%; } }
 
 @media only screen and (min-width: 75em) {
-  .large-6 {
+  .large-6, .listing-section {
     -webkit-flex: 0 0 50%;
         -ms-flex: 0 0 50%;
             flex: 0 0 50%;
@@ -6899,6 +6899,9 @@ table tr td {
 /******************************************
 			Generic Card Styles
 *******************************************/
+.resultsList.grid-container, .resultsList.listing-section {
+  max-width: 70em; }
+
 .resultsList .grid-content {
   display: flexbox;
   -webkit-flex-direction: row;
@@ -7017,6 +7020,9 @@ table tr td {
 /******************************************
 		Generic Listing Styles
 *******************************************/
+.single-listing.grid-container, .single-listing.listing-section {
+  max-width: 100% !important; }
+
 .suggest-edit, .add-review {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -7287,6 +7293,10 @@ table tr td {
     padding-bottom: 75%;
     height: 0;
     overflow: hidden; }
+    @media only screen and (min-width: 40em) {
+      .map-container .google-maps {
+        padding-bottom: 0;
+        height: 300px; } }
   .map-container .google-maps iframe {
     position: absolute;
     top: 0;
@@ -7396,7 +7406,8 @@ table tr td {
 /* Dash Item */
 .dash-item {
   padding: 5px 10px;
-  color: #fff; }
+  color: #fff;
+  max-width: 430px; }
   .dash-item .dash-item-title {
     font-size: 1.6rem;
     font-weight: 300; }

@@ -1,6 +1,10 @@
 /******************************************
 			Generic Card Styles
 *******************************************/
+.resultsList.grid-container {
+	max-width: 70em;
+}
+
 .resultsList .grid-content {
 	display: flexbox;
 	flex-direction: row;

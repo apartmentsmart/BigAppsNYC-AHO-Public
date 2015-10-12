@@ -5,7 +5,7 @@ animationIn: slideInLeft
 animationOut: slideOutLeft
 ---
 
-<div class="grid-container resultsList">
+<div class="resultsList grid-container">
 <div class="grid-content">
 	<div class="grid-block" ng-controller="resultsController">
 	    <div class="listingCard grid-block" ng-repeat="listing in listings">
@@ -75,24 +75,26 @@ animationOut: slideOutLeft
 							</div>
 						</div>
 					</div>
-					<!-- End Card Markup -->    	
+
+					<!-- End Card Markup -->
+					<!-- Share Sheet "Modal" -->
+					<zf-action-sheet id="share-sheet">
+						<zf-as-content position="bottom" class="share-sheet">
+							<p>Tap to share</p>
+							<ul>
+								<li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li>
+								<li><a href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
+								<li><a href="#"><i class="fa fa-paper-plane-o"></i> Mail</a></li>
+							</ul>
+						</zf-as-content>
+					</zf-action-sheet>  	
 
 
 
 			</div>
 		</div>
 
-		<!-- Share Sheet "Modal" -->
-		<zf-action-sheet id="share-sheet">
-			<zf-as-content position="bottom" class="share-sheet">
-				<p>Tap to share</p>
-				<ul>
-					<li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li>
-					<li><a href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
-					<li><a href="#"><i class="fa fa-paper-plane-o"></i> Mail</a></li>
-				</ul>
-			</zf-as-content>
-		</zf-action-sheet>
+
         
     </div>
 </div>

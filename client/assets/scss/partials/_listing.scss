@@ -1,6 +1,10 @@
 /******************************************
 		Generic Listing Styles
 *******************************************/
+.single-listing.grid-container {
+	max-width: 100% !important;
+}
+
 
 .suggest-edit{
 	display: flex;
@@ -86,6 +90,7 @@
 
 	.feature-section {
 		@extend .small-6;
+		@extend .medium-3;
 		align-items: center;
 		display: flex;
 		height: 180px;
@@ -105,8 +110,13 @@
 }
 
 .listing-section {
-	@extend .small-11;
 	@extend .grid-container;
+	@extend .small-11;
+	@extend .medium-8;
+	@extend .medium-offset-2;
+	@extend .large-6;
+	@extend .large-offset-3;
+
 
 	padding: 20px 0;
 
@@ -322,6 +332,10 @@
 	        padding-bottom: 75%; // This is the aspect ratio
 	        height: 0;
 	        overflow: hidden;
+	        @include breakpoint(medium) {
+	        	padding-bottom: 0;
+	        	height: 300px;
+	        }
 	    }
 	    .google-maps iframe {
 	        position: absolute;
