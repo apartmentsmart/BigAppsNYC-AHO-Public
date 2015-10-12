@@ -19733,7 +19733,7 @@ app.factory('globalFilter', function() {
 
 });
 
-app.factory('dataHandler', ['$http', '$filter', 'globalFilter', function($http, $filter, globalFilter){
+app.factory('dataHandler', ['$http', '$filter', 'globalFilter', '$sce', function($http, $filter, globalFilter, $sce){
 
       /*
         --Fetches, and optionally Filters, JSON object.
@@ -19766,6 +19766,7 @@ app.factory('dataHandler', ['$http', '$filter', 'globalFilter', function($http, 
         
         }
 
+        console.log(endpoint);
 
       if(endpoint){
       $http({
@@ -19773,8 +19774,14 @@ app.factory('dataHandler', ['$http', '$filter', 'globalFilter', function($http, 
         method: "GET",
         params: scopeFilter
       }).success(function (data) {  
-          
+           
+          //trust and bind html
+          if(data[0].affordability)
+            data[0].affordability = $sce.trustAsHtml(data[0].affordability);
+
+
           scope[scopeAtt] = data; 
+
 
         });
     }

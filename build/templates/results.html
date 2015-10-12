@@ -7,11 +7,11 @@
 	    		<div class="grid-block card-titlebar">
 	    			<div class="grid-content title-area">
 	    				<div class="card-title grid-content"></div>
-		    				<a ui-sref="listing({borough:listing.borough, id:listing.hud_id})">{{listing.name}}</a>
+		    				<a ui-sref="listing({borough:listing.borough, id:listing.id})">{{listing.name}}</a>
 		    			<div class="card-subtitle grid-content">
 		    				{{listing.borough}}
 		    			</div>
-						<div class="star-rating grid-block">
+						<div ng-show='listing.avgRating' class="star-rating grid-block">
 							<i class="fa fa-star"></i>
 							<i class="fa fa-star"></i>
 							<i class="fa fa-star"></i>
@@ -19,7 +19,7 @@
 							<i class="fa fa-star"></i>
 						</div>
 	    			</div>
-	    			<div class="distance-indicator grid-block">
+	    			<div ng-show='listing.distance' class="distance-indicator grid-block">
 						<center>
 							<i class="fa fa-street-view"></i>
 							<br>
@@ -32,23 +32,20 @@
 
 						<div class="grid-block">
 
-							<p class="card-description grid-content">
-								Serves low to moderate income {{listing.elderly == 1 ? 'seniors' : 'families'}} through the Low Income Housing Tax Credit program.
+							<p ng-show='listing.description' class="card-description grid-content">
+							{{listing.description}}
 							</p>
 
 							<div class="listing-icon grid-content"><i class="fa fa-map-marker"></i></div>
 							<div class="listing-info grid-content">{{listing.address}}</div>
+							
 							<div class="listing-icon grid-content"><i class="fa fa-bed"></i></div>
+							<div class="listing-info grid-content">{{listing.room_range}}</div>
 
-							<div class="listing-info grid-content">
-								<!-- Change the number 0 to Studio Apartment -->
-								<span ng-switch="listing.room_range">
-								  <span ng-switch-when="0">Studio Apartment</span>
-								  <span ng-switch-default>{{listing.room_range}} br.</span>
-								</span>	
+							<div ng-show="listing.rent_range" class="listing-icon grid-content"><i class="fa fa-money"></i></div>
+							<div ng-show="listing.rent_range" class="listing-info grid-content">
+								{{listing.rent_range}}
 							</div>
-
-							<div ng-show="listing.rent_range" class="listing-icon grid-content"><i class="fa fa-money"></i></div><div ng-show="listing.rent_range" class="listing-info grid-content">${{listing.rent_range}}</div>
 						
 						</div>
 

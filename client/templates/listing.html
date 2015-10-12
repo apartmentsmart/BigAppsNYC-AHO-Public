@@ -15,7 +15,7 @@ animationOut: slideOutRight
 				<div class="hero-content">
 					<div class="listing-name">{{listing.name}}</div>
 					<div class="listing-borough">{{listing.borough}} - {{listing.neighborhood}}</div>
-						<div class="star-rating">
+						<div ng-show="listing.avgRating" class="star-rating">
 							<i class="fa" ng-class="{'fa-star-o': listing.avgRating < .5,  'fa-star-half-o': listing.avgRating >= .5 && listing.avgRating < 1,  'fa-star' : listing.avgRating >= 1 }"></i>
 							<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 1.5, 'fa-star-half-o': listing.avgRating >= 1.5 && listing.avgRating < 2,  'fa-star' : listing.avgRating >= 2 }"></i>
 							<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 2.5, 'fa-star-half-o': listing.avgRating >= 2.5 && listing.avgRating < 3,  'fa-star' : listing.avgRating >= 3 }"></i>
@@ -29,7 +29,7 @@ animationOut: slideOutRight
 				<div class="grid-block feature-data">
 					<div ng-click="scrollTo('bedrooms')" class="grid-content bedrooms feature-section">
 						<i class="fa fa-bed"></i>
-						{{listing.room_range}} br.
+						{{listing.room_range}}
 					</div>
 					<div ng-click="scrollTo('rent')" class="grid-content schools feature-section">
 							<i class="fa fa-money"></i>
@@ -50,25 +50,20 @@ animationOut: slideOutRight
 
 				<div class="non-feature-data">
 
-					<div id="description" class="description listing-section">
+					<div ng-show='listing.description' id="description" class="description listing-section">
 						<div class="listing-body">
-<!-- 							<p>
-								Serves low to moderate income {{listing.elderly == 1 ? 'seniors' : 'families'}} through the Low Income Housing Tax Credit program.
-							</p> -->
-							<p>Since this property has received funding in part through the Low Income Housing Tax Credit (LIHTC) program, monthly rent cannot exceed the Tax Credit maximum rent for the area. If you're income does not exceed 60% of the Area Median Income (AMI), you should not expect to pay more than the rent in the units table below. Some rental units in this property may not be subject to LIHTC, not have income limits and therefore may be set at levels higher than the LIHTC limits below.</p>
+							{{listing.description}}
 						</div>
 					</div>
 
 
 					<div id="rent" class="monthly-rent listing-section">
 						<div class="listing-heading">
-							<i class="fa fa-money"></i> Monthly Rent
+							<i class="fa fa-money"></i> Affordability
 							<div class="suggest-edit" zf-open="suggest-edit">Suggest Edit</div>
 						</div>
 						<div class="listing-body">
-							<p>
-								Your monthly rent is established based on a number of different criteria. To be eligible for this property lorem ipsum dolor amet.
-							</p>
+							<p ng-bind-html="listing.affordability"></p>
 						</div>
 					</div>
 
@@ -78,19 +73,21 @@ animationOut: slideOutRight
 							<div class="suggest-edit" zf-open="suggest-edit">Suggest Edit</div>
 						</div>
 						<div class="listing-body">
-							<p>
-								There are one, two, and three bedroom apartments available at this address. The number of bedrooms you need are often dependant on the size of your household.
-							</p>
+
 							<table class="bedroom-table">
 								<tr class="bedroom-table-heading">
-									<td># of Units</td>
 									<td>Bedrooms</td>
 									<td>Est. Rent</td>
+									<td>Waiting List</td>
 								</tr>
 								<tr ng-repeat="unit in listing.units" class="bedroom-table-body">
-									<td><span class="badge">{{unit.count}}</span></td>
 									<td>{{unit.name}}</td>
-									<td><span ng-show="unit.min_rent">${{unit.min_rent}}-</span>${{unit.max_rent}}</td>
+									<td>
+										<span ng-show="unit.min_rent != 0">${{unit.min_rent}}
+										<span ng-show="unit.min_rent != 0 && unit.max_rent != 0"> - </span>
+										<span ng-show="unit.max_rent != 0">${{unit.max_rent}}</span>
+									</td>
+									<td>{{unit.waitlist}}</td>
 								</tr>
 							</table>
 						</div>
