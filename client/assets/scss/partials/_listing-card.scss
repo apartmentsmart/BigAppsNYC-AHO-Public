@@ -1,11 +1,30 @@
 /******************************************
 			Generic Card Styles
 *******************************************/
-.listingCard {
-	@extend .card;
+.resultsList .grid-content {
+	display: flexbox;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
 
+.resultsList .grid-content .grid-block {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.card-content {
+	@extend .card;
 	box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
-	margin: 15px 0;
+	margin: 8px;
+}
+
+.listingCard {
+	
+	@extend .small-12;
+	@extend .medium-6;
+	@extend .large-4;
+
+	
 
 	.grid-content{
 		overflow-y: visible !important;
@@ -17,11 +36,17 @@
 		.card-subtitle {
 			color: #aaa;
 			padding-top: 5px;
+			padding-left: 0px;
 		}
 
 		.card-titlebar {
-			@extend .small-9;
 			padding: 19px 0;
+			background-color: #eee;
+
+			.grid-block.title-area {
+				display:flex;
+				flex-direction: column;
+			}
 
 			.star-rating {
 				clear: both;
@@ -29,7 +54,6 @@
 		}
 
 		.distance-indicator {
-			@extend .small-3;
 
 			  display: flex;
 			  align-items: center;
@@ -89,6 +113,7 @@
 		Share Sheet / Actions / Card Footer
 	*******************************************/
 	.card-actions {
+		align-self: flex-end;
 		.grid-content {
 			@extend .small-4;
 

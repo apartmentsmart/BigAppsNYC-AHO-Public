@@ -33,11 +33,10 @@
 						<i class="fa fa-graduation-cap"></i> 
 						 {{listing.schoolCount}} Schools Nearby
 					</div>
-					<div ng-click="scrollTo('reviews')" class="grid-content rating feature-section">
-						<i class="fa fa-star-half-o"></i>
-						{{listing.avgRating}} / 5
+					<div ng-click="scrollTo('violations')" class="grid-content violations feature-section">
+						<i class="fa fa-chain-broken"></i>
 						<br>
-						Rating
+						{{listing.violationsCount}} Code Violations
 					</div>
 				</div>
 
@@ -47,9 +46,10 @@
 
 					<div id="description" class="description listing-section">
 						<div class="listing-body">
-							<p>
+<!-- 							<p>
 								Serves low to moderate income {{listing.elderly == 1 ? 'seniors' : 'families'}} through the Low Income Housing Tax Credit program.
-							</p>
+							</p> -->
+							<p>Since this property has received funding in part through the Low Income Housing Tax Credit (LIHTC) program, monthly rent cannot exceed the Tax Credit maximum rent for the area. If you're income does not exceed 60% of the Area Median Income (AMI), you should not expect to pay more than the rent in the units table below. Some rental units in this property may not be subject to LIHTC, not have income limits and therefore may be set at levels higher than the LIHTC limits below.</p>
 						</div>
 					</div>
 
@@ -255,7 +255,7 @@
 									
 							</div>
 
-							<map id="mainMap" ng-class="{"largeMap": mapView == 1}" center="{{listing.latitude}}, {{listing.longitude}}" zoom="18" style="width:100%;">
+							<map id="mainMap" ng-class="{'largeMap': mapView == 1}" center="{{listing.latitude}}, {{listing.longitude}}" zoom="18" style="width:100%;">
 								
 								<!-- Listing Marker -->   
 								<marker id="listingMarker" position="{{listing.latitude}}, {{listing.longitude}}" on-click="showInfoWindow(event, 'listingMarkeriw')"></marker> 

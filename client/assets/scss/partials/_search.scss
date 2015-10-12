@@ -21,6 +21,7 @@
 			font-weight: 700;
 			padding: 1.5em 1em;
 		}
+
 		.grid-content {
 			padding: 0 10px;
 		}
@@ -38,6 +39,11 @@
 		input {
 			color: #fff !important;
 		}
+	}
+
+	.search.grid-block {
+		margin: 0 auto;
+		max-width: 700px;
 	}
 
 	.search-welcome {

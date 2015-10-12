@@ -1919,7 +1919,7 @@ a, [ui-sref], [zf-open], [zf-close], [zf-toggle] {
   titles
   lists
 */
-.card, .listingCard {
+.card, .card-content {
   border: 1px solid #ededed;
   margin-bottom: 0.5rem;
   background: #fff;
@@ -1927,13 +1927,13 @@ a, [ui-sref], [zf-open], [zf-close], [zf-toggle] {
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   overflow: hidden; }
-  .card h1, .listingCard h1, .card h2, .listingCard h2, .card h3, .listingCard h3, .card h4, .listingCard h4, .card h5, .listingCard h5, .card h6, .listingCard h6 {
+  .card h1, .card-content h1, .card h2, .card-content h2, .card h3, .card-content h3, .card h4, .card-content h4, .card h5, .card-content h5, .card h6, .card-content h6 {
     color: inherit; }
-  .card ul, .listingCard ul {
+  .card ul, .card-content ul {
     margin-bottom: 0; }
-  .card img, .listingCard img {
+  .card img, .card-content img {
     width: 100%; }
-  .card.primary, .primary.listingCard {
+  .card.primary, .primary.card-content {
     border: 0;
     margin-bottom: 0.5rem;
     background: #00558b;
@@ -1941,16 +1941,16 @@ a, [ui-sref], [zf-open], [zf-close], [zf-toggle] {
     border-radius: 4px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     overflow: hidden; }
-    .card.primary h1, .primary.listingCard h1, .card.primary h2, .primary.listingCard h2, .card.primary h3, .primary.listingCard h3, .card.primary h4, .primary.listingCard h4, .card.primary h5, .primary.listingCard h5, .card.primary h6, .primary.listingCard h6 {
+    .card.primary h1, .primary.card-content h1, .card.primary h2, .primary.card-content h2, .card.primary h3, .primary.card-content h3, .card.primary h4, .primary.card-content h4, .card.primary h5, .primary.card-content h5, .card.primary h6, .primary.card-content h6 {
       color: inherit; }
-    .card.primary ul, .primary.listingCard ul {
+    .card.primary ul, .primary.card-content ul {
       margin-bottom: 0; }
-    .card.primary img, .primary.listingCard img {
+    .card.primary img, .primary.card-content img {
       width: 100%; }
-    .card.primary .card-divider, .primary.listingCard .card-divider {
+    .card.primary .card-divider, .primary.card-content .card-divider {
       background: #0065a5;
       padding: 1rem; }
-  .card.success, .success.listingCard {
+  .card.success, .success.card-content {
     border: 0;
     margin-bottom: 0.5rem;
     background: #43AC6A;
@@ -1958,16 +1958,16 @@ a, [ui-sref], [zf-open], [zf-close], [zf-toggle] {
     border-radius: 4px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     overflow: hidden; }
-    .card.success h1, .success.listingCard h1, .card.success h2, .success.listingCard h2, .card.success h3, .success.listingCard h3, .card.success h4, .success.listingCard h4, .card.success h5, .success.listingCard h5, .card.success h6, .success.listingCard h6 {
+    .card.success h1, .success.card-content h1, .card.success h2, .success.card-content h2, .card.success h3, .success.card-content h3, .card.success h4, .success.card-content h4, .card.success h5, .success.card-content h5, .card.success h6, .success.card-content h6 {
       color: inherit; }
-    .card.success ul, .success.listingCard ul {
+    .card.success ul, .success.card-content ul {
       margin-bottom: 0; }
-    .card.success img, .success.listingCard img {
+    .card.success img, .success.card-content img {
       width: 100%; }
-    .card.success .card-divider, .success.listingCard .card-divider {
+    .card.success .card-divider, .success.card-content .card-divider {
       background: #4ab873;
       padding: 1rem; }
-  .card.warning, .warning.listingCard {
+  .card.warning, .warning.card-content {
     border: 0;
     margin-bottom: 0.5rem;
     background: #F08A24;
@@ -1975,16 +1975,16 @@ a, [ui-sref], [zf-open], [zf-close], [zf-toggle] {
     border-radius: 4px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     overflow: hidden; }
-    .card.warning h1, .warning.listingCard h1, .card.warning h2, .warning.listingCard h2, .card.warning h3, .warning.listingCard h3, .card.warning h4, .warning.listingCard h4, .card.warning h5, .warning.listingCard h5, .card.warning h6, .warning.listingCard h6 {
+    .card.warning h1, .warning.card-content h1, .card.warning h2, .warning.card-content h2, .card.warning h3, .warning.card-content h3, .card.warning h4, .warning.card-content h4, .card.warning h5, .warning.card-content h5, .card.warning h6, .warning.card-content h6 {
       color: inherit; }
-    .card.warning ul, .warning.listingCard ul {
+    .card.warning ul, .warning.card-content ul {
       margin-bottom: 0; }
-    .card.warning img, .warning.listingCard img {
+    .card.warning img, .warning.card-content img {
       width: 100%; }
-    .card.warning .card-divider, .warning.listingCard .card-divider {
+    .card.warning .card-divider, .warning.card-content .card-divider {
       background: #f19233;
       padding: 1rem; }
-  .card.alert, .alert.listingCard {
+  .card.alert, .alert.card-content {
     border: 0;
     margin-bottom: 0.5rem;
     background: #F04124;
@@ -1992,16 +1992,16 @@ a, [ui-sref], [zf-open], [zf-close], [zf-toggle] {
     border-radius: 4px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     overflow: hidden; }
-    .card.alert h1, .alert.listingCard h1, .card.alert h2, .alert.listingCard h2, .card.alert h3, .alert.listingCard h3, .card.alert h4, .alert.listingCard h4, .card.alert h5, .alert.listingCard h5, .card.alert h6, .alert.listingCard h6 {
+    .card.alert h1, .alert.card-content h1, .card.alert h2, .alert.card-content h2, .card.alert h3, .alert.card-content h3, .card.alert h4, .alert.card-content h4, .card.alert h5, .alert.card-content h5, .card.alert h6, .alert.card-content h6 {
       color: inherit; }
-    .card.alert ul, .alert.listingCard ul {
+    .card.alert ul, .alert.card-content ul {
       margin-bottom: 0; }
-    .card.alert img, .alert.listingCard img {
+    .card.alert img, .alert.card-content img {
       width: 100%; }
-    .card.alert .card-divider, .alert.listingCard .card-divider {
+    .card.alert .card-divider, .alert.card-content .card-divider {
       background: #f14e33;
       padding: 1rem; }
-  .card.dark, .dark.listingCard {
+  .card.dark, .dark.card-content {
     border: 0;
     margin-bottom: 0.5rem;
     background: #232323;
@@ -2009,13 +2009,13 @@ a, [ui-sref], [zf-open], [zf-close], [zf-toggle] {
     border-radius: 4px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     overflow: hidden; }
-    .card.dark h1, .dark.listingCard h1, .card.dark h2, .dark.listingCard h2, .card.dark h3, .dark.listingCard h3, .card.dark h4, .dark.listingCard h4, .card.dark h5, .dark.listingCard h5, .card.dark h6, .dark.listingCard h6 {
+    .card.dark h1, .dark.card-content h1, .card.dark h2, .dark.card-content h2, .card.dark h3, .dark.card-content h3, .card.dark h4, .dark.card-content h4, .card.dark h5, .dark.card-content h5, .card.dark h6, .dark.card-content h6 {
       color: inherit; }
-    .card.dark ul, .dark.listingCard ul {
+    .card.dark ul, .dark.card-content ul {
       margin-bottom: 0; }
-    .card.dark img, .dark.listingCard img {
+    .card.dark img, .dark.card-content img {
       width: 100%; }
-    .card.dark .card-divider, .dark.listingCard .card-divider {
+    .card.dark .card-divider, .dark.card-content .card-divider {
       background: #323232;
       padding: 1rem; }
 
@@ -3054,7 +3054,7 @@ meter {
         -ms-flex: 0 0 50%;
             flex: 0 0 50%; }
 
-.small-3, .listingCard .distance-indicator {
+.small-3 {
   -webkit-flex: 0 0 25%;
       -ms-flex: 0 0 25%;
           flex: 0 0 25%;
@@ -3210,7 +3210,7 @@ meter {
         -ms-flex: 0 0 12.5%;
             flex: 0 0 12.5%; }
 
-.small-9, .listingCard .card-titlebar {
+.small-9 {
   -webkit-flex: 0 0 75%;
       -ms-flex: 0 0 75%;
           flex: 0 0 75%;
@@ -3288,7 +3288,7 @@ meter {
         -ms-flex: 0 0 9.09091%;
             flex: 0 0 9.09091%; }
 
-.small-12, .map-container.listing-section, .dash-item {
+.small-12, .listingCard, .map-container.listing-section, .dash-item {
   -webkit-flex: 0 0 100%;
       -ms-flex: 0 0 100%;
           flex: 0 0 100%;
@@ -3435,7 +3435,7 @@ meter {
               flex: 0 0 20%; } }
 
 @media only screen and (min-width: 40em) {
-  .medium-6 {
+  .medium-6, .listingCard {
     -webkit-flex: 0 0 50%;
         -ms-flex: 0 0 50%;
             flex: 0 0 50%;
@@ -3675,7 +3675,7 @@ meter {
               flex: 0 0 33.33333%; } }
 
 @media only screen and (min-width: 75em) {
-  .large-4, .dash-item {
+  .large-4, .listingCard, .dash-item {
     -webkit-flex: 0 0 33.33333%;
         -ms-flex: 0 0 33.33333%;
             flex: 0 0 33.33333%;
@@ -6884,6 +6884,9 @@ table tr td {
           font-size: 0.7rem; } }
     .search-box .search input {
       color: #fff !important; }
+  .search-box .search.grid-block {
+    margin: 0 auto;
+    max-width: 700px; }
   .search-box .search-welcome h1 {
     color: #fff;
     font-size: 1.5rem;
@@ -6896,9 +6899,24 @@ table tr td {
 /******************************************
 			Generic Card Styles
 *******************************************/
-.listingCard {
+.resultsList .grid-content {
+  display: flexbox;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap; }
+
+.resultsList .grid-content .grid-block {
+  margin-left: 0;
+  margin-right: 0; }
+
+.card-content {
   box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
-  margin: 15px 0;
+  margin: 8px; }
+
+.listingCard {
   /******************************************
 					Card Header
 	*******************************************/
@@ -6912,9 +6930,18 @@ table tr td {
     overflow-y: visible !important; }
   .listingCard .card-subtitle {
     color: #aaa;
-    padding-top: 5px; }
+    padding-top: 5px;
+    padding-left: 0px; }
   .listingCard .card-titlebar {
-    padding: 19px 0; }
+    padding: 19px 0;
+    background-color: #eee; }
+    .listingCard .card-titlebar .grid-block.title-area {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column; }
     .listingCard .card-titlebar .star-rating {
       clear: both; }
   .listingCard .distance-indicator {
@@ -6956,11 +6983,15 @@ table tr td {
     display: block;
     clear: both;
     padding: 15px 0; }
-  .listingCard .card-actions .grid-content .button {
-    background: transparent;
-    margin: 0;
-    padding: 0.85em 0;
-    width: 100%; }
+  .listingCard .card-actions {
+    -webkit-align-self: flex-end;
+        -ms-flex-item-align: end;
+            align-self: flex-end; }
+    .listingCard .card-actions .grid-content .button {
+      background: transparent;
+      margin: 0;
+      padding: 0.85em 0;
+      width: 100%; }
   .listingCard .card-actions.card-divider {
     background: #fff;
     border-top: 1px solid #eee;
@@ -7044,6 +7075,9 @@ table tr td {
   .feature-data .rent {
     background-color: #ff7f00; }
   .feature-data .rating {
+    background-color: #dddddd;
+    color: #444; }
+  .feature-data .violations {
     background-color: #dddddd;
     color: #444; }
   .feature-data .feature-section {
