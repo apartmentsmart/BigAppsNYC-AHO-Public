@@ -6902,6 +6902,9 @@ table tr td {
 .resultsList.grid-container, .resultsList.listing-section {
   max-width: 70em; }
 
+.resultsList .search-result {
+  padding: 20px 0; }
+
 .resultsList .grid-content {
   display: flexbox;
   -webkit-flex-direction: row;

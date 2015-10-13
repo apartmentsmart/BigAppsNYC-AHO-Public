@@ -2,7 +2,12 @@
 <div class="resultsList grid-container">
 <div class="grid-content">
 	<div class="grid-block" ng-controller="resultsController">
-	    <div class="listingCard grid-block" ng-repeat="listing in listings">
+
+		<div class="search-result">
+			<strong>Displaying {{filtered.length}} results based on your search preferences.</strong>
+		</div>
+		
+	    <div class="listingCard grid-block" ng-repeat="listing in filtered = (listings)">
 	    	<div class="card-content vertical">
 	    		<div class="grid-block card-titlebar shrink">
 	    			<div class="grid-content title-area">
@@ -53,13 +58,13 @@
 
 				<div class="card-actions card-footer card-divider grid-block shrink">
 					<div class="grid-block">
-						<div class="grid-content">
-							<a class="button"><i class="fa fa-pencil"></i></a>
+						<div class="grid-content expand">
+							<a class="button" zf-open="card-suggest-edit"><i class="fa fa-sticky-note"></i></a>
 						</div>
-						<div class="grid-content" zf-hard-toggle="share-sheet">
+						<div class="grid-content expand" zf-hard-toggle="share-sheet">
 							<a class="button" zf-hard-toggle="share-sheet"><i class="fa fa-share" zf-hard-toggle="share-sheet"></i></a>
 						</div>
-						<div class="grid-content">
+						<div class="grid-content exoand">
 							<a class="button"><i class="fa fa-heart-o"></i></a>
 						</div>
 					</div>
@@ -77,6 +82,34 @@
 							</ul>
 						</zf-as-content>
 					</zf-action-sheet>  	
+
+				
+				<div zf-modal="" id="card-suggest-edit" class="collapse">
+					<div class="grid-block vertical">
+						<div class="primary title-bar">
+							<div class="center title">Note about this property</div>
+							<span zf-close="" class="right"><a>Done</a></span>
+						</div>
+						<div class="grid-content padding" style="padding-top: 1rem;">
+
+							<form>
+								<div class="grid-block">
+									<div class="small-12 medium-6 grid-content">
+										<label>
+										Note about this property
+											<input type="text" placeholder="Type your note here">
+										</label>
+									</div>
+								</div>
+							</form>
+
+
+							<a zf-close="" class="button expand">Submit</a>
+
+						</div>
+					</div>
+				</div>
+
 
 
 

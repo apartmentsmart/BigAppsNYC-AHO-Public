@@ -85,10 +85,10 @@
 								<tr class="bedroom-table-heading">
 									<td>Bedrooms</td>
 									<td>Est. Rent</td>
-									<td>Waiting List</td>
+									<td>Waiting List (Months)</td>
 								</tr>
 								<tr ng-repeat="unit in listing.units" class="bedroom-table-body">
-									<td>{{unit.name}}</td>
+									<td>{{unit.brs}}</td>
 									<td>
 										<span ng-show="unit.min_rent != 0">${{unit.min_rent}}
 										<span ng-show="unit.min_rent != 0 && unit.max_rent != 0"> - </span>
@@ -139,7 +139,7 @@
 						<div ng-repeat="review in listing.reviews track by $index" class="single-review">
 							
 							<div ng-show="!listing.reviews">
-								Be the first to review this property.
+								<p>Be the first to review this property.</p>
 							</div>
 							
 							<div class="review-meta grid-content">
