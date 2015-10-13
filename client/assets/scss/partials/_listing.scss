@@ -14,6 +14,17 @@
 	padding-top: 10px;
 }
 
+.add-photo {
+	color: #fff;
+	position: absolute;
+	bottom: 5%;
+	left: 5%;
+
+	&:hover{
+		color: $af-orange;
+	}
+}
+
 /******************************************
 	Hero Section - Title / Borough / Rating
 *******************************************/
@@ -194,6 +205,8 @@
 
 /* Schools Info */
 	.school-table {
+		width: 100%;
+		
 		th {
 			text-align: left;
 		}

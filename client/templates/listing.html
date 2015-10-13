@@ -15,14 +15,15 @@ animationOut: slideOutRight
 				<div class="hero-content">
 					<div class="listing-name">{{listing.name}}</div>
 					<div class="listing-borough">{{listing.borough}} - {{listing.neighborhood}}</div>
-						<div ng-show="listing.avgRating" class="star-rating">
-							<i class="fa" ng-class="{'fa-star-o': listing.avgRating < .5,  'fa-star-half-o': listing.avgRating >= .5 && listing.avgRating < 1,  'fa-star' : listing.avgRating >= 1 }"></i>
-							<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 1.5, 'fa-star-half-o': listing.avgRating >= 1.5 && listing.avgRating < 2,  'fa-star' : listing.avgRating >= 2 }"></i>
-							<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 2.5, 'fa-star-half-o': listing.avgRating >= 2.5 && listing.avgRating < 3,  'fa-star' : listing.avgRating >= 3 }"></i>
-							<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 3.5, 'fa-star-half-o': listing.avgRating >= 3.5 && listing.avgRating < 4,  'fa-star' : listing.avgRating >= 4 }"></i>
-							<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 4.5, 'fa-star-half-o': listing.avgRating >= 4.5 && listing.avgRating < 5,  'fa-star' : listing.avgRating >= 5 }"></i>
-							&nbsp; &nbsp; <span class="rating-text">{{listing.avgRating}}</span>
-					</div>
+					<div ng-show="listing.avgRating" class="star-rating">
+						<i class="fa" ng-class="{'fa-star-o': listing.avgRating < .5,  'fa-star-half-o': listing.avgRating >= .5 && listing.avgRating < 1,  'fa-star' : listing.avgRating >= 1 }"></i>
+						<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 1.5, 'fa-star-half-o': listing.avgRating >= 1.5 && listing.avgRating < 2,  'fa-star' : listing.avgRating >= 2 }"></i>
+						<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 2.5, 'fa-star-half-o': listing.avgRating >= 2.5 && listing.avgRating < 3,  'fa-star' : listing.avgRating >= 3 }"></i>
+						<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 3.5, 'fa-star-half-o': listing.avgRating >= 3.5 && listing.avgRating < 4,  'fa-star' : listing.avgRating >= 4 }"></i>
+						<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 4.5, 'fa-star-half-o': listing.avgRating >= 4.5 && listing.avgRating < 5,  'fa-star' : listing.avgRating >= 5 }"></i>
+						&nbsp; &nbsp; <span class="rating-text">{{listing.avgRating}}</span>
+				</div>
+				<a class="add-photo"><i class="fa fa-camera"></i> Add Photo</a>
 				</div>
 			</div> <!-- End grid-block hero-section -->
 			<div class="listing-content">
@@ -227,6 +228,10 @@ animationOut: slideOutRight
 								<h5>Status: {{violation.status}}</h5>
 								<h5>Correct By: {{violation.OriginalCorrectByDate}}</h5>
 								<p>{{violation.description}}.</p>
+							</div>
+
+							<div ng-show="!listing.violations">
+								<p>We were unable to locate any code violations data for this property. However, that does not mean that the property has no violations or a history of violations. It only means we were unable to find data on violations.</p>
 							</div>
 
 						</div>

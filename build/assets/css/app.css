@@ -7039,6 +7039,14 @@ table tr td {
   font-size: 0.7rem;
   padding-top: 10px; }
 
+.add-photo {
+  color: #fff;
+  position: absolute;
+  bottom: 5%;
+  left: 5%; }
+  .add-photo:hover {
+    color: #ff7f00; }
+
 /******************************************
 	Hero Section - Title / Borough / Rating
 *******************************************/
@@ -7164,13 +7172,14 @@ table tr td {
     border-bottom: 1px solid #444; }
 
 /* Schools Info */
-.school-table th {
-  text-align: left; }
-
-.school-table .school-table-heading {
-  background-color: #0093d8; }
-  .school-table .school-table-heading th {
-    color: #fff; }
+.school-table {
+  width: 100%; }
+  .school-table th {
+    text-align: left; }
+  .school-table .school-table-heading {
+    background-color: #0093d8; }
+    .school-table .school-table-heading th {
+      color: #fff; }
 
 /* Reviews */
 .reviews .absolute-center {
