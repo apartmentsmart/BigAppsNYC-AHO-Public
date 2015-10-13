@@ -109,6 +109,14 @@
 	margin-top: 20px;
 }
 
+.contact-info {
+	.phone,
+	.email,
+	.website {
+		padding: 20px 0;
+	}
+}
+
 .listing-section {
 	@extend .grid-container;
 	@extend .small-11;

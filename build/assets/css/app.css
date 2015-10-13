@@ -7113,6 +7113,11 @@ table tr td {
 .non-feature-data {
   margin-top: 20px; }
 
+.contact-info .phone,
+.contact-info .email,
+.contact-info .website {
+  padding: 20px 0; }
+
 .listing-section {
   padding: 20px 0; }
   .listing-section .listing-heading {

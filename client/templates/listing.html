@@ -50,9 +50,21 @@ animationOut: slideOutRight
 
 				<div class="non-feature-data">
 
-					<div ng-show='listing.description' id="description" class="description listing-section">
-						<div class="listing-body">
-							{{listing.description}}
+					<div ng-show"listing.website || listing.phone || listing.email" id="contact-info" class="contact-info listing-section">
+						<div class="listing-heading">
+							<i class="fa fa-user"></i> Contact Information
+						</div>
+
+						<div ng-show="listing.phone" id="phone" class="phone">
+							<a href="tel:{{listing.phone}}"><i class="fa fa-phone"></i> {{listing.phone}}</a>
+						</div>
+
+						<div ng-show="listing.email" id="email" class="email">
+							<a href="mailto:{{listing.email}}"> <i class="fa fa-envelope"></i> {{listing.email}}</a>
+						</div>
+
+						<div ng-show="listing.website" id="website" class="website">
+							<a href="{{listing.website}}"> <i class="fa fa-globe"></i> {{listing.website}}</a>
 						</div>
 					</div>
 
@@ -218,17 +230,6 @@ animationOut: slideOutRight
 							</div>
 
 						</div>
-					</div>
-
-					<div id="contact-info" class="contact-info listing-section">
-						<i class="fa fa-phone"></i> Phone Number
-					</div>
-
-					<div id="website" class="website listing-section">
-						<i class="fa fa-globe"></i> Website
-					</div>
-					<div id="accessibility" class="accessibility listing-section">
-						<i class="fa fa-wheelchair"></i> Accessibility
 					</div>
 
 					<div id="address" class="address listing-section grid-content">
