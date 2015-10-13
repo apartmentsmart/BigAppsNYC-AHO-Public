@@ -17,7 +17,7 @@
 						<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 4.5, 'fa-star-half-o': listing.avgRating >= 4.5 && listing.avgRating < 5,  'fa-star' : listing.avgRating >= 5 }"></i>
 						&nbsp; &nbsp; <span class="rating-text">{{listing.avgRating}}</span>
 				</div>
-				<a class="add-photo"><i class="fa fa-camera"></i> Add Photo</a>
+				<a class="add-photo button secondary hollow"><i class="fa fa-camera"></i> Add Photo</a>
 				</div>
 			</div> <!-- End grid-block hero-section -->
 			<div class="listing-content">
@@ -134,9 +134,13 @@
 					<div id="reviews" class="reviews listing-section">
 						<div class="listing-heading">
 							<i class="fa fa-star-half-o"></i> Reviews
-							<div class="add-review" zf-open="add-review">Add Review</div>
+							<!-- <div class="add-review" zf-open="add-review">Add Review</div> -->
 						</div>
 						<div ng-repeat="review in listing.reviews track by $index" class="single-review">
+							
+							<div ng-show="!listing.reviews">
+								Be the first to review this property.
+							</div>
 							
 							<div class="review-meta grid-content">
 								<div class="subtitle grid-block small-11">
@@ -206,7 +210,7 @@
 						
 						</div>
 							<div class="absolute-center grid-block">
-								<a class="button hollow read-more">Read More Reviews</a>
+								<a class="button hollow" zf-open="add-review">Add Review</a>
 							</div>
 					</div>
 

@@ -7040,9 +7040,8 @@ table tr td {
   padding-top: 10px; }
 
 .add-photo {
-  color: #fff;
   position: absolute;
-  bottom: 5%;
+  bottom: 0;
   left: 5%; }
   .add-photo:hover {
     color: #ff7f00; }
