@@ -221,6 +221,10 @@
 						</div>
 						<div class="listing-body">
 							
+							<div ng-hide="!listing.violations" class="total-violations">
+								There are a total of {{listing.violationsCount}} violations for this listing.
+							</div>
+
 							<div ng-repeat="violation in listing.violations">
 								<h3><i class="fa  fa-exclamation-triangle"></i> Violation On {{violation.NOVIssuedDate}}</h3>
 								<h5>Status: {{violation.status}}</h5>
