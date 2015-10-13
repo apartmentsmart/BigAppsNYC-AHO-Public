@@ -20,7 +20,12 @@
 	@extend .card;
 	box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
 	margin: 8px;
+	justify-content: space-between;
+	display: flex;
+	flex-direction: column;
+	
 }
+
 
 .listingCard {
 	
@@ -117,7 +122,6 @@
 		Share Sheet / Actions / Card Footer
 	*******************************************/
 	.card-actions {
-		align-self: flex-end;
 		.grid-content {
 			@extend .small-4;
 
@@ -133,7 +137,7 @@
 	.card-actions.card-divider {
 		background: #fff;
 		border-top: 1px solid #eee;
-		padding: 0 16px;
+		padding: 2px;
 
 		.button{
 			padding: 20px 0;

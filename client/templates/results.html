@@ -9,8 +9,8 @@ animationOut: slideOutLeft
 <div class="grid-content">
 	<div class="grid-block" ng-controller="resultsController">
 	    <div class="listingCard grid-block" ng-repeat="listing in listings">
-	    	<div class="card-content">
-	    		<div class="grid-block card-titlebar">
+	    	<div class="card-content vertical">
+	    		<div class="grid-block card-titlebar shrink">
 	    			<div class="grid-content title-area">
 	    				<div class="card-title grid-content"></div>
 		    				<a ui-sref="listing({borough:listing.borough, id:listing.id})">{{listing.name}}</a>
@@ -34,7 +34,7 @@ animationOut: slideOutLeft
 	    			</div>
 	    		</div>
 	    	
-				<div class="card-section card-body">
+				<div class="card-section card-body grid-block">
 
 						<div class="grid-block">
 
@@ -55,23 +55,21 @@ animationOut: slideOutLeft
 						
 						</div>
 
-					</div> <!-- End card-section / Card Body -->	
+				</div> <!-- End card-section / Card Body -->	
 
-
-
-					<div class="card-actions card-footer card-divider">
-						<div class="grid-block">
-							<div class="grid-content">
-								<a class="button"><i class="fa fa-pencil"></i></a>
-							</div>
-							<div class="grid-content" zf-hard-toggle="share-sheet">
-								<a class="button" zf-hard-toggle="share-sheet"><i class="fa fa-share" zf-hard-toggle="share-sheet"></i></a>
-							</div>
-							<div class="grid-content">
-								<a class="button"><i class="fa fa-heart-o"></i></a>
-							</div>
+				<div class="card-actions card-footer card-divider grid-block shrink">
+					<div class="grid-block">
+						<div class="grid-content">
+							<a class="button"><i class="fa fa-pencil"></i></a>
+						</div>
+						<div class="grid-content" zf-hard-toggle="share-sheet">
+							<a class="button" zf-hard-toggle="share-sheet"><i class="fa fa-share" zf-hard-toggle="share-sheet"></i></a>
+						</div>
+						<div class="grid-content">
+							<a class="button"><i class="fa fa-heart-o"></i></a>
 						</div>
 					</div>
+				</div>
 
 					<!-- End Card Markup -->
 					<!-- Share Sheet "Modal" -->

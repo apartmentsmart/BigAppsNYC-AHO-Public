@@ -6917,7 +6917,16 @@ table tr td {
 
 .card-content {
   box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
-  margin: 8px; }
+  margin: 8px;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column; }
 
 .listingCard {
   /******************************************
@@ -6986,19 +6995,15 @@ table tr td {
     display: block;
     clear: both;
     padding: 15px 0; }
-  .listingCard .card-actions {
-    -webkit-align-self: flex-end;
-        -ms-flex-item-align: end;
-            align-self: flex-end; }
-    .listingCard .card-actions .grid-content .button {
-      background: transparent;
-      margin: 0;
-      padding: 0.85em 0;
-      width: 100%; }
+  .listingCard .card-actions .grid-content .button {
+    background: transparent;
+    margin: 0;
+    padding: 0.85em 0;
+    width: 100%; }
   .listingCard .card-actions.card-divider {
     background: #fff;
     border-top: 1px solid #eee;
-    padding: 0 16px; }
+    padding: 2px; }
     .listingCard .card-actions.card-divider .button {
       padding: 20px 0; }
     .listingCard .card-actions.card-divider i {
