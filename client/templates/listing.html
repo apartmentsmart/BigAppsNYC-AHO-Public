@@ -37,20 +37,22 @@ animationOut: slideOutRight
 							<i class="fa fa-money"></i>
 							${{listing.rent_range}}/month*
 					</div>
-					<div ng-click="scrollTo('schools')" class="grid-content rent feature-section">
-						<i class="fa fa-graduation-cap"></i> 
-						 {{listing.schoolCount}} Schools Nearby
+					<div ng-click="scrollTo('choice-score')" class="grid-content rent feature-section">
+						<i class="fa fa-building-o"></i> 
+						 <strong>{{listing.housing_choice_score}}</strong> Housing Choice Score
 					</div>
 					<div ng-click="scrollTo('violations')" class="grid-content violations feature-section">
 						<i class="fa fa-chain-broken"></i>
 						<br>
-						{{listing.violationsCount}} Code Violations
+						<strong>{{listing.violationsCount}}</strong> Code Violations
 					</div>
 				</div>
 
 				<div class="clearfix"></div>
 
 				<div class="non-feature-data">
+
+				
 
 					<div ng-show"listing.website || listing.phone || listing.email" id="contact-info" class="contact-info listing-section">
 						<div class="listing-heading">
@@ -104,6 +106,85 @@ animationOut: slideOutRight
 									<td>{{unit.waitlist}}</td>
 								</tr>
 							</table>
+						</div>
+					</div>
+
+					<div id="choice-score" class="choice-score listing-section">
+						<div class="listing-heading">
+							<i class="fa fa-building-o"></i> Housing Choice Score - <strong>{{listing.housing_choice_score}}</strong>
+						</div>
+						<div class="listing-body">
+							
+							<div ng-hide="!listing.housing_choice_score_data.poverty_score">
+								The above score is influenced by a poverty ranking of <strong>{{listing.housing_choice_score_data.poverty_score | number:0}}</strong> out of 50.
+							</div>
+							
+							<h2>Housing Choice Score™ Descriptions</h2>
+
+								<p>
+									Our Housing Choice Score™ assigns a numerical score to each census tract that quantifies social and economic opportunity for the surrounding area. We calculate the Housing Choice Score™ based on five dimensions: poverty level, educational attainment, commute time to work, housing vacancy rate and unemployment rate.
+								</p>
+
+								<p>
+									The census tract that this property is located in has been assigned a score of <strong>{{listing.housing_choice_score}}</strong> out of a possible <strong>100</strong> based on the following dimensions.
+								</p>
+
+								<p>
+									{IF MISSING}Please note that data for one or more dimensions below was insufficient to score. For this reason, this score may have a higher margin of error and be less reliable. Based on the missing dimension of {name dimension}, the Housing Choice Score™ for this census tract could be as much as ___ points lower than tracts with complete data.
+								</p>
+
+
+							<h3>Poverty</h3>
+
+								<p>
+									Areas with a concentration of persons living below the poverty level have a high correlation with less social and economic opportunity. <strong>{{listing.housing_choice_score_data.percent_below_poverty | number:0}}%</strong> of persons living in census tract <strong>{{listing.housing_choice_score_data.census_tract}}</strong> live below the poverty level. This census tract, of all tracts within NYC, ranks in the <strong>{{listing.housing_choice_score_data.poverty_rank | number:0}}</strong> percentile. Based on this ranking, we scored the census tract a <strong>{{listing.housing_choice_score_data.poverty_score | number:0}}</strong> out of a possible 50 points.
+								</p>
+
+								<p>
+									{IF MISSING}Areas with a concentration of persons living below the poverty level have a high correlation with less social and economic opportunity. Due to insufficient data for this dimension, this census tract’s score could be a many as 50 points lower. Please take this margin of error into consideration when assessing this area.
+								</p>
+
+								<h3>Educational Attainment</h3>
+
+									<p>
+										High school graduation and higher education graduation rates for a given area contribute to social and economic opportunity. <strong>{{100 - listing.housing_choice_score_data.percent_edu_less_than_hs | number:0}}%</strong> of adults living in this census tract have graduated from high school and {{listing.housing_choice_score_data.percent_edu_bachelors | number:0}}% have graduated from college. This census tract, of all tracts within NYC, ranks in the {{ 100 - listing.housing_choice_score_data.less_than_hs_rank | number:0}} percentile for high school graduation and {{listing.housing_choice_score_data.bachelor_rank | number:0}}  percentile for college graduation. Based on this ranking, we scored the census tract a 
+										{{listing.housing_choice_score_data.bachelor_score + listing.housing_choice_score_data.less_than_hs_score + 0}} out of a possible 15 points.
+									</p>
+
+									<p>
+										{IF MISSING}High school graduation and higher education graduation rates for a given area contribute to social and economic opportunity. Due to insufficient data for this dimension, this census tract’s score could be a many as 15 points lower. Please take this margin of error into consideration when assessing this area.
+									</p>
+
+								<h3>Unemployment Rate</h3>
+
+									<p>
+										The unemployment rate for an area has a direct correlation to it’s social and economic opportunity. The unemployment rate for this census tract is ___. This census tract, of all tracts within NYC, ranks in the ___ percentile for unemployment. Based on this ranking, we scored the census tract a _____ out of a possible 15 points.
+									</p>
+
+									<p>
+										{IF MISSING}The unemployment rate for an area has a direct correlation to it’s social and economic opportunity. Due to insufficient data for this dimension, this census tract’s score could be a many as 15 points lower. Please take this margin of error into consideration when assessing this area.
+									</p>
+
+								<h3>Vacancy Rate</h3>
+
+									<p>
+										Housing vacancy rates for an area have a direct correlation to it’s social and economic opportunity. The housing vacancy rate for this census tract is ___. This census tract, of all tracts within NYC, ranks in the ___ percentile for housing vacancy rates. Based on this ranking, we scored the census tract a _____ out of a possible 10 points.			
+									</p>
+
+									<p>
+										{IF MISSING}Housing vacancy rates for an area have a direct correlation to it’s social and economic opportunity. Due to insufficient data for this dimension, this census tract’s score could be a many as 10 points lower. Please take this margin of error into consideration when assessing this area.
+									</p>
+
+								<h3>Commute Time to Work</h3>
+
+									<p>
+										Commute times to work for an area have a direct correlation to it’s social and economic opportunity. The average commute time for this census tract is ___. This census tract, of all tracts within NYC, ranks in the ___ percentile for commute time to work. Based on this ranking, we scored the census tract a _____ out of a possible 10 points.
+									</p>
+
+									<p>
+										{IF MISSING}Commute times to work for an area have a direct correlation to it’s social and economic opportunity. Due to insufficient data for this dimension, this census tract’s score could be a many as 10 points lower. Please take this margin of error into consideration when assessing this area.
+									</p>
+
 						</div>
 					</div>
 
@@ -223,6 +304,9 @@ animationOut: slideOutRight
 
 
 					<div id="violations" class="violations listing-section">
+
+					<!-- {{listing.reac_score}} -->
+
 						<div class="listing-heading">
 							<i class="fa fa-chain-broken"></i> Code Violations
 						</div>
