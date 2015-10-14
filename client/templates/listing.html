@@ -23,7 +23,7 @@ animationOut: slideOutRight
 						<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 4.5, 'fa-star-half-o': listing.avgRating >= 4.5 && listing.avgRating < 5,  'fa-star' : listing.avgRating >= 5 }"></i>
 						&nbsp; &nbsp; <span class="rating-text">{{listing.avgRating}}</span>
 				</div>
-				<a class="add-photo button secondary hollow"><i class="fa fa-camera"></i> Add Photo</a>
+				<a class="add-photo button secondary hollow" zf-open="photo-upload"><i class="fa fa-camera"></i> Add Photo</a>
 				<a class="hero-suggest button secondary hollow" zf-open="take-note"><i class="fa fa-sticky-note"></i> Notes</a>
 				</div>
 			</div> <!-- End grid-block hero-section -->
@@ -306,6 +306,7 @@ animationOut: slideOutRight
 		<div ng-include="" src="'/partials/suggest-edit-modal.html'"></div>
 		<div ng-include="" src="'/partials/review-modal.html'"></div>
 		<div ng-include="" src="'/partials/note-modal.html'"></div>
+		<div ng-include="" src="'/partials/photo-upload.html'"></div>
 
 
 	    </div> <!-- End ng-repeat -->
