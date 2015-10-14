@@ -4,8 +4,7 @@
     <div ng-controller="listingController">
 	    <div ng-repeat="listing in thisListing">
 
-	    	<div class="grid-block hero-section">
-<!-- 	    	<div class="grid-block hero-section" style="background: url('../assets/img/room.jpg')"> -->
+	    	<div class="grid-block hero-section" style="background: url('./assets/img/building.jpeg')">
 				<div class="hero-content">
 					<div class="listing-name">{{listing.name}}</div>
 					<div class="listing-borough">{{listing.borough}} - {{listing.neighborhood}}</div>
@@ -142,7 +141,7 @@
 
 									<p>
 										High school graduation and higher education graduation rates for a given area contribute to social and economic opportunity. <strong>{{100 - listing.housing_choice_score_data.percent_edu_less_than_hs | number:0}}%</strong> of adults living in this census tract have graduated from high school and {{listing.housing_choice_score_data.percent_edu_bachelors | number:0}}% have graduated from college. This census tract, of all tracts within NYC, ranks in the {{ 100 - listing.housing_choice_score_data.less_than_hs_rank | number:0}} percentile for high school graduation and {{listing.housing_choice_score_data.bachelor_rank | number:0}}  percentile for college graduation. Based on this ranking, we scored the census tract a 
-										{{listing.housing_choice_score_data.bachelor_score + listing.housing_choice_score_data.less_than_hs_score + 0}} out of a possible 15 points.
+										{{listing.housing_choice_score_data.bachelor_score + listing.housing_choice_score_data.less_than_hs_score}} out of a possible 15 points.
 									</p>
 
 									<p>
