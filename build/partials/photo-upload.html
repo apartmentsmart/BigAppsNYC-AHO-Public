@@ -1,7 +1,7 @@
 <div zf-modal="" id="photo-upload" class="collapse">
   <div class="grid-block vertical">
     <div class="primary title-bar">
-      <div class="center title">Note about this property</div>
+      <div class="center title">Upload a Photo</div>
       <span zf-close="" class="right"><a>Done</a></span>
     </div>
     <div class="grid-content padding" style="padding-top: 1rem;">
@@ -9,6 +9,10 @@
       <form>
         <div class="grid-block">
           <div class="small-12 medium-6 grid-content">
+              <!-- Modal Wrapper -->
+
+
+
             <div flow-init="{target: '/upload'}"
                  flow-files-submitted="$flow.upload()"
                  flow-file-success="$file.msg = $message">
@@ -16,18 +20,18 @@
               <input type="file" flow-btn/>
 
 
-              <img flow-img="$flow.files[0]" />
+              <!-- <img flow-img="$flow.files[0]" /> -->
 
               <table>
                 <tr ng-repeat="file in $flow.files">
-                    <td>{{$index+1}}</td>
                     <td>{{file.name}}</td>
-                    <td>{{file.msg}}</td>
                 </tr>
               </table>
 
 
+
             </div>
+            <!-- End Modal Wrapper -->
           </div>
         </div>
       </form>
