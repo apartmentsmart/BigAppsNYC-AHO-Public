@@ -19670,24 +19670,17 @@ Picker.extend( 'pickadate', DatePicker )
     FastClick.attach(document.body);
   }
 
-//---------------------------------
-//    Back Button Function
-//---------------------------------
+app.directive('back', function(){
 
-// app.run(function ($rootScope, $location) {
+  return{
+    link: function(scope, element, attrs) {
+         element.on('click', function() {
+             window.history.back();
+         });
+     } 
+  }
 
-//     var history = [];
-
-//     $rootScope.$on('$routeChangeSuccess', function() {
-//         history.push($location.$$path);
-//     });
-
-//     $rootScope.back = function () {
-//         var prevUrl = history.length > 1 ? history.splice(-2)[0] : "/";
-//         $location.path(prevUrl);
-//     };
-
-// });
+});
 
 
 /**
@@ -19707,8 +19700,7 @@ app.factory('globalFilter', function() {
  function mutate(scope){
 
 
-  if(scope.thisSearch.borough == 'All')
-      delete scope.thisSearch.borough; 
+
   
   if(scope.thisSearch.age >= 55){
       scope.thisSearch.elderly = 1;
@@ -19720,10 +19712,11 @@ app.factory('globalFilter', function() {
   if(scope.thisSearch.disabilityStatus != "None")
       scope.thisSearch.disabled = 1;
 
-  delete scope.thisSearch.disabilityStatus;
+  //delete scope.thisSearch.disabilityStatus;
 
   delete scope.thisSearch.sizeOfHousehold;
-
+  
+  //delete scope.thisSearch.ami_band;
 
  }
 
@@ -19768,7 +19761,7 @@ app.factory('dataHandler', ['$http', '$filter', 'globalFilter', '$sce', function
         
         }
 
-        console.log(endpoint);
+
 
       if(endpoint){
       $http({
@@ -19798,8 +19791,7 @@ app.factory('dataHandler', ['$http', '$filter', 'globalFilter', '$sce', function
     function create(scope, scopeAtt, data){
 
         $http.post("http://api.affordablehousingonline.com/nyc/push/?type="+scopeAtt, data).success(function(data, status) {
-            console.log(data);
-            console.log(status);
+
             scope[scopeAtt] = data;
             
         })
@@ -19853,7 +19845,34 @@ app.controller('resultsController', ['$scope','globalFilter', 'dataHandler', '$s
 
   $scope.thisSearch.type = 'search';
 
+  var ami_band = {};
+    ami_band[1] = {50:'30250',60:'36300', 80:'48400' };
+    ami_band[2] = {50:'34550',60:'41460', 80:'55300' };
+    ami_band[3] = {50:'38850',60:'46620', 80:'62150'};
+    ami_band[4] = {50:'43150',60:'51780', 80:'69050'};
+   console.log($scope.thisSearch);     
+    
 
+  if($scope.thisSearch.hhsize && $scope.thisSearch.income){
+   var hh_size = ($scope.thisSearch.hhsize > 4 ? 4 : $scope.thisSearch.hhsize);
+   var band_by_size = ami_band[hh_size];
+
+   var income = $scope.thisSearch.income * 12;
+
+   if(income < band_by_size[50])
+     $scope.thisSearch.ami_band = 49;
+
+  else if(income < band_by_size[60])
+     $scope.thisSearch.ami_band = 59;
+
+   else if(income < band_by_size[80])
+     $scope.thisSearch.ami_band = 79;
+   
+   else
+      $scope.thisSearch.ami_band = 81;
+  
+  console.log($scope.thisSearch);
+  }
 
    //Handle search param mutation
    globalFilter.mutate($scope);

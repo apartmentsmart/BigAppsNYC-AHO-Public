@@ -12,11 +12,34 @@ animationOut: slideOutLeft
 		<div class="search-result small-12">
 			<strong>Displaying {{totalListings.length}} results based on your search preferences.</strong>
 		</div>
+
+		<div class='listingCard grid-block' ng-show='thisSearch.ami_band > 0'>
+	    	<div class="card-content vertical" style='padding: 10px;'>
+				<p>
+				According to your search preferences you may be eligible to rent an affordable housing unit that participates in the following Federal, State, and City affordable housing programs:
+				<ul>
+					<li ng-show="thisSearch.ami_band < 130" >Article 8A Loan Program
+					<li ng-show="thisSearch.ami_band < 120" >Mitchell-Lama
+					<li ng-show="thisSearch.ami_band < 95" >Section 221(d)(3) BMIR
+					<li ng-show="thisSearch.ami_band < 80" >Section 236
+					<li ng-show="thisSearch.ami_band < 80" >HOPWA
+					<li ng-show="thisSearch.ami_band < 60" >LIHTC
+					<li ng-show="thisSearch.ami_band < 50" >Project-Based Section 8
+					<li ng-show="thisSearch.ami_band < 50 && thisSearch.elderly" >Section 202
+					<li ng-show="thisSearch.ami_band < 50 && thisSearch.disabilityStatus != 'None'" >Section 811
+					<li ng-show="thisSearch.ami_band < 50" >Project Rental Assistance Contract (PRAC)
+					<li ng-show="thisSearch.ami_band < 50" >Rental Supplement Program
+					<li ng-show="thisSearch.ami_band < 50" >Rental Assistance Program
+					<li ng-show="thisSearch.ami_band < 50" >Public Housing
+				</ul>
+				</p>
+			</div>
+		</div>
 		
 	    <div class="listingCard grid-block" ng-repeat="listing in totalListings = (listings)">
 	    	<div class="card-content vertical">
-	    		<div class="grid-block result-image-section">
-	    			<img src="./assets/img/building.jpeg" class="result-image">
+	    		<div ng-show="listing.default_image_url" class="grid-block result-image-section">
+	    			<img src="{{listing.default_image_url}}" class="result-image">
 	    		</div>
 	    		<div class="grid-block card-titlebar shrink">
 	    			<div class="grid-content title-area">
@@ -37,7 +60,7 @@ animationOut: slideOutLeft
 						<center>
 							<i class="fa fa-street-view"></i>
 							<br>
-							<span>0.4 mi</span>
+							<span>{{listing.distance}}</span>
 						</center>
 	    			</div>
 	    		</div>
@@ -53,8 +76,8 @@ animationOut: slideOutLeft
 							<div class="listing-icon grid-content"><i class="fa fa-map-marker"></i></div>
 							<div class="listing-info grid-content">{{listing.address}}</div>
 							
-							<div class="listing-icon grid-content"><i class="fa fa-bed"></i></div>
-							<div class="listing-info grid-content">{{listing.room_range}}</div>
+							<div ng-show="listing.room_range" class="listing-icon grid-content"><i class="fa fa-bed"></i></div>
+							<div ng-show="listing.room_range" class="listing-info grid-content">{{listing.room_range}}</div>
 
 							<div ng-show="listing.rent_range" class="listing-icon grid-content"><i class="fa fa-money"></i></div>
 							<div ng-show="listing.rent_range" class="listing-info grid-content">
