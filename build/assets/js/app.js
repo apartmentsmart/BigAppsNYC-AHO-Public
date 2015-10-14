@@ -19645,7 +19645,7 @@ Picker.extend( 'pickadate', DatePicker )
     'foundation',
     'foundation.dynamicRouting',
     'foundation.dynamicRouting.animations',
-    'ngMap'
+    'ngMap',
   ])
     .config(config)
     .run(run)
@@ -20048,5 +20048,11 @@ app.directive('actionButton', ['$location', function(location) {
         }
     };
 }]);
+
+
+
+//include flow as a dependancy
+// Documentation for the flow.js library   ----- https://github.com/flowjs/ng-flow
+angular.module('app', ['flow'])
 
 })(); 
