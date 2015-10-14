@@ -53,6 +53,19 @@
 							<input type="text" placeholder="Age" id="age" ng-model="search.age" />
 						</div>
 
+						<div class="grid-content small-12">
+							<label class="hide">Show Housing Choice Score Above:</label>
+							<select name="housing_choice_score" id="housingChoiceScore" ng-model="search.housingChoiceScore">
+								<option value="0">Show All Housing Choice Scores</option>
+								<option value="25">Housing Choice Score Above 25</option>
+								<option value="50">Housing Choice Score Above 50</option>
+								<option value="75">Housing Choice Score Above 75</option>
+
+							</select>
+						</div>
+						
+						<div class='grid-content small-12'><br/><div>
+
 						<a class="expand button" ui-sref="results({borough:search.borough})">Search &nbsp; <i class="fa fa-arrow-right"></i></a>
 
 	    		</div>
