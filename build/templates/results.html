@@ -3,7 +3,7 @@
 <div class="grid-content">
 	<div class="grid-block" ng-controller="resultsController">
 
-		<div class="search-result">
+		<div class="search-result small-12">
 			<strong>Displaying {{totalListings.length}} results based on your search preferences.</strong>
 		</div>
 		
@@ -59,7 +59,7 @@
 				<div class="card-actions card-footer card-divider grid-block shrink">
 					<div class="grid-block">
 						<div class="grid-content expand">
-							<a class="button" zf-open="card-suggest-edit"><i class="fa fa-sticky-note"></i></a>
+							<a class="button" zf-open="take-note"><i class="fa fa-sticky-note"></i></a>
 						</div>
 						<div class="grid-content expand" zf-hard-toggle="share-sheet">
 							<a class="button" zf-hard-toggle="share-sheet"><i class="fa fa-share" zf-hard-toggle="share-sheet"></i></a>
@@ -84,31 +84,7 @@
 					</zf-action-sheet>  	
 
 				
-				<div zf-modal="" id="card-suggest-edit" class="collapse">
-					<div class="grid-block vertical">
-						<div class="primary title-bar">
-							<div class="center title">Note about this property</div>
-							<span zf-close="" class="right"><a>Done</a></span>
-						</div>
-						<div class="grid-content padding" style="padding-top: 1rem;">
-
-							<form>
-								<div class="grid-block">
-									<div class="small-12 medium-6 grid-content">
-										<label>
-										Note about this property
-											<input type="text" placeholder="Type your note here">
-										</label>
-									</div>
-								</div>
-							</form>
-
-
-							<a zf-close="" class="button expand">Submit</a>
-
-						</div>
-					</div>
-				</div>
+				<div ng-include="" src="'/partials/note-modal.html'"></div>
 
 
 

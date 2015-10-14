@@ -24,6 +24,17 @@
 	}
 }
 
+.hero-suggest {
+	position: absolute;
+	top: 5%;
+	right: 0%;
+	color: #fff;
+
+	&:hover {
+		color: $af-orange;
+	}
+}
+
 /******************************************
 	Hero Section - Title / Borough / Rating
 *******************************************/

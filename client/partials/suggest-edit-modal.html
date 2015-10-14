@@ -1,0 +1,47 @@
+<div zf-modal="" id="suggest-edit" class="collapse">
+	<div class="grid-block vertical">
+		<div class="primary title-bar">
+			<span zf-close="" class="right"><a>Done</a></span>
+		</div>
+		<div class="grid-content padding" style="padding-top: 1rem;">
+			<form>
+				<br>
+
+				<label>
+					<input type="text" placeholder="Name" ng-show="checkedName">
+				</label>
+
+				<label>
+					<input type="text" placeholder="Address" ng-show="checkedAddress">
+				</label>
+
+				<label>
+					<input type="text" placeholder="Phone Number" ng-show="checkedPhone">
+				</label>
+
+				<label>
+					<input type="text" placeholder="Email Address" ng-show="checkedEmail">
+				</label>
+
+				<div class=" grid-block" ng-repeat="unit in listing.units">
+					<div class="grid-content small-2">{{unit.brs}}br</div>
+					<div class="grid-content small-5"><input class="grid-content small-12" placeholder="Min Rent" ng-model="unit.min_rent" name="{{unit.brs}}br_min_rent"/></div>
+					<div class="grid-content small-5"><input class="grid-content small-12" placeholder="Max Rent" ng-model="unit.max_rent" name="{{unit.brs}}br_max_rent"/></div>
+				</div>
+
+				<label>
+					<input type="text" placeholder="Website Infomation" ng-show="checkedWebsite">
+				</label>
+
+				<label>
+					<input type="text" placeholder="Violation Infomation" ng-show="checkedViolations">
+				</label>
+
+				<label>
+					<input type="text" placeholder="Photo" ng-show="checkedPhoto">
+				</label>
+
+			</form>
+		</div>
+	</div>
+</div>

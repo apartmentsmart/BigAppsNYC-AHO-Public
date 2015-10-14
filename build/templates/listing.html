@@ -18,6 +18,7 @@
 						&nbsp; &nbsp; <span class="rating-text">{{listing.avgRating}}</span>
 				</div>
 				<a class="add-photo button secondary hollow"><i class="fa fa-camera"></i> Add Photo</a>
+				<a class="hero-suggest button secondary hollow" zf-open="take-note"><i class="fa fa-sticky-note"></i> Notes</a>
 				</div>
 			</div> <!-- End grid-block hero-section -->
 			<div class="listing-content">
@@ -225,6 +226,8 @@
 								There are a total of {{listing.violationsCount}} violations for this listing.
 							</div>
 
+
+
 							<div ng-repeat="violation in listing.violations">
 								<h3><i class="fa  fa-exclamation-triangle"></i> Violation On {{violation.NOVIssuedDate}}</h3>
 								<h5>Status: {{violation.status}}</h5>
@@ -292,159 +295,11 @@
 
 
 
-<div zf-modal="" id="suggest-edit" class="collapse">
-	<div class="grid-block vertical">
-		<div class="primary title-bar">
-			<span zf-close="" class="right"><a>Done</a></span>
-		</div>
-		<div class="grid-content padding" style="padding-top: 1rem;">
-			<form>
-				<br>
-
-				<label>
-					<input type="text" placeholder="Name" ng-show="checkedName">
-				</label>
-
-				<label>
-					<input type="text" placeholder="Address" ng-show="checkedAddress">
-				</label>
-
-				<label>
-					<input type="text" placeholder="Phone Number" ng-show="checkedPhone">
-				</label>
-
-				<label>
-					<input type="text" placeholder="Email Address" ng-show="checkedEmail">
-				</label>
-
-			
-		
-								<div class=" grid-block" ng-repeat="unit in listing.units">
-									<div class="grid-content small-2">{{unit.brs}}br</div>
-									<div class="grid-content small-5"><input class="grid-content small-12" placeholder="Min Rent" ng-model="unit.min_rent" name="{{unit.brs}}br_min_rent"/></div>
-									<div class="grid-content small-5"><input class="grid-content small-12" placeholder="Max Rent" ng-model="unit.max_rent" name="{{unit.brs}}br_max_rent"/></div>
-
-								</div>
-			
-
-				<label>
-					<input type="text" placeholder="Website Infomation" ng-show="checkedWebsite">
-				</label>
-
-				<label>
-					<input type="text" placeholder="Violation Infomation" ng-show="checkedViolations">
-				</label>
-
-				<label>
-					<input type="text" placeholder="Photo" ng-show="checkedPhoto">
-				</label>
 
 
-
-			</form>
-			</div>
-		</div>
-	</div>
-
-	<!-- Review Modal -->
-	<div zf-modal="" id="add-review" class="collapse">
-		<div class="grid-block vertical">
-			<div class="primary title-bar">
-				<span zf-close="" class="right"><a>Cancel</a></span>
-			</div>
-			<div class="grid-content" style="padding-top: 1rem;">
-				<form ng-submit="submitReview()">
-				    <div class="grid-block">
-				        <div class="review-title review-section small-12 grid-content">
-				            <label>Title of Review
-				                <input type="text" ng-model="newReview.title" placeholder="Title">
-				            </label>
-				        </div>
-						<div class="lived-yes-no review-section small-12 grid-block">
-							<label>Do you or have you at any time lived at the location being reviewed?</label>
-								<div class="grid-block">
-									<button class="button primary expand" ng-click="newReview.lived_here=1">Yes</button>
-								</div>
-								<div class="grid-block">
-									<button class="button primary hollow expand" ng-click="newReview.lived_here=0">No</button>
-								</div>
-						</div>
-						<div class="lived-dates review-section grid-block small-12" ng-show="newReview.lived_here">
-							I've lived at this property
-							<label class="grid-block small-12">From</label>
-							<div class="grid-block small-12">
-								<input type="date" ng-model="newReview.from" placeholder="From Date"/>
-							</div>
-							<label class="grid-block small-12">Until <br/><small> (leave blank if you are a current resident)</small></label>
-							<div class="grid-block small-12">
-								<input type="date" ng-model="newReview.until" placeholder="To Date"/>
-							</div>
-						</div>
-						<div class="number-ratings review-section grid-block small-12" ng-show="newReview.lived_here">
-							<div class="grid-block small-12 columns">
-								<label class="small-11">Building Quality
-									<select ng-model="newReview.physical_score">
-										<option value="1">1 (worst quality)</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5 (best quality)</option>
-									</select>
-								</label>
-							</div>
-							<div class="grid-block small-12 columns">
-								<label class="small-11">Customer Service
-									<select ng-model="newReview.service_score">
-										<option value="1">1 (very bad service)</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5 (very good service)</option>
-									</select>
-								</label>
-							</div>
-							<div class="grid-block small-12 columns">
-								<label class="small-11">Location & Services (Access to Jobs, Transit, Schools)
-									<select ng-model="newReview.area_score">
-										<option value="1">1 (bad access To service)</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5 (good access to services)</option>
-									</select>
-								</label>
-							</div>
-							<div class="grid-block small-12 columns">
-								<label class="small-11">Crime/Saftey
-									<select ng-model="newReview.crime_score">
-										<option value="1">1 (high crime, low safety)</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5 (low crime, high safety)</option>
-									</select>
-								</label>
-							</div>
-						</div>
-						<div class="review-text review-section small-12 grid-content">
-							<label>Your Review
-						        <textarea ng-model="newReview.review" placeholder="Review"></textarea>
-						    </label>
-      					</div>
-      					<div class="review-anonymize review-section small-12 grid-content">
-      						<input id="anonymize" ng-model="newReview.anonymous" type="checkbox"><label for="anonymize">Make Review Anonymous</label>
-      					</div>
-      					<div class="review-section small-12 grid-content">
-      						<input type="submit" class="button" />
-      					</div>
-
-				    </div>
-				</form>
-			</div>
-		</div>
-	</div>
-
-
+		<div ng-include="" src="'/partials/suggest-edit-modal.html'"></div>
+		<div ng-include="" src="'/partials/review-modal.html'"></div>
+		<div ng-include="" src="'/partials/note-modal.html'"></div>
 
 
 	    </div> <!-- End ng-repeat -->

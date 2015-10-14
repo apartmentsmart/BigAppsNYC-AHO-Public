@@ -7049,6 +7049,14 @@ table tr td {
   .add-photo:hover {
     color: #ff7f00; }
 
+.hero-suggest {
+  position: absolute;
+  top: 5%;
+  right: 0%;
+  color: #fff; }
+  .hero-suggest:hover {
+    color: #ff7f00; }
+
 /******************************************
 	Hero Section - Title / Borough / Rating
 *******************************************/
