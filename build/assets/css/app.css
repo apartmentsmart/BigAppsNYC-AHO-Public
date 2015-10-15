@@ -6931,6 +6931,14 @@ table tr td {
       -ms-flex-direction: column;
           flex-direction: column; }
 
+.result-image-section {
+  max-height: 150px; }
+
+.result-image {
+  height: auto;
+  max-width: 100%;
+  max-height: 150px; }
+
 .listingCard {
   /******************************************
 					Card Header
@@ -7031,6 +7039,25 @@ table tr td {
 .single-listing.grid-container, .single-listing.listing-section {
   max-width: 100% !important; }
 
+.name-and-borough {
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
+  /*background-color: rgba(0,0,0, .3);*/
+  padding: 20px 5%; }
+
+.name-and-borough-blur {
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 90px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  -webkit-filter: blur(20px);
+  -moz-filter: blur(20px);
+  -o-filter: blur(20px);
+  -ms-filter: blur(20px);
+  filter: blur(20px); }
+
 .suggest-edit, .add-review {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -7044,7 +7071,7 @@ table tr td {
 
 .add-photo {
   position: absolute;
-  bottom: 0;
+  top: 5%;
   left: 5%; }
   .add-photo:hover {
     color: #ff7f00; }
@@ -7064,12 +7091,16 @@ table tr td {
   background-color: #444;
   background-size: cover !important; }
   .hero-section .hero-content {
-    padding: 100px 5%; }
+    padding: 100px 0;
+    min-height: 300px; }
+  .hero-section .hero-overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%; }
   .hero-section .listing-name {
-    color: #000;
+    color: #fff;
     font-size: 1.3em; }
   .hero-section .listing-borough {
-    color: #888;
+    color: #bbb;
     padding-top: 10px; }
   .hero-section .star-rating {
     padding-top: 10px; }
@@ -7180,6 +7211,10 @@ table tr td {
     background: transparent !important; }
   .bedroom-table .bedroom-table-heading {
     border-bottom: 1px solid #444; }
+
+/* Housing Choice Score */
+.choice-score .listing-heading {
+  font-size: 1.2rem; }
 
 /* Schools Info */
 .school-table {
@@ -7613,10 +7648,3 @@ label {
 .form-control:focus ~ .float-label, .form-control:valid ~ .float-label {
   top: -18px;
   font-size: 12px; }
-
-.result-image-section {
-  max-height: 150px; }
-
-.result-image {
-  width: 100%;
-  height: auto; }

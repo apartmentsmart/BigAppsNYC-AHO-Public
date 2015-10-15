@@ -11,7 +11,30 @@ animationOut: slideOutRight
 	    <div ng-repeat="listing in thisListing">
 
 	    	<div class="grid-block hero-section" style="background: url('{{listing.default_image_url}}')">
+	    	
+	    	<div class="hero-overlay" ng-hide="!listing.default_image_url">
 				<div class="hero-content">
+					<div class="name-and-borough-blur" ng-hide="!listing.default_image_url">
+					</div>
+					<div class="name-and-borough">
+						<div class="listing-name">{{listing.name}}</div>
+						<div class="listing-borough">{{listing.borough}} - {{listing.neighborhood}}</div>
+						<div ng-show="listing.avgRating" class="star-rating">
+							<i class="fa" ng-class="{'fa-star-o': listing.avgRating < .5,  'fa-star-half-o': listing.avgRating >= .5 && listing.avgRating < 1,  'fa-star' : listing.avgRating >= 1 }"></i>
+							<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 1.5, 'fa-star-half-o': listing.avgRating >= 1.5 && listing.avgRating < 2,  'fa-star' : listing.avgRating >= 2 }"></i>
+							<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 2.5, 'fa-star-half-o': listing.avgRating >= 2.5 && listing.avgRating < 3,  'fa-star' : listing.avgRating >= 3 }"></i>
+							<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 3.5, 'fa-star-half-o': listing.avgRating >= 3.5 && listing.avgRating < 4,  'fa-star' : listing.avgRating >= 4 }"></i>
+							<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 4.5, 'fa-star-half-o': listing.avgRating >= 4.5 && listing.avgRating < 5,  'fa-star' : listing.avgRating >= 5 }"></i>
+							&nbsp; &nbsp; <span class="rating-text">{{listing.avgRating}}</span>
+						</div>
+					</div>
+				<a class="add-photo button secondary hollow" zf-open="photo-upload"><i class="fa fa-camera"></i> Add Photo</a>
+				<a class="hero-suggest button secondary hollow" zf-open="take-note"><i class="fa fa-sticky-note"></i> Notes</a>
+				</div>
+			</div>
+
+			<div class="hero-content" ng-hide="listing.default_image_url">
+				<div class="name-and-borough">
 					<div class="listing-name">{{listing.name}}</div>
 					<div class="listing-borough">{{listing.borough}} - {{listing.neighborhood}}</div>
 					<div ng-show="listing.avgRating" class="star-rating">
@@ -21,10 +44,13 @@ animationOut: slideOutRight
 						<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 3.5, 'fa-star-half-o': listing.avgRating >= 3.5 && listing.avgRating < 4,  'fa-star' : listing.avgRating >= 4 }"></i>
 						<i class="fa" ng-class="{'fa-star-o': listing.avgRating < 4.5, 'fa-star-half-o': listing.avgRating >= 4.5 && listing.avgRating < 5,  'fa-star' : listing.avgRating >= 5 }"></i>
 						&nbsp; &nbsp; <span class="rating-text">{{listing.avgRating}}</span>
+					</div>
 				</div>
 				<a class="add-photo button secondary hollow" zf-open="photo-upload"><i class="fa fa-camera"></i> Add Photo</a>
 				<a class="hero-suggest button secondary hollow" zf-open="take-note"><i class="fa fa-sticky-note"></i> Notes</a>
-				</div>
+			</div>
+
+
 			</div> <!-- End grid-block hero-section -->
 			<div class="listing-content">
 				<div class="grid-block feature-data">
@@ -110,7 +136,7 @@ animationOut: slideOutRight
 
 					<div id="choice-score" class="choice-score listing-section">
 						<div class="listing-heading">
-							<i class="fa fa-building-o"></i> Housing Choice Score - <strong>{{listing.housing_choice_score}}</strong>
+							<i class="fa fa-building-o"></i> Housing Choice Score - <span class="dark badge"><strong>{{listing.housing_choice_score}}</strong></span>
 						</div>
 						<div class="listing-body">
 							
