@@ -4,7 +4,7 @@
     <div ng-controller="listingController">
 	    <div ng-repeat="listing in thisListing">
 
-	    	<div class="grid-block hero-section" style="background: url('{{listing.default_image_url}}')">
+	    	<div class="grid-block hero-section" style="background: url('{{listing.default_image_url}}'); background-color: #444;')">
 	    	
 	    	<div class="hero-overlay" ng-hide="!listing.default_image_url">
 				<div class="hero-content">
@@ -54,7 +54,7 @@
 					</div>
 					<div ng-click="scrollTo('rent')" class="grid-content schools feature-section">
 							<i class="fa fa-money"></i>
-							${{listing.rent_range}}/month*
+							{{listing.rent_range}}
 					</div>
 					<div ng-click="scrollTo('choice-score')" class="grid-content rent feature-section">
 						<i class="fa fa-building-o"></i> 
@@ -130,12 +130,12 @@
 
 					<div id="choice-score" class="choice-score listing-section">
 						<div class="listing-heading">
-							<i class="fa fa-building-o"></i> Housing Choice Score - <span class="dark badge"><strong>{{listing.housing_choice_score}}</strong></span>
+							<i class="fa fa-building-o"></i> Housing Choice Score - <strong>{{listing.housing_choice_score}}</strong></span>
 						</div>
 						<div class="listing-body">
 							
 							
-							<h2>Housing Choice Score™ Descriptions</h2>
+							<h2>Housing Choice Score™</h2>
 
 								<p>
 									Our Housing Choice Score™ assigns a numerical score to each census tract that quantifies social and economic opportunity for the surrounding area. We calculate the Housing Choice Score™ based on five dimensions: poverty level, educational attainment, commute time to work, housing vacancy rate and unemployment rate.
@@ -201,7 +201,7 @@
 						</div>
 					</div>
 
-					<div id="schools" class="schools listing-section">
+					<div ng-show="listing.schoolCount" id="schools" class="schools listing-section">
 						<div class="listing-heading">
 							<i class="fa fa-graduation-cap"></i> Schools
 						</div>
