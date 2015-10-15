@@ -1,8 +1,6 @@
 ---
 name: listing
 url: /listing/:borough/:id
-animationIn: slideInLeft
-animationOut: slideOutRight
 ---
 
 <div class="single-listing grid-container">
@@ -124,7 +122,7 @@ animationOut: slideOutRight
 								<tr ng-repeat="unit in listing.units" class="bedroom-table-body">
 									<td>{{unit.brs}}</td>
 									<td>
-										<span ng-show="unit.min_rent != 0">${{unit.min_rent}}
+										<span ng-show="unit.min_rent != 0">${{unit.min_rent}}</span>
 										<span ng-show="unit.min_rent != 0 && unit.max_rent != 0"> - </span>
 										<span ng-show="unit.max_rent != 0">${{unit.max_rent}}</span>
 									</td>
@@ -136,13 +134,10 @@ animationOut: slideOutRight
 
 					<div id="choice-score" class="choice-score listing-section">
 						<div class="listing-heading">
-							<i class="fa fa-building-o"></i> Housing Choice Score - <strong>{{listing.housing_choice_score}}</strong></span>
+							<i class="fa fa-building-o"></i> Housing Choice Score™ - <strong>{{listing.housing_choice_score}}</strong>
 						</div>
 						<div class="listing-body">
-							
-							
-							<h2>Housing Choice Score™</h2>
-
+						
 								<p>
 									Our Housing Choice Score™ assigns a numerical score to each census tract that quantifies social and economic opportunity for the surrounding area. We calculate the Housing Choice Score™ based on five dimensions: poverty level, educational attainment, commute time to work, housing vacancy rate and unemployment rate.
 								</p>
