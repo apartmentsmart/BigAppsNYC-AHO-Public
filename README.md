@@ -2,6 +2,12 @@
 
 [Live Demo at http://nyc.affordablehousingonline.com](http://nyc.affordablehousingonline.com)
 
+## 0.1.1-Alpha Patch
+###27 Issues Closed Including
+* Ordinal rankings for Housing Choice Score
+* Missing Fields fixes
+* Desktop Views enhanced, including map view.
+* Get Directions Link Added 
 
 ## 0.1.0-Alpha
 
