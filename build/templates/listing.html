@@ -149,7 +149,7 @@
 							<h3>Poverty</h3>
 
 								<p ng-show="listing.housing_choice_score_data.has_poverty_score">
-									Areas with a concentration of persons living below the poverty level have a high correlation with less social and economic opportunity. <strong>{{listing.housing_choice_score_data.percent_below_poverty | number:0}}%</strong> of persons living in census tract <strong>{{listing.housing_choice_score_data.census_tract}}</strong> live below the poverty level. This census tract, of all tracts within NYC, ranks in the <strong>{{listing.housing_choice_score_data.poverty_rank | number:0}}</strong> percentile. Based on this ranking, we scored the census tract a <strong>{{listing.housing_choice_score_data.poverty_score | number:1}}</strong> out of a possible 50 points.
+									Areas with a concentration of persons living below the poverty level have a high correlation with less social and economic opportunity. <strong>{{listing.housing_choice_score_data.percent_below_poverty | number:0}}%</strong> of persons living in census tract <strong>{{listing.housing_choice_score_data.census_tract}}</strong> live below the poverty level. This census tract, of all tracts within NYC, ranks in the <strong>{{listing.housing_choice_score_data.poverty_rank | number:0 | ordinal}}</strong> percentile. Based on this ranking, we scored the census tract a <strong>{{listing.housing_choice_score_data.poverty_score | number:1}}</strong> out of a possible 50 points.
 								</p>
 
 								<p ng-hide="listing.housing_choice_score_data.has_poverty_score">
@@ -160,7 +160,7 @@
 
 									<p ng-show="listing.housing_choice_score_data.has_less_than_hs_score && listing.housing_choice_score_data.has_bachelor_score">
 
-										High school graduation and higher education graduation rates for a given area contribute to social and economic opportunity. <strong>{{100 - listing.housing_choice_score_data.percent_edu_less_than_hs | number:0}}%</strong> of adults living in this census tract have graduated from high school and {{listing.housing_choice_score_data.percent_edu_bachelors | number:0}}% have graduated from college. This census tract, of all tracts within NYC, ranks in the {{ 100 - listing.housing_choice_score_data.less_than_hs_rank | number:0}} percentile for high school graduation and {{listing.housing_choice_score_data.bachelor_rank | number:0}}  percentile for college graduation. Based on this ranking, we scored the census tract a 
+										High school graduation and higher education graduation rates for a given area contribute to social and economic opportunity. <strong>{{100 - listing.housing_choice_score_data.percent_edu_less_than_hs | number:0}}%</strong> of adults living in this census tract have graduated from high school and {{listing.housing_choice_score_data.percent_edu_bachelors | number:0}}% have graduated from college. This census tract, of all tracts within NYC, ranks in the {{ 100 - listing.housing_choice_score_data.less_than_hs_rank | number:0 | ordinal}} percentile for high school graduation and {{listing.housing_choice_score_data.bachelor_rank | number:0 | ordinal}}  percentile for college graduation. Based on this ranking, we scored the census tract a 
 										<strong>{{listing.housing_choice_score_data.education_score | number:1}}</strong> out of a possible 15 points.
 									</p>
 
@@ -171,7 +171,7 @@
 								<h3>Unemployment Rate</h3>
 
 									<p ng-show="listing.housing_choice_score_data.has_employment_score">
-										The unemployment rate for an area has a direct correlation to it’s social and economic opportunity. The unemployment rate for this census tract is {{listing.housing_choice_score_data.percent_unemployed | number:1}}%. This census tract, of all tracts within NYC, ranks in the {{listing.housing_choice_score_data.employment_rank | number:0}} percentile for unemployment. Based on this ranking, we scored the census tract a <strong>{{listing.housing_choice_score_data.employment_score | number:1}}</strong> out of a possible 15 points.
+										The unemployment rate for an area has a direct correlation to it’s social and economic opportunity. The unemployment rate for this census tract is {{listing.housing_choice_score_data.percent_unemployed | number:1}}%. This census tract, of all tracts within NYC, ranks in the {{listing.housing_choice_score_data.employment_rank | number:0 | ordinal}} percentile for unemployment. Based on this ranking, we scored the census tract a <strong>{{listing.housing_choice_score_data.employment_score | number:1}}</strong> out of a possible 15 points.
 									</p>
 
 									<p ng-hide="listing.housing_choice_score_data.has_employment_score">
@@ -181,7 +181,7 @@
 								<h3>Vacancy Rate</h3>
 
 									<p ng-show="listing.housing_choice_score_data.has_vacancy_score">
-										Housing vacancy rates for an area have a direct correlation to it’s social and economic opportunity. The housing vacancy rate for this census tract is {{listing.housing_choice_score_data.percent_vacant | number:1}}. This census tract, of all tracts within NYC, ranks in the {{listing.housing_choice_score_data.vacancy_rank| number:0}} percentile for housing vacancy rates. Based on this ranking, we scored the census tract a <strong>{{listing.housing_choice_score_data.vacancy_score | number:1}}</strong> out of a possible 10 points.			
+										Housing vacancy rates for an area have a direct correlation to it’s social and economic opportunity. The housing vacancy rate for this census tract is {{listing.housing_choice_score_data.percent_vacant | number:1}}. This census tract, of all tracts within NYC, ranks in the {{listing.housing_choice_score_data.vacancy_rank | number:0 | ordinal}} percentile for housing vacancy rates. Based on this ranking, we scored the census tract a <strong>{{listing.housing_choice_score_data.vacancy_score | number:1}}</strong> out of a possible 10 points.			
 									</p>
 
 									<p ng-hide="listing.housing_choice_score_data.has_vacancy_score">
@@ -191,7 +191,7 @@
 								<h3>Commute Time to Work</h3>
 
 									<p ng-show="listing.housing_choice_score_data.has_commute_score">
-										Commute times to work for an area have a direct correlation to it’s social and economic opportunity. The average commute time for this census tract is {{listing.housing_choice_score_data.mean_travel_time | number:0}} minutes. This census tract, of all tracts within NYC, ranks in the {{listing.housing_choice_score_data.commute_rank | number:0}} percentile for commute time to work. Based on this ranking, we scored the census tract a <strong>{{listing.housing_choice_score_data.commute_score | number:1}}</strong> out of a possible 10 points.
+										Commute times to work for an area have a direct correlation to it’s social and economic opportunity. The average commute time for this census tract is {{listing.housing_choice_score_data.mean_travel_time | number:0}} minutes. This census tract, of all tracts within NYC, ranks in the {{listing.housing_choice_score_data.commute_rank | number:0 | ordinal}} percentile for commute time to work. Based on this ranking, we scored the census tract a <strong>{{listing.housing_choice_score_data.commute_score | number:1}}</strong> out of a possible 10 points.
 									</p>
 
 									<p ng-hide="listing.housing_choice_score_data.has_commute_score">
@@ -347,10 +347,10 @@
 
 					<div id="address" class="address listing-section grid-content">
 							<div class="listing-address grid-block">
-								<i class="fa fa-map-marker"></i>{{listing.address}}
+								<i class="fa fa-map-marker"></i>{{listing.primary_address}}
 							</div>
 							<div class="cta grid-block">
-								<a class="button hollow">
+								<a class="button hollow" href='//www.google.com/maps/place/{{listing.primary_address | urlencode}},New+York,+New+York'>
 									<i class="fa fa-location-arrow"></i> &nbsp;Get Directions
 								</a>
 							</div>
@@ -372,7 +372,7 @@
 									
 							</div>
 
-							<map id="mainMap" ng-class="{'largeMap': mapView == 1}" center="{{listing.latitude}}, {{listing.longitude}}" zoom="18" style="width:100%;">
+							<map id="mainMap" ng-class="{'largeMap': mapView == 1}" center="{{listing.latitude}}, {{listing.longitude}}"  zoom="18" style="height: 100%; width: 100%;">
 								
 								<!-- Listing Marker -->   
 								<marker id="listingMarker" position="{{listing.latitude}}, {{listing.longitude}}" on-click="showInfoWindow(event, 'listingMarkeriw')"></marker> 

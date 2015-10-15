@@ -44,6 +44,20 @@ app.directive('back', function(){
 });
 
 
+/** Ordinal Filter for Numbers **/
+app.filter('ordinal', function() {
+  return function(input) {
+    var s=["th","st","nd","rd"],
+    v=input%100;
+    return input+(s[(v-20)%10]||s[v]||s[0]);
+  }
+});
+
+/** URL Encode FIlter **/
+app.filter('urlencode', function() {
+  return window.encodeURIComponent;
+});
+
 /**
   -- Sets, Gets, and Mutates cross-controller search filter data.
 **/
@@ -281,7 +295,21 @@ app.controller('listingController', ['$scope','globalFilter', 'dataHandler', '$s
   $scope.$on('mapInitialized', function(evt, evtMap) {
             $scope.map = evtMap;
             $scope.toggleSchools(false);
+
+            $scope.map.setZoom(16);
+            var center = $scope.map.getCenter();
+            google.maps.event.addListener( $scope.map, "idle", function(){
+
+            google.maps.event.trigger( $scope.map, 'resize');
+        
+
+            });
+            $scope.map.setCenter(center); 
+
   });
+
+
+
 
   //Turn on or off the school marker layer
   $scope.toggleSchools = function(sv){
@@ -351,11 +379,14 @@ app.controller('listingController', ['$scope','globalFilter', 'dataHandler', '$s
   };
 
   $scope.newReview = {'user_id':1, 'listing_id':$state.params.id};
+  
   $scope.submitReview = function(){
 
 
     dataHandler.create($scope.thisListing[0], 'reviews', $scope.newReview);
-
+    $scope.hideReviewModal = 1;
+    console.log($scope.hideReviewModal);
+    $scope.apply;
   }
 
   $scope.convertDate = function (stringDate){
