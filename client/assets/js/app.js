@@ -118,7 +118,7 @@ app.factory('dataHandler', ['$http', '$filter', 'globalFilter', '$sce', function
           var endpoint = "http://api.affordablehousingonline.com/nyc/search";
             
             if(scopeFilter.borough)
-              endpoint = endpoint+"/"+scopeFilter.borough+"/";
+              endpoint = endpoint+"/"+scopeFilter.borough;
         }
         else if(scopeFilter.type == 'notifications' && scopeFilter.user){
           var endpoint = "http://api.affordablehousingonline.com/nyc/notification/by-user";
@@ -144,7 +144,8 @@ app.factory('dataHandler', ['$http', '$filter', 'globalFilter', '$sce', function
         method: "GET",
         params: scopeFilter
       }).success(function (data) {  
-           
+           console.log(endpoint);
+           console.log(scopeFilter);
           //trust and bind html
           if(data[0].affordability)
             data[0].affordability = $sce.trustAsHtml(data[0].affordability);
@@ -227,7 +228,6 @@ app.controller('resultsController', ['$scope','globalFilter', 'dataHandler', '$s
     ami_band[2] = {50:'34550',60:'41460', 80:'55300' };
     ami_band[3] = {50:'38850',60:'46620', 80:'62150'};
     ami_band[4] = {50:'43150',60:'51780', 80:'69050'};
-   console.log($scope.thisSearch);     
     
 
   if($scope.thisSearch.hhsize && $scope.thisSearch.income){
@@ -248,7 +248,6 @@ app.controller('resultsController', ['$scope','globalFilter', 'dataHandler', '$s
    else
       $scope.thisSearch.ami_band = 81;
   
-  console.log($scope.thisSearch);
   }
 
    //Handle search param mutation
@@ -385,7 +384,6 @@ app.controller('listingController', ['$scope','globalFilter', 'dataHandler', '$s
 
     dataHandler.create($scope.thisListing[0], 'reviews', $scope.newReview);
     $scope.hideReviewModal = 1;
-    console.log($scope.hideReviewModal);
     $scope.apply;
   }
 

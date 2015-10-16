@@ -10,7 +10,7 @@
 		<div class='listingCard grid-block' ng-show='thisSearch.ami_band > 0'>
 	    	<div class="card-content vertical" style='padding: 10px;'>
 				<p>
-				According to your search preferences you may be eligible to rent an affordable housing unit that participates in the following Federal, State, and City affordable housing programs:
+				According to your search preferences you may be eligible to rent an affordable housing unit that participates in the following affordable housing programs which target renters earning less than <strong>{{thisSearch.ami_band}}%</strong> of the area median income (AMI) for a household size of <strong>{{thisSearch.hhsize}}</strong>:
 				<ul>
 					<li ng-show="thisSearch.ami_band < 130" >Article 8A Loan Program
 					<li ng-show="thisSearch.ami_band < 120" >Mitchell-Lama
@@ -75,9 +75,11 @@
 
 							<div ng-show="listing.rent_range" class="listing-icon grid-content"><i class="fa fa-money"></i></div>
 							<div ng-show="listing.rent_range" class="listing-info grid-content">
-								{{listing.rent_range}}
+								{{listing.rent_range}}, {{listing.max_ami}}% AMI and Below
 							</div>
-						
+
+							<div ng-show="listing.housing_choice_score" class="listing-icon grid-content"><i class="fa fa-building-o"></i></div>
+							<div ng-show="listing.housing_choice_score" class="listing-info grid-content"><strong>{{listing.housing_choice_score |number:1}}/100</strong> <small>Housing Choice Score™</small></div>
 						</div>
 
 				</div> <!-- End card-section / Card Body -->	

@@ -2,6 +2,12 @@
 
 [Live Demo at http://nyc.affordablehousingonline.com](http://nyc.affordablehousingonline.com)
 
+## 0.1.2-Alpha Patch
+* All Search Parameters now affect results.
+* Results Card Views updated to include Maximum AMI and Housing Choice Score
+* AHO API Updates to reflect enhanced search functionality.
+
+
 ## 0.1.1-Alpha Patch
 ###27 Issues Closed Including
 * Ordinal rankings for Housing Choice Score
