@@ -66,6 +66,7 @@ app.factory('globalFilter', function() {
  
  function set(data) {
    savedData = data;
+   localStorage.setItem('searchParameters', JSON.stringify(data));
  }
  
  function get() {
@@ -73,9 +74,6 @@ app.factory('globalFilter', function() {
  }
 
  function mutate(scope){
-
-
-
   
   if(scope.thisSearch.age >= 55){
       scope.thisSearch.elderly = 1;
@@ -87,11 +85,7 @@ app.factory('globalFilter', function() {
   if(scope.thisSearch.disabilityStatus != "None")
       scope.thisSearch.disabled = 1;
 
-  //delete scope.thisSearch.disabilityStatus;
-
-  delete scope.thisSearch.sizeOfHousehold;
-  
-  //delete scope.thisSearch.ami_band;
+  delete scope.thisSearch.disabilityStatus;
 
  }
 
@@ -144,14 +138,15 @@ app.factory('dataHandler', ['$http', '$filter', 'globalFilter', '$sce', function
         method: "GET",
         params: scopeFilter
       }).success(function (data) {  
-           console.log(endpoint);
-           console.log(scopeFilter);
+          //console.log(endpoint);
+         // console.log(data);
           //trust and bind html
           if(data[0].affordability)
             data[0].affordability = $sce.trustAsHtml(data[0].affordability);
 
 
-          scope[scopeAtt] = data; 
+            if(data)
+              scope[scopeAtt] = data; 
 
 
         });
@@ -191,18 +186,14 @@ app.controller('searchController', ['$scope', 'globalFilter', function($scope, g
   (!$scope.search)
     $scope.search = { borough:"All", hhsize:1, disabilityStatus:"None", housingChoiceScore:0};
 
+    localStorage.setItem('searchParameters', JSON.stringify($scope.search));
 
-  //watch $scope.search attributes for change
-  $scope.$watchGroup(['search.borough', 'search.hhsize'], function(newValues, oldValues, scope){
+    //watch $scope.search attributes for change
+    $scope.$watchGroup(['search.borough', 'search.hhsize', 'search.age', 'search.disabilityStatus', 'search.housingChoiceScore', 'search.income'], function(newValues, oldValues, scope){
     
+        globalFilter.set($scope.search);
 
-    /**
-      TODO: Handle all search param modulation here BEFORE handed off to any other controller..
-    **/
-
-
-    globalFilter.set($scope.search);
-  });
+    });
 
 }]);
 
@@ -211,44 +202,23 @@ app.controller('resultsController', ['$scope','globalFilter', 'dataHandler', '$s
 
   //Init Listings Object
   $scope.listings={};
+  $scope.thisSearch = {};
 
-  //Attempts to set Search Object
-  $scope.thisSearch = globalFilter.get();
+  //Attempts to set Search Object With local storage
+  $scope.thisSearch =  JSON.parse(localStorage.getItem('searchParameters'));
 
-  //If no Search Object, set to URL params.
+
+  //Attempts to set Search Object with global filter
   if(!$scope.thisSearch.borough)
-    $scope.thisSearch = $state.params;
+    $scope.thisSearch = globalFilter.get();
+
+  //Check for, and override with, URL Paramss
+  if($state.params.borough)
+      $scope.thisSearch.borough = $state.params.borough;
+
 
   $scope.thisSearch.type = 'search';
 
-
-
-  var ami_band = {};
-    ami_band[1] = {50:'30250',60:'36300', 80:'48400' };
-    ami_band[2] = {50:'34550',60:'41460', 80:'55300' };
-    ami_band[3] = {50:'38850',60:'46620', 80:'62150'};
-    ami_band[4] = {50:'43150',60:'51780', 80:'69050'};
-    
-
-  if($scope.thisSearch.hhsize && $scope.thisSearch.income){
-   var hh_size = ($scope.thisSearch.hhsize > 4 ? 4 : $scope.thisSearch.hhsize);
-   var band_by_size = ami_band[hh_size];
-
-   var income = $scope.thisSearch.income * 12;
-
-   if(income < band_by_size[50])
-     $scope.thisSearch.ami_band = 49;
-
-  else if(income < band_by_size[60])
-     $scope.thisSearch.ami_band = 59;
-
-   else if(income < band_by_size[80])
-     $scope.thisSearch.ami_band = 79;
-   
-   else
-      $scope.thisSearch.ami_band = 81;
-  
-  }
 
    //Handle search param mutation
    globalFilter.mutate($scope);

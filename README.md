@@ -2,6 +2,10 @@
 
 [Live Demo at http://nyc.affordablehousingonline.com](http://nyc.affordablehousingonline.com)
 
+
+### 0.1.3-Alpha Patch
+* Search Parameter Retention hotfix. Detailed in issues #62 and #63
+
 ### 0.1.2-Alpha Patch
 * All Search Parameters now affect results.
 * Results Card Views updated to include Maximum AMI and Housing Choice Score
