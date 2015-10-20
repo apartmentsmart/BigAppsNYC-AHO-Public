@@ -391,8 +391,8 @@
 
 	    .google-maps {
 	        position: relative;
-	        padding-bottom: 75%; // This is the aspect ratio
-	        height: 0;
+	     /*   padding-bottom: 75%; // This is the aspect ratio*/
+	        /*height: 0;*/
 	        overflow: hidden;
 	        @include breakpoint(medium) {
 	        	padding-bottom: 0;
