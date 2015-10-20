@@ -6863,6 +6863,7 @@ table tr td {
 .search-box {
   background-color: #444;
   color: #fff;
+  height: 100vh;
   padding: 20px 40px; }
   .search-box label {
     color: #fff; }
