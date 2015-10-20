@@ -1,5 +1,5 @@
 
-<div class="login">
+<div class="login" ng-controller="loginController">
 	<div class="login-form grid-block">
 
 		<form>
@@ -20,6 +20,12 @@
 		</div>
 		</form>
 
+
+		<div class="grid-content card">
+			<h4 ng-show="isLoggedIn">{{welcomeMsg}}</h4>
+			<h4 ng-hide="isLoggedIn">Or Login With Facebook</h4>
+			<button type="button" ng-click="login()" ng-hide="isLoggedIn" class="btn btn-default navbar-btn">Login </button>
+		</div>
 	</div>
 </div>
 

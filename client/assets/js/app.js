@@ -9,15 +9,19 @@
     'foundation.dynamicRouting',
     'foundation.dynamicRouting.animations',
     'ngMap',
+    'ngFacebook'
   ])
     .config(config)
     .run(run)
   ;
 
-  config.$inject = ['$urlRouterProvider', '$locationProvider'];
+  config.$inject = ['$urlRouterProvider', '$locationProvider', '$facebookProvider'];
 
-  function config($urlProvider, $locationProvider) {
+  function config($urlProvider, $locationProvider, $facebookProvider) {
     $urlProvider.otherwise('/');
+
+    $facebookProvider.setAppId(171410539870355);
+
 
     $locationProvider.html5Mode({
       enabled:false,
@@ -29,6 +33,15 @@
 
   function run() {
     FastClick.attach(document.body);
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+
   }
 
 app.directive('back', function(){
@@ -461,6 +474,27 @@ app.directive('actionButton', ['$location', function(location) {
     };
 }]);
 
+app.controller('loginController', ['$scope', '$facebook', function($scope, $facebook){
+
+  $scope.isLoggedIn = false;
+  $scope.login = function() {
+    $facebook.login().then(function() {
+      refresh();
+    });
+  }
+
+    function refresh() {
+    $facebook.api("/me").then( 
+      function(response) {
+        $scope.welcomeMsg = "Welcome " + response.name;
+        $scope.isLoggedIn = true;
+      },
+      function(err) {
+        $scope.welcomeMsg = "Please log in";
+      });
+  }
+
+}]);
 
 
 //include flow as a dependancy
