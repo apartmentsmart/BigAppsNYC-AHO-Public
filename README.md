@@ -2,6 +2,9 @@
 
 [Live Demo at http://nyc.affordablehousingonline.com](http://nyc.affordablehousingonline.com)
 
+### --Dev Patch-- ####
+* app.js has been split into controller, directive, and factory directories.
+
 ### 0.1.4-Alpha Patch
 * Search Summary Additions
 * Results Sort
