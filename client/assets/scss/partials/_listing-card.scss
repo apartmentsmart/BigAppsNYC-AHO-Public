@@ -9,6 +9,11 @@
 	padding: 20px 0;
 }
 
+.search-result{
+	
+	line-height: 1.5em;
+}
+
 .resultsList .grid-content {
 	display: flexbox;
 	flex-direction: row;
@@ -40,7 +45,10 @@
 		max-height: 150px;
 	}
 
-
+.search-param{ border-bottom: 2px solid $af-blue;}
+.search-param.green { border-color: $af-green; }
+.search-param.orange { border-color: $af-orange; }
+.search-param.grey { border-color: $af-grey; }
 .listingCard {
 	
 	@extend .small-12;
@@ -184,3 +192,4 @@
 	}
 
 }
+
