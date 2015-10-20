@@ -4,6 +4,7 @@
 
 ### 0.1.4-Alpha Patch
 * Search Summary Additions
+* Results Sort
 
 ### 0.1.3-Alpha Patch
 * Search Parameter Retention hotfix. Detailed in issues #62 and #63
