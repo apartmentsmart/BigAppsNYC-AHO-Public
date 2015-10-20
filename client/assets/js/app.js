@@ -9,6 +9,7 @@
     'foundation.dynamicRouting',
     'foundation.dynamicRouting.animations',
     'ngMap',
+    'sticky',
   ])
     .config(config)
     .run(run)

@@ -21,8 +21,7 @@ url: /results/:borough/
  				<p>We found <strong>{{totalListings.length}}</strong> results based on your search preferences</p>
 		</div>
 
-
-		<div class='small-12 grid-block'>
+		<div class="small-12 grid-block" id="results-filter" sticky sticky-class="imSoSticky">
 
 			<label ng-init="sort = '-housing_choice_score'; reverse = false" class='small-12'> Sort By:</label>
 			

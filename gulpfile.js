@@ -52,6 +52,7 @@ var paths = {
     'client/assets/js/animated-nav/main.js',
     'client/assets/js/materialize/materialize.js',
     'bower_components/ng-flow/dist/ng-flow-standalone.min.js',
+    'bower_components/ngSticky/lib/sticky.js',
     // 'bower_conponents/flow.js/dist/flow.min.js',
     // 'bower_components/ng-flow/dist/ng-flow.min.js',
     'client/assets/js/app.js'

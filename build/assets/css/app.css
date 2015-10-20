@@ -7664,3 +7664,9 @@ label {
 .form-control:focus ~ .float-label, .form-control:valid ~ .float-label {
   top: -18px;
   font-size: 12px; }
+
+.imSoSticky {
+  background-color: #fff;
+  top: 0px;
+  left: 0px;
+  width: 100% !important; }
