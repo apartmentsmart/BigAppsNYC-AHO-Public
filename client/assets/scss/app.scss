@@ -37,7 +37,7 @@
 	   @import "partials/search";
 
 	/* Results View Listing Card */
-	   @import "partials/listing-card";
+	   @import "partials/results";
 
 	/* Single Listing */
 	   @import "partials/listing";
@@ -56,9 +56,4 @@
 	@import "partials/materialize";
 
 
-.imSoSticky {
-	background-color: #fff;
-	top: 0px;
-	left: 0px;
-	width: 100% !important;
-}
+

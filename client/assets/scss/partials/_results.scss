@@ -1,6 +1,7 @@
-/******************************************
-			Generic Card Styles
-*******************************************/
+
+/*****************************************
+		Results General Styles
+******************************************/
 .resultsList.grid-container {
 	max-width: 70em;
 }
@@ -10,7 +11,6 @@
 }
 
 .search-result{
-	
 	line-height: 1.5em;
 }
 
@@ -25,15 +25,50 @@
 	margin-right: 0;
 }
 
-.card-content {
-	@extend .card;
-	box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
-	margin: 8px;
-	justify-content: space-between;
-	display: flex;
-	flex-direction: column;
-	
-}
+	/*Search Param*/
+		.search-param{ border-bottom: 2px solid $af-blue;}
+		.search-param.green { border-color: $af-green; }
+		.search-param.orange { border-color: $af-orange; }
+		.search-param.grey { border-color: $af-grey; }
+
+	/* Sticky Filter Styles */
+		.imSoSticky {
+			background-color: $af-blue;
+			color: #fff;
+			padding: 15px 5%;
+			top: 0px;
+			left: 0px;
+			width: 100% !important;
+
+			select {
+				@extend .small-10;
+				@extend .medium-3;
+			}
+			label {
+				@extend .small-2;
+				@extend .medium-9;
+				color: #fff;
+				padding-left: 5px;
+
+				@include breakpoint(medium) {
+					padding-top: 8px;
+				}
+			}
+		}
+
+/******************************************
+			Card Styles
+*******************************************/
+
+	.card-content {
+		@extend .card;
+		box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
+		margin: 8px;
+		justify-content: space-between;
+		display: flex;
+		flex-direction: column;
+		
+	}
 
 	.result-image-section {
 		max-height: 150px;
@@ -45,10 +80,7 @@
 		max-height: 150px;
 	}
 
-.search-param{ border-bottom: 2px solid $af-blue;}
-.search-param.green { border-color: $af-green; }
-.search-param.orange { border-color: $af-orange; }
-.search-param.grey { border-color: $af-grey; }
+
 .listingCard {
 	
 	@extend .small-12;
@@ -60,6 +92,8 @@
 	.grid-content{
 		overflow-y: visible !important;
 	}
+
+
 
 	/******************************************
 					Card Header

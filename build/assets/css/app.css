@@ -3028,7 +3028,7 @@ meter {
         -ms-flex: 0 0 100%;
             flex: 0 0 100%; }
 
-.small-2, .listingCard .listing-icon {
+.small-2, .imSoSticky label, .listingCard .listing-icon {
   -webkit-flex: 0 0 16.66667%;
       -ms-flex: 0 0 16.66667%;
           flex: 0 0 16.66667%;
@@ -3236,7 +3236,7 @@ meter {
         -ms-flex: 0 0 11.11111%;
             flex: 0 0 11.11111%; }
 
-.small-10, .listingCard .listing-info {
+.small-10, .imSoSticky select, .listingCard .listing-info {
   -webkit-flex: 0 0 83.33333%;
       -ms-flex: 0 0 83.33333%;
           flex: 0 0 83.33333%;
@@ -3363,7 +3363,7 @@ meter {
               flex: 0 0 50%; } }
 
 @media only screen and (min-width: 40em) {
-  .medium-3, .feature-data .feature-section {
+  .medium-3, .imSoSticky select, .feature-data .feature-section {
     -webkit-flex: 0 0 25%;
         -ms-flex: 0 0 25%;
             flex: 0 0 25%;
@@ -3507,7 +3507,7 @@ meter {
               flex: 0 0 12.5%; } }
 
 @media only screen and (min-width: 40em) {
-  .medium-9 {
+  .medium-9, .imSoSticky label {
     -webkit-flex: 0 0 75%;
         -ms-flex: 0 0 75%;
             flex: 0 0 75%;
@@ -6931,9 +6931,9 @@ table tr td {
     color: #000; }
 
 /* Results View Listing Card */
-/******************************************
-			Generic Card Styles
-*******************************************/
+/*****************************************
+		Results General Styles
+******************************************/
 .resultsList.grid-container, .resultsList.listing-section {
   max-width: 70em; }
 
@@ -6956,6 +6956,37 @@ table tr td {
   margin-left: 0;
   margin-right: 0; }
 
+/*Search Param*/
+.search-param {
+  border-bottom: 2px solid #0093d8; }
+
+.search-param.green {
+  border-color: #38b449; }
+
+.search-param.orange {
+  border-color: #ff7f00; }
+
+.search-param.grey {
+  border-color: #444; }
+
+/* Sticky Filter Styles */
+.imSoSticky {
+  background-color: #0093d8;
+  color: #fff;
+  padding: 15px 5%;
+  top: 0px;
+  left: 0px;
+  width: 100% !important; }
+  .imSoSticky label {
+    color: #fff;
+    padding-left: 5px; }
+    @media only screen and (min-width: 40em) {
+      .imSoSticky label {
+        padding-top: 8px; } }
+
+/******************************************
+			Card Styles
+*******************************************/
 .card-content {
   box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
   margin: 8px;
@@ -6976,18 +7007,6 @@ table tr td {
   height: auto;
   max-width: 100%;
   max-height: 150px; }
-
-.search-param {
-  border-bottom: 2px solid #0093d8; }
-
-.search-param.green {
-  border-color: #38b449; }
-
-.search-param.orange {
-  border-color: #ff7f00; }
-
-.search-param.grey {
-  border-color: #444; }
 
 .listingCard {
   /******************************************
@@ -7701,9 +7720,3 @@ label {
 .form-control:focus ~ .float-label, .form-control:valid ~ .float-label {
   top: -18px;
   font-size: 12px; }
-
-.imSoSticky {
-  background-color: #fff;
-  top: 0px;
-  left: 0px;
-  width: 100% !important; }
