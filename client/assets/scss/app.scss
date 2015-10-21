@@ -60,7 +60,21 @@
 /******************************
 		Dev Styles
 *******************************/
+.note-form {
+/*	display: flex;
+	justify-content: center;
+	align-items: center;*/
+}
 
+.form-row {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 30px 0 !important;
+}
 
+.single-column {
+		justify-content: flex-start;
+}
 
 /******************************/

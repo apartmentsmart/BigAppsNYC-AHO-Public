@@ -4,18 +4,48 @@
 			<div class="center title">Property Note</div>
 			<span zf-close="" class="right"><a>Done</a></span>
 		</div>
-		<div class="grid-content padding" style="padding-top: 1rem;">
-
-			<form>
-				<div class="grid-block">
-					<div class="small-12 grid-content">
-						<label>
-						Note about this property
-							<input type="text" placeholder="Type your note here">
-						</label>
+		<div class="grid-content note-form padding" style="padding-top: 1rem;">
+				<form ng-submit="submitReview()">
+					<div class="grid-block form-row">
+							<div class="grid-block small-6">I am searching for a</div>
+							<div class="grid-block small-6">
+								<select name="" id="">
+								<option value="">x Br Apartment</option>
+								<option value="">x Br Apartment</option>
+								<option value="">x Br Apartment</option>
+								<option value="">x Br Apartment</option>
+								</select>
+							</div>
 					</div>
-				</div>
-			</form>
+					<div class="grid-block form-row">
+						<div class="grid-block small-6">
+							The rent was
+						</div>
+						<div class="grid-block small-6">
+							<span class="inline-label"><span class="form-label">$</span><input type="text" class="small-5" placeholder="1600"><span class="form-label">/month</span></span>
+						</div>
+					</div>
+					<div class="grid-block form-row single-column">
+						<input id="note-waitlist" type="checkbox" ng-click="noteWaitlist = !noteWaitlist"><label for="note-waitlist">There is a waitlist</label>
+					</div>
+					<div class="grid-block form-row small-12" ng-show="noteWaitlist">
+						<div class="grid-block">It is</div>  
+						<div class="grid-block"> <input type="text"></div>
+						<div class="grid-block">long.</div>
+					</div>
+					<div class="grid-block form-row single-column">
+						<input id="checkbox1" type="checkbox" ng-click="noteApplied = !noteApplied"><label for="checkbox1">I applied</label>
+					</div>
+					<div class="grid-block form-row" ng-show="noteApplied">
+							on <input type="text">
+					</div>
+					<div class="grid-block form-row" ng-show="noteApplied == true && noteWaitlist == true">
+							I am <input type="text"> on the list.
+					</div>
+					<div class="grid-block form-row small-12">
+						<input type="textarea" class="small-12">
+					</div>
+				</form>
 
 
 			<a zf-close="" class="button expand">Submit</a>
