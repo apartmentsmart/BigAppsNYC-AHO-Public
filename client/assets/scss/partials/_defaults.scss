@@ -77,4 +77,36 @@ table {
 }
 
 
+#footer {
+  background-color: $af-blue;
+  color: #fff;
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  .grid-block {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
+
+.footer-block {
+  text-align:center;
+  @include breakpoint (small) {
+    padding-bottom: 15px;
+  }
+  @include breakpoint (large) {
+    padding: 0;
+  }
+}
+.footer-block:last-child {
+  padding-bottom: 0px;
+}
+
+
+
+
 

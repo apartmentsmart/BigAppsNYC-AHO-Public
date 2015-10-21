@@ -19928,19 +19928,6 @@ angular.module('ngFacebook', [])
 
   }
 
-app.directive('back', function(){
-
-  return{
-    link: function(scope, element, attrs) {
-         element.on('click', function() {
-             window.history.back();
-         });
-     } 
-  }
-
-});
-
-
 /** Ordinal Filter for Numbers **/
 app.filter('ordinal', function() {
   return function(input) {
@@ -19955,46 +19942,13 @@ app.filter('urlencode', function() {
   return window.encodeURIComponent;
 });
 
-/**
-  -- Sets, Gets, and Mutates cross-controller search filter data.
-**/
-app.factory('globalFilter', function() {
- var savedData = {}
- 
- function set(data) {
-   savedData = data;
-   localStorage.setItem('searchParameters', JSON.stringify(data));
- }
- 
- function get() {
-  return savedData;
- }
 
- function mutate(scope){
-  
-  if(scope.thisSearch.age >= 55){
-      scope.thisSearch.elderly = 1;
-  }
+//include flow as a dependancy
+// Documentation for the flow.js library   ----- https://github.com/flowjs/ng-flow
+//angular.module('app', ['flow'])
 
-  delete scope.thisSearch.age;
-
-
-  if(scope.thisSearch.disabilityStatus != "None")
-      scope.thisSearch.disabled = 1;
-
-  delete scope.thisSearch.disabilityStatus;
-
- }
-
- return {
-  set: set,
-  get: get,
-  mutate: mutate
- }
-
-});
-
-app.factory('dataHandler', ['$http', '$filter', 'globalFilter', '$sce', function($http, $filter, globalFilter, $sce){
+})(); 
+angular.module('application').factory('dataHandler', ['$http', '$filter', 'globalFilter', '$sce', function($http, $filter, globalFilter, $sce){
 
       /*
         --Fetches, and optionally Filters, JSON object.
@@ -20074,91 +20028,76 @@ app.factory('dataHandler', ['$http', '$filter', 'globalFilter', '$sce', function
 
 }]);
 
-
-
-//Handles Searching Actions
-app.controller('searchController', ['$scope', 'globalFilter', function($scope, globalFilter) {
-
-  //set $scope.search default variable if $scope.search is not set
-  (!$scope.search)
-    $scope.search = { borough:"All", hhsize:1, disabilityStatus:"None", housingChoiceScore:0};
-
-    localStorage.setItem('searchParameters', JSON.stringify($scope.search));
-
-    //watch $scope.search attributes for change
-    $scope.$watchGroup(['search.borough', 'search.hhsize', 'search.age', 'search.disabilityStatus', 'search.housingChoiceScore', 'search.income'], function(newValues, oldValues, scope){
-    
-        globalFilter.set($scope.search);
-
-    });
-
-}]);
-
-//Handles Search Result Actions
-app.controller('resultsController', ['$scope','globalFilter', 'dataHandler', '$state', function($scope, globalFilter, dataHandler, $state) {
-
-  //Init Listings Object
-  $scope.listings={};
-  $scope.thisSearch = {};
-
-  //Attempts to set Search Object With local storage
-  $scope.thisSearch =  JSON.parse(localStorage.getItem('searchParameters'));
-
-
-  //Attempts to set Search Object with global filter
-  if(!$scope.thisSearch.borough)
-    $scope.thisSearch = globalFilter.get();
-
-  //Check for, and override with, URL Paramss
-  if($state.params.borough)
-      $scope.thisSearch.borough = $state.params.borough;
-
-
- $scope.thisSearch.type = 'search';
-
-  var ami_band = {};
-    ami_band[1] = {50:'30250',60:'36300', 80:'48400' };
-    ami_band[2] = {50:'34550',60:'41460', 80:'55300' };
-    ami_band[3] = {50:'38850',60:'46620', 80:'62150'};
-    ami_band[4] = {50:'43150',60:'51780', 80:'69050'};
+/**
+  -- Sets, Gets, and Mutates cross-controller search filter data.
+**/
+angular.module('application').factory('globalFilter', function() {
+ var savedData = {}
  
-    
+ function set(data) {
+   savedData = data;
+   localStorage.setItem('searchParameters', JSON.stringify(data));
+ }
+ 
+ function get() {
+  return savedData;
+ }
 
-  if($scope.thisSearch.hhsize && $scope.thisSearch.income){
-   var hh_size = ($scope.thisSearch.hhsize > 4 ? 4 : $scope.thisSearch.hhsize);
-   var band_by_size = ami_band[hh_size];
-
-   var income = $scope.thisSearch.income * 12;
-
-   if(income < band_by_size[50])
-     $scope.thisSearch.ami_band = 49;
-
-  else if(income < band_by_size[60])
-     $scope.thisSearch.ami_band = 59;
-
-   else if(income < band_by_size[80])
-     $scope.thisSearch.ami_band = 79;
-   
-   else
-      $scope.thisSearch.ami_band = 81;
-
+ function mutate(scope){
+  
+  if(scope.thisSearch.age >= 55){
+      scope.thisSearch.elderly = 1;
   }
 
+  delete scope.thisSearch.age;
 
 
-   //Handle search param mutation
-   globalFilter.mutate($scope);
+  if(scope.thisSearch.disabilityStatus != "None")
+      scope.thisSearch.disabled = 1;
 
-   
+  delete scope.thisSearch.disabilityStatus;
 
-  //Get data that matches the $scope.search object and assign it to $scope.listings
-  dataHandler.fetch($scope, "listings", $scope.thisSearch);
+ }
+
+ return {
+  set: set,
+  get: get,
+  mutate: mutate
+ }
+
+});
+//Handles Search Result Actions
+angular.module('application').controller('dashController', ['$scope', 'dataHandler', '$state','$filter', function($scope, dataHandler, $state, $filter) {
+
+  //Init Notifications Object
+  $scope.notifications = {};
+  $scope.thisSearch = {};
+
+
+  $scope.thisSearch.type = 'notifications';
+  $scope.thisSearch.user = 1;
+
+  //Get data that matches the $scope.search object and assign it to $scope.notifications
+  dataHandler.fetch($scope, "notifications", $scope.thisSearch);
+
+  //Method to Dismiss or Archive Notifications
+  $scope.handleNotification = function(params){
+
+
+    var thisNotification = $filter('filter')($scope.notifications,{'id':params.id})[0];
+    
+    thisNotification[params.action]= 1;
+    thisNotification[params.action+"_on"] = new Date();
+
+
+
+  }
 
 
 }]);
 
 //Handles Listing Actions
-app.controller('listingController', ['$scope','globalFilter', 'dataHandler', '$state', '$location', '$anchorScroll', '$filter', function($scope, globalFilter, dataHandler, $state, $location, $anchorScroll, $filter) {
+angular.module('application').controller('listingController', ['$scope','globalFilter', 'dataHandler', '$state', '$location', '$anchorScroll', '$filter', function($scope, globalFilter, dataHandler, $state, $location, $anchorScroll, $filter) {
 
 
   //Init thisListing Object
@@ -20291,37 +20230,108 @@ app.controller('listingController', ['$scope','globalFilter', 'dataHandler', '$s
 
 }]);
 
+angular.module('application').controller('loginController', ['$scope', '$facebook', function($scope, $facebook){
+
+  $scope.isLoggedIn = false;
+  $scope.login = function() {
+    $facebook.login().then(function() {
+      refresh();
+    });
+  }
+
+    function refresh() {
+    $facebook.api("/me").then( 
+      function(response) {
+        $scope.welcomeMsg = "Welcome " + response.name;
+        $scope.isLoggedIn = true;
+      },
+      function(err) {
+        $scope.welcomeMsg = "Please log in";
+      });
+  }
+
+}]);
 
 //Handles Search Result Actions
-app.controller('dashController', ['$scope', 'dataHandler', '$state','$filter', function($scope, dataHandler, $state, $filter) {
+angular.module('application').controller('resultsController', ['$scope','globalFilter', 'dataHandler', '$state', function($scope, globalFilter, dataHandler, $state) {
 
-  //Init Notifications Object
-  $scope.notifications = {};
+  //Init Listings Object
+  $scope.listings={};
   $scope.thisSearch = {};
 
-
-  $scope.thisSearch.type = 'notifications';
-  $scope.thisSearch.user = 1;
-
-  //Get data that matches the $scope.search object and assign it to $scope.notifications
-  dataHandler.fetch($scope, "notifications", $scope.thisSearch);
-
-  //Method to Dismiss or Archive Notifications
-  $scope.handleNotification = function(params){
+  //Attempts to set Search Object With local storage
+  $scope.thisSearch =  JSON.parse(localStorage.getItem('searchParameters'));
 
 
-    var thisNotification = $filter('filter')($scope.notifications,{'id':params.id})[0];
+  //Attempts to set Search Object with global filter
+  if(!$scope.thisSearch.borough)
+    $scope.thisSearch = globalFilter.get();
+
+  //Check for, and override with, URL Paramss
+  if($state.params.borough)
+      $scope.thisSearch.borough = $state.params.borough;
+
+
+ $scope.thisSearch.type = 'search';
+
+  var ami_band = {};
+    ami_band[1] = {50:'30250',60:'36300', 80:'48400' };
+    ami_band[2] = {50:'34550',60:'41460', 80:'55300' };
+    ami_band[3] = {50:'38850',60:'46620', 80:'62150'};
+    ami_band[4] = {50:'43150',60:'51780', 80:'69050'};
+ 
     
-    thisNotification[params.action]= 1;
-    thisNotification[params.action+"_on"] = new Date();
 
+  if($scope.thisSearch.hhsize && $scope.thisSearch.income){
+   var hh_size = ($scope.thisSearch.hhsize > 4 ? 4 : $scope.thisSearch.hhsize);
+   var band_by_size = ami_band[hh_size];
 
+   var income = $scope.thisSearch.income * 12;
+
+   if(income < band_by_size[50])
+     $scope.thisSearch.ami_band = 49;
+
+  else if(income < band_by_size[60])
+     $scope.thisSearch.ami_band = 59;
+
+   else if(income < band_by_size[80])
+     $scope.thisSearch.ami_band = 79;
+   
+   else
+      $scope.thisSearch.ami_band = 81;
 
   }
 
 
+
+   //Handle search param mutation
+   globalFilter.mutate($scope);
+
+   
+
+  //Get data that matches the $scope.search object and assign it to $scope.listings
+  dataHandler.fetch($scope, "listings", $scope.thisSearch);
+
+
 }]);
 
+//Handles Searching Actions
+angular.module('application').controller('searchController', ['$scope', 'globalFilter', function($scope, globalFilter) {
+
+  //set $scope.search default variable if $scope.search is not set
+  (!$scope.search)
+    $scope.search = { borough:"All", hhsize:1, disabilityStatus:"None", housingChoiceScore:0};
+
+    localStorage.setItem('searchParameters', JSON.stringify($scope.search));
+
+    //watch $scope.search attributes for change
+    $scope.$watchGroup(['search.borough', 'search.hhsize', 'search.age', 'search.disabilityStatus', 'search.housingChoiceScore', 'search.income'], function(newValues, oldValues, scope){
+    
+        globalFilter.set($scope.search);
+
+    });
+
+}]);
 
 /**
  **Directive to dynamically add click functions to buttons.
@@ -20332,7 +20342,7 @@ app.controller('dashController', ['$scope', 'dataHandler', '$state','$filter', f
  **"uiaction" is for any click function that would in normal circumstances use ui-sref. 
  **"controllerParams" and "controllerFunction" handle any click function from a controller.
  **/
-app.directive('actionButton', ['$location', function(location) {
+angular.module('application').directive('actionButton', ['$location', function(location) {
     return {
         restrict: 'E',
         replace: true,
@@ -20357,32 +20367,14 @@ app.directive('actionButton', ['$location', function(location) {
         }
     };
 }]);
+angular.module('application').directive('back', function(){
 
-app.controller('loginController', ['$scope', '$facebook', function($scope, $facebook){
-
-  $scope.isLoggedIn = false;
-  $scope.login = function() {
-    $facebook.login().then(function() {
-      refresh();
-    });
+  return{
+    link: function(scope, element, attrs) {
+         element.on('click', function() {
+             window.history.back();
+         });
+     } 
   }
 
-    function refresh() {
-    $facebook.api("/me").then( 
-      function(response) {
-        $scope.welcomeMsg = "Welcome " + response.name;
-        $scope.isLoggedIn = true;
-      },
-      function(err) {
-        $scope.welcomeMsg = "Please log in";
-      });
-  }
-
-}]);
-
-
-//include flow as a dependancy
-// Documentation for the flow.js library   ----- https://github.com/flowjs/ng-flow
-angular.module('app', ['flow'])
-
-})(); 
+});
