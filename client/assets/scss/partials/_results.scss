@@ -207,13 +207,28 @@
 	}
 
 	.share-sheet {
+
+		/* Must be the first declaration */
+		/* otherwise the include will override */
+			@include action-sheet( $position: bottom );
+		
+		@include breakpoint(medium) {
+			$position: bottom;
+			$radius: 0px;
+			$shadow: 0px transparent;
+		}
+
 		background: $af-blue;
 		color: #fff;
+
 
 		ul li a {
 			border: none;
 			color: #fff;
 			padding: 1.3em;
+			&:hover {
+				color: $af-blue;
+			}
 		}
 
 		p {
@@ -226,4 +241,5 @@
 	}
 
 }
+
 
