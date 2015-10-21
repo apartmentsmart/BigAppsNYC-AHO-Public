@@ -44,6 +44,7 @@ var paths = {
     '!bower_components/foundation-apps/js/angular/app.js'
   ],
   // These files are for your app's JavaScript
+  //Order of custom JS: Factories > Controllers > Directives
   appJS: [
     'bower_components/ngmap/build/scripts/ng-map.js',
     'client/assets/js/animated-nav/modernizr.js',
@@ -53,9 +54,11 @@ var paths = {
     'client/assets/js/materialize/materialize.js',
     'bower_components/ng-flow/dist/ng-flow-standalone.min.js',
     'bower_components/ngSticky/lib/sticky.js',
-    // 'bower_conponents/flow.js/dist/flow.min.js',
-    // 'bower_components/ng-flow/dist/ng-flow.min.js',
-    'client/assets/js/app.js'
+    'client/assets/js/app.js',
+    'client/assets/js/factories/*.js',
+    'client/assets/js/controllers/*.js',
+    'client/assets/js/directives/*.js'
+
   ]
 }
 

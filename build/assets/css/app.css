@@ -6856,6 +6856,40 @@ table tr td {
           align-items: center;
   border: 1px solid #111; }
 
+#footer {
+  background-color: #0093d8;
+  color: #fff;
+  padding: 40px 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  #footer .grid-block {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center; }
+
+.footer-block {
+  text-align: center;
+  padding-bottom: 15px; }
+  @media only screen and (min-width: 75em) {
+    .footer-block {
+      padding: 0; } }
+
+.footer-block:last-child {
+  padding-bottom: 0px; }
+
 /* Search Styles */
 /******************************************
 			Search Box Styles
@@ -7308,6 +7342,9 @@ table tr td {
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px; }
+
+#add-review select {
+  color: #333; }
 
 .single-review {
   padding: 10px 15px;
