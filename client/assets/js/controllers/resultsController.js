@@ -1,5 +1,5 @@
 //Handles Search Result Actions
-angular.module('application').controller('resultsController', ['$scope','globalFilter', 'dataHandler', '$state', 'dataService', function($scope, globalFilter, dataHandler, $state, dataService) {
+angular.module('application').controller('resultsController', ['$scope','globalFilter', '$state', 'dataService', function($scope, globalFilter, $state, dataService) {
 
   //Init Listings Object
   $scope.listings={};

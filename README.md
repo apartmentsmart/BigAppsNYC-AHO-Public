@@ -2,6 +2,12 @@
 
 [Live Demo at http://nyc.affordablehousingonline.com](http://nyc.affordablehousingonline.com)
 
+### 0.1.5-Alpha Patch ###
+* User account creation and modification through **Login With Facebook**
+* Saved Search Profile
+* Streamlined API calls and data handling with refactored **dataHandler** which is now **dataService**.
+* Reviews and Dashboards prototypes are now tied to a User Account.
+
 ### --Dev Patch-- ####
 * app.js has been split into controller, directive, and factory directories.
 
