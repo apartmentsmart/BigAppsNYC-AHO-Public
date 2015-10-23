@@ -20589,6 +20589,7 @@ angular.module('application').factory('globalFilter', function() {
 angular.module('application').controller('accountController', ['$scope', '$facebook', '$location', 'dataService', 'globalFilter', function($scope, $facebook, $location, dataService, globalFilter){
 
     if(globalFilter.get('fbResponse').id){
+        
         var fbresponse = globalFilter.get('fbResponse');
       
         var endpoint = "http://api.affordablehousingonline.com/nyc/user/"+fbresponse.id+"/";
@@ -20668,7 +20669,7 @@ angular.module('application').controller('dashController', ['$scope','dataServic
 
     if(globalFilter.get('fbResponse').id){
         var fbresponse = globalFilter.get('fbResponse');
-    }
+    
 
     var accountEndpoint =  "http://api.affordablehousingonline.com/nyc/user/"+fbresponse.id+"/";
 
@@ -20687,7 +20688,7 @@ angular.module('application').controller('dashController', ['$scope','dataServic
 
     });
 
-
+}
 
 
 
@@ -20939,7 +20940,7 @@ angular.module('application').controller('searchController', ['$scope', 'globalF
 
 	    if(globalFilter.get('fbResponse').id){
         		var fbresponse = globalFilter.get('fbResponse');
-        }
+        
 
         var accountEndpoint =  "http://api.affordablehousingonline.com/nyc/user/"+fbresponse.id+"/";
 
@@ -20948,7 +20949,7 @@ angular.module('application').controller('searchController', ['$scope', 'globalF
     			$scope.search = { borough:$scope.account.borough, hhsize:$scope.account.hhsize,disabilityStatus:"None", housingChoiceScore:0,age:$scope.account.age, income:$scope.account.income };
         });
 
-
+        }
 
   //set $scope.search default variable if $scope.search is not set
   (!$scope.search)

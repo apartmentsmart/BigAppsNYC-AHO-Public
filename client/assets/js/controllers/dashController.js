@@ -6,7 +6,7 @@ angular.module('application').controller('dashController', ['$scope','dataServic
 
     if(globalFilter.get('fbResponse').id){
         var fbresponse = globalFilter.get('fbResponse');
-    }
+    
 
     var accountEndpoint =  "http://api.affordablehousingonline.com/nyc/user/"+fbresponse.id+"/";
 
@@ -25,7 +25,7 @@ angular.module('application').controller('dashController', ['$scope','dataServic
 
     });
 
-
+}
 
 
 
