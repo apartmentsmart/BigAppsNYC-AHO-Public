@@ -1,49 +1,87 @@
 
 <div class="grid-content">
-	<div class="dashboard grid-container">
-		<form>
+	<div class="dashboard grid-container" ng-controller="accountController">
+		<form ng-submit="update()">
 
 
 		    <div class="grid-content profile-container">
-		        <div class="form-container grid-block">
+		        <div class="form-container grid-block" ng-repeat='user in account'>
 
 		        	<h1>Basic Information</h1>
 		        	<div class="form-element small-12">
 			            <label class="small-12">First Name
-			                <input type="text" placeholder="First">
+			                <input type="text" ng-model="user.first_name" placeholder="First">
 			            </label>
 		        	</div>
 
 		        	<div class="form-element small-12">
 			            <label class="small-12">Last Name
-			                <input type="text" placeholder="Last">
+			                <input type="text"  ng-model="user.last_name" placeholder="Last">
 			            </label>
 		        	</div>
 
 		        	<div class="form-element small-12">
 			            <label class="small-12">Email Address
-			                <input type="text" placeholder="Email">
+			                <input type="text"  ng-model="user.email" placeholder="Email">
 			            </label>
 		        	</div>
 
 		        	<h1>Search Preferences</h1>
 
 		        	<div class="form-element small-12">
-			            <label class="small-12">Montly Income
-			                <input type="text" placeholder="Monthly Income">
+			            <label class="small-12">Monthly Income
+			                <input type="text"  ng-model="user.income" placeholder="Monthly Income">
 			            </label>
 		        	</div>
 
 		        	<div class="form-element small-12">
 			            <label class="small-12">Age
-			                <input type="text" placeholder="Age">
+			                <input type="text"  ng-model="user.age" placeholder="Age">
 			            </label>
 		        	</div>
+
+		        	<div class="form-element small-12">
+			            <label class="small-12">Household Size
+				            <select ng-init="user.hhsize = (user.hhsize ? user.hhsize : 1)" name="hhsize" ng-model="user.hhsize">
+								<option value="1">1 Person</option>
+								<option value="2">2 People</option>
+								<option value="3">3 People</option>
+								<option value="4">4 People</option>
+								<option value="5">5 People</option>
+								<option value="6">6 People</option>
+								<option value="7">7 People</option>
+								<option value="8">8+ People</option>
+							</select>
+			            </label>
+		        	</div>
+
+		        	<div class="form-element small-12">
+						<label class='small-12'>Preferred Borough
+							<select name="borough" ng-init="user.borough = (user.borough ? user.borough : 'All')" ng-model="user.borough">
+								<option value="All">All Boroughs</option>
+								<option value="Manhattan">Manhattan</option>
+								<option value="Bronx">The Bronx</option>
+								<option value="Brooklyn">Brooklyn</option>
+								<option value="Queens">Queens</option>
+								<option value="Staten-Island">Staten Island</option>
+							</select>
+						</label>
+					</div>
+
+					<div class="form-element small-12">
+						<label class="small-12">Disability Status
+							<select name="disability_status" ng-init="user.disabilityStatus = (user.disabilityStatus ? user.disabilityStatus : 'None')" ng-model="user.disabilityStatus">
+								<option value="HoH">Head of Houshold Disabled</option>
+								<option value="Dependant">Dependant Disabled</option>
+								<option value="None" selected="selected">No Disablity</option>
+							</select>
+						</label>
+					</div>
 
 		        	<button class="button expand">Submit</button>
 
 
-		        	<!-- Need to add disability/address street city state zip/voucher holder -->
+		        	   <!-- Need to add disability/address street city state zip/voucher holder -->
 
 
 		        </div> <!-- End Form Container -->

@@ -1,16 +1,34 @@
 //Handles Search Result Actions
-angular.module('application').controller('dashController', ['$scope', 'dataHandler', '$state','$filter', function($scope, dataHandler, $state, $filter) {
+angular.module('application').controller('dashController', ['$scope','dataService','$state','$filter','globalFilter', function($scope,dataService, $state, $filter, globalFilter) {
 
   //Init Notifications Object
   $scope.notifications = {};
-  $scope.thisSearch = {};
+
+    if(globalFilter.get('fbResponse').id){
+        var fbresponse = globalFilter.get('fbResponse');
+    }
+
+    var accountEndpoint =  "http://api.affordablehousingonline.com/nyc/user/"+fbresponse.id+"/";
+
+    dataService.async(accountEndpoint).then(function(d){
+      
+      $scope.account = d[0];
+      $scope.search = { borough:$scope.account.borough, hhsize:$scope.account.hhsize,disabilityStatus:"None", housingChoiceScore:0,age:$scope.account.age, income:$scope.account.income };
+    
+      var endpoint = "http://api.affordablehousingonline.com/nyc/notification/by-user/"+$scope.account.id+"/";
+
+      dataService.async(endpoint).then(function(r){
+
+        $scope.notifications = r;
+
+      });
+
+    });
 
 
-  $scope.thisSearch.type = 'notifications';
-  $scope.thisSearch.user = 1;
 
-  //Get data that matches the $scope.search object and assign it to $scope.notifications
-  dataHandler.fetch($scope, "notifications", $scope.thisSearch);
+
+
 
   //Method to Dismiss or Archive Notifications
   $scope.handleNotification = function(params){

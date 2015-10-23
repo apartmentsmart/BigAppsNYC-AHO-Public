@@ -1,5 +1,18 @@
 //Handles Searching Actions
-angular.module('application').controller('searchController', ['$scope', 'globalFilter', function($scope, globalFilter) {
+angular.module('application').controller('searchController', ['$scope', 'globalFilter', 'userAccount', 'dataService', function($scope, globalFilter, userAccount, dataService) {
+
+	    if(globalFilter.get('fbResponse').id){
+        		var fbresponse = globalFilter.get('fbResponse');
+        }
+
+        var accountEndpoint =  "http://api.affordablehousingonline.com/nyc/user/"+fbresponse.id+"/";
+
+        dataService.async(accountEndpoint).then(function(d){
+			$scope.account = d[0];
+			$scope.search = { borough:$scope.account.borough, hhsize:$scope.account.hhsize,disabilityStatus:"None", housingChoiceScore:0,age:$scope.account.age, income:$scope.account.income };
+        });
+
+
 
   //set $scope.search default variable if $scope.search is not set
   (!$scope.search)
@@ -13,5 +26,11 @@ angular.module('application').controller('searchController', ['$scope', 'globalF
         globalFilter.set($scope.search);
 
     });
+   	
+   	
+    $scope.urlEncode = function(string){
+    string = string.replace(/ /g, '-');
+    return string;
+    };
 
 }]);
