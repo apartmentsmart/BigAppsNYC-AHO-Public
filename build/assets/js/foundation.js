@@ -39633,8 +39633,7 @@ angular.module('markdown', [])
   'use strict';
 
   angular.module('foundation.interchange', ['foundation.core', 'foundation.mediaquery'])
-    .directive('zfInterchange', zfInterchange)
-  ;
+    .directive('zfInterchange', zfInterchange);
 
   zfInterchange.$inject = [ '$compile', '$http', '$templateCache', 'FoundationApi', 'FoundationMQ'];
 

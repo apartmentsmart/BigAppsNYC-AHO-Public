@@ -1,6 +1,6 @@
 ---
 name: results
-url: /results/:borough/
+url: /housing-search/New-York/:borough/
 ---
 <style>
 	select,option,select:hover, select:focus { color: #000 !important;}
@@ -72,7 +72,7 @@ url: /results/:borough/
 	    		<div class="grid-block card-titlebar shrink">
 	    			<div class="grid-content title-area">
 	    				<div class="card-title grid-content"></div>
-		    				<a ui-sref="listing({borough:listing.borough, id:listing.id})">{{listing.name}}</a>
+		    				<a ui-sref="listing({borough:urlEncode(listing.borough),name:urlEncode(listing.name),id:listing.id})">{{listing.name}}</a>
 		    			<div class="card-subtitle grid-content">
 		    				<span ng-show='listing.neighborhood'>{{listing.neighborhood}}, </span>{{listing.borough}}
 		    			</div>

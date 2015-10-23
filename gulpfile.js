@@ -54,6 +54,7 @@ var paths = {
     'client/assets/js/materialize/materialize.js',
     'bower_components/ng-flow/dist/ng-flow-standalone.min.js',
     'bower_components/ngSticky/lib/sticky.js',
+    'bower_components/ng-facebook/ngFacebook.js',
     'client/assets/js/app.js',
     'client/assets/js/factories/*.js',
     'client/assets/js/controllers/*.js',

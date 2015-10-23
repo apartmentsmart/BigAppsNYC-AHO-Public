@@ -4,13 +4,14 @@
 angular.module('application').factory('globalFilter', function() {
  var savedData = {}
  
- function set(data) {
+ function set(data, localStorageParam) {
    savedData = data;
-   localStorage.setItem('searchParameters', JSON.stringify(data));
+   var thisLocalStorageParam = (localStorageParam ? localStorageParam : 'searchParameters');
+   localStorage.setItem(thisLocalStorageParam, JSON.stringify(data));
  }
  
- function get() {
-  return savedData;
+ function get(localStorageParam) {
+  return (localStorage.getItem(localStorageParam) ? JSON.parse(localStorage.getItem(localStorageParam)) : savedData);
  }
 
  function mutate(scope){
