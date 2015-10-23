@@ -20667,9 +20667,8 @@ angular.module('application').controller('dashController', ['$scope','dataServic
   //Init Notifications Object
   $scope.notifications = {};
 
-    // if(globalFilter.get('fbResponse').id){
-        var fbresponse = {id:10206105901941465}
-        // var fbresponse = globalFilter.get('fbResponse');
+   if(globalFilter.get('fbResponse').id){
+         var fbresponse = globalFilter.get('fbResponse');
     
 
     var accountEndpoint =  "http://api.affordablehousingonline.com/nyc/user/"+fbresponse.id+"/";
@@ -20679,24 +20678,33 @@ angular.module('application').controller('dashController', ['$scope','dataServic
       $scope.account = d[0];
       $scope.search = { borough:$scope.account.borough, hhsize:$scope.account.hhsize,disabilityStatus:"None", housingChoiceScore:0,age:$scope.account.age, income:$scope.account.income };
     
-      // var endpoint = "http://api.affordablehousingonline.com/nyc/notification/by-user/"+$scope.account.id+"/";
+      var notificationEndpoint = "http://api.affordablehousingonline.com/nyc/notification/by-user/"+$scope.account.id+"/";
 
-      /////////////////////////////////////////////////////////////////////////////////////////
-      //For Testing Purposes - Chris's User Account with Facebook
-      var endpoint = "http://api.affordablehousingonline.com/nyc/notification/by-user/"+45+"/";
-      /////////////////////////////////////////////////////////////////////////////////////////
-
-
-      console.log(endpoint);
-      dataService.async(endpoint).then(function(r){
-        console.log(r);
-        $scope.notifications = r;
+      dataService.async(notificationEndpoint).then(function(r){
+        if(r){
+         $scope.notifications = r;
+        }
+        else{
+          $scope.notifications = {};
+        }
+        
+        console.log($scope.notifications)
 
       });
 
+
+      var noteEndpoint = "http://api.affordablehousingonline.com/nyc/note/";
+
+        dataService.async(noteEndpoint, {user_id:$scope.account.id}).then(function(r){
+
+          $scope.notes = r;
+          console.log(r)
+
+        });
+
     });
 
-// }
+ }
 
 
 
@@ -20886,18 +20894,22 @@ angular.module('application').controller('noteController', ['$scope','globalFilt
 				$scope.account = d[0];
 	    		
 				noteEndpoint = "http://api.affordablehousingonline.com/nyc/note/";
-				$scope.note = {user:$scope.account.id,listing:$state.params.id}
+				$scope.note.user_id = $scope.account.id;
+
+				if($state.params.id)
+					$scope.note.listing_id = $state.params.id;
 
 				dataService.async(noteEndpoint, $scope.note).then(function(r){
 
-					console.log(r)
-					if(!r.applied_on){
-						r.applied_on = new Date();
+					if(r){
+						if(!r.applied_on){
+							r.applied_on = new Date();
+						}
+						else
+							r.applied_on = $scope.convertDate(r.applied_on)
+
+						$scope.note = r;
 					}
-					else
-						r.applied_on = $scope.convertDate(r.applied_on)
-					
-					$scope.note = r;
 					
 
 				});
@@ -20911,6 +20923,15 @@ angular.module('application').controller('noteController', ['$scope','globalFilt
 
 		console.log($scope.note);
 
+		var endpoint = "http://api.affordablehousingonline.com/nyc/push/?type=note";
+
+	    dataService.push(endpoint, $scope.note).then(function(d){
+
+	      	console.log(d);
+
+	    })
+
+
 	}
 
 
@@ -20919,6 +20940,24 @@ angular.module('application').controller('noteController', ['$scope','globalFilt
     var dateOut = new Date(stringDate);
     dateOut.setDate(dateOut.getDate() + 1);
     return dateOut;
+  }
+
+  $scope.formatDate = function(stringDate){
+
+  	var date = new Date($scope.convertDate(stringDate));
+	var monthNames = [
+	  "January", "February", "March",
+	  "April", "May", "June", "July",
+	  "August", "September", "October",
+	  "November", "December"
+	];
+
+	var day = date.getDate();
+	var monthIndex = date.getMonth();
+	var year = date.getFullYear();
+
+
+	return monthNames[monthIndex] + " " + day + ', ' + year;
   }
 
 

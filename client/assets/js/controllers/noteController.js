@@ -15,18 +15,22 @@ angular.module('application').controller('noteController', ['$scope','globalFilt
 				$scope.account = d[0];
 	    		
 				noteEndpoint = "http://api.affordablehousingonline.com/nyc/note/";
-				$scope.note = {user:$scope.account.id,listing:$state.params.id}
+				$scope.note.user_id = $scope.account.id;
+
+				if($state.params.id)
+					$scope.note.listing_id = $state.params.id;
 
 				dataService.async(noteEndpoint, $scope.note).then(function(r){
 
-					console.log(r)
-					if(!r.applied_on){
-						r.applied_on = new Date();
+					if(r){
+						if(!r.applied_on){
+							r.applied_on = new Date();
+						}
+						else
+							r.applied_on = $scope.convertDate(r.applied_on)
+
+						$scope.note = r;
 					}
-					else
-						r.applied_on = $scope.convertDate(r.applied_on)
-					
-					$scope.note = r;
 					
 
 				});
@@ -40,6 +44,15 @@ angular.module('application').controller('noteController', ['$scope','globalFilt
 
 		console.log($scope.note);
 
+		var endpoint = "http://api.affordablehousingonline.com/nyc/push/?type=note";
+
+	    dataService.push(endpoint, $scope.note).then(function(d){
+
+	      	console.log(d);
+
+	    })
+
+
 	}
 
 
@@ -48,6 +61,24 @@ angular.module('application').controller('noteController', ['$scope','globalFilt
     var dateOut = new Date(stringDate);
     dateOut.setDate(dateOut.getDate() + 1);
     return dateOut;
+  }
+
+  $scope.formatDate = function(stringDate){
+
+  	var date = new Date($scope.convertDate(stringDate));
+	var monthNames = [
+	  "January", "February", "March",
+	  "April", "May", "June", "July",
+	  "August", "September", "October",
+	  "November", "December"
+	];
+
+	var day = date.getDate();
+	var monthIndex = date.getMonth();
+	var year = date.getFullYear();
+
+
+	return monthNames[monthIndex] + " " + day + ', ' + year;
   }
 
 
