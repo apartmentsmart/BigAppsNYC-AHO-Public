@@ -1,5 +1,6 @@
 //Handles Listing Actions
-angular.module('application').controller('listingController', ['$scope','globalFilter', 'dataHandler', '$state', '$location', '$anchorScroll', '$filter', function($scope, globalFilter, dataHandler, $state, $location, $anchorScroll, $filter) {
+angular.module('application').controller('listingController', ['$scope','globalFilter', '$state', '$location', '$anchorScroll', '$filter', 'dataService', '$sce', 
+  function($scope, globalFilter,$state, $location, $anchorScroll, $filter, dataService, $sce) {
 
 
   //Init thisListing Object
@@ -8,10 +9,21 @@ angular.module('application').controller('listingController', ['$scope','globalF
   //Set Search Object based on $state.params
   $scope.search = {hud_id: $state.params.id};
 
-  $scope.search.type='listing';
+  //API Endpoint The ID should always be present. If it's not..well..you will not have a very good page.
+  var endpoint = "http://api.affordablehousingonline.com/nyc/listing/"+$scope.search.hud_id+"/";
 
-  //get data that matches the $scope.search object and assign it to $scope.thisListing;
-  dataHandler.fetch($scope, "thisListing", $scope.search);
+  dataService.async(endpoint).then(function(d){
+
+      if(d[0].affordability)
+        d[0].affordability = $sce.trustAsHtml(d[0].affordability);
+
+      $scope.thisListing = d;
+
+      console.log($scope.thisListing)
+
+
+  });
+
 
   //Set School Sort
   $scope.schoolSortType= 'distance';
@@ -21,11 +33,7 @@ angular.module('application').controller('listingController', ['$scope','globalF
   $scope.mapView = 0;
   $scope.showSchools = 0;
 
-  //Scroll To Function
-  $scope.scrollTo = function(id) {
-      $location.hash(id);
-      $anchorScroll();
-  }
+
 
   //Get Map Object and Set Toggle Schools to False on init.
   $scope.$on('mapInitialized', function(evt, evtMap) {
@@ -118,8 +126,14 @@ angular.module('application').controller('listingController', ['$scope','globalF
   
   $scope.submitReview = function(){
 
+    var endpoint = "http://api.affordablehousingonline.com/nyc/push/?type=reviews";
 
-    dataHandler.create($scope.thisListing[0], 'reviews', $scope.newReview);
+    dataService.push(endpoint, $scope.newReview).then(function(d){
+
+      $scope.thisListing[0].reviews = d;
+
+    })
+
     $scope.hideReviewModal = 1;
     $scope.apply;
   }
@@ -128,6 +142,12 @@ angular.module('application').controller('listingController', ['$scope','globalF
     var dateOut = new Date(stringDate);
     dateOut.setDate(dateOut.getDate() + 1);
     return dateOut;
+  }
+  
+  //Should be a directive
+ $scope.scrollTo = function(id) {
+      $location.hash(id);
+      $anchorScroll();
   }
 
 }]);

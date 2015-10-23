@@ -22,7 +22,7 @@
 
     $facebookProvider.setAppId(171410539870355);
 
-
+    $facebookProvider.setPermissions("email");
     $locationProvider.html5Mode({
       enabled:false,
       requireBase: false
@@ -57,6 +57,7 @@ app.filter('ordinal', function() {
 app.filter('urlencode', function() {
   return window.encodeURIComponent;
 });
+
 
 
 //include flow as a dependancy

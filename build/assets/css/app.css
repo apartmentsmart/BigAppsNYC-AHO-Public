@@ -7486,6 +7486,9 @@ table tr td {
 .form-container .grid-block {
   /*margin: 0 2px;*/ }
 
+select, option {
+  color: #000 !important; }
+
 /* Dashboard */
 /****************************
 	Dashboard General Styles

@@ -1,12 +1,28 @@
 ---
 name: login
 url: /login
-animationIn: slideInLeft
-animationOut: slideOutLeft
 ---
 
-<div class="login" ng-controller="loginController">
-	<div class="login-form grid-block">
+<div class="login" style='height: 100vh' ng-controller="accountController">
+
+
+	<div ng-hide="altLogin" class="login-form">
+		<div class="grid-block">
+			<div class="grid-content">
+				<label style="font-size: 3em;">{{welcomeMsg}}</label>
+			</div>
+		</div>
+		<div class="grid-block">
+			<div class="grid-content">
+				<button type="button" ng-click="login()" ng-hide="isLoggedIn" class="button expand">Log In With Facebook</button>
+			</div>
+		</div>
+		<div class='grid-block'>
+			<p ng-click="altLogin=true"><small>or create an account without Facebook</small></p>
+		</div>
+	</div>
+
+	<div ng-show="altLogin" class="login-form grid-block">
 
 		<form>
 		<div class="grid-content">
@@ -22,17 +38,12 @@ animationOut: slideOutLeft
 			</label>
 		</div>
 		<div class="grid-content">
-			<a class="button expand">Login</a>
+			<a class="button expand">Log In or Register</a>
 		</div>
 		</form>
-
-
-		<div class="grid-content card">
-			<h4 ng-show="isLoggedIn">{{welcomeMsg}}</h4>
-			<h4 ng-hide="isLoggedIn">Or Login With Facebook</h4>
-			<button type="button" ng-click="login()" ng-hide="isLoggedIn" class="btn btn-default navbar-btn">Login </button>
-		</div>
 	</div>
+
+
 </div>
 
 

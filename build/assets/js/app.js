@@ -19906,7 +19906,7 @@ angular.module('ngFacebook', [])
 
     $facebookProvider.setAppId(171410539870355);
 
-
+    $facebookProvider.setPermissions("email");
     $locationProvider.html5Mode({
       enabled:false,
       requireBase: false
@@ -19943,104 +19943,66 @@ app.filter('urlencode', function() {
 });
 
 
+
 //include flow as a dependancy
 // Documentation for the flow.js library   ----- https://github.com/flowjs/ng-flow
 //angular.module('app', ['flow'])
 
 })(); 
-angular.module('application').factory('dataHandler', ['$http', '$filter', 'globalFilter', '$sce', function($http, $filter, globalFilter, $sce){
+angular.module('application').factory('dataService', function($http){
 
-      /*
-        --Fetches, and optionally Filters, JSON object.
-        --@scope is the current scope of the controller which needs to be passed in order to assign the return of $http call.
-        --@scopeAtt is the attribute to assign the returned $http data to in the scope of the controller.
-        --@scopeFilter is an optional object of key-value pairs. If passed only data that matches the conditions will be returned to the controller.
-      */
-      function fetch(scope, scopeAtt, scopeFilter){
+	function async(endpoint, data){
 
+		var promise = $http({
+			url: endpoint,
+			method: "GET",
+			params: data
+		}).then(function(response){
 
-        if(scopeFilter.type == 'search'){
-          var endpoint = "http://api.affordablehousingonline.com/nyc/search";
-            
-            if(scopeFilter.borough)
-              endpoint = endpoint+"/"+scopeFilter.borough;
-        }
-        else if(scopeFilter.type == 'notifications' && scopeFilter.user){
-          var endpoint = "http://api.affordablehousingonline.com/nyc/notification/by-user";
-            
-            if(scopeFilter.user)
-              endpoint = endpoint+"/"+scopeFilter.user+"/";
+			return response.data;
 
-        }
-        else{ 
-          
-          var endpoint = "http://api.affordablehousingonline.com/nyc/listing"
+		});
 
-            if(scopeFilter.hud_id)
-                endpoint = endpoint+"/"+scopeFilter.hud_id+"/";
-        
-        }
+		return promise;
 
+	}
 
+	function push(endpoint, data){
 
-      if(endpoint){
-      $http({
-        url: endpoint, 
-        method: "GET",
-        params: scopeFilter
-      }).success(function (data) {  
-          //console.log(endpoint);
-         // console.log(data);
-          //trust and bind html
-          if(data[0].affordability)
-            data[0].affordability = $sce.trustAsHtml(data[0].affordability);
+		console.log(endpoint)
+		console.log(data)
+		var promise = $http({
+			url:endpoint,
+			method: "POST",
+			data: data,
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+		}).then(function(response){
+			console.log(response.data)
 
+			return response.data;
+		})
 
-            if(data)
-              scope[scopeAtt] = data; 
+		return promise;
 
+	}
 
-        });
-    }
-    }
+	return { async:async, push:push };
 
-    /*
-      --Creates a new record.
-      --@scope is the current scope of the controller which needs to be passed in order to assign the return of $http call.
-      --@scopeAtt is the attribute to assign the returned $http data to in the scope of the controller.
-      --@data is a key value pair set of data to post
-    */
-    function create(scope, scopeAtt, data){
-
-        $http.post("http://api.affordablehousingonline.com/nyc/push/?type="+scopeAtt, data).success(function(data, status) {
-
-            scope[scopeAtt] = data;
-            
-        })
-
-    }
-
-      return{
-        fetch: fetch,
-        create: create
-      }
-       
-
-}]);
-
+})
 /**
   -- Sets, Gets, and Mutates cross-controller search filter data.
 **/
 angular.module('application').factory('globalFilter', function() {
  var savedData = {}
  
- function set(data) {
+ function set(data, localStorageParam) {
    savedData = data;
-   localStorage.setItem('searchParameters', JSON.stringify(data));
+   var thisLocalStorageParam = (localStorageParam ? localStorageParam : 'searchParameters');
+   localStorage.setItem(thisLocalStorageParam, JSON.stringify(data));
  }
  
- function get() {
-  return savedData;
+ function get(localStorageParam) {
+  return (localStorage.getItem(localStorageParam) ? JSON.parse(localStorage.getItem(localStorageParam)) : savedData);
  }
 
  function mutate(scope){
@@ -20066,19 +20028,111 @@ angular.module('application').factory('globalFilter', function() {
  }
 
 });
+angular.module('application').controller('accountController', ['$scope', '$facebook', '$location', 'dataService', 'globalFilter', function($scope, $facebook, $location, dataService, globalFilter){
+
+    if(globalFilter.get('fbResponse').id){
+        var fbresponse = globalFilter.get('fbResponse');
+      
+        var endpoint = "http://api.affordablehousingonline.com/nyc/user/"+fbresponse.id+"/";
+
+        dataService.async(endpoint, fbresponse).then(function(r){
+
+            if(r[0].id > 0){
+         
+                $scope.account = r;
+
+            }
+
+        });
+        
+
+
+    }
+
+    $scope.altLogin = false;
+
+    $scope.welcomeMsg = "Log In Or Register with Facebook";
+
+    $scope.login = function() {
+      $facebook.login().then(function() {
+        refresh();
+      });
+    }
+
+    function refresh() {
+    $facebook.api("/me").then( 
+      function(response) {
+        
+        $scope.response = response;
+        
+        globalFilter.set($scope.response, 'fbResponse');
+   
+        var endpoint = "http://api.affordablehousingonline.com/nyc/user/"+$scope.response.id+"/";
+
+        dataService.async(endpoint, $scope.response).then(function(r){
+          console.log(r)
+            if(r[0].id > 0){
+                $scope.account = r;
+                $location.path('/profile');
+            
+            }
+        });
+
+     
+
+
+
+      },
+      function(err) {
+        $scope.welcomeMsg = "Please Log In";
+      });
+    }
+
+    $scope.update = function(){
+
+      console.log($scope.account)
+
+      dataService.push("http://api.affordablehousingonline.com/nyc/push/?type=user", $scope.account[0]).then(function(r){
+
+        $scope.account = r;
+
+      });
+
+    }
+
+}]);
+
 //Handles Search Result Actions
-angular.module('application').controller('dashController', ['$scope', 'dataHandler', '$state','$filter', function($scope, dataHandler, $state, $filter) {
+angular.module('application').controller('dashController', ['$scope','dataService','$state','$filter','globalFilter', function($scope,dataService, $state, $filter, globalFilter) {
 
   //Init Notifications Object
   $scope.notifications = {};
-  $scope.thisSearch = {};
+
+    if(globalFilter.get('fbResponse').id){
+        var fbresponse = globalFilter.get('fbResponse');
+    }
+
+    var accountEndpoint =  "http://api.affordablehousingonline.com/nyc/user/"+fbresponse.id+"/";
+
+    dataService.async(accountEndpoint).then(function(d){
+      
+      $scope.account = d[0];
+      $scope.search = { borough:$scope.account.borough, hhsize:$scope.account.hhsize,disabilityStatus:"None", housingChoiceScore:0,age:$scope.account.age, income:$scope.account.income };
+    
+      var endpoint = "http://api.affordablehousingonline.com/nyc/notification/by-user/"+$scope.account.id+"/";
+
+      dataService.async(endpoint).then(function(r){
+
+        $scope.notifications = r;
+
+      });
+
+    });
 
 
-  $scope.thisSearch.type = 'notifications';
-  $scope.thisSearch.user = 1;
 
-  //Get data that matches the $scope.search object and assign it to $scope.notifications
-  dataHandler.fetch($scope, "notifications", $scope.thisSearch);
+
+
 
   //Method to Dismiss or Archive Notifications
   $scope.handleNotification = function(params){
@@ -20097,7 +20151,8 @@ angular.module('application').controller('dashController', ['$scope', 'dataHandl
 }]);
 
 //Handles Listing Actions
-angular.module('application').controller('listingController', ['$scope','globalFilter', 'dataHandler', '$state', '$location', '$anchorScroll', '$filter', function($scope, globalFilter, dataHandler, $state, $location, $anchorScroll, $filter) {
+angular.module('application').controller('listingController', ['$scope','globalFilter', '$state', '$location', '$anchorScroll', '$filter', 'dataService', '$sce', 
+  function($scope, globalFilter,$state, $location, $anchorScroll, $filter, dataService, $sce) {
 
 
   //Init thisListing Object
@@ -20106,10 +20161,21 @@ angular.module('application').controller('listingController', ['$scope','globalF
   //Set Search Object based on $state.params
   $scope.search = {hud_id: $state.params.id};
 
-  $scope.search.type='listing';
+  //API Endpoint The ID should always be present. If it's not..well..you will not have a very good page.
+  var endpoint = "http://api.affordablehousingonline.com/nyc/listing/"+$scope.search.hud_id+"/";
 
-  //get data that matches the $scope.search object and assign it to $scope.thisListing;
-  dataHandler.fetch($scope, "thisListing", $scope.search);
+  dataService.async(endpoint).then(function(d){
+
+      if(d[0].affordability)
+        d[0].affordability = $sce.trustAsHtml(d[0].affordability);
+
+      $scope.thisListing = d;
+
+      console.log($scope.thisListing)
+
+
+  });
+
 
   //Set School Sort
   $scope.schoolSortType= 'distance';
@@ -20119,11 +20185,7 @@ angular.module('application').controller('listingController', ['$scope','globalF
   $scope.mapView = 0;
   $scope.showSchools = 0;
 
-  //Scroll To Function
-  $scope.scrollTo = function(id) {
-      $location.hash(id);
-      $anchorScroll();
-  }
+
 
   //Get Map Object and Set Toggle Schools to False on init.
   $scope.$on('mapInitialized', function(evt, evtMap) {
@@ -20216,8 +20278,14 @@ angular.module('application').controller('listingController', ['$scope','globalF
   
   $scope.submitReview = function(){
 
+    var endpoint = "http://api.affordablehousingonline.com/nyc/push/?type=reviews";
 
-    dataHandler.create($scope.thisListing[0], 'reviews', $scope.newReview);
+    dataService.push(endpoint, $scope.newReview).then(function(d){
+
+      $scope.thisListing[0].reviews = d;
+
+    })
+
     $scope.hideReviewModal = 1;
     $scope.apply;
   }
@@ -20227,33 +20295,17 @@ angular.module('application').controller('listingController', ['$scope','globalF
     dateOut.setDate(dateOut.getDate() + 1);
     return dateOut;
   }
-
-}]);
-
-angular.module('application').controller('loginController', ['$scope', '$facebook', function($scope, $facebook){
-
-  $scope.isLoggedIn = false;
-  $scope.login = function() {
-    $facebook.login().then(function() {
-      refresh();
-    });
-  }
-
-    function refresh() {
-    $facebook.api("/me").then( 
-      function(response) {
-        $scope.welcomeMsg = "Welcome " + response.name;
-        $scope.isLoggedIn = true;
-      },
-      function(err) {
-        $scope.welcomeMsg = "Please log in";
-      });
+  
+  //Should be a directive
+ $scope.scrollTo = function(id) {
+      $location.hash(id);
+      $anchorScroll();
   }
 
 }]);
 
 //Handles Search Result Actions
-angular.module('application').controller('resultsController', ['$scope','globalFilter', 'dataHandler', '$state', function($scope, globalFilter, dataHandler, $state) {
+angular.module('application').controller('resultsController', ['$scope','globalFilter', 'dataHandler', '$state', 'dataService', function($scope, globalFilter, dataHandler, $state, dataService) {
 
   //Init Listings Object
   $scope.listings={};
@@ -20267,20 +20319,16 @@ angular.module('application').controller('resultsController', ['$scope','globalF
   if(!$scope.thisSearch.borough)
     $scope.thisSearch = globalFilter.get();
 
-  //Check for, and override with, URL Paramss
+  //Check for, and override with, URL Params
   if($state.params.borough)
       $scope.thisSearch.borough = $state.params.borough;
 
-
- $scope.thisSearch.type = 'search';
-
-  var ami_band = {};
+    var ami_band = {};
     ami_band[1] = {50:'30250',60:'36300', 80:'48400' };
     ami_band[2] = {50:'34550',60:'41460', 80:'55300' };
     ami_band[3] = {50:'38850',60:'46620', 80:'62150'};
     ami_band[4] = {50:'43150',60:'51780', 80:'69050'};
  
-    
 
   if($scope.thisSearch.hhsize && $scope.thisSearch.income){
    var hh_size = ($scope.thisSearch.hhsize > 4 ? 4 : $scope.thisSearch.hhsize);
@@ -20301,22 +20349,46 @@ angular.module('application').controller('resultsController', ['$scope','globalF
       $scope.thisSearch.ami_band = 81;
 
   }
-
+ 
+  var endpoint = "http://api.affordablehousingonline.com/nyc/search";
+      
+      if($scope.thisSearch.borough)
+        endpoint = endpoint+"/"+$scope.thisSearch.borough;
 
 
    //Handle search param mutation
    globalFilter.mutate($scope);
 
-   
+    dataService.async(endpoint, $scope.thisSearch).then(function(results){
 
-  //Get data that matches the $scope.search object and assign it to $scope.listings
-  dataHandler.fetch($scope, "listings", $scope.thisSearch);
+      $scope.listings = results;
+
+    }) 
+
+
+    $scope.urlEncode = function(string){
+    string = string.replace(/ /g, '-');
+    return string;
+    };
 
 
 }]);
 
 //Handles Searching Actions
-angular.module('application').controller('searchController', ['$scope', 'globalFilter', function($scope, globalFilter) {
+angular.module('application').controller('searchController', ['$scope', 'globalFilter', 'userAccount', 'dataService', function($scope, globalFilter, userAccount, dataService) {
+
+	    if(globalFilter.get('fbResponse').id){
+        		var fbresponse = globalFilter.get('fbResponse');
+        }
+
+        var accountEndpoint =  "http://api.affordablehousingonline.com/nyc/user/"+fbresponse.id+"/";
+
+        dataService.async(accountEndpoint).then(function(d){
+			$scope.account = d[0];
+			$scope.search = { borough:$scope.account.borough, hhsize:$scope.account.hhsize,disabilityStatus:"None", housingChoiceScore:0,age:$scope.account.age, income:$scope.account.income };
+        });
+
+
 
   //set $scope.search default variable if $scope.search is not set
   (!$scope.search)
@@ -20330,6 +20402,12 @@ angular.module('application').controller('searchController', ['$scope', 'globalF
         globalFilter.set($scope.search);
 
     });
+   	
+   	
+    $scope.urlEncode = function(string){
+    string = string.replace(/ /g, '-');
+    return string;
+    };
 
 }]);
 
