@@ -50,6 +50,7 @@ url: /housing-search/New-York/:borough/:name/:id
 
 
 			</div> <!-- End grid-block hero-section -->
+
 			<div class="listing-content">
 				<div class="grid-block feature-data">
 					<div ng-click="scrollTo('bedrooms')" class="grid-content bedrooms feature-section">
@@ -62,7 +63,7 @@ url: /housing-search/New-York/:borough/:name/:id
 					</div>
 					<div ng-click="scrollTo('choice-score')" class="grid-content rent feature-section">
 						<i class="fa fa-building-o"></i> 
-						 <strong>{{listing.housing_choice_score}}</strong> Housing Choice Score
+						 <span class="badge dark"><strong>{{listing.housing_choice_score}}</strong></span> Housing Choice Score
 					</div>
 					<div ng-click="scrollTo('violations')" class="grid-content violations feature-section">
 						<i class="fa fa-chain-broken"></i>
@@ -75,8 +76,8 @@ url: /housing-search/New-York/:borough/:name/:id
 
 				<div class="non-feature-data">
 
-				
-
+					<div class="listing-section"><div ng-include="" src="'/partials/share-follow.html'"></div>	</div>
+					
 					<div ng-show"listing.website || listing.phone || listing.email" id="contact-info" class="contact-info listing-section">
 						<div class="listing-heading">
 							<i class="fa fa-user"></i> Contact Information
@@ -134,10 +135,12 @@ url: /housing-search/New-York/:borough/:name/:id
 
 					<div id="choice-score" class="choice-score listing-section">
 						<div class="listing-heading">
-							<i class="fa fa-building-o"></i> Housing Choice Score™ - <strong>{{listing.housing_choice_score}}</strong>
+							<i class="fa fa-building-o"></i> Housing Choice Score™ 
 						</div>
 						<div class="listing-body">
 						
+								<span class="badge choice-score moderate-score">{{listing.housing_choice_score}}</span>
+
 								<p>
 									Our Housing Choice Score™ assigns a numerical score to each census tract that quantifies social and economic opportunity for the surrounding area. We calculate the Housing Choice Score™ based on five dimensions: poverty level, educational attainment, commute time to work, housing vacancy rate and unemployment rate.
 								</p>

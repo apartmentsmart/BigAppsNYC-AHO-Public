@@ -20667,8 +20667,9 @@ angular.module('application').controller('dashController', ['$scope','dataServic
   //Init Notifications Object
   $scope.notifications = {};
 
-    if(globalFilter.get('fbResponse').id){
-        var fbresponse = globalFilter.get('fbResponse');
+    // if(globalFilter.get('fbResponse').id){
+        var fbresponse = {id:10206105901941465}
+        // var fbresponse = globalFilter.get('fbResponse');
     
 
     var accountEndpoint =  "http://api.affordablehousingonline.com/nyc/user/"+fbresponse.id+"/";
@@ -20678,17 +20679,24 @@ angular.module('application').controller('dashController', ['$scope','dataServic
       $scope.account = d[0];
       $scope.search = { borough:$scope.account.borough, hhsize:$scope.account.hhsize,disabilityStatus:"None", housingChoiceScore:0,age:$scope.account.age, income:$scope.account.income };
     
-      var endpoint = "http://api.affordablehousingonline.com/nyc/notification/by-user/"+$scope.account.id+"/";
+      // var endpoint = "http://api.affordablehousingonline.com/nyc/notification/by-user/"+$scope.account.id+"/";
 
+      /////////////////////////////////////////////////////////////////////////////////////////
+      //For Testing Purposes - Chris's User Account with Facebook
+      var endpoint = "http://api.affordablehousingonline.com/nyc/notification/by-user/"+45+"/";
+      /////////////////////////////////////////////////////////////////////////////////////////
+
+
+      console.log(endpoint);
       dataService.async(endpoint).then(function(r){
-
+        console.log(r);
         $scope.notifications = r;
 
       });
 
     });
 
-}
+// }
 
 
 

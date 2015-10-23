@@ -6917,6 +6917,9 @@ table tr td {
       -ms-flex-pack: start;
           justify-content: flex-start; }
 
+.fa-reset {
+  font-size: 1rem !important; }
+
 /* Search Styles */
 /******************************************
 			Search Box Styles
@@ -7335,8 +7338,23 @@ table tr td {
     border-bottom: 1px solid #444; }
 
 /* Housing Choice Score */
-.choice-score .listing-heading {
-  font-size: 1.2rem; }
+.badge.choice-score {
+  color: #fff;
+  width: 6rem;
+  height: 6rem;
+  font-size: 3rem;
+  float: left;
+  margin-right: 10px; }
+
+.good-score {
+  background-color: #38b449; }
+
+.moderate-score {
+  background-color: #F7D002;
+  color: #444 !important; }
+
+.bad-score {
+  background-color: #f50000; }
 
 /* Schools Info */
 .school-table {
@@ -7609,6 +7627,9 @@ select, option {
     padding-bottom: 20px; }
   .dash-item .grid-content {
     overflow: initial; }
+
+.dash-item.filter {
+  font-size: 1rem; }
 
 /* Dash Item Container */
 .dash-item-container {

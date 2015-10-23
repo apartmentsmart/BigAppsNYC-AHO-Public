@@ -247,7 +247,17 @@
 	}
 
 /* Housing Choice Score */
-	.choice-score .listing-heading {font-size: 1.2rem;}
+	.badge.choice-score {
+		color: #fff;
+		width: 6rem;
+		height: 6rem;
+		font-size: 3rem;
+		float: left;
+		margin-right: 10px;
+	}
+	.good-score {background-color: $af-green;}
+	.moderate-score {background-color: #F7D002; color: #444 !important;}
+	.bad-score {background-color: #f50000;}
 
 /* Schools Info */
 	.school-table {
