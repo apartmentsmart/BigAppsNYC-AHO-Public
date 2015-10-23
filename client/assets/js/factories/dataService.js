@@ -18,15 +18,12 @@ angular.module('application').factory('dataService', function($http){
 
 	function push(endpoint, data){
 
-		console.log(endpoint)
-		console.log(data)
 		var promise = $http({
 			url:endpoint,
 			method: "POST",
 			data: data,
 			headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 		}).then(function(response){
-			console.log(response.data)
 
 			return response.data;
 		})

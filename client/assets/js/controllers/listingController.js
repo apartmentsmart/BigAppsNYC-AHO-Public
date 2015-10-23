@@ -139,6 +139,8 @@ angular.module('application').controller('listingController', ['$scope','globalF
   }
 
   $scope.convertDate = function (stringDate){
+    stringDate = stringDate.replace(' ', 'T');
+    console.log(stringDate+"Z")
     var dateOut = new Date(stringDate);
     dateOut.setDate(dateOut.getDate() + 1);
     return dateOut;
