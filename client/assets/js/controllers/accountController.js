@@ -1,6 +1,7 @@
 angular.module('application').controller('accountController', ['$scope', '$facebook', '$location', 'dataService', 'globalFilter', function($scope, $facebook, $location, dataService, globalFilter){
 
     if(globalFilter.get('fbResponse').id){
+        
         var fbresponse = globalFilter.get('fbResponse');
       
         var endpoint = "http://api.affordablehousingonline.com/nyc/user/"+fbresponse.id+"/";
