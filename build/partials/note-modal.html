@@ -5,55 +5,60 @@
 			<span zf-close="" class="right"><a>Done</a></span>
 		</div>
 		<div class="grid-content note-form padding" style="padding-top: 1rem;">
-				<form ng-submit="submitReview()">
+				<form ng-submit="saveNote()"  ng-controller="noteController">
+
+					<p>Interested in renting at this property? Use this tool to make personal notes 
+
 					<div class="grid-block form-row">
-							<div class="grid-block small-6">I am searching for a</div>
-							<div class="grid-block small-6">
-								<select name="" id="">
-								<option value="">x Br Apartment</option>
-								<option value="">x Br Apartment</option>
-								<option value="">x Br Apartment</option>
-								<option value="">x Br Apartment</option>
+							<div class="grid-block small-12">I've researched a</div>
+							<div class="grid-block small-12">
+								<select ng-model="note.brsize" ng-init="note.brsize = 0" >
+								<option value="0">Studio Apartment</option>
+								<option value="1">1 Br Apartment</option>
+								<option value="2">2 Br Apartment</option>
+								<option value="3">3 Br Apartment</option>
+								<option value="4">4 Br Apartment</option>
 								</select>
 							</div>
 					</div>
 					<div class="grid-block form-row">
-						<div class="grid-block small-6">
+						<div class="grid-block small-12">
 							The rent was
 						</div>
-						<div class="grid-block small-6">
-							<span class="inline-label"><span class="form-label">$</span><input type="text" class="small-5" placeholder="1600"><span class="form-label">/month</span></span>
+						<div class="grid-block small-12">
+							<span class="inline-label"><span class="form-label">$</span><input type="text"  ng-model='note.rent' placeholder="$"><span class="form-label">/month</span></span>
 						</div>
 					</div>
 					<div class="grid-block form-row single-column">
-						<input id="note-waitlist" type="checkbox" ng-click="noteWaitlist = !noteWaitlist"><label for="note-waitlist">There is a waitlist</label>
+						<input id="note-waitlist" type="checkbox" ng-checked="note.waitlist" ng-model="note.waitlist" ><label for="note-waitlist">There is a waiting list for this unit</label>
 					</div>
-					<div class="grid-block form-row small-8" ng-show="noteWaitlist">
-						<div class="grid-block">It is</div>  
-						<div class="grid-block"><input type="text"></div>
-						<div class="grid-block">months long.</div>
+					<div class="grid-block form-row small-8" ng-show="note.waitlist">
+						<div class="grid-block">The waiting list is</div>  
+						<div class="grid-block"><span class="inline-label"><input ng-model="note.waitlist_length" type="text"><span class="form-label"> month</span></span></div>
 					</div>
 					<div class="grid-block form-row single-column">
-						<input id="checkbox1" type="checkbox" ng-click="noteApplied = !noteApplied"><label for="checkbox1">I applied</label>
+						<input id="checkbox1" type="checkbox" ng-checked="note.applied" ng-model="note.applied"><label for="checkbox1">I applied</label>
 					</div>
-					<div class="grid-block form-row justify-flex-start" ng-show="noteApplied">
+					<div class="grid-block form-row justify-flex-start" ng-show="note.applied">
 							<div class="grid-block small-1">on</div>
-							<div class="grid-block small-4"><input type="date"></div>
-							<div class="grid-block small-7"></div>
+							<div class="grid-block small-11"><input ng-model="note.applied_on" type="date"></div>
 					</div>
-					<div class="grid-block form-row" ng-show="noteApplied == true && noteWaitlist == true">
-							<div class="grid-block small-1">I am</div>
-							<div class="grid-block small-6"><input type="number"></div>
-							<div class="grid-block small-5">on the list.</div>
+					<div class="grid-block form-row" ng-show="note.applied == true && note.waitlist == true">
+							<div class="grid-block small-12">My number on the waiting list is </div>
+							<div class="grid-block small-12"><input ng-model="note.waitlist_position" type="text"></div>
+				
 					</div>
 					<div class="grid-block form-row small-12">
-					<label class="small-12">Other Notes</label>
-						<textarea class="small-12 free-form-notes"></textarea>
+					<label class="small-12" >Other Notes</label>
+						<textarea ng-model="note.note"class="small-12 free-form-notes"></textarea>
 					</div>
+				
+					 <input type="submit" class="button" />
+
+
 				</form>
 
 
-			<a zf-close="" class="button expand">Submit</a>
 
 		</div>
 	</div>
