@@ -50,6 +50,7 @@ url: /housing-search/New-York/:borough/:name/:id
 
 
 			</div> <!-- End grid-block hero-section -->
+
 			<div class="listing-content">
 				<div class="grid-block feature-data">
 					<div ng-click="scrollTo('bedrooms')" class="grid-content bedrooms feature-section">
@@ -75,8 +76,8 @@ url: /housing-search/New-York/:borough/:name/:id
 
 				<div class="non-feature-data">
 
-				
-
+					<div class="listing-section"><div ng-include="" src="'/partials/share-follow.html'"></div>	</div>
+					
 					<div ng-show"listing.website || listing.phone || listing.email" id="contact-info" class="contact-info listing-section">
 						<div class="listing-heading">
 							<i class="fa fa-user"></i> Contact Information

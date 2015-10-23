@@ -1,0 +1,26 @@
+<div class="dash-item">
+	<div class="dash-item-container {{notification.color_class}}">
+		
+		<div class="dash-item-title grid-block">
+			<div class="grid-content small-1">
+				<i class="fa fa-sticky-note"></i>
+			</div>
+			<div class="grid-content small-10 notification-title">
+			James Lenox House
+			</div>
+		</div><!-- End Dash Item Title -->
+
+		<div class="dash-item-body grid-content">
+			
+			<p>I was searching for a {{note.brSize}} bedroom apartment. The rent was {{note.rent}}/month and there {{note.waitlistY/N}} a waitlist. The waitlist is {{note.waitlistLength}} months long. I {{note.appliedYN}} on {{note.dateApplied}}. I am {{note.waitlistPosition}}</p>
+
+			<p>{{note.otherNotes}}</p>
+
+			<div class="notification-actions">
+				<!-- see documentation in app.js ~line 340-->
+				<div class="button hollow secondary">Edit Note</div>
+			</div>
+		</div> <!-- End Dash Item Body -->
+
+	</div> <!-- End Dash Item Container -->
+</div><!-- End Dash Item -->

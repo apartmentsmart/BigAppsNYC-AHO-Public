@@ -6917,6 +6917,9 @@ table tr td {
       -ms-flex-pack: start;
           justify-content: flex-start; }
 
+.fa-reset {
+  font-size: 1rem !important; }
+
 /* Search Styles */
 /******************************************
 			Search Box Styles
@@ -7609,6 +7612,9 @@ select, option {
     padding-bottom: 20px; }
   .dash-item .grid-content {
     overflow: initial; }
+
+.dash-item.filter {
+  font-size: 1rem; }
 
 /* Dash Item Container */
 .dash-item-container {
