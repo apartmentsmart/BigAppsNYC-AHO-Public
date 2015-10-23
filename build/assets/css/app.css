@@ -6912,6 +6912,11 @@ table tr td {
   text-transform: uppercase;
   text-align: center; }
 
+.justify-flex-start {
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start; }
+
 /* Search Styles */
 /******************************************
 			Search Box Styles
@@ -7197,6 +7202,10 @@ table tr td {
   .hero-suggest:hover {
     color: #ff7f00; }
 
+/*.free-form-notes {
+	barder: none;
+	border-bottom: 1px solid $af-blue;
+}*/
 /******************************************
 	Hero Section - Title / Borough / Rating
 *******************************************/
@@ -7663,6 +7672,7 @@ select, option {
 		Material Design
 *********************************/
 input[type="text"],
+input[type="textarea"]
 input[type="password"],
 input[type="date"],
 input[type="datetime"],
@@ -7683,8 +7693,10 @@ textarea {
   color: #000; }
   input[type="text"]:hover,
   input[type="text"]:focus,
-  input[type="password"]:hover,
-  input[type="password"]:focus,
+  input[type="textarea"]
+input[type="password"]:hover,
+  input[type="textarea"]
+input[type="password"]:focus,
   input[type="date"]:hover,
   input[type="date"]:focus,
   input[type="datetime"]:hover,
@@ -7714,7 +7726,8 @@ textarea {
     border: none;
     color: #000; }
   input[type="text"]:hover,
-  input[type="password"]:hover,
+  input[type="textarea"]
+input[type="password"]:hover,
   input[type="date"]:hover,
   input[type="datetime"]:hover,
   input[type="datetime-local"]:hover,
@@ -7730,7 +7743,8 @@ textarea {
   textarea:hover {
     border-bottom: 1px solid #0093d8; }
   input[type="text"]:focus,
-  input[type="password"]:focus,
+  input[type="textarea"]
+input[type="password"]:focus,
   input[type="date"]:focus,
   input[type="datetime"]:focus,
   input[type="datetime-local"]:focus,

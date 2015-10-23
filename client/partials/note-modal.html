@@ -28,22 +28,27 @@
 					<div class="grid-block form-row single-column">
 						<input id="note-waitlist" type="checkbox" ng-click="noteWaitlist = !noteWaitlist"><label for="note-waitlist">There is a waitlist</label>
 					</div>
-					<div class="grid-block form-row small-12" ng-show="noteWaitlist">
+					<div class="grid-block form-row small-8" ng-show="noteWaitlist">
 						<div class="grid-block">It is</div>  
-						<div class="grid-block"> <input type="text"></div>
-						<div class="grid-block">long.</div>
+						<div class="grid-block"><input type="text"></div>
+						<div class="grid-block">months long.</div>
 					</div>
 					<div class="grid-block form-row single-column">
 						<input id="checkbox1" type="checkbox" ng-click="noteApplied = !noteApplied"><label for="checkbox1">I applied</label>
 					</div>
-					<div class="grid-block form-row" ng-show="noteApplied">
-							on <input type="text">
+					<div class="grid-block form-row justify-flex-start" ng-show="noteApplied">
+							<div class="grid-block small-1">on</div>
+							<div class="grid-block small-4"><input type="date"></div>
+							<div class="grid-block small-7"></div>
 					</div>
 					<div class="grid-block form-row" ng-show="noteApplied == true && noteWaitlist == true">
-							I am <input type="text"> on the list.
+							<div class="grid-block small-1">I am</div>
+							<div class="grid-block small-6"><input type="number"></div>
+							<div class="grid-block small-5">on the list.</div>
 					</div>
 					<div class="grid-block form-row small-12">
-						<input type="textarea" class="small-12">
+					<label class="small-12">Other Notes</label>
+						<textarea class="small-12 free-form-notes"></textarea>
 					</div>
 				</form>
 
