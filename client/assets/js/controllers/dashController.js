@@ -4,6 +4,9 @@ angular.module('application').controller('dashController', ['$scope','dataServic
   //Init Notifications Object
   $scope.notifications = {};
 
+  $scope.dashView = 'notifications';
+
+
    if(globalFilter.get('fbResponse').id){
          var fbresponse = globalFilter.get('fbResponse');
     
@@ -25,7 +28,6 @@ angular.module('application').controller('dashController', ['$scope','dataServic
           $scope.notifications = {};
         }
         
-        console.log($scope.notifications)
 
       });
 
@@ -35,7 +37,15 @@ angular.module('application').controller('dashController', ['$scope','dataServic
         dataService.async(noteEndpoint, {user_id:$scope.account.id}).then(function(r){
 
           $scope.notes = r;
-          console.log(r)
+
+        });
+
+
+      var favoriteEndpoint = "http://api.affordablehousingonline.com/nyc/favorite/";
+
+        dataService.async(favoriteEndpoint, {user_id:$scope.account.id}).then(function(r){
+
+          $scope.favorites = r;
 
         });
 
@@ -59,5 +69,10 @@ angular.module('application').controller('dashController', ['$scope','dataServic
 
   }
 
+  $scope.toggleDash = function(dashView){
+
+    $scope.dashView = dashView;
+
+  }
 
 }]);
