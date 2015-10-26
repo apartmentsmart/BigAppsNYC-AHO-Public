@@ -12,9 +12,9 @@ angular.module('application').directive('favoriteButton', ['$location', 'dataSer
     return {
         restrict: 'E',
         replace: true,
-        scope: {listingId: '@'},
+        scope: {listingId: '@', favorited: '@'},
         template: function(tElement, tAttrs) {
-            return '<li><div listingId="{{listingId}}" ng-click="favoriteHandler()"><i class="fa fa-heart-o"></i><br> Follow</div></li>';
+            return '<li><div listingId="{{listingId}}" ng-click="favoriteHandler()"><i class="fa" ng-class="{\'fa-heart\':favorited,\'fa-heart-o\':!favorited}" ></i><br> Follow</div></li>';
         },
         transclude: true,
         link: function(scope, element, attrs) { 

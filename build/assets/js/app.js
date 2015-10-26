@@ -20761,6 +20761,22 @@ angular.module('application').controller('listingController', ['$scope','globalF
 
       $scope.thisListing = d;
 
+
+   if(globalFilter.get('fbResponse').id){
+
+      var fbresponse = globalFilter.get('fbResponse');
+      
+      var accountEndpoint =  "http://api.affordablehousingonline.com/nyc/user/"+fbresponse.id+"/";
+
+      dataService.async(accountEndpoint).then(function(d){
+        
+        $scope.account = d[0];
+       // console.log($scope.account)
+      })
+
+    }
+
+
   });
 
 
@@ -20889,7 +20905,14 @@ angular.module('application').controller('listingController', ['$scope','globalF
       $location.hash(id);
       $anchorScroll();
   }
+    $scope.isFavorite = function(listing_id){
+      if($scope.account.favorites){
+      return $scope.account.favorites[listing_id]
+      }
+      else
+      return false;
 
+    }
 }]);
 
 //Handles Listing Actions
@@ -21039,10 +21062,36 @@ angular.module('application').controller('resultsController', ['$scope','globalF
     }) 
 
 
+
+   if(globalFilter.get('fbResponse').id){
+
+      var fbresponse = globalFilter.get('fbResponse');
+      
+      var accountEndpoint =  "http://api.affordablehousingonline.com/nyc/user/"+fbresponse.id+"/";
+
+      dataService.async(accountEndpoint).then(function(d){
+        
+        $scope.account = d[0];
+       // console.log($scope.account)
+      })
+
+    }
+
     $scope.urlEncode = function(string){
     string = string.replace(/ /g, '-');
     return string;
     };
+
+    $scope.isFavorite = function(listing_id){
+
+      if($scope.account.favorites){
+      console.log(listing_id + " " + $scope.account.favorites[listing_id])
+      return $scope.account.favorites[listing_id]
+      }
+      else
+      return false;
+
+    }
 
 
 }]);
@@ -21143,9 +21192,9 @@ angular.module('application').directive('favoriteButton', ['$location', 'dataSer
     return {
         restrict: 'E',
         replace: true,
-        scope: {listingId: '@'},
+        scope: {listingId: '@', favorited: '@'},
         template: function(tElement, tAttrs) {
-            return '<li><div listingId="{{listingId}}" ng-click="favoriteHandler()"><i class="fa fa-heart-o"></i><br> Follow</div></li>';
+            return '<li><div listingId="{{listingId}}" ng-click="favoriteHandler()"><i class="fa" ng-class="{\'fa-heart\':favorited,\'fa-heart-o\':!favorited}" ></i><br> Follow</div></li>';
         },
         transclude: true,
         link: function(scope, element, attrs) { 

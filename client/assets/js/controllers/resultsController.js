@@ -60,10 +60,36 @@ angular.module('application').controller('resultsController', ['$scope','globalF
     }) 
 
 
+
+   if(globalFilter.get('fbResponse').id){
+
+      var fbresponse = globalFilter.get('fbResponse');
+      
+      var accountEndpoint =  "http://api.affordablehousingonline.com/nyc/user/"+fbresponse.id+"/";
+
+      dataService.async(accountEndpoint).then(function(d){
+        
+        $scope.account = d[0];
+       // console.log($scope.account)
+      })
+
+    }
+
     $scope.urlEncode = function(string){
     string = string.replace(/ /g, '-');
     return string;
     };
+
+    $scope.isFavorite = function(listing_id){
+
+      if($scope.account.favorites){
+      console.log(listing_id + " " + $scope.account.favorites[listing_id])
+      return $scope.account.favorites[listing_id]
+      }
+      else
+      return false;
+
+    }
 
 
 }]);
