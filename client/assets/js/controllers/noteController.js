@@ -59,7 +59,7 @@ angular.module('application').controller('noteController', ['$scope','globalFilt
   $scope.convertDate = function (stringDate){
     stringDate = stringDate.replace(' ', 'T');
     var dateOut = new Date(stringDate);
-    dateOut.setDate(dateOut.getDate() + 1);
+    dateOut.setDate(dateOut.getDate());
     return dateOut;
   }
 

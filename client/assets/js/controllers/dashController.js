@@ -75,4 +75,30 @@ angular.module('application').controller('dashController', ['$scope','dataServic
 
   }
 
+    $scope.convertDate = function (stringDate){
+    stringDate = stringDate.replace(' ', 'T');
+    var dateOut = new Date(stringDate);
+    dateOut.setDate(dateOut.getDate() );
+    return dateOut;
+  }
+
+  $scope.formatDate = function(stringDate){
+
+    var date = new Date($scope.convertDate(stringDate));
+  var monthNames = [
+    "January", "February", "March",
+    "April", "May", "June", "July",
+    "August", "September", "October",
+    "November", "December"
+  ];
+
+  var day = date.getDate();
+  var monthIndex = date.getMonth();
+  var year = date.getFullYear();
+
+
+  return monthNames[monthIndex] + " " + day + ', ' + year;
+  }
+
+
 }]);

@@ -12,13 +12,18 @@
 
 		<div class="dash-item-body grid-content">
 			
-			<p>I was searching for a {{note.brsize}} bedroom apartment. The rent was {{note.rent}}/month and there was a waitlist. The waitlist is {{note.waitlist_length}} months long. I applied on {{formatDate(note.applied_on)}}. I am {{note.waitlist_position|ordinal}} on the waiting list.</p>
+			<p ng-show="{{note.brsize}}">I was searching for a {{note.brsize}} bedroom apartment.</p>
+			<p ng-show="{{note.rent}}">The rent was {{note.rent}}/month.</p> 
+			<p ng-show="{{note.waitlist}}">There was a waitlist. <span ng-show="{{note.waitlist_length}}">The waitlist is {{note.waitlist_length}} months long.</span> 
+			<p ng-show="{{note.applied}}">I applied on {{formatDate(note.applied_on)}}. <span ng-show="{{note.waitlist_position}}">I am {{note.waitlist_position|ordinal}} on the waiting list.</span></p>
 
 			<p>{{note.note}}</p>
 
 			<div class="notification-actions">
 				<!-- see documentation in app.js ~line 340-->
-				<div class="button hollow secondary">Edit Note</div>
+			<div class="notification-actions">
+				<action-button  uiAction="{{note.url}}" action-text="View Listing">View Listing</action-button>
+			</div>
 			</div> 
 		</div> <!-- End Dash Item Body -->
 
