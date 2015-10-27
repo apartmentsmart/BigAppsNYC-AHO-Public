@@ -21082,16 +21082,6 @@ angular.module('application').controller('resultsController', ['$scope','globalF
     return string;
     };
 
-    $scope.isFavorite = function(listing_id){
-
-      if($scope.account.favorites){
-      console.log(listing_id + " " + $scope.account.favorites[listing_id])
-      return $scope.account.favorites[listing_id]
-      }
-      else
-      return false;
-
-    }
 
 
 }]);
@@ -21192,15 +21182,18 @@ angular.module('application').directive('favoriteButton', ['$location', 'dataSer
     return {
         restrict: 'E',
         replace: true,
-        scope: {listingId: '@', favorited: '@'},
+        scope: {listingId: '@', favorites: '@'},
         template: function(tElement, tAttrs) {
-            return '<span listingId="{{listingId}}" ng-click="favoriteHandler()"><i class="fa" ng-class="{\'fa-heart\':favorited,\'fa-heart-o\':!favorited}" ></i><br> Follow</span>';
+            return '<span listingId="{{listingId}}" favorites="" ng-click="favoriteHandler()"><i class="fa" ng-class="{\'fa-heart\':isFavorite ,\'fa-heart-o\':!isFavorite}" ></i><br> Follow</span>';
         },
         transclude: true,
         link: function(scope, element, attrs) { 
+            
+            //scope.isFavorite = false;
 
             scope.favoriteHandler = function(){
-
+                
+                    
                 if(globalFilter.get('fbResponse').id){
                     
                     var fbresponse = globalFilter.get('fbResponse');
@@ -21216,17 +21209,27 @@ angular.module('application').directive('favoriteButton', ['$location', 'dataSer
 
                             dataService.async(favoriteEndpoint, {user_id:scope.account.id, listing_id: attrs.listingid}).then(function(r){
 
-                                
+                                scope.checkFavorite(true);
 
                             });                            
                     
                     });
 
                 }
+                
+            }
+
+            scope.checkFavorite = function(override){
+
+                var favs = JSON.parse(attrs.favorites);
+
+                scope.isFavorite = (override ? override : favs[parseInt(attrs.listingid)]);
 
             }
+
+            scope.checkFavorite();
 
         }
     }
 
-    }]);
+}]);

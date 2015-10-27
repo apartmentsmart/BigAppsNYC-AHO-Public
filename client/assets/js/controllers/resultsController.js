@@ -80,16 +80,6 @@ angular.module('application').controller('resultsController', ['$scope','globalF
     return string;
     };
 
-    $scope.isFavorite = function(listing_id){
-
-      if($scope.account.favorites){
-      console.log(listing_id + " " + $scope.account.favorites[listing_id])
-      return $scope.account.favorites[listing_id]
-      }
-      else
-      return false;
-
-    }
 
 
 }]);
