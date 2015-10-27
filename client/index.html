@@ -23,7 +23,7 @@
       });
   </script>
   </head>
-  <body>
+  <body ng-class="{'body-lock': bodyLock}">
 
   <zf-offcanvas id="menu" class="dark" position="right">
     <a zf-close="menu" class="close-button menu-close-button">×</a>
@@ -31,7 +31,7 @@
     <div class="vertical grid-block menu-container">
       <div ui-sref="dashboard" class="grid-block menu-item" zf-close="menu">Dashboard</div>
       <div ui-sref="profile" class="grid-block menu-item" zf-close="menu">User Account</div>
-      <div class="grid-block menu-item" zf-close="menu">Logout</div>
+      <div ui-sref="login" class="grid-block menu-item" zf-close="menu">Login</div>
     </div>
 
   </zf-offcanvas>

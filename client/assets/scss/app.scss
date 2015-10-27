@@ -81,4 +81,17 @@
 	color: #fff;
 }
 
+.search select {color: #fff !important;}
+
+.note-form .inline-label {
+	width: 100%;
+}
+
+.inline-label .form-label {
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid $af-blue;
+}
+
+.body-lock {overflow-y: hidden;}
 /******************************/
