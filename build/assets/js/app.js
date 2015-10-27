@@ -21194,7 +21194,7 @@ angular.module('application').directive('favoriteButton', ['$location', 'dataSer
         replace: true,
         scope: {listingId: '@', favorited: '@'},
         template: function(tElement, tAttrs) {
-            return '<li><div listingId="{{listingId}}" ng-click="favoriteHandler()"><i class="fa" ng-class="{\'fa-heart\':favorited,\'fa-heart-o\':!favorited}" ></i><br> Follow</div></li>';
+            return '<span listingId="{{listingId}}" ng-click="favoriteHandler()"><i class="fa" ng-class="{\'fa-heart\':favorited,\'fa-heart-o\':!favorited}" ></i><br> Follow</span>';
         },
         transclude: true,
         link: function(scope, element, attrs) { 
