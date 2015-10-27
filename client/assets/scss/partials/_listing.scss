@@ -92,6 +92,9 @@
 
 	.star-rating {
 		padding-top: 10px;
+		.fa-star-o {
+			color: #fff;
+		}
 		.fa-star-half-o {
 			color: gold;
 		}
@@ -437,7 +440,7 @@
 	        right: 0;
 	        bottom: 0;
 	        left: 0;
-	        zIndex: 999;
+	        z-index: 1;
 	        height: 100% !important;
 	}
 

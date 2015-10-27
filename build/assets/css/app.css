@@ -2692,14 +2692,14 @@ meter {
       -ms-flex-order: 0;
           order: 0;
   height: auto;
-  overflow-y: auto;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar; }
 
 .grid-content {
   display: block;
   padding: 0 1rem;
-  overflow-y: auto;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   -webkit-flex: 1 1 auto;
@@ -2713,7 +2713,7 @@ meter {
     -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
-    overflow: visible; }
+    overflow: hidden; }
     .grid-content .grid-block.nowrap {
       -webkit-flex-wrap: nowrap;
           -ms-flex-wrap: nowrap;
@@ -2722,7 +2722,7 @@ meter {
           -ms-flex-align: stretch;
               align-items: stretch; }
     .grid-content .grid-block .grid-content {
-      overflow: visible; }
+      overflow: hidden; }
 
 .grid-container, .listing-section {
   max-width: 56.25rem;
@@ -2762,7 +2762,7 @@ meter {
       -ms-flex-order: 0;
           order: 0;
   height: auto;
-  overflow-y: auto;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar; }
   .small-grid-block.panel {
@@ -2782,7 +2782,7 @@ meter {
 .small-grid-content {
   display: block;
   padding: 0 1rem;
-  overflow-y: auto;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   -webkit-flex: 1 1 auto;
@@ -2831,7 +2831,7 @@ meter {
         -ms-flex-order: 0;
             order: 0;
     height: auto;
-    overflow-y: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar; }
     .medium-grid-block.panel {
@@ -2852,7 +2852,7 @@ meter {
   .medium-grid-content {
     display: block;
     padding: 0 1rem;
-    overflow-y: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     -webkit-flex: 1 1 auto;
@@ -2901,7 +2901,7 @@ meter {
         -ms-flex-order: 0;
             order: 0;
     height: auto;
-    overflow-y: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar; }
     .large-grid-block.panel {
@@ -2922,7 +2922,7 @@ meter {
   .large-grid-content {
     display: block;
     padding: 0 1rem;
-    overflow-y: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     -webkit-flex: 1 1 auto;
@@ -7229,6 +7229,8 @@ table tr td {
     padding-top: 10px; }
   .hero-section .star-rating {
     padding-top: 10px; }
+    .hero-section .star-rating .fa-star-o {
+      color: #fff; }
     .hero-section .star-rating .fa-star-half-o {
       color: gold; }
     .hero-section .star-rating .fa-star {
@@ -7518,7 +7520,7 @@ table tr td {
   right: 0;
   bottom: 0;
   left: 0;
-  zIndex: 999;
+  z-index: 1;
   height: 100% !important; }
 
 .toggle-full-map {
@@ -7830,5 +7832,19 @@ label {
 
 .button-group.share-follow > li > button:focus {
   color: #fff; }
+
+.search select {
+  color: #fff !important; }
+
+.note-form .inline-label {
+  width: 100%; }
+
+.inline-label .form-label {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #0093d8; }
+
+.body-lock {
+  overflow-y: hidden; }
 
 /******************************/

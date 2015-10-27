@@ -244,7 +244,7 @@ $block-grid-max-size: 6 !default;
     overflow-x: auto;
   }
   @else {
-    overflow-y: auto;
+    overflow-y: hidden;
   }
 
   // Add scrolling with inertia
@@ -261,7 +261,7 @@ $block-grid-max-size: 6 !default;
   padding: 0 $block-padding;
 
   // Add scrolling with inertia
-  overflow-y: auto;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
 
@@ -342,7 +342,7 @@ $block-grid-max-size: 6 !default;
       margin-left: -($block-padding);
       margin-right: -($block-padding);
       flex-wrap: wrap;
-      overflow: visible;
+      overflow: hidden;
 
       // Reverse the above wrapping behavior
       &.nowrap {
@@ -350,7 +350,7 @@ $block-grid-max-size: 6 !default;
       }
 
       .grid-content {
-        overflow: visible;
+        overflow: hidden;
       }
     }
   }
