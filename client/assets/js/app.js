@@ -10,7 +10,8 @@
     'foundation.dynamicRouting.animations',
     'ngMap',
     'sticky',
-    'ngFacebook'
+    'ngFacebook',
+    'flow'
   ])
     .config(config)
     .run(run)

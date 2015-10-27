@@ -15,11 +15,17 @@
                  flow-files-submitted="$flow.upload()"
                  flow-file-success="$file.msg = $message">
 
-              <input type="file" flow-btn/>
 
-              <!-- <img flow-img="$flow.files[0]" /> -->
+               <img flow-img="$flow.files[0]" /> 
 
-              <table>
+              <p>
+                Use your device to upload or take a photo of this listing. If possible, take a photo that includes the front of the building with an address number in the shot. Once your photo is approved it will appear on all of our {{listing.name}} pages!
+              </p>
+              <div class='grid-block'>
+                  <input type="file" flow-btn/>
+              </div>
+
+              <table ng-hide="1==1">
                 <tr ng-repeat="file in $flow.files">
                     <td>{{$index+1}}</td>
                     <td>{{file.name}}</td>
@@ -31,9 +37,12 @@
             <!-- End Modal Wrapper -->
           </div>
         </div>
+              
+        <div class='grid-block'>
+              <a zf-close="" class="button expand">Submit</a>
+        </div>
       </form>
 
-      <a zf-close="" class="button expand">Submit</a>
 
     </div>
   </div>
