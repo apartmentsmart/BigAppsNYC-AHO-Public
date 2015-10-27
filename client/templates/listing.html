@@ -243,11 +243,14 @@ url: /housing-search/New-York/:borough/:name/:id
 							<i class="fa fa-star-half-o"></i> Reviews
 							<!-- <div class="add-review" zf-open="add-review">Add Review</div> -->
 						</div>
+
+							<div ng-show="!listing.reviews">
+								<h4 class='text-center'>Be the first to review this property!</h4>
+							</div>
+
 						<div ng-repeat="review in listing.reviews track by $index" class="single-review">
 							
-							<div ng-show="!listing.reviews">
-								<p>Be the first to review this property.</p>
-							</div>
+
 							
 							<div class="review-meta grid-content">
 								<div class="subtitle grid-block small-11">
@@ -332,7 +335,7 @@ url: /housing-search/New-York/:borough/:name/:id
 						<div class="listing-body">
 							
 							<div ng-hide="!listing.violations" class="total-violations">
-								There are a total of {{listing.violationsCount}} violations for this listing.
+								There are a total of {{listing.violationsCount}} violations for this listing. We're showing the last 5.
 							</div>
 
 
