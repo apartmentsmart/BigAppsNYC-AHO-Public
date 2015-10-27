@@ -7536,6 +7536,23 @@ table tr td {
   display: -ms-flexbox;
   display: flex; }
 
+/* photo mask */
+.file-upload {
+  position: relative;
+  overflow: hidden;
+  margin: 10px; }
+
+.file-upload input.file-input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0); }
+
 /* Login & Signup */
 .login {
   background: url("../img/building.jpeg");
