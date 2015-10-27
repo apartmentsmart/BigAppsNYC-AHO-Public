@@ -51,7 +51,11 @@ angular.module('application').directive('favoriteButton', ['$location', 'dataSer
 
             scope.checkFavorite = function(override){
 
-                var favs = JSON.parse(attrs.favorites);
+                if(attrs.favorites){
+                    var favs = JSON.parse(attrs.favorites);
+                }
+                else
+                    var favs = {};
 
                 scope.isFavorite = (override ? override : favs[parseInt(attrs.listingid)]);
 
