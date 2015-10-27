@@ -10,7 +10,7 @@ angular.module('application').controller('accountController', ['$scope', '$faceb
 
             if(r[0].id > 0){
          
-                $scope.account = r;
+                $scope.account = r[0];
 
             }
 

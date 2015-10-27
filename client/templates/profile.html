@@ -9,24 +9,24 @@ url: /profile
 
 
 		    <div class="grid-content profile-container">
-		        <div class="form-container grid-block" ng-repeat='user in account'>
+		        <div class="form-container grid-block">
 
 		        	<h1>Basic Information</h1>
 		        	<div class="form-element small-12">
 			            <label class="small-12">First Name
-			                <input type="text" ng-model="user.first_name" placeholder="First">
+			                <input type="text" ng-model="account.first_name" placeholder="First">
 			            </label>
 		        	</div>
 
 		        	<div class="form-element small-12">
 			            <label class="small-12">Last Name
-			                <input type="text"  ng-model="user.last_name" placeholder="Last">
+			                <input type="text"  ng-model="account.last_name" placeholder="Last">
 			            </label>
 		        	</div>
 
 		        	<div class="form-element small-12">
 			            <label class="small-12">Email Address
-			                <input type="text"  ng-model="user.email" placeholder="Email">
+			                <input type="text"  ng-model="account.email" placeholder="Email">
 			            </label>
 		        	</div>
 
@@ -34,19 +34,19 @@ url: /profile
 
 		        	<div class="form-element small-12">
 			            <label class="small-12">Monthly Income
-			                <input type="text"  ng-model="user.income" placeholder="Monthly Income">
+			                <input type="text"  ng-model="account.income" placeholder="Monthly Income">
 			            </label>
 		        	</div>
 
 		        	<div class="form-element small-12">
 			            <label class="small-12">Age
-			                <input type="text"  ng-model="user.age" placeholder="Age">
+			                <input type="text"  ng-model="account.age" placeholder="Age">
 			            </label>
 		        	</div>
 
 		        	<div class="form-element small-12">
 			            <label class="small-12">Household Size
-				            <select ng-init="user.hhsize = (user.hhsize ? user.hhsize : 1)" name="hhsize" ng-model="user.hhsize">
+				            <select ng-init="account.hhsize = (account.hhsize ? account.hhsize : 1)" name="hhsize" ng-model="account.hhsize">
 								<option value="1">1 Person</option>
 								<option value="2">2 People</option>
 								<option value="3">3 People</option>
@@ -61,7 +61,7 @@ url: /profile
 
 		        	<div class="form-element small-12">
 						<label class='small-12'>Preferred Borough
-							<select name="borough" ng-init="user.borough = (user.borough ? user.borough : 'All')" ng-model="user.borough">
+							<select name="borough" ng-init="account.borough = (account.borough ? account.borough : 'All')" ng-model="account.borough">
 								<option value="All">All Boroughs</option>
 								<option value="Manhattan">Manhattan</option>
 								<option value="Bronx">The Bronx</option>
@@ -74,7 +74,7 @@ url: /profile
 
 					<div class="form-element small-12">
 						<label class="small-12">Disability Status
-							<select name="disability_status" ng-init="user.disabilityStatus = (user.disabilityStatus ? user.disabilityStatus : 'None')" ng-model="user.disabilityStatus">
+							<select name="disability_status" ng-init="account.disabilityStatus = (account.disabilityStatus ? account.disabilityStatus : 'None')" ng-model="account.disabilityStatus">
 								<option value="HoH">Head of Houshold Disabled</option>
 								<option value="Dependant">Dependant Disabled</option>
 								<option value="None" selected="selected">No Disablity</option>

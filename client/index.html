@@ -28,10 +28,16 @@
   <zf-offcanvas id="menu" class="dark" position="right">
     <a zf-close="menu" class="close-button menu-close-button">×</a>
 
-    <div class="vertical grid-block menu-container">
-      <div ui-sref="dashboard" class="grid-block menu-item" zf-close="menu">Dashboard</div>
-      <div ui-sref="profile" class="grid-block menu-item" zf-close="menu">User Account</div>
-      <div ui-sref="login" class="grid-block menu-item" zf-close="menu">Login</div>
+    <div class="vertical grid-block menu-container" ng-controller="accountController">
+      <div ui-sref="home" class="grid-block menu-item" zf-close="menu">Home</div>
+      <div ui-sref="login" ng-show="!account.id" class="grid-block menu-item" zf-close="menu">Login</div>
+      <div ui-sref="dashboard" ng-show="account.id" class="grid-block menu-item" zf-close="menu">Dashboard</div>
+      <div ui-sref="profile" ng-show="account.id" class="grid-block menu-item" zf-close="menu">Profile</div>
+      <div ui-sref="logout" ng-show="account.id" class='grid-block menu-item'>Logout</div>
+      <div ui-sref="about" class='grid-block menu-item' zf-close="menu">About</div>
+      <div class='grid-block menu-item'><a href="http://affordablehousingonline.com/equal-housing"><img src="http://affordablehousingonline.com/custom/img/equalhousing.gif">Equal Housing</a></div>
+
+
     </div>
 
   </zf-offcanvas>
