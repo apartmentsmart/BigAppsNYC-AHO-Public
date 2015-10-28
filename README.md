@@ -2,6 +2,10 @@
 
 [Live Demo at http://nyc.affordablehousingonline.com](http://nyc.affordablehousingonline.com)
 
+### 0.1.6-Alpha Patch ###
+* Many Issues resolved tracked under 0.2.0-Alpha Milestone
+* Scoped User functionality implemented
+
 ### 0.1.5-Alpha Patch ###
 * User account creation and modification through **Login With Facebook**
 * Saved Search Profile
