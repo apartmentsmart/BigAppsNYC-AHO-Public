@@ -94,4 +94,16 @@
 }
 
 .body-lock {overflow-y: hidden;}
+
+.pagination-bottom {
+	padding: 10px 0;
+}
+
+.dash-filter span {
+	font-size: 8px;
+}
+
+.dash-filter .is-active span, .dash-filter .is-active i {
+	color: #fff;
+}
 /******************************/

@@ -7706,7 +7706,14 @@ select, option {
   background-color: #0090d3; }
 
 .featured-notification {
+  background-color: #d9af32;
+  color: #4d4d4d; }
+
+.wl-open-notification {
   background-color: #32a141; }
+
+.wl-close-notification {
+  background-color: #FF3C38; }
 
 /********************************
 		Material Design
@@ -7863,5 +7870,14 @@ label {
 
 .body-lock {
   overflow-y: hidden; }
+
+.pagination-bottom {
+  padding: 10px 0; }
+
+.dash-filter span {
+  font-size: 8px; }
+
+.dash-filter .is-active span, .dash-filter .is-active i {
+  color: #fff; }
 
 /******************************/
