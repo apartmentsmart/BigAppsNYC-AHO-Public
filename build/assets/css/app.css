@@ -6931,7 +6931,6 @@ table tr td {
 .search-box {
   background-color: #444;
   color: #fff;
-  height: 100vh;
   padding: 20px 40px; }
   .search-box label {
     color: #fff; }
@@ -6963,6 +6962,10 @@ table tr td {
     text-align: center; }
   .search-box option {
     color: #000; }
+
+.searchWrapper {
+  background: #444;
+  height: 100vh; }
 
 /* Results View Listing Card */
 /*****************************************

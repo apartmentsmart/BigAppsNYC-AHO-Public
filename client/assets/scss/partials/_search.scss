@@ -6,7 +6,6 @@
 
 	background-color: $af_grey;
 	color: #fff;
-	height: 100vh;
 	padding: 20px 40px;
 
 	label {
@@ -61,5 +60,10 @@
 		color: #000;
 	}
 
+}
+
+.searchWrapper{
+	background: #444; 
+	height: 100vh;
 }
 
