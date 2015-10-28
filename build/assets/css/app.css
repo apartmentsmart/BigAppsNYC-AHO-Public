@@ -6868,7 +6868,11 @@ table tr td {
           justify-content: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
-          align-items: center; }
+          align-items: center;
+  margin-bottom: 0;
+  bottom: 0;
+  position: fixed;
+  width: 100%; }
   #footer .grid-block {
     display: -webkit-flex;
     display: -ms-flexbox;
