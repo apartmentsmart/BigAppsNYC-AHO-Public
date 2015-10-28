@@ -1,6 +1,8 @@
 //Handles Search Result Actions
-angular.module('application').controller('resultsController', ['$scope','globalFilter', '$state', 'dataService', function($scope, globalFilter, $state, dataService) {
+angular.module('application').controller('resultsController', ['$scope','globalFilter', '$state', 'dataService', '$location', function($scope, globalFilter, $state, dataService, $location) {
 
+
+$scope.getResults = function(){
   //Init Listings Object
   $scope.listings={};
   $scope.thisSearch = {};
@@ -25,43 +27,43 @@ angular.module('application').controller('resultsController', ['$scope','globalF
  
 
   if($scope.thisSearch.hhsize && $scope.thisSearch.income){
-   var hh_size = ($scope.thisSearch.hhsize > 4 ? 4 : $scope.thisSearch.hhsize);
-   var band_by_size = ami_band[hh_size];
+    var hh_size = ($scope.thisSearch.hhsize > 4 ? 4 : $scope.thisSearch.hhsize);
+    var band_by_size = ami_band[hh_size];
 
-   var income = $scope.thisSearch.income * 12;
+    var income = $scope.thisSearch.income * 12;
 
-   if(income < band_by_size[50])
+    if(income < band_by_size[50])
      $scope.thisSearch.ami_band = 49;
 
-  else if(income < band_by_size[60])
+    else if(income < band_by_size[60])
      $scope.thisSearch.ami_band = 59;
 
-   else if(income < band_by_size[80])
+    else if(income < band_by_size[80])
      $scope.thisSearch.ami_band = 79;
-   
-   else
-      $scope.thisSearch.ami_band = 81;
 
+    else
+      $scope.thisSearch.ami_band = 81;
   }
  
   var endpoint = "http://api.affordablehousingonline.com/nyc/search";
       
       if($scope.thisSearch.borough)
         endpoint = endpoint+"/"+$scope.thisSearch.borough;
+      if($location.$$search.page)
+        endpoint = endpoint + "?offset=" + (10 * (parseInt($location.$$search.page)-1));
+
+      //Handle search param mutation
+      globalFilter.mutate($scope);
+
+      dataService.async(endpoint, $scope.thisSearch).then(function(results){
+
+        $scope.listings = results;
+
+      }) 
 
 
-   //Handle search param mutation
-   globalFilter.mutate($scope);
 
-    dataService.async(endpoint, $scope.thisSearch).then(function(results){
-
-      $scope.listings = results;
-
-    }) 
-
-
-
-   if(globalFilter.get('fbResponse').id){
+   if(globalFilter.get('fbResponse').id && !$scope.account){
 
       var fbresponse = globalFilter.get('fbResponse');
       
@@ -70,16 +72,35 @@ angular.module('application').controller('resultsController', ['$scope','globalF
       dataService.async(accountEndpoint).then(function(d){
         
         $scope.account = d[0];
-       // console.log($scope.account)
+
       })
 
     }
+  }
+
+  $scope.getResults();
+  $scope.page = parseInt(($location.$$search.page ? $location.$$search.page : 1)) 
+
 
     $scope.urlEncode = function(string){
     string = string.replace(/ /g, '-');
     return string;
     };
 
+    $scope.nextPage = function(){
+      $scope.page = parseInt(($location.$$search.page ? $location.$$search.page : 1)) + 1
+      $location.search('page', $scope.page);
+      $scope.getResults();
+    }
+    $scope.prevPage = function(){
+      $scope.page = parseInt(($location.$$search.page ? $location.$$search.page : 2)) - 1
+      if($scope.page > 1)
+        $location.search('page', $scope.page);
+      else
+        $location.url($location.path())
+
+        $scope.getResults();
+    }
 
 
 }]);

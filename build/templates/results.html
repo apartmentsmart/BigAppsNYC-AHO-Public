@@ -14,7 +14,11 @@
 				<span class='search-param green' ng-show="thisSearch.income"> earning <strong>${{thisSearch.income | number:0}} a month</strong></span>
 				<span class='search-param grey' ng-show="thisSearch.housingChoiceScore > 0"> with a Housing Choce Score™ of at least <strong>{{thisSearch.housingChoiceScore}}</strong></span>.</p>
  				
- 				<p>We found <strong>{{totalListings.length}}</strong> results based on your search preferences</p>
+ 				<p>We found <strong>{{listings.count}}</strong> results based on your search preferences.</p>
+
+ 				<div ng-include="" src="'/partials/search-nav.html'"></div>
+
+
 		</div>
 
 		<div class="small-12 grid-block" id="results-filter" sticky sticky-class="imSoSticky">
@@ -60,7 +64,7 @@
 			</div>
 		</div>
 		
-	    <div class="listingCard grid-block" ng-repeat="listing in totalListings = (listings) | orderBy:sort:reverse">
+	    <div class="listingCard grid-block" ng-repeat="listing in listings.results | orderBy:sort:reverse">
 	    	<div class="card-content vertical">
 	    		<div ng-show="listing.default_image_url" class="grid-block result-image-section">
 	    			<img src="{{listing.default_image_url}}" class="result-image">
@@ -120,7 +124,11 @@
 			</div>
 		</div>
 
+
+		  <div ng-include="" src="'/partials/search-nav.html'"></div> 
+
     </div>
+
 </div>
 	
 </div>
