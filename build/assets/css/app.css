@@ -6871,7 +6871,6 @@ table tr td {
           align-items: center;
   margin-bottom: 0;
   bottom: 0;
-  position: fixed;
   width: 100%; }
   #footer .grid-block {
     display: -webkit-flex;
@@ -6966,6 +6965,10 @@ table tr td {
 .searchWrapper {
   background: #444;
   height: 100vh; }
+
+.notification-badge {
+  margin-right: 1em;
+  background: #C00 !important; }
 
 /* Results View Listing Card */
 /*****************************************
@@ -7621,7 +7624,8 @@ select, option {
           flex-wrap: wrap;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
-          justify-content: center; }
+          justify-content: center;
+  height: 100vh; }
   .dashboard .fa {
     font-size: 1.7rem; }
 

@@ -48,7 +48,8 @@ url: /housing-search/New-York/:borough/
 		<div class='listingCard grid-block' ng-show='thisSearch.ami_band > 0'>
 	    	<div class="card-content vertical" style='padding: 10px;'>
 				<p>
-				According to your search preferences you may be eligible to rent an affordable housing unit that participates in the following affordable housing programs which target renters earning less than <strong>{{thisSearch.ami_band}}%</strong> of the area median income (AMI) for a household size of <strong>{{thisSearch.hhsize}}</strong>:
+				<strong>Your Eligibility<br/></strong>
+				According to your search preferences you may be eligible to rent an affordable housing unit that participates in the following affordable housing programs.
 				<ul>
 					<li ng-show="thisSearch.ami_band < 130" >Article 8A Loan Program
 					<li ng-show="thisSearch.ami_band < 120" >Mitchell-Lama

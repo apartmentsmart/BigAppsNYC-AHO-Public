@@ -12,6 +12,19 @@ angular.module('application').controller('accountController', ['$scope', '$faceb
          
                 $scope.account = r[0];
 
+     
+              var notificationEndpoint = "http://api.affordablehousingonline.com/nyc/notification/by-user/"+$scope.account.id+"/";
+
+              dataService.async(notificationEndpoint).then(function(n){
+                  console.log(n)
+                  if(n[0].id > 0){
+               
+                      $scope.account.notifications = n;
+                
+                  }
+
+                })
+
             }
 
         });
