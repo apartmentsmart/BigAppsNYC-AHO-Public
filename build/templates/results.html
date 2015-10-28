@@ -15,10 +15,10 @@
 				<span class='search-param grey' ng-show="thisSearch.housingChoiceScore > 0"> with a Housing Choce Score™ of at least <strong>{{thisSearch.housingChoiceScore}}</strong></span>.</p>
  				
  				<p>We found <strong>{{listings.count}}</strong> results based on your search preferences.</p>
+		</div>
 
- 				<div ng-include="" src="'/partials/search-nav.html'"></div>
-
-
+		<div class="grid-block small-12 align-center">
+		<div ng-include="" src="'/partials/search-nav.html'"></div>
 		</div>
 
 		<div class="small-12 grid-block" id="results-filter" sticky sticky-class="imSoSticky">
@@ -124,9 +124,9 @@
 			</div>
 		</div>
 
-
-		  <div ng-include="" src="'/partials/search-nav.html'"></div> 
-
+		<div class="grid-block small-12 align-center pagination-bottom">
+			<div ng-include="" src="'/partials/search-nav.html'"></div>
+		</div>
     </div>
 
 </div>

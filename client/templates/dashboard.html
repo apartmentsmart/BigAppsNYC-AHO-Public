@@ -4,15 +4,15 @@ url: /dashboard
 animationIn: slideInLeft
 animationOut: slideOutLeft
 ---
-<div class="grid-container">
-	<div class="dashboard grid-content">
+<div class="grid-container dash">
+	<div class="dashboard grid-block">
 
 		<div ng-controller="dashController">
 
-			<ul class="button-group expand segmented">
-				<li ng-class="{'is-active':dashView =='notifications'}" ><button ng-click="toggleDash('notifications')"><i class="fa fa-bell"></i><br>Notifications</button></li>
-				<li ng-class="{'is-active':dashView =='notes'}"><button ng-click="toggleDash('notes')"><i class="fa fa-sticky-note"></i> <br> Notes</button></li>
-				<li ng-class="{'is-active':dashView =='favorites'}"><button ng-click="toggleDash('favorites')"><i class="fa fa-heart"></i> <br> Favorited</button></li>
+			<ul class="button-group expand segmented dash-filter">
+				<li ng-class="{'is-active':dashView =='notifications'}" ><button ng-click="toggleDash('notifications')"><i class="fa fa-bell"></i><br><span>Notifications</span></button></li>
+				<li ng-class="{'is-active':dashView =='notes'}"><button ng-click="toggleDash('notes')"><i class="fa fa-sticky-note"></i> <br> <span>Notes</span></button></li>
+				<li ng-class="{'is-active':dashView =='favorites'}"><button ng-click="toggleDash('favorites')"><i class="fa fa-heart"></i> <br> <span>Favorited</span></button></li>
 			</ul>
 
 			<div ng-show="dashView == 'notifications'">

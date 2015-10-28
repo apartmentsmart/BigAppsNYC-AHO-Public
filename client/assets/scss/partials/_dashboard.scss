@@ -119,6 +119,14 @@
 	}
 
 	.featured-notification {
+		background-color: rgb(217,175,50);
+		color: rgb(77,77,77);
+	}
+
+	.wl-open-notification {
 		background-color: darken($af-green,5%);
 	}
 
+	.wl-close-notification {
+		background-color: #FF3C38;
+	}
