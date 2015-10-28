@@ -80,12 +80,14 @@
         };
 
         scope.hide = function() {
+          document.getElementsByTagName("body")[0].className = document.getElementsByTagName("body")[0].className.replace(/\bbody-lock\b/,'');
           scope.active = false;
           animate();
           return;
         };
 
         scope.show = function() {
+          document.getElementsByTagName('body')[0].className+=' body-lock'
           scope.active = true;
           animate();
           dialog.tabIndex = -1;
