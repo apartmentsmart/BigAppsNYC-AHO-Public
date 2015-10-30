@@ -2,37 +2,24 @@
 
 [Live Demo at http://nyc.affordablehousingonline.com](http://nyc.affordablehousingonline.com)
 
-### 0.1.6-Alpha Patch ###
-* Many Issues resolved tracked under 0.2.0-Alpha Milestone
-* Scoped User functionality implemented
+## 0.2.0-Alpha
+>Our demo build entry for the NYC BigApps Affordable Challenge. The second version of this application, **0.2.0-Alpha**, features enhanced search functionality, detailed individual property listings, and working prototypes of our planned crowd sourcing and user dashboard tools.
 
-### 0.1.5-Alpha Patch ###
-* User account creation and modification through **Login With Facebook**
-* Saved Search Profile
-* Streamlined API calls and data handling with refactored **dataHandler** which is now **dataService**.
-* Reviews and Dashboards prototypes are now tied to a User Account.
-
-### --Dev Patch-- ####
-* app.js has been split into controller, directive, and factory directories.
-
-### 0.1.4-Alpha Patch
+#### Updates and Patches since 0.1.0
+* Many Bug Fixes and Issues Resolved
+* Scoped User functionality implemented including
+  * User account creation and modification through **Login With Facebook**
+  * Favorite A Listing Functionality
+  * Detailed personal Notes
+  * Improved Suggest an Edits feature
+  * User Dashboard featuring notifications, personal notes, and a favorited listing quick look
+  * Saved Search Profile
+* Streamlined API calls and data handling
 * Search Summary Additions
-* Results Sort
-
-### 0.1.3-Alpha Patch
-* Search Parameter Retention hotfix. Detailed in issues #62 and #63
-
-### 0.1.2-Alpha Patch
-* All Search Parameters now affect results.
-* Results Card Views updated to include Maximum AMI and Housing Choice Score
-* AHO API Updates to reflect enhanced search functionality.
-
-### 0.1.1-Alpha Patch
-#### 27 Issues Closed Including
-* Ordinal rankings for Housing Choice Score
-* Missing Fields fixes
+* Results Sorting and Pagination
+* Results Card Views updated to include Maximum AMI and Housing Choice Score data points
+* AHO API Updates to reflect enhanced search functionality and improve speed
 * Desktop Views enhanced, including map view.
-* Get Directions Link Added 
 
 ## 0.1.0-Alpha
 
@@ -66,22 +53,3 @@
 * Favorited Property Update Notification (ex. "A property you favorited has new information available!")
 * Matched Property Update Notification (ex. "We found a property that matches your preferences!")
 * Recommended Property Notification (ex. "We suggest you check out a property that we hand selected")
-
-
-### Proposed Features for 0.2.0-Alpha
-
-#### User Account
-* Login with Facebook/Google
-* Create Set of Search Preferences
-* Favorite Property
-* Take Note About Property
-* Dynamic User Centric Notifiactions
-
-#### Property Search
-* Extended Filter Functionality on Results Page
-* Extended Sorting Functionality on Results Page
-
-#### Property Details
-* Completed Suggest an Edit Feature
-* Completed Add A Review Feature
-* Nearby Points of Interest Integration (Grocery, Laundry, Day Care, etc)
