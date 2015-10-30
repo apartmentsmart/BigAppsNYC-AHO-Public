@@ -1,0 +1,56 @@
+<div zf-modal="" id="photo-upload" class="collapse">
+  <div class="grid-block vertical">
+    <div class="primary title-bar">
+      <div class="center title">Upload a Photo</div>
+      <span zf-close="" class="right"><a>Done</a></span>
+    </div>
+    <div class="grid-content padding" style="padding-top: 1rem;">
+
+      <form>
+        <div class="grid-block">
+          <div class="small-12 medium-12 grid-content">
+              <!-- Modal Wrapper -->
+
+            <div flow-init="{target: '/upload'}"
+                 flow-files-submitted="$flow.upload()"
+                 flow-file-success="$file.msg = $message">
+
+
+               <img flow-img="$flow.files[0]" /> 
+
+              <p>
+                Use your device to upload or take a photo of this listing. If possible, take a photo that includes the front of the building with an address number in the shot. Once your photo is approved it will appear on all of our {{listing.name}} pages!
+              </p>
+              <div class='grid-block'>
+                <button class='button dark expand file-upload'><input type="file" class='file-input' flow-btn/>Choose Photo</button>
+              </div>
+
+              <table ng-hide="1==1">
+                <tr ng-repeat="file in $flow.files">
+                    <td>{{$index+1}}</td>
+                    <td>{{file.name}}</td>
+                    <td>{{file.msg}}</td>
+                </tr>
+              </table>
+
+            </div>
+            <!-- End Modal Wrapper -->
+          </div>
+        </div>
+          <hr class='small-12'></hr>
+        <div class='grid-block'>
+              <a zf-close="" class="button expand">Submit</a>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+

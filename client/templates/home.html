@@ -1,0 +1,91 @@
+---
+name: home
+url: /
+---
+<div class="grid-content">
+
+			<div class="grid-block">
+			<div class="grid-content alert label small-12">
+			This application is currently in Alpha. To track our development watch us on <a href="https://github.com/apartmentsmart/BigAppsNYC-AHO-Public">GitHub</a>
+			</div>
+		</div>
+
+    <div class="search-box grid-block">
+    		
+    		<div class="search-welcome grid-content small-12">
+    			<h1>Find affordable housing in New York City</h1>
+    		</div>
+
+    		<div class="grid-content small-12">
+    			<div class="searchWrapper" style='background: #444; height: 100vh'>
+	    		<div class="search grid-block" ng-controller="searchController">
+	    				
+						<div class="grid-content small-12">
+							<label class="hide">Select a Borough</label>
+							<select name="borough" id="borough" ng-model="search.borough">
+								<option value="All">All Boroughs</option>
+								<option value="Manhattan">Manhattan</option>
+								<option value="Bronx">The Bronx</option>
+								<option value="Brooklyn">Brooklyn</option>
+								<option value="Queens">Queens</option>
+								<option value="Staten-Island">Staten Island</option>
+							</select>
+						</div>
+
+						<div class="grid-content small-6">
+							<label class="hide">Size Of Household</label>
+							<select name="hhsize" id="hhsize" ng-model="search.hhsize">
+								<option value="1">1 Person</option>
+								<option value="2">2 People</option>
+								<option value="3">3 People</option>
+								<option value="4">4 People</option>
+								<option value="5">5 People</option>
+								<option value="6">6 People</option>
+								<option value="7">7 People</option>
+								<option value="8">8+ People</option>
+							</select>
+						</div>
+
+						<div class="grid-content small-6">
+							<label class="hide">Monthly Income</label>
+							<input type="text" id="income" placeholder="Monthly Income" ng-model="search.income" />
+						</div>
+
+						<div class="grid-content small-6">
+							<label class="hide">Disability Status</label>
+							<select name="disabilityStatus" id="disabilityStatus" ng-model="search.disabilityStatus">
+								<option value="HoH">Head of Houshold Disabled</option>
+								<option value="Dependant">Dependant Disabled</option>
+								<option value="None" selected="selected">No Disablity</option>
+							</select>
+						</div>
+
+						<div class="grid-content small-6">
+							<label class="hide">Age</label>
+							<input type="text" placeholder="Age" id="age" ng-model="search.age" />
+						</div>
+
+						<div class="grid-content small-12">
+							<label class="hide">Show Housing Choice Score Above:</label>
+							<select name="housing_choice_score" id="housingChoiceScore" ng-model="search.housingChoiceScore">
+								<option value="0">Show All Housing Choice Scores</option>
+								<option value="25">Housing Choice Score Above 25</option>
+								<option value="50">Housing Choice Score Above 50</option>
+								<option value="75">Housing Choice Score Above 75</option>
+
+							</select>
+						</div>
+						
+						<div class='grid-content small-12'><br/><div>
+
+						<a class="expand button" ui-sref="results({borough:urlEncode(search.borough)})">Search &nbsp; <i class="fa fa-arrow-right"></i></a>
+
+	    		</div>
+    		</div>
+
+
+    </div> <!--End Search Box -->
+</div>
+</div>
+
+

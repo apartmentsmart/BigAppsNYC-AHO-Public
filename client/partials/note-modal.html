@@ -1,0 +1,65 @@
+<div zf-modal="" id="take-note" class="collapse">
+	<div class="grid-block vertical">
+		<div class="primary title-bar">
+			<div class="center title">Property Note</div>
+			<span zf-close="" class="right"><a>Done</a></span>
+		</div>
+		<div class="grid-content note-form padding" style="padding-top: 1rem;">
+				<form ng-submit="saveNote()"  ng-controller="noteController">
+
+					<p>Have you talked to this landlord? Save info about the rent amount, waiting list, when you applied and who you talked to and we'll add it to your Notes tab.</p>
+
+					<div class="grid-block form-row">
+							<div class="grid-block small-12">You researched a</div>
+							<div class="grid-block small-12">
+								<select ng-model="note.brsize" ng-init="note.brsize = 0" >
+								<option value="0">Studio Apartment</option>
+								<option value="1">1 Bedroom Apartment</option>
+								<option value="2">2 Bedroom Apartment</option>
+								<option value="3">3 Bedroom Apartment</option>
+								<option value="4">4 Bedroom Apartment</option>
+								</select>
+							</div>
+					</div>
+					<div class="grid-block form-row">
+						<div class="grid-block small-12">
+							The rent was
+						</div>
+						<div class="grid-block small-12">
+							<span class="inline-label"><span class="form-label grid-block">$</span><input type="text" class="small-9"  ng-model='note.rent' placeholder="Monthly Rent Amount"><span class="form-label grid-block">/month</span></span>
+						</div>
+					</div>
+					<div class="grid-block form-row single-column">
+						<input id="note-waitlist" type="checkbox" ng-checked="note.waitlist == 1" ng-model="note.waitlist" ><label for="note-waitlist">There is a waiting list for this unit</label>
+					</div>
+					<div class="grid-block form-row small-12" ng-show="note.waitlist==1">
+						<div class="grid-block">The waiting list is</div>  
+						<div class="grid-block"><span class="inline-label"><input ng-model="note.waitlist_length" type="text"><span class="form-label"> months</span></span></div>
+					</div>
+					<div class="grid-block form-row single-column">
+						<input id="checkbox1" type="checkbox" ng-checked="note.applied==1" ng-model="note.applied"><label for="checkbox1">Have You Applied?</label>
+					</div>
+					<div class="grid-block form-row justify-flex-start" ng-show="note.applied==1">
+							<div class="grid-block small-12">When did you apply?</div>
+							<div class="grid-block small-12"><input ng-model="note.applied_on" type="date"></div>
+					</div>
+					<div class="grid-block form-row" ng-show="note.applied == 1 && note.waitlist == 1">
+							<div class="grid-block small-12">Your number on the waiting list is </div>
+							<div class="grid-block small-12"><input ng-model="note.waitlist_position" type="text"></div>
+				
+					</div>
+					<div class="grid-block form-row small-12">
+					<label class="small-12" >Other Notes</label>
+						<textarea ng-model="note.note"class="small-12 free-form-notes" placeholder="Leave a note for yourself here"></textarea>
+					</div>
+				
+					 <input type="submit" class="button" />
+
+
+				</form>
+
+
+
+		</div>
+	</div>
+</div>

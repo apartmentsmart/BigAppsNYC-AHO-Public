@@ -1,0 +1,74 @@
+/******************************************
+			Search Box Styles
+*******************************************/
+
+.search-box {
+
+	background-color: $af_grey;
+	color: #fff;
+	padding: 20px 40px;
+
+	label {
+		color: #fff;
+	}
+
+	.search {
+		padding: 20px 0px 40px 0;
+
+		.button {
+			background: $af-blue;
+			font-size: 1rem;
+			font-weight: 700;
+			padding: 1.5em 1em;
+		}
+
+		.grid-content {
+			padding: 0 10px;
+		}
+
+		select, input {
+			height: 4rem;
+			line-height: 1.2rem;
+
+			/*iphone 6*/
+			@media (max-width: 374px) {
+				font-size: 0.7rem;
+			}
+		}
+
+		input {
+			color: #fff !important;
+		}
+	}
+
+	.search.grid-block {
+		margin: 0 auto;
+		max-width: 700px;
+	}
+
+	.search-welcome {
+		
+		h1 {
+			color: #fff;
+			font-size: 1.5rem;
+			font-weight: 300;
+			text-align: center;
+		}
+	}
+
+	option {
+		color: #000;
+	}
+
+}
+
+.searchWrapper{
+	background: #444; 
+	height: 100vh;
+}
+
+.notification-badge{
+	margin-right: 1em;
+	background: $af_red !important;
+
+}

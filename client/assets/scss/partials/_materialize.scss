@@ -1,0 +1,68 @@
+$form-color: $af-blue;
+$form-font-color: #000;
+
+input[type="text"],
+input[type="textarea"]
+input[type="password"], 
+input[type="date"], 
+input[type="datetime"], 
+input[type="datetime-local"], 
+input[type="month"], 
+input[type="week"], 
+input[type="email"], 
+input[type="number"], 
+input[type="search"], 
+input[type="tel"], 
+input[type="time"], 
+input[type="url"], 
+input[type="color"], 
+textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid $form-color;
+  color: $form-font-color;
+
+  &:hover, &:focus {
+    background-color: transparent;
+    border: none;
+    color: $form-font-color;
+  }
+
+  &:hover {
+    border-bottom: 1px solid $form-color;
+  }
+
+  &:focus {
+    border-bottom: 3px solid $form-color;
+  }
+
+}
+
+select {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid $form-color;
+  color: #fff;
+
+  &:hover, &:focus {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid $form-color;
+    color: #fff;
+  }
+}
+
+select, input {
+  margin: 0 5px;
+}
+
+
+label {
+  font-size: 1rem;
+}
+
+/* active state */
+.form-control:focus ~ .float-label, .form-control:valid ~ .float-label {
+  top: -18px;
+  font-size: 12px;
+}

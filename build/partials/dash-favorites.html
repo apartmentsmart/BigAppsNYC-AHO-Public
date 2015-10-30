@@ -1,0 +1,33 @@
+<div class="dash-item" ng-repeat="favorite in favorites" ng-click="favorite.expand =!favorite.expand">
+	<div class="dash-item-container followed-notification">
+		
+		<div class="dash-item-title grid-block">
+			<div class="grid-content small-1">
+				<i class="fa fa-heart"></i>
+			</div>
+			<div class="grid-content small-10 notification-title">
+				<div>
+					You favorited {{favorite.name}} in {{favorite.borough}}
+				</div>
+			</div>
+		</div><!-- End Dash Item Title -->
+
+		<div class="dash-item-body grid-content" ng-show="favorite.expand">
+		
+			<div class="notification-section">
+				<p>Located at {{favorite.address}} in
+				{{favorite.neighborhood}}, {{favorite.borough}}.</p>
+				<p>This {{favorite.borough}} apartment has {{favorite.room_range}} bedroom units at {{favorite.rent_range}}/mo.</p>
+			</div>
+
+			<div class="notification-actions">
+				<action-button  uiAction="{{favorite.url}}" action-text="View Listing">View Listing</action-button>
+			</div>
+
+		<div class="notification-context">
+			You favorited this listing on {{formatDate(favorite.favorited_on)}}.
+		</div>
+
+		</div> <!-- End Dash Item Body --> 
+	</div> <!-- End Dash Item Container -->
+</div> <!-- End Dash Item -->

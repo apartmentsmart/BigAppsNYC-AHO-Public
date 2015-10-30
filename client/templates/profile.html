@@ -1,0 +1,99 @@
+---
+name: profile
+url: /profile
+---
+
+<div class="grid-content">
+	<div class="dashboard grid-container" ng-controller="accountController">
+		<form ng-submit="update()">
+
+
+		    <div class="grid-content profile-container">
+		        <div class="form-container grid-block">
+
+		        	<h1>Basic Information</h1>
+		        	<div class="form-element small-12">
+			            <label class="small-12">First Name
+			                <input type="text" ng-model="account.first_name" placeholder="First">
+			            </label>
+		        	</div>
+
+		        	<div class="form-element small-12">
+			            <label class="small-12">Last Name
+			                <input type="text"  ng-model="account.last_name" placeholder="Last">
+			            </label>
+		        	</div>
+
+		        	<div class="form-element small-12">
+			            <label class="small-12">Email Address
+			                <input type="text"  ng-model="account.email" placeholder="Email">
+			            </label>
+		        	</div>
+
+		        	<h1>Search Preferences</h1>
+
+		        	<div class="form-element small-12">
+			            <label class="small-12">Monthly Income
+			                <input type="text"  ng-model="account.income" placeholder="Monthly Income">
+			            </label>
+		        	</div>
+
+		        	<div class="form-element small-12">
+			            <label class="small-12">Age
+			                <input type="text"  ng-model="account.age" placeholder="Age">
+			            </label>
+		        	</div>
+
+		        	<div class="form-element small-12">
+			            <label class="small-12">Household Size
+				            <select ng-init="account.hhsize = (account.hhsize ? account.hhsize : 1)" name="hhsize" ng-model="account.hhsize">
+								<option value="1">1 Person</option>
+								<option value="2">2 People</option>
+								<option value="3">3 People</option>
+								<option value="4">4 People</option>
+								<option value="5">5 People</option>
+								<option value="6">6 People</option>
+								<option value="7">7 People</option>
+								<option value="8">8+ People</option>
+							</select>
+			            </label>
+		        	</div>
+
+		        	<div class="form-element small-12">
+						<label class='small-12'>Preferred Borough
+							<select name="borough" ng-init="account.borough = (account.borough ? account.borough : 'All')" ng-model="account.borough">
+								<option value="All">All Boroughs</option>
+								<option value="Manhattan">Manhattan</option>
+								<option value="Bronx">The Bronx</option>
+								<option value="Brooklyn">Brooklyn</option>
+								<option value="Queens">Queens</option>
+								<option value="Staten-Island">Staten Island</option>
+							</select>
+						</label>
+					</div>
+
+					<div class="form-element small-12">
+						<label class="small-12">Disability Status {{account.disabilityStatus}}
+							<select name="disabilityStatus" ng-init="account.disabilityStatus = (account.disabilityStatus ? account.disabilityStatus : 'None')" ng-model="account.disabilityStatus">
+								<option value="HoH">Head of Houshold Disabled</option>
+								<option value="Dependant">Dependant Disabled</option>
+								<option value="None">No Disablity</option>
+							</select>
+						</label>
+					</div>
+
+		        	<button class="button expand">Submit</button>
+
+
+		        	   <!-- Need to add disability/address street city state zip/voucher holder -->
+
+
+		        </div> <!-- End Form Container -->
+		    </div>
+
+		</form>
+	</div>
+</div>
+
+
+
