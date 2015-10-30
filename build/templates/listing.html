@@ -22,8 +22,8 @@
 							&nbsp; &nbsp; <span class="rating-text">{{listing.avgRating}}</span>
 						</div>
 					</div>
-				<a class="add-photo button secondary hollow" zf-open="photo-upload"><i class="fa fa-camera"></i> Add Photo</a>
-				<a class="hero-suggest button secondary hollow" zf-open="take-note"><i class="fa fa-sticky-note"></i> Notes</a>
+				<a ng-show="account.id" class="add-photo button secondary hollow" zf-open="photo-upload"><i class="fa fa-camera"></i> Add Photo</a>
+				<a ng-show="account.id" class="hero-suggest button secondary hollow" zf-open="take-note"><i class="fa fa-sticky-note"></i> Notes</a>
 				</div>
 			</div>
 
@@ -40,8 +40,8 @@
 						&nbsp; &nbsp; <span class="rating-text">{{listing.avgRating}}</span>
 					</div>
 				</div>
-				<a class="add-photo button secondary hollow" zf-open="photo-upload"><i class="fa fa-camera"></i> Add Photo</a>
-				<a class="hero-suggest button secondary hollow" ng-click="bodyLock()" zf-open="take-note"><i class="fa fa-sticky-note"></i> Notes</a>
+				<a ng-show="account.id" class="add-photo button secondary hollow" zf-open="photo-upload"><i class="fa fa-camera"></i> Add Photo</a>
+				<a ng-show="account.id" class="hero-suggest button secondary hollow" ng-click="bodyLock()" zf-open="take-note"><i class="fa fa-sticky-note"></i> Notes</a>
 			</div>
 
 
@@ -75,8 +75,14 @@
 					<div class="listing-section"><div ng-include="" src="'/partials/share-follow.html'"></div>	</div>
 					
 					<div ng-show"listing.website || listing.phone || listing.email" id="contact-info" class="contact-info listing-section">
+
+
+
 						<div class="listing-heading">
 							<i class="fa fa-user"></i> Contact Information
+							<br/>
+							<div ng-show="account.id" class="suggest-edit" zf-open="contact-edit-modal">Suggest Edits</div>
+
 						</div>
 
 						<div ng-show="listing.phone" id="phone" class="phone">
@@ -106,8 +112,10 @@
 					<div id="bedrooms" class="bedrooms listing-section">
 						<div class="listing-heading">
 							<i class="fa fa-bed"></i> Bedrooms
-							<div class="suggest-edit" zf-open="suggest-edit">Suggest Edit</div>
-							</div>
+							<br/>
+							<div ng-show="account.id" class="suggest-edit" zf-open="bedroom-edit-modal">Suggest Edit</div>
+
+						</div>
 						<div class="listing-body">
 
 							<table class="bedroom-table">
@@ -237,84 +245,12 @@
 					<div id="reviews" class="reviews listing-section">
 						<div class="listing-heading">
 							<i class="fa fa-star-half-o"></i> Reviews
-							<!-- <div class="add-review" zf-open="add-review">Add Review</div> -->
 						</div>
 
-							<div ng-show="!listing.reviews">
-								<h4 class='text-center'>Be the first to review this property!</h4>
-							</div>
-
-						<div ng-repeat="review in listing.reviews track by $index" class="single-review">
-							
-
-							
-							<div class="review-meta grid-content">
-								<div class="subtitle grid-block small-11">
-									{{review.title}}
-									<div class="time">reviewed on {{convertDate(review.reviewed_on) | date:'MM/dd/yyyy'}} </div>
-								</div>
-							</div>
-
-							<div ng-show="review.lived_here && review.from" class="grid-block lived-here">
-								<div class="intro-text grid-block">Lived here between</div> 
-								<div class="grid-block">
-									<div class="grid-block">
-										{{convertDate(review.from) | date:'MM/dd/yyyy'}} 
-									</div>
-									
-									<div clas="grid-block" ng-show="review.until">
-										&nbsp;{{convertDate(review.until) | date:'MM/dd/yyyy'}}
-									</div>
-								</div>
-
-							</div>
-
-							<div ng-show="review.lived_here == 1">
-							Building Quality
-							<div class="grid-block">
-							
-								<i class="fa" ng-class="{'fa-star-o': review.physical_score < .5,  'fa-star-half-o': review.physical_score >= .5 && review.physical_score < 1,  'fa-star' : review.physical_score >= 1 }"></i>
-								<i class="fa" ng-class="{'fa-star-o': review.physical_score < 1.5, 'fa-star-half-o': review.physical_score >= 1.5 && review.physical_score < 2,  'fa-star' : review.physical_score >= 2 }"></i>
-								<i class="fa" ng-class="{'fa-star-o': review.physical_score < 2.5, 'fa-star-half-o': review.physical_score >= 2.5 && review.physical_score < 3,  'fa-star' : review.physical_score >= 3 }"></i>
-								<i class="fa" ng-class="{'fa-star-o': review.physical_score < 3.5, 'fa-star-half-o': review.physical_score >= 3.5 && review.physical_score < 4,  'fa-star' : review.physical_score >= 4 }"></i>
-								<i class="fa" ng-class="{'fa-star-o': review.physical_score < 4.5, 'fa-star-half-o': review.physical_score >= 4.5 && review.physical_score < 5,  'fa-star' : review.physical_score >= 5 }"></i>
-							</div>
+							<div ng-include="" src="'/partials/listing-review.html'"></div>
 
 
-							Customer Service
-							<div class="grid-block">
-						
-								<i class="fa" ng-class="{'fa-star-o': review.service_score < .5,  'fa-star-half-o': review.service_score >= .5 && review.service_score < 1,  'fa-star' : review.service_score >= 1 }"></i>
-								<i class="fa" ng-class="{'fa-star-o': review.service_score < 1.5, 'fa-star-half-o': review.service_score >= 1.5 && review.service_score < 2,  'fa-star' : review.service_score >= 2 }"></i>
-								<i class="fa" ng-class="{'fa-star-o': review.service_score < 2.5, 'fa-star-half-o': review.service_score >= 2.5 && review.service_score < 3,  'fa-star' : review.service_score >= 3 }"></i>
-								<i class="fa" ng-class="{'fa-star-o': review.service_score < 3.5, 'fa-star-half-o': review.service_score >= 3.5 && review.service_score < 4,  'fa-star' : review.service_score >= 4 }"></i>
-								<i class="fa" ng-class="{'fa-star-o': review.service_score < 4.5, 'fa-star-half-o': review.service_score >= 4.5 && review.service_score < 5,  'fa-star' : review.service_score >= 5 }"></i>
-							</div>
 
-							Location and Services
-							<div class="grid-block">
-						
-								<i class="fa" ng-class="{'fa-star-o': review.area_score < .5,  'fa-star-half-o': review.area_score >= .5 && review.area_score < 1,  'fa-star' : review.area_score >= 1 }"></i>
-								<i class="fa" ng-class="{'fa-star-o': review.area_score < 1.5, 'fa-star-half-o': review.area_score >= 1.5 && review.area_score < 2,  'fa-star' : review.area_score >= 2 }"></i>
-								<i class="fa" ng-class="{'fa-star-o': review.area_score < 2.5, 'fa-star-half-o': review.area_score >= 2.5 && review.area_score < 3,  'fa-star' : review.area_score >= 3 }"></i>
-								<i class="fa" ng-class="{'fa-star-o': review.area_score < 3.5, 'fa-star-half-o': review.area_score >= 3.5 && review.area_score < 4,  'fa-star' : review.area_score >= 4 }"></i>
-								<i class="fa" ng-class="{'fa-star-o': review.area_score < 4.5, 'fa-star-half-o': review.area_score >= 4.5 && review.area_score < 5,  'fa-star' : review.area_score >= 5 }"></i>
-							</div>
-							Crime and Safety
-							<div class="grid-block">
-						
-								<i class="fa" ng-class="{'fa-star-o': review.crime_score < .5,  'fa-star-half-o': review.crime_score >= .5 && review.crime_score < 1,  'fa-star' : review.crime_score >= 1 }"></i>
-								<i class="fa" ng-class="{'fa-star-o': review.crime_score < 1.5, 'fa-star-half-o': review.crime_score >= 1.5 && review.crime_score < 2,  'fa-star' : review.crime_score >= 2 }"></i>
-								<i class="fa" ng-class="{'fa-star-o': review.crime_score < 2.5, 'fa-star-half-o': review.crime_score >= 2.5 && review.crime_score < 3,  'fa-star' : review.crime_score >= 3 }"></i>
-								<i class="fa" ng-class="{'fa-star-o': review.crime_score < 3.5, 'fa-star-half-o': review.crime_score >= 3.5 && review.crime_score < 4,  'fa-star' : review.crime_score >= 4 }"></i>
-								<i class="fa" ng-class="{'fa-star-o': review.crime_score < 4.5, 'fa-star-half-o': review.crime_score >= 4.5 && review.crime_score < 5,  'fa-star' : review.crime_score >= 5 }"></i>
-							</div>						
-							</div>
-							<p ng-show="review.review">
-								{{review.review}}
-							</p>
-						
-						</div>
 							<div class="absolute-center grid-block">
 								<a class="button hollow" zf-open="add-review">Add Review</a>
 							</div>
@@ -405,7 +341,8 @@
 
 
 
-		<div ng-include="" src="'/partials/suggest-edit-modal.html'"></div>
+		<div ng-include="" src="'/partials/suggest-edits/bedroom-edit-modal.html'"></div>
+		<div ng-include="" src="'/partials/suggest-edits/contact-edit-modal.html'"></div>
 		<div ng-include="" src="'/partials/review-modal.html'"></div>
 		<div ng-include="" src="'/partials/note-modal.html'"></div>
 		<div ng-include="" src="'/partials/photo-upload.html'"></div>

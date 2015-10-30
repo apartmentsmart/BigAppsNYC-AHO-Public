@@ -6869,8 +6869,6 @@ table tr td {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 0;
-  bottom: 0;
   width: 100%; }
   #footer .grid-block {
     display: -webkit-flex;
@@ -7196,7 +7194,6 @@ table tr td {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  float: right;
   font-size: 0.7rem;
   padding-top: 10px; }
 
@@ -7602,6 +7599,11 @@ table tr td {
     .login-form {
       padding: 0 15%; } }
 
+.alert {
+  white-space: normal;
+  line-height: 1.2em;
+  padding: 1em; }
+
 .form-container .grid-block {
   /*margin: 0 2px;*/ }
 
@@ -7625,7 +7627,7 @@ select, option {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 100vh; }
+  min-height: 100vh; }
   .dashboard .fa {
     font-size: 1.7rem; }
 
@@ -7725,6 +7727,18 @@ select, option {
 
 .wl-close-notification {
   background-color: #FF3C38; }
+
+.note-table {
+  background-color: #444;
+  color: #FFF;
+  border: 0 !important; }
+
+.note-table tr, .note-table tr.even, .note-table tr.alt, .note-table tr:nth-of-type(even), .note-table td {
+  background: #444;
+  color: #FFF !important; }
+
+.dash-item h4 {
+  color: #FFF; }
 
 /********************************
 		Material Design

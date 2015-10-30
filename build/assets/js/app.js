@@ -20601,11 +20601,10 @@ angular.module('application').controller('accountController', ['$scope', '$faceb
          
                 $scope.account = r[0];
 
-     
               var notificationEndpoint = "http://api.affordablehousingonline.com/nyc/notification/by-user/"+$scope.account.id+"/";
 
               dataService.async(notificationEndpoint).then(function(n){
-                  console.log(n)
+
                   if(n[0].id > 0){
                
                       $scope.account.notifications = n;
@@ -20643,9 +20642,8 @@ angular.module('application').controller('accountController', ['$scope', '$faceb
         var endpoint = "http://api.affordablehousingonline.com/nyc/user/"+$scope.response.id+"/";
 
         dataService.async(endpoint, $scope.response).then(function(r){
-          console.log(r)
             if(r[0].id > 0){
-                $scope.account = r;
+                $scope.account = r[0];
                 $location.path('/profile');
             
             }
@@ -20663,11 +20661,11 @@ angular.module('application').controller('accountController', ['$scope', '$faceb
 
     $scope.update = function(){
 
+
+
+      dataService.push("http://api.affordablehousingonline.com/nyc/push/?type=user", $scope.account).then(function(r){
+        $scope.account = r[0];
       console.log($scope.account)
-
-      dataService.push("http://api.affordablehousingonline.com/nyc/push/?type=user", $scope.account[0]).then(function(r){
-
-        $scope.account = r;
 
       });
 
@@ -20800,6 +20798,8 @@ angular.module('application').controller('listingController', ['$scope','globalF
         d[0].affordability = $sce.trustAsHtml(d[0].affordability);
 
       $scope.thisListing = d;
+      console.log(d);
+      $scope.suggest_edit = {"name":d[0].name, "address":d[0].primary_address, "phone":d[0].phone, "website":d[0].website, "email":d[0].email};
 
 
    if(globalFilter.get('fbResponse').id){
@@ -20929,8 +20929,6 @@ angular.module('application').controller('listingController', ['$scope','globalF
 
     })
 
-    $scope.hideReviewModal = 1;
-    $scope.apply;
   }
 
   $scope.convertDate = function (stringDate){
@@ -20953,6 +20951,7 @@ angular.module('application').controller('listingController', ['$scope','globalF
       return false;
 
     }
+
 }]);
 
 //Handles Listing Actions

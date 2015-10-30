@@ -1,5 +1,5 @@
-<div class="dash-item" ng-repeat="note in notes">
-	<div class="dash-item-container">
+<div class="dash-item" ng-repeat="note in notes" >
+	<div class="dash-item-container" ng-click="note.expand=!note.expand">
 		
 		<div class="dash-item-title grid-block">
 			<div class="grid-content small-1">
@@ -10,17 +10,24 @@
 			</div>
 		</div><!-- End Dash Item Title -->
 
-		<div class="dash-item-body grid-content">
-			
-			<p ng-show="{{note.brsize}}">I was searching for a {{note.brsize}} bedroom apartment.</p>
-			<p ng-show="{{note.rent}}">The rent was {{note.rent}}/month.</p> 
-			<p ng-show="{{note.waitlist}}">There was a waitlist. <span ng-show="{{note.waitlist_length}}">The waitlist is {{note.waitlist_length}} months long.</span> 
-			<p ng-show="{{note.applied}}">I applied on {{formatDate(note.applied_on)}}. <span ng-show="{{note.waitlist_position}}">I am {{note.waitlist_position|ordinal}} on the waiting list.</span></p>
+		<div ng-show="note.expand" class="dash-item-body grid-content">
 
-			<p>{{note.note}}</p>
+			<div class='grid-content' ng-show="formatDate(note.updated)">
+				Note last updated on {{formatDate(note.updated)}} with the following details:
+			</div>
+
+			<table class='note-table'>
+			<tr ng-show="{{note.brsize}}"><td>Bedroom Size</td><td> {{note.brsize}}</td></tr>
+			<tr ng-show="{{note.rent}}"><td>Monthly Rent</td><td>{{note.rent}}/month.</td></tr> 
+			<tr ng-show="{{note.applied}}"><td>Applied on</td><td>{{formatDate(note.applied_on)}}</td></tr>
+			<tr ng-show="{{note.waitlist}}"><td>Waitlist Length</td><td>{{note.waitlist_length}} months long.</td></tr> 
+			<tr ng-show="{{note.waitlist_position}}"><td>Waitlist Position</td> <Td>{{note.waitlist_position|ordinal}}</td></tr>
+			</table>
+
+			<p ng-show="{{note.note}}"><h4>My Note:</h4>{{note.note}}</p>
 
 			<div class="notification-actions">
-				<!-- see documentation in app.js ~line 340-->
+				<!-- see documentation in app.js ~trne 340-->
 			<div class="notification-actions">
 				<action-button  uiAction="{{note.url}}" action-text="View Listing">View Listing</action-button>
 			</div>

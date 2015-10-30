@@ -18,6 +18,8 @@ angular.module('application').controller('listingController', ['$scope','globalF
         d[0].affordability = $sce.trustAsHtml(d[0].affordability);
 
       $scope.thisListing = d;
+      console.log(d);
+      $scope.suggest_edit = {"name":d[0].name, "address":d[0].primary_address, "phone":d[0].phone, "website":d[0].website, "email":d[0].email};
 
 
    if(globalFilter.get('fbResponse').id){
@@ -147,8 +149,6 @@ angular.module('application').controller('listingController', ['$scope','globalF
 
     })
 
-    $scope.hideReviewModal = 1;
-    $scope.apply;
   }
 
   $scope.convertDate = function (stringDate){
@@ -171,4 +171,5 @@ angular.module('application').controller('listingController', ['$scope','globalF
       return false;
 
     }
+
 }]);

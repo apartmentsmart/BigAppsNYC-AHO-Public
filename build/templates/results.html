@@ -17,10 +17,6 @@
  				<p>We found <strong>{{listings.count}}</strong> results based on your search preferences.</p>
 		</div>
 
-		<div class="grid-block small-12 align-center">
-		<div ng-include="" src="'/partials/search-nav.html'"></div>
-		</div>
-
 		<div class="small-12 grid-block" id="results-filter" sticky sticky-class="imSoSticky">
 
 			<label ng-init="sort = '-housing_choice_score'; reverse = false" class='small-12'> Sort By:</label>
@@ -41,10 +37,11 @@
 
 		<div class='clearfix'></div>
 
-		<div class='listingCard grid-block' ng-show='thisSearch.ami_band > 0'>
-	    	<div class="card-content vertical" style='padding: 10px;'>
+		<div class='listingCard grid-block small-12' ng-show='thisSearch.ami_band > 0'>
+	    	<div class="card-content vertical small-12" style='padding: 10px;' ng-click="listings.eligibility = !listings.eligibility">
 				<p>
-				<strong>Your Eligibility<br/></strong>
+				<strong>Tap to View Your Program Eligibility</strong>
+				<div ng-show="listings.eligibility">
 				According to your search preferences you may be eligible to rent an affordable housing unit that participates in the following affordable housing programs.
 				<ul>
 					<li ng-show="thisSearch.ami_band < 130" >Article 8A Loan Program
@@ -61,6 +58,7 @@
 					<li ng-show="thisSearch.ami_band < 50" >Rental Assistance Program
 					<li ng-show="thisSearch.ami_band < 50" >Public Housing
 				</ul>
+				</div>
 				</p>
 			</div>
 		</div>

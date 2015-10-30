@@ -7,7 +7,7 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
-	height: 100vh;
+	min-height: 100vh;
 
 	.fa {
 		font-size: 1.7rem;
@@ -131,3 +131,18 @@
 	.wl-close-notification {
 		background-color: #FF3C38;
 	}
+
+	.note-table{
+
+		background-color:#444;
+		color: #FFF;
+		border: 0 !important;
+
+	}
+
+	.note-table tr, .note-table tr.even, .note-table tr.alt, .note-table tr:nth-of-type(even), .note-table td {
+    	background: #444;
+    	color: #FFF !important;
+    }
+
+    .dash-item h4{ color: #FFF; }

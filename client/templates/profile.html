@@ -73,11 +73,11 @@ url: /profile
 					</div>
 
 					<div class="form-element small-12">
-						<label class="small-12">Disability Status
-							<select name="disability_status" ng-init="account.disabilityStatus = (account.disabilityStatus ? account.disabilityStatus : 'None')" ng-model="account.disabilityStatus">
+						<label class="small-12">Disability Status {{account.disabilityStatus}}
+							<select name="disabilityStatus" ng-init="account.disabilityStatus = (account.disabilityStatus ? account.disabilityStatus : 'None')" ng-model="account.disabilityStatus">
 								<option value="HoH">Head of Houshold Disabled</option>
 								<option value="Dependant">Dependant Disabled</option>
-								<option value="None" selected="selected">No Disablity</option>
+								<option value="None">No Disablity</option>
 							</select>
 						</label>
 					</div>
