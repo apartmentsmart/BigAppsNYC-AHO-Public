@@ -1,0 +1,7 @@
+build/assets/js/app.js
+client/*
+etc/*
+node_modules/*
+bower.json
+gulpfile.js
+package.json
